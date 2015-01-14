@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+
+	<package name="core" namespace="/" extends="root">
+
+		<action name="index" class="fr.Simple_Blog.controllers.RootController"
+			method="initApplication">
+			<result name="success" type="tiles">rootTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+
+	</package>
+
+
+	<package name="admin" namespace="/backOffice" extends="root">
+
+
+		<action name="adminConsole" class="fr.Simple_Blog.controllers.RootController"
+			method="initApplication2">
+			<result name="success" type="tiles">adminTemplate</result>
+		</action>
+	    
+
+	</package>
+
+</struts>
