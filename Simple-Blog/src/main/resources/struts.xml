@@ -6,11 +6,15 @@
 <struts>
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-
 	<constant name="struts.devMode" value="true" />
 
 	<!-- intégration Spring -->
 	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+
+	<!-- internationalisation -->
+	<constant name="struts.custom.i18n.resources" value="/fr/Simple_Blog/i18n/package" />
+
+
 
 	<package name="root" namespace="/" extends="struts-default">
 
@@ -29,8 +33,6 @@
 			<exception-mapping exception="java.lang.Exception"
 				result="error" />
 		</global-exception-mappings>
-
-
 
 	</package>
 

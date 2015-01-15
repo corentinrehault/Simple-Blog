@@ -5,8 +5,6 @@
 
 <struts>
 
-
-
 	<package name="core" namespace="/" extends="root">
 
 		<action name="index" class="fr.Simple_Blog.controllers.RootController"
@@ -15,18 +13,36 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
+		<action name="enregistrer">
+			<result name="success" type="tiles">signupTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+		<action name="ajouterUtilisateur" class="fr.Simple_Blog.controllers.RootController"
+			method="ajouterUtilisateur">
+			<!-- changement de pile d'interception fichier struts-default.xml situé 
+				dans la lib struts2-core -->
+			<!-- <interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref> -->
+			<result name="success" type="tiles">registeredTemplate</result>
+			<result name="input" type="tiles">signupTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+		<action name="connexion" class="fr.Simple_Blog.controllers.RootController"
+			method="connexionUtilisateur">
+			<result name="success" type="tiles">signinTemplate</result>
+			<result name="input" type="tiles">rootTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
 
 	</package>
 
-
 	<package name="admin" namespace="/backOffice" extends="root">
-
 
 		<action name="adminConsole" class="fr.Simple_Blog.controllers.RootController"
 			method="initApplication2">
 			<result name="success" type="tiles">adminTemplate</result>
 		</action>
-	    
 
 	</package>
 

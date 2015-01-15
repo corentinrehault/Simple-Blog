@@ -2,19 +2,30 @@
 
 <div class="col-sm-6 identification">
 
-	<s:form method="post" action="connexion.action"
+	<s:if test="errors.size()>0">
+		<div id="message_erreur">
+			<label>Les erreurs suivantes se sont produites : </label>
+			<ul>
+				<s:fielderror />
+			</ul>
+		</div>
+	</s:if>
+
+	<s:form method="post" action="connexion"
 		cssClass="navbar-form navbar-left">
-		<s:textfield type="text" name="login" value="" placeholder="Login"
-			cssClass="form-control"></s:textfield>
+		<s:textfield type="text" name="login" value=""
+			placeholder="%{getText('login')}" cssClass="form-control"></s:textfield>
 		<s:textfield type="password" name="password" value=""
-			placeholder="Password" cssClass="form-control"></s:textfield>
-		<s:submit method="doLogin" value="login" cssClass="btn btn-success"></s:submit>
+			placeholder="%{getText('password')}" cssClass="form-control"></s:textfield>
+		<s:submit value="%{getText('login.action')}"
+			cssClass="btn btn-success"></s:submit>
 	</s:form>
 
 	<nav class="blog-nav">
-		<s:a namespace="frontOffice" action="enregistrer.action"
-			cssClass="blog-nav-item">S'enregistrer</s:a>
-		<s:a namespace="frontOffice" action="perdu.action"
-			cssClass="blog-nav-item">Mdp perdu ?</s:a>
+		<s:a action="enregistrer" cssClass="blog-nav-item">
+			<s:property value="getText('register')" />
+		</s:a>
+		<s:a action="perdu" cssClass="blog-nav-item">
+			<s:property value="getText('pass.perdu')" /> ?</s:a>
 	</nav>
 </div>
