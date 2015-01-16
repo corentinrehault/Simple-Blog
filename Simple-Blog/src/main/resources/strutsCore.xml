@@ -7,29 +7,32 @@
 
 	<package name="core" namespace="/" extends="root">
 
-		<action name="index" class="fr.simpleblog.controllers.RootController"
+		<action name="index" class="fr.simpleblog.controllers.RootAction"
 			method="initApplication">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">rootTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
 		<action name="enregistrer">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">signupTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="ajouter" class="fr.simpleblog.controllers.RootController"
+		<action name="ajouter" class="fr.simpleblog.controllers.UtilisateurAction"
 			method="ajouterUtilisateur">
 			<!-- changement de pile d'interception fichier struts-default.xml situé 
 				dans la lib struts2-core -->
 			<!-- <interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref> -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="tiles">registeredTemplate</result>
 			<result name="input" type="tiles">signupTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="connexion" class="fr.simpleblog.controllers.RootController"
-			method="connexionUtilisateur">
+		<action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction"
+			method="connecterUtilisateur">
 			<!-- redirection pour ne pas tester la connexion plusieurs fois -->
 			<result name="success" type="redirectAction">connecte</result>
 			<result name="input" type="tiles">rootTemplate</result>
@@ -41,8 +44,8 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="deconnexion" class="fr.simpleblog.controllers.RootController"
-			method="deconnexionUtilisateur">
+		<action name="deconnexion" class="fr.simpleblog.controllers.UtilisateurAction"
+			method="deconnecterUtilisateur">
 			<result name="success" type="tiles">rootTemplate</result>
 		</action>
 
@@ -50,7 +53,7 @@
 
 	<package name="admin" namespace="/backOffice" extends="root">
 
-		<action name="accesadmin" class="fr.simpleblog.controllers.RootController"
+		<action name="accesadmin" class="fr.simpleblog.controllers.UtilisateurAction"
 			method="utilisateurAutorite">
 			<result name="success" type="redirectAction">espaceadmin</result>
 			<result name="input" type="redirectAction">espacecontrib</result>

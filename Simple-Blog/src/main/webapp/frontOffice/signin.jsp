@@ -10,55 +10,51 @@
 <tiles:insertAttribute name="head"></tiles:insertAttribute>
 
 </head>
-<s:if test="#session.sessionlogin==null">
-	<s:action name="error"></s:action>
-</s:if>
 
-<s:else>
-	<body>
-		<div class="container">
-			<div class="row row-eq-height">
-				<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
+<body>
+	<div class="container">
+		<div class="row row-eq-height">
+			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
 
-				<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
-			</div>
+			<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
 		</div>
-		<div class="container">
+	</div>
+	<div class="container">
 
-			<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
+		<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
-			<div class="row">
+		<div class="row">
 
-				<div class="col-sm-9 blog-main">
+			<div class="col-sm-9 blog-main">
 
-					<tiles:insertAttribute name="zone_posts"></tiles:insertAttribute>
+				<tiles:insertAttribute name="zone_posts"></tiles:insertAttribute>
 
-					<tiles:insertAttribute name="zone_pages"></tiles:insertAttribute>
-
-				</div>
-				<!-- /.blog-main -->
-
-				<div class="col-sm-3 blog-sidebar">
-					<tiles:insertAttribute name="zone_nav"></tiles:insertAttribute>
-				</div>
-				<!-- /.blog-sidebar -->
+				<tiles:insertAttribute name="zone_pages"></tiles:insertAttribute>
 
 			</div>
-			<!-- /.row -->
+			<!-- /.blog-main -->
+
+			<div class="col-sm-3 blog-sidebar">
+				<tiles:insertAttribute name="zone_nav"></tiles:insertAttribute>
+			</div>
+			<!-- /.blog-sidebar -->
 
 		</div>
-		<!-- /.container -->
+		<!-- /.row -->
 
-		<footer class="blog-footer">
-			<tiles:insertAttribute name="zone_pied"></tiles:insertAttribute>
-		</footer>
+	</div>
+	<!-- /.container -->
+
+	<footer class="blog-footer">
+		<tiles:insertAttribute name="zone_pied"></tiles:insertAttribute>
+	</footer>
 
 
-		<tiles:insertAttribute name="footStrap"></tiles:insertAttribute>
+	<tiles:insertAttribute name="footStrap"></tiles:insertAttribute>
 
 
-	</body>
-</s:else>
+</body>
+
 </html>
 
 <s:debug />
