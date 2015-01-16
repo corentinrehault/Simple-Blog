@@ -26,7 +26,7 @@
 	<!-- location Log4j.properties configuration -->
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/fr/Simple_Blog/log/log4j.properties</param-value>
+		<param-value>/WEB-INF/classes/fr/simpleblog/log/log4j.properties</param-value>
 	</context-param>
 
 	<!-- support du log4j -->
@@ -57,7 +57,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/fr/Simple_Blog/spring/spring-master.xml</param-value>
+		<param-value>/WEB-INF/classes/fr/simpleblog/spring/spring-master.xml</param-value>
 	</context-param>
 
 	<listener>

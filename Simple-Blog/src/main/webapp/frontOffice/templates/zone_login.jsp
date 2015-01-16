@@ -2,15 +2,6 @@
 
 <div class="col-sm-6 identification">
 
-	<s:if test="errors.size()>0">
-		<div id="message_erreur">
-			<label>Les erreurs suivantes se sont produites : </label>
-			<ul>
-				<s:fielderror />
-			</ul>
-		</div>
-	</s:if>
-
 	<s:form method="post" action="connexion"
 		cssClass="navbar-form navbar-left">
 		<s:textfield type="text" name="login" value=""

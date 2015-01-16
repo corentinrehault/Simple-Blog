@@ -4,22 +4,22 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 
 <validators>
-	<field name="nom">
+	<field name="nomcree">
 		<field-validator type="requiredstring">
 			<message>You must enter a last name</message>
 		</field-validator>
 	</field>
-	<field name="prenom">
+	<field name="prenomcree">
 		<field-validator type="requiredstring">
 			<message>You must enter a first name</message>
 		</field-validator>
 	</field>
-	<field name="login">
+	<field name="logincree">
 		<field-validator type="requiredstring">
 			<message>You must enter a name</message>
 		</field-validator>
 	</field>
-	<field name="password">
+	<field name="passwordcree">
 		<field-validator type="requiredstring">
 			<message>You must enter a password</message>
 		</field-validator>

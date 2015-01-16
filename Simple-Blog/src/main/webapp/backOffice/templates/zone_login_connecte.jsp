@@ -6,9 +6,9 @@
 	<br> Nous sommes le
 	<s:date name="dateAujourdhui" format="dd/MM/yyyy" />
 	<nav class="blog-nav">
-		<s:a namespace="/backOffice" action="accesadmin"
-			cssClass="blog-nav-item">Accès administration</s:a>
-		<s:a namespace="frontOffice" action="deconnexion"
+		<s:a namespace="/frontOffice" action="connecte"
+			cssClass="blog-nav-item">Retour au blog</s:a>
+		<s:a namespace="/frontOffice" action="deconnexion"
 			cssClass="blog-nav-item">Déconnexion</s:a>
 	</nav>
 </div>

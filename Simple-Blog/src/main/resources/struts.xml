@@ -12,18 +12,37 @@
 	<constant name="struts.objectFactory.spring.autoWire" value="name" />
 
 	<!-- internationalisation -->
-	<constant name="struts.custom.i18n.resources" value="/fr/Simple_Blog/i18n/package" />
-
-
+	<constant name="struts.custom.i18n.resources" value="/fr/simpleblog/i18n/package" />
 
 	<package name="root" namespace="/" extends="struts-default">
+
+		
+
+		
 
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
+		
+		<interceptors>
+			<interceptor name="authentifier"
+				class="fr.simpleblog.controllers.othercontrollers.interceptors">
+			</interceptor>
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentifier"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
+		
+		
 
 		<default-action-ref name="index" />
+		
+		
 
 		<global-results>
 			<result name="error">/error.jsp</result>
@@ -33,6 +52,8 @@
 			<exception-mapping exception="java.lang.Exception"
 				result="error" />
 		</global-exception-mappings>
+		
+		
 
 	</package>
 

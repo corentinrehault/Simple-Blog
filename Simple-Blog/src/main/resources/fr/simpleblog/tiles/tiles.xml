@@ -7,7 +7,7 @@
 <!-- templateblog frontoffice -->
 <tiles-definitions>
 
-	<definition name="rootTemplate" template="root.jsp">
+	<definition name="rootTemplate" template="/root.jsp">
 		<put-attribute name="head" value="/frontOffice/templates/head.jsp" />
 		<put-attribute name="zone_titre"
 			value="/frontOffice/templates/zone_titre.jsp" />

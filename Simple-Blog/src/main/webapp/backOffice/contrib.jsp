@@ -6,7 +6,7 @@
 <html>
 <head>
 
-<title>Blog Template - Espace administrateur</title>
+<title>Blog Template - Index</title>
 <tiles:insertAttribute name="head"></tiles:insertAttribute>
 
 </head>
@@ -20,7 +20,7 @@
 	</div>
 	<div class="container">
 
-		<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
+<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
 		<div class="row">
 
@@ -34,7 +34,7 @@
 			<!-- /.blog-main -->
 
 			<div class="col-sm-3 blog-sidebar">
-				<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
+				<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
 			</div>
 			<!-- /.blog-sidebar -->
 

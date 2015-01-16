@@ -7,7 +7,7 @@
 
 	<package name="core" namespace="/" extends="root">
 
-		<action name="index" class="fr.Simple_Blog.controllers.RootController"
+		<action name="index" class="fr.simpleblog.controllers.RootController"
 			method="initApplication">
 			<result name="success" type="tiles">rootTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
@@ -18,7 +18,7 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="ajouterUtilisateur" class="fr.Simple_Blog.controllers.RootController"
+		<action name="ajouter" class="fr.simpleblog.controllers.RootController"
 			method="ajouterUtilisateur">
 			<!-- changement de pile d'interception fichier struts-default.xml situé 
 				dans la lib struts2-core -->
@@ -28,20 +28,41 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="connexion" class="fr.Simple_Blog.controllers.RootController"
+		<action name="connexion" class="fr.simpleblog.controllers.RootController"
 			method="connexionUtilisateur">
-			<result name="success" type="tiles">signinTemplate</result>
+			<!-- redirection pour ne pas tester la connexion plusieurs fois -->
+			<result name="success" type="redirectAction">connecte</result>
 			<result name="input" type="tiles">rootTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+		<action name="connecte">
+			<result name="success" type="tiles">signinTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+		<action name="deconnexion" class="fr.simpleblog.controllers.RootController"
+			method="deconnexionUtilisateur">
+			<result name="success" type="tiles">rootTemplate</result>
 		</action>
 
 	</package>
 
 	<package name="admin" namespace="/backOffice" extends="root">
 
-		<action name="adminConsole" class="fr.Simple_Blog.controllers.RootController"
-			method="initApplication2">
+		<action name="accesadmin" class="fr.simpleblog.controllers.RootController"
+			method="utilisateurAutorite">
+			<result name="success" type="redirectAction">espaceadmin</result>
+			<result name="input" type="redirectAction">espacecontrib</result>
+			<result name="error" type="dispatcher">error.jsp</result>
+		</action>
+
+		<action name="espaceadmin">
 			<result name="success" type="tiles">adminTemplate</result>
+		</action>
+
+		<action name="espacecontrib">
+			<result name="success" type="tiles">contribTemplate</result>
 		</action>
 
 	</package>

@@ -6,53 +6,59 @@
 <html>
 <head>
 
-<title>Blog Template - Index</title>
+<title>Blog Template - Index connecté</title>
 <tiles:insertAttribute name="head"></tiles:insertAttribute>
 
 </head>
-<body>
-	<div class="container">
-		<div class="row row-eq-height">
-			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
+<s:if test="#session.sessionlogin==null">
+	<s:action name="error"></s:action>
+</s:if>
 
-			<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+<s:else>
+	<body>
+		<div class="container">
+			<div class="row row-eq-height">
+				<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
+
+				<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			</div>
 		</div>
-	</div>
-	<div class="container">
+		<div class="container">
 
-<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
+			<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
-		<div class="row">
+			<div class="row">
 
-			<div class="col-sm-9 blog-main">
+				<div class="col-sm-9 blog-main">
 
-				<tiles:insertAttribute name="zone_posts"></tiles:insertAttribute>
+					<tiles:insertAttribute name="zone_posts"></tiles:insertAttribute>
 
-				<tiles:insertAttribute name="zone_pages"></tiles:insertAttribute>
+					<tiles:insertAttribute name="zone_pages"></tiles:insertAttribute>
+
+				</div>
+				<!-- /.blog-main -->
+
+				<div class="col-sm-3 blog-sidebar">
+					<tiles:insertAttribute name="zone_nav"></tiles:insertAttribute>
+				</div>
+				<!-- /.blog-sidebar -->
 
 			</div>
-			<!-- /.blog-main -->
-
-			<div class="col-sm-3 blog-sidebar">
-				<tiles:insertAttribute name="zone_nav"></tiles:insertAttribute>
-			</div>
-			<!-- /.blog-sidebar -->
+			<!-- /.row -->
 
 		</div>
-		<!-- /.row -->
+		<!-- /.container -->
 
-	</div>
-	<!-- /.container -->
-
-	<footer class="blog-footer">
-		<tiles:insertAttribute name="zone_pied"></tiles:insertAttribute>
-	</footer>
+		<footer class="blog-footer">
+			<tiles:insertAttribute name="zone_pied"></tiles:insertAttribute>
+		</footer>
 
 
-	<tiles:insertAttribute name="footStrap"></tiles:insertAttribute>
+		<tiles:insertAttribute name="footStrap"></tiles:insertAttribute>
 
 
-</body>
+	</body>
+</s:else>
 </html>
 
 <s:debug />
