@@ -1,20 +1,22 @@
 package fr.simpleblog.model.DAOSql;
 
+import fr.simpleblog.beans.Commentaire;
+
 public class DAOModelCommentaire extends DAOModel implements IDAOModelCommentaire {
 
-	public void create() {
+	public Commentaire create() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void read() {
+	public Commentaire read() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void update() {
+	public Commentaire update() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void delete() {
+	public Commentaire delete() {
 		throw new UnsupportedOperationException();
 	}
 

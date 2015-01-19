@@ -1,20 +1,22 @@
 package fr.simpleblog.model.DAOSql;
 
+import fr.simpleblog.beans.Article;
+
 public class DAOModelArticle extends DAOModel implements IDAOModelArticle {
 
-	public void create() {
+	public Article create() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void read() {
+	public Article read() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void update() {
+	public Article update() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void delete() {
+	public Article delete() {
 		throw new UnsupportedOperationException();
 	}
 

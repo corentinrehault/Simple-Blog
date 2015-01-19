@@ -2,6 +2,7 @@ package fr.simpleblog.controllers.othercontrollers;
 
 import java.util.Map;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
@@ -25,19 +26,32 @@ public class AuthentifierIntercepteur extends AbstractInterceptor{
 	 */
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
+		
 		System.out.println("Dans la méthode intercept");
+		
 		Map<String, Object> session=invocation.getInvocationContext().getSession();
 
-		if(session.get("authentifie")==null) {
-			return "authentifie";
+
+
+		if(session.get("sessionlogin")== null) {
+			
+			return Action.LOGIN;
+			
 		} else {
-			boolean authentifie=(Boolean)(session.get("authentifie"));
-			if(authentifie) {
-				return invocation.invoke();
-			} else {
-				return "authentifie";
-			}
+			
+			return invocation.invoke();
 		}
+
+		//		if(session.get("authentifie")==null) {
+		//			return "authentifie";
+		//		} else {
+		//			boolean authentifie=(Boolean)(session.get("authentifie"));
+		//			if(authentifie) {
+		//				return invocation.invoke();
+		//			} else {
+		//				return "authentifie";
+		//			}
+		//		}
 	}
 
 	/* (non-Javadoc)

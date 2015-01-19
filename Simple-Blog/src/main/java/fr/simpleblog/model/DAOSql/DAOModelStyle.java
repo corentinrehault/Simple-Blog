@@ -1,20 +1,22 @@
 package fr.simpleblog.model.DAOSql;
 
+import fr.simpleblog.beans.Style;
+
 public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 
-	public void create() {
+	public Style create() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void read() {
+	public Style read() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void update() {
+	public Style update() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void delete() {
+	public Style delete() {
 		throw new UnsupportedOperationException();
 	}
 

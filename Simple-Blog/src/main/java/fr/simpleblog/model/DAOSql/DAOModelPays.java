@@ -1,20 +1,22 @@
 package fr.simpleblog.model.DAOSql;
 
+import fr.simpleblog.beans.Pays;
+
 public class DAOModelPays extends DAOModel implements IDAOModelPays {
 
-	public void create() {
+	public Pays create() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void read() {
+	public Pays read() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void update() {
+	public Pays update() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void delete() {
+	public Pays delete() {
 		throw new UnsupportedOperationException();
 	}
 

@@ -16,4 +16,5 @@
 			</s:a>
 		<a class="blog-nav-item" href="#">Style</a>
 	</nav>
+	<h1><s:property value="#session"/> </h1>
 </div>

@@ -33,6 +33,7 @@
 
 		<action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction"
 			method="connecterUtilisateur">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<!-- redirection pour ne pas tester la connexion plusieurs fois -->
 			<result name="success" type="redirectAction">connecte</result>
 			<result name="input" type="tiles">rootTemplate</result>

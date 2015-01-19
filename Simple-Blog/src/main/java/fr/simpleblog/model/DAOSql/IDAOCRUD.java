@@ -2,11 +2,11 @@ package fr.simpleblog.model.DAOSql;
 
 public interface IDAOCRUD<X> {
 
-	public void create();
+	public X create();
 
-	public void read();
+	public X read();
 
-	public void update();
+	public X update();
 
-	public void delete();
+	public X delete();
 }

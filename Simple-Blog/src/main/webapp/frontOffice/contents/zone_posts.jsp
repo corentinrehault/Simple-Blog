@@ -1,4 +1,7 @@
 <div class="blog-post">
+
+<!-- 	<s:action name"getArticle" executeResult="false" value="AnArticleActionInstance" /> -->
+
 	<h2 class="blog-post-title">Sample blog post</h2>
 	<h3>Catégorie : Sport</h3>
 

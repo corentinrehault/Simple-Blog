@@ -8,18 +8,18 @@
 
 
 	<display-name>Simple-Blog</display-name>
-	
-		<!-- filter declaration for Spring Security -->
-	
-<!-- 	<filter> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
-<!-- 	</filter> -->
 
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<url-pattern>/*</url-pattern> -->
-<!-- 	</filter-mapping> -->
+	<!-- filter declaration for Spring Security -->
+
+	<!-- <filter> -->
+	<!-- <filter-name>springSecurityFilterChain</filter-name> -->
+	<!-- <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+	<!-- </filter> -->
+
+	<!-- <filter-mapping> -->
+	<!-- <filter-name>springSecurityFilterChain</filter-name> -->
+	<!-- <url-pattern>/*</url-pattern> -->
+	<!-- </filter-mapping> -->
 
 
 
@@ -64,7 +64,24 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- Chargeur du datasource -->
+	<listener>
+		<listener-class>fr.simpleblog.services.ApplicationListener</listener-class>
+	</listener>
 
+	<!-- Parametre globaux -->
+	<context-param>
+		<param-name>dataSourceJNDI</param-name>
+		<param-value>java:/comp/env/simpleblog</param-value>
+	</context-param>
+
+	<!-- Informations de connexion a la base de donnees -->
+	<resource-ref>
+		<description>Connexion a la base de donnees MySQL</description>
+		<res-ref-name>simpleblog</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
 
 

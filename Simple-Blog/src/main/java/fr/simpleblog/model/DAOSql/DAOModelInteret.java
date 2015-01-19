@@ -1,20 +1,22 @@
 package fr.simpleblog.model.DAOSql;
 
+import fr.simpleblog.beans.Interet;
+
 public class DAOModelInteret extends DAOModel implements IDAOModelInteret {
 
-	public void create() {
+	public Interet create() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void read() {
+	public Interet read() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void update() {
+	public Interet update() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void delete() {
+	public Interet delete() {
 		throw new UnsupportedOperationException();
 	}
 

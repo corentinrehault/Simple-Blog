@@ -1,8 +1,10 @@
 package fr.simpleblog.model.DAOSql;
 
+import java.util.List;
+
 import fr.simpleblog.beans.Utilisateur;
 
 public interface IDAOModelUtilisateur extends IDAOCRUD<Utilisateur> {
 
-	public void listerUtilisateur();
+	public List<Utilisateur> listerUtilisateur();
 }
