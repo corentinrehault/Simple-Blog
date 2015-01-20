@@ -23,6 +23,8 @@ DROP TABLE IF EXISTS Style;
 DROP TABLE IF EXISTS Utilisateur;
 DROP TABLE IF EXISTS Article;
 DROP TABLE IF EXISTS Commentaire;
+#DROP TABLE IF EXISTS Autorite;
+#DROP TABLE IF EXISTS UtilisateurAutorite;
 
 # Create
 
@@ -54,15 +56,15 @@ CREATE TABLE Style (
 CREATE TABLE Utilisateur (
   Id                 int(11) NOT NULL AUTO_INCREMENT, 
   StyleId            int(11) NOT NULL, 
-  FicheUtilisateurId int(11) NOT NULL, 
+  FicheUtilisateurId int(11) NOT NULL,
   Nom                varchar(255) NOT NULL, 
   Prenom             varchar(255) NOT NULL, 
   Login              varchar(255) NOT NULL UNIQUE, 
   Password           varchar(255) NOT NULL UNIQUE, 
   Mail               varchar(255) NOT NULL UNIQUE, 
   Avatar             varchar(255), 
-  Langue             varchar(255) NOT NULL, 
-  Authority          varchar(255) NOT NULL, 
+  Langue             varchar(255) NOT NULL,
+  Authority			 varchar(255) NOT NULL,
   PRIMARY KEY (Id)) CHARACTER SET UTF8;
 CREATE TABLE Article (
   Id            int(11) NOT NULL AUTO_INCREMENT, 
@@ -80,6 +82,15 @@ CREATE TABLE Commentaire (
   Contenu       varchar(255) NOT NULL UNIQUE, 
   Valide        tinyint(1) NOT NULL, 
   PRIMARY KEY (Id)) CHARACTER SET UTF8;
+#CREATE TABLE Autorite (
+#  Id			int(11) NOT NULL AUTO_INCREMENT,
+#  Nom			varchar(255) NOT NULL UNIQUE
+#  PRIMARY KEY (Id)) CHARACTER SET UTF8;
+#CREATE TABLE UtilisateurAutorite (
+#  Id				int(11) NOT NULL AUTO INCREMENT,
+#  UtilisateurId		int(11) NOT NULL,
+#  AutoriteId		int(11) NOT NULL,
+#  PRIMARY KEY (Id)) CHARACTER SET UTF8;
 ALTER TABLE Commentaire ADD INDEX FKCommentair387310 (ArticleId), ADD CONSTRAINT FKCommentair387310 FOREIGN KEY (ArticleId) REFERENCES Article (Id);
 ALTER TABLE Utilisateur ADD INDEX FKUtilisateu128246 (FicheUtilisateurId), ADD CONSTRAINT FKUtilisateu128246 FOREIGN KEY (FicheUtilisateurId) REFERENCES FicheUtilisateur (Id);
 ALTER TABLE Commentaire ADD INDEX FKCommentair204829 (UtilisateurId), ADD CONSTRAINT FKCommentair204829 FOREIGN KEY (UtilisateurId) REFERENCES Utilisateur (Id);

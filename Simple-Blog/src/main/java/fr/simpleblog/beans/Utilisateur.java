@@ -88,4 +88,20 @@ public class Utilisateur {
 	public String getAuthority() {
 		return this.authority;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", login="
+				+ login + ", password=" + password + ", mail=" + mail + ", id="
+				+ id + ", avatar=" + avatar + ", langue=" + langue
+				+ ", authority=" + authority + ", commentaireredige="
+				+ commentaireredige + ", articleecrit=" + articleecrit
+				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
+				+ "]";
+	}
+	
+	
 }

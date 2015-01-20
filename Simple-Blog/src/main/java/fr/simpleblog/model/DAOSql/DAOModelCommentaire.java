@@ -4,19 +4,19 @@ import fr.simpleblog.beans.Commentaire;
 
 public class DAOModelCommentaire extends DAOModel implements IDAOModelCommentaire {
 
-	public Commentaire create() {
+	public Commentaire create(Commentaire commentaire) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Commentaire read() {
+	public Commentaire read(Commentaire commentaire) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Commentaire update() {
+	public Commentaire update(Commentaire commentaire) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Commentaire delete() {
+	public Commentaire delete(Commentaire commentaire) {
 		throw new UnsupportedOperationException();
 	}
 

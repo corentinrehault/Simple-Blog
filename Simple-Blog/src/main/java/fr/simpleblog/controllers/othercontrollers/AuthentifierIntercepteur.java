@@ -26,32 +26,19 @@ public class AuthentifierIntercepteur extends AbstractInterceptor{
 	 */
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		
+
 		System.out.println("Dans la méthode intercept");
-		
 		Map<String, Object> session=invocation.getInvocationContext().getSession();
 
+		if(session.isEmpty()) {
 
-
-		if(session.get("sessionlogin")== null) {
-			
 			return Action.LOGIN;
-			
+
 		} else {
-			
+
 			return invocation.invoke();
 		}
 
-		//		if(session.get("authentifie")==null) {
-		//			return "authentifie";
-		//		} else {
-		//			boolean authentifie=(Boolean)(session.get("authentifie"));
-		//			if(authentifie) {
-		//				return invocation.invoke();
-		//			} else {
-		//				return "authentifie";
-		//			}
-		//		}
 	}
 
 	/* (non-Javadoc)

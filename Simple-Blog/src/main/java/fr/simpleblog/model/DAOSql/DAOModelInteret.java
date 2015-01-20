@@ -4,19 +4,19 @@ import fr.simpleblog.beans.Interet;
 
 public class DAOModelInteret extends DAOModel implements IDAOModelInteret {
 
-	public Interet create() {
+	public Interet create(Interet interet) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Interet read() {
+	public Interet read(Interet interet) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Interet update() {
+	public Interet update(Interet interet) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Interet delete() {
+	public Interet delete(Interet interet) {
 		throw new UnsupportedOperationException();
 	}
 

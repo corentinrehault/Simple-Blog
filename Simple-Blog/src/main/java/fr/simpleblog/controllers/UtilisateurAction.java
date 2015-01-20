@@ -3,10 +3,8 @@ package fr.simpleblog.controllers;
 import fr.simpleblog.beans.*;
 import fr.simpleblog.controllers.othercontrollers.UtilisateurAware;
 import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
-
 import java.util.*;
 
-import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +16,7 @@ import com.opensymphony.xwork2.Preparable;
 
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
-public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware, UtilisateurAware {
+public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware, UtilisateurAware  {
 
 	/**
 	 * 
@@ -30,15 +28,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private String login;
 	private String password;
 	private Map<String,Object> sessionMap;
+	private String prenom;
+	private String authority;
+	private String nom;
 
 	DAOModelUtilisateur daoModelUtilisateur=new DAOModelUtilisateur();
 
 
 
+	/**
+	 * @return utilisateurs
+	 */
 	public List<Utilisateur> listerUtilisateur() {
 
 		utilisateurs=(ArrayList<Utilisateur>)daoModelUtilisateur.listerUtilisateur();
-
 		return utilisateurs;
 	}
 
@@ -47,35 +50,46 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String supprimerUtilisateur() {
 
-		daoModelUtilisateur.delete();
+		daoModelUtilisateur.delete(utilisateur);
 		return SUCCESS;
 	}
 
+	/**
+	 * @return
+	 */
 	public String ajouterUtilisateur() {
 
-		daoModelUtilisateur.create();
+		utilisateur = daoModelUtilisateur.create(utilisateur);
+		
 		return SUCCESS;
 	}
 
+	/**
+	 * @return
+	 */
 	public String modifierUtilisateur() {
 
-		daoModelUtilisateur.update();
+		daoModelUtilisateur.update(utilisateur);
 		return SUCCESS;
 	}
 
 	/**
 	 * @return SUCCESS
-	 * 
-	 * 
 	 */
-	public String connecterUtilisateur(Utilisateur utilisateur) {
+	public String connecterUtilisateur() {
 
-		daoModelUtilisateur.login(utilisateur);
+		utilisateur = daoModelUtilisateur.login(utilisateur);
 
-		//		if(sessionMap instanceof SessionMap)
-		//		{
-		//			this.sessionMap.put("sessionlogin",login);
-		//		}
+		if (utilisateur != null) {
+
+			utilisateur.setPassword(null);
+
+			this.sessionMap.put("sessionlogin",utilisateur.getLogin());
+			this.sessionMap.put("sessionpassword",utilisateur.getPassword());
+			this.sessionMap.put("sessionprenom",utilisateur.getPrenom());
+			this.sessionMap.put("sessionauthority",utilisateur.getAuthority());
+		}
+
 		return SUCCESS;
 	}
 
@@ -179,6 +193,48 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		this.password = password;
 	}
 
+	/**
+	 * @return the prenom
+	 */
+	public String getPrenom() {
+		return prenom;
+	}
+
+	/**
+	 * @param prenom the prenom to set
+	 */
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	/**
+	 * @return the authority
+	 */
+	public String getAuthority() {
+		return authority;
+	}
+
+	/**
+	 * @param authority the authority to set
+	 */
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	/* (non-Javadoc)
 	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
 	 */
@@ -213,5 +269,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public void prepare() throws Exception {
 		UtilTimerStack.setActive(true);
 	}
+
+
 
 }

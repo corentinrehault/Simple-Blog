@@ -4,19 +4,19 @@ import fr.simpleblog.beans.Article;
 
 public class DAOModelArticle extends DAOModel implements IDAOModelArticle {
 
-	public Article create() {
+	public Article create(Article article) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Article read() {
+	public Article read(Article article) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Article update() {
+	public Article update(Article article) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Article delete() {
+	public Article delete(Article article) {
 		throw new UnsupportedOperationException();
 	}
 

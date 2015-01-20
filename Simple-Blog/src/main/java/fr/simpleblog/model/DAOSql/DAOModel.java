@@ -7,14 +7,13 @@ import org.apache.struts2.ServletActionContext;
 
 import java.sql.*;
 
-public class DAOModel implements DAO {
+public class DAOModel {
 
 	public DataSource dataSource=null;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.DAOSql.DAO#getConnection()
 	 */
-	@Override
 	public Connection getConnection() {
 
 		if(this.dataSource == null) {
@@ -25,7 +24,6 @@ public class DAOModel implements DAO {
 			try {
 				System.err.println("La connection est " + !dataSource.getConnection().isClosed());
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

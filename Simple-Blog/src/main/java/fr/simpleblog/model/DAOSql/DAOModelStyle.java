@@ -4,19 +4,19 @@ import fr.simpleblog.beans.Style;
 
 public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 
-	public Style create() {
+	public Style create(Style style) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Style read() {
+	public Style read(Style style) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Style update() {
+	public Style update(Style style) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Style delete() {
+	public Style delete(Style style) {
 		throw new UnsupportedOperationException();
 	}
 

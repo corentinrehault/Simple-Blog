@@ -4,19 +4,19 @@ import fr.simpleblog.beans.Pays;
 
 public class DAOModelPays extends DAOModel implements IDAOModelPays {
 
-	public Pays create() {
+	public Pays create(Pays pays) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Pays read() {
+	public Pays read(Pays pays) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Pays update() {
+	public Pays update(Pays pays) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Pays delete() {
+	public Pays delete(Pays pays) {
 		throw new UnsupportedOperationException();
 	}
 
