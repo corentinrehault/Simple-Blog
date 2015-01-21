@@ -4,7 +4,7 @@
 
 	<s:form method="post" action="connexion"
 		cssClass="navbar-form navbar-left">
-		<s:textfield type="text" name="utilisateur.login" value=""
+		<s:textfield type="text" name="utilisateur.username" value=""
 			placeholder="%{getText('login')}" cssClass="form-control"></s:textfield>
 		<s:textfield type="password" name="utilisateur.password" value=""
 			placeholder="%{getText('password')}" cssClass="form-control"></s:textfield>

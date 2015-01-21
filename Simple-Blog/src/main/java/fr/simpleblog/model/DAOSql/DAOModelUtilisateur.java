@@ -26,12 +26,13 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			connection=super.getConnection();
 			System.out.println("Connecté");
 			System.out.println(utilisateur);
-			stringRequest="INSERT INTO Utilisateur (Nom,Prenom,Login,Password,Authority,Langue,Mail,StyleId) VALUES(?,?,?,?,'user','fr','a@b',1)";
+			stringRequest="INSERT INTO Utilisateur (Nom,Prenom,Login,Password,Mail) VALUES(?,?,?,?,?)";
 			request=connection.prepareStatement(stringRequest);
 			request.setString(1, utilisateur.getNom());
 			request.setString(2, utilisateur.getPrenom());
-			request.setString(3, utilisateur.getLogin());
+			request.setString(3, utilisateur.getUsername());
 			request.setString(4, utilisateur.getPassword());
+			request.setString(5, utilisateur.getMail());
 			utilisateur=null;
 			System.out.println("request --->" + request.executeUpdate());
 			errorCode=request.executeUpdate();
@@ -113,7 +114,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			request.setString(2, utilisateur.getAvatar());
 			request.setString(3, utilisateur.getMail());
 			request.setString(4, utilisateur.getPassword());
-			request.setString(5, utilisateur.getLogin());
+			request.setString(5, utilisateur.getUsername());
 			request.setString(6, utilisateur.getPrenom());
 			request.setString(7, utilisateur.getNom());
 			request.setInt(8, utilisateur.getId());
@@ -197,9 +198,9 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 		try {
 			connection=super.getConnection();
 			System.out.println("Connecté");
-			stringRequest="SELECT * FROM Utilisateur WHERE Login=? AND Password=?";
+			stringRequest="SELECT * FROM Utilisateur WHERE Username=? AND Password=?";
 			request=connection.prepareStatement(stringRequest);
-			request.setString(1, utilisateur.getLogin());
+			request.setString(1, utilisateur.getUsername());
 			request.setString(2, utilisateur.getPassword());
 
 			result=request.executeQuery();

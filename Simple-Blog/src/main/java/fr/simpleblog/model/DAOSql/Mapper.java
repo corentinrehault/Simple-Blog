@@ -30,10 +30,10 @@ public class Mapper {
 
 		try {
 
-			if (result.getString("login") == "") {
-				utilisateur.setLogin("");
+			if (result.getString("username") == "") {
+				utilisateur.setUsername("");
 			} else {
-				utilisateur.setLogin(result.getString("login"));
+				utilisateur.setUsername(result.getString("username"));
 
 			}
 
@@ -41,12 +41,6 @@ public class Mapper {
 				utilisateur.setPassword("");
 			} else {
 				utilisateur.setPassword(result.getString("password"));
-			}
-
-			if (result.getString("authority") == "") {
-				utilisateur.setAuthority("");
-			} else {
-				utilisateur.setAuthority(result.getString("authority"));
 			}
 
 			if (result.getString("prenom") == "") {

@@ -2,9 +2,15 @@
 
 <div class="col-sm-6 identification">
 	Bonjour
-	<s:property value="nomUtilisateur" />
+	<s:property value="%{#session.sessionprenom}" />
 	<br> Nous sommes le
-	<s:date name="dateAujourdhui" format="dd/MM/yyyy" />
+	<s:bean name="java.util.date" id="datenow"></s:bean>
+
+	<s:property value="#datenow" />
+	
+	<s:property value="locale"/>
+	<hr/>
+	<s:date name="date"  />
 	<nav class="blog-nav">
 		<s:a namespace="/backOffice" action="accesadmin"
 			cssClass="blog-nav-item">Accès administration</s:a>

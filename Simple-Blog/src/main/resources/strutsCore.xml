@@ -69,6 +69,10 @@
 			<result name="success" type="tiles">contribTemplate</result>
 		</action>
 
+		<action name="modifier">
+			<result name="success" type="tiles">modifTemplate</result>
+		</action>
+
 	</package>
 
 </struts>

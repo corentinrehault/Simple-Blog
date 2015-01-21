@@ -47,6 +47,8 @@ public class ArticleAction {
 		throw new UnsupportedOperationException();
 	}
 
+	
+
 	public void modifierArticle() {
 		throw new UnsupportedOperationException();
 	}

@@ -31,6 +31,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private String prenom;
 	private String authority;
 	private String nom;
+	private String mail;
 
 	DAOModelUtilisateur daoModelUtilisateur=new DAOModelUtilisateur();
 
@@ -41,7 +42,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public List<Utilisateur> listerUtilisateur() {
 
-		utilisateurs=(ArrayList<Utilisateur>)daoModelUtilisateur.listerUtilisateur();
+		utilisateurs = (ArrayList<Utilisateur>)daoModelUtilisateur.listerUtilisateur();
 		return utilisateurs;
 	}
 
@@ -50,7 +51,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String supprimerUtilisateur() {
 
-		daoModelUtilisateur.delete(utilisateur);
+		utilisateur = daoModelUtilisateur.delete(utilisateur);
 		return SUCCESS;
 	}
 
@@ -60,7 +61,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public String ajouterUtilisateur() {
 
 		utilisateur = daoModelUtilisateur.create(utilisateur);
-		
 		return SUCCESS;
 	}
 
@@ -69,7 +69,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String modifierUtilisateur() {
 
-		daoModelUtilisateur.update(utilisateur);
+		utilisateur = daoModelUtilisateur.update(utilisateur);
 		return SUCCESS;
 	}
 
@@ -83,11 +83,9 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		if (utilisateur != null) {
 
 			utilisateur.setPassword(null);
-
-			this.sessionMap.put("sessionlogin",utilisateur.getLogin());
+			this.sessionMap.put("sessionlogin",utilisateur.getUsername());
 			this.sessionMap.put("sessionpassword",utilisateur.getPassword());
 			this.sessionMap.put("sessionprenom",utilisateur.getPrenom());
-			this.sessionMap.put("sessionauthority",utilisateur.getAuthority());
 		}
 
 		return SUCCESS;
@@ -115,10 +113,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	}
 
 	public void envoyerMailUtilisateur() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void changerStylepardefaut() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -233,6 +227,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	/**
+	 * @return the mail
+	 */
+	public String getMail() {
+		return mail;
+	}
+
+	/**
+	 * @param mail the mail to set
+	 */
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	/* (non-Javadoc)

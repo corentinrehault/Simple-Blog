@@ -1,0 +1,1 @@
+DELETE from Utilisateur where Nom = 'toto';

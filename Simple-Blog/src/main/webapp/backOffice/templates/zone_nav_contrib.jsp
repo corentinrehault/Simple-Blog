@@ -1,3 +1,5 @@
+<%@taglib prefix="s" uri="/struts-tags"%>
+
 <div class="sidebar-module">
 	<h4>
 		Liste des <a href=#>5</a> derniers articles publiés
@@ -31,6 +33,6 @@
 <div class="sidebar-module">
 	<h4>Espace utilisateur</h4>
 	<ol class="list-unstyled">
-		<li><a href="#">Modifier mon profil</a></li>
+		<li><s:a namespace="/backOffice" action="modifier">Modifier mon profil</s:a></li>
 	</ol>
 </div>

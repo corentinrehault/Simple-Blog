@@ -1,3 +1,5 @@
+<%@taglib prefix="s" uri="/struts-tags"%>
+
 <div class="sidebar-module">
 	<h4>Gérer les articles</h4>
 	<ol class="list-unstyled">
@@ -25,7 +27,7 @@
 		<li><a href="#">Ajouter un utilisateur</a></li>
 		<li><a href="#">Envoyer un mail</a></li>
 		<li></li>
-		<li><a href="#">Modifier mon profil</a></li>
+		<li><s:a namespace="/backOffice" action="modifier">Modifier mon profil</s:a></li>
 	</ol>
 </div>
 <div class="sidebar-module">
