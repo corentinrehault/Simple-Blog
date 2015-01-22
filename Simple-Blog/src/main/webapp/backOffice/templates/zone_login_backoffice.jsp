@@ -2,14 +2,11 @@
 
 <div class="col-sm-6 identification">
 	Bonjour
-	<s:property value="%{#session.sessionprenom}" />
+	<s:property value="%{#session.prenom}" />
 	<br> Nous sommes le
-	
-	<s:property value="%{new java.util.Date()}" />
-	<s:property value="#datenow" />
-	
+	<s:date name="%{new java.util.Date()}"
+		format="%{getText('date.locale')}" />
 	<hr>
-	<s:date  name="%{new java.util.Date()}" />
 	<nav class="blog-nav">
 		<s:a namespace="/frontOffice" action="connecte"
 			cssClass="blog-nav-item">Retour au blog</s:a>

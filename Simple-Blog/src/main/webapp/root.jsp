@@ -14,13 +14,17 @@
 	<div class="container">
 		<div class="row row-eq-height">
 			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
-
-			<tiles:insertAttribute name="zone_login"></tiles:insertAttribute>
+			<s:if test="%{#session.login != null}">
+				<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			</s:if>
+			<s:else>
+				<tiles:insertAttribute name="zone_login"></tiles:insertAttribute>
+			</s:else>
 		</div>
 	</div>
 	<div class="container">
 
-<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
+		<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
 		<div class="row">
 

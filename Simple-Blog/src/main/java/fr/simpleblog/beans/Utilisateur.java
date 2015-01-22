@@ -31,7 +31,7 @@ public class Utilisateur implements UserDetails {
 	public FicheUtilisateur ficheUtilisateur;
 	public Style style;
 
-	private Set<Authority> authorities;
+	public HashSet<Authority> authorities = new HashSet<Authority>();
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -135,7 +135,7 @@ public class Utilisateur implements UserDetails {
 				+ isCredentialsNonExpired + ", commentaireredige="
 				+ commentaireredige + ", articleecrit=" + articleecrit
 				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
-				+ ", authorities=" + authorities + "]";
+				+ ", authority=" + authorities + "]";
 	}
 
 	/* (non-Javadoc)
@@ -150,7 +150,7 @@ public class Utilisateur implements UserDetails {
 	/**
 	 * @param authorities the authorities to set
 	 */
-	public void setAuthorities(Set<Authority> authorities) {
+	public void setAuthorities(HashSet<Authority> authorities) {
 		this.authorities = authorities;
 	}
 

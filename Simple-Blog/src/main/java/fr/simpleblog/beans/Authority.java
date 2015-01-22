@@ -37,5 +37,13 @@ public class Authority  implements GrantedAuthority{
 		return this.id;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Authority [authority=" + authority + ", id=" + id + "]";
+	}
+
 
 }

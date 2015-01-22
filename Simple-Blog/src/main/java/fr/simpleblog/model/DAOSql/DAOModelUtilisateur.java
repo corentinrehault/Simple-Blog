@@ -68,7 +68,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 
 		try {
 			connection=super.getConnection();
-			stringRequest="SELET * FROM utilisateur WHERE Id=?";
+			stringRequest="SELECT * FROM utilisateur WHERE Id=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setInt(1, utilisateur.getId());
 			result=request.executeQuery();
@@ -205,7 +205,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 
 			result=request.executeQuery();
 
-			System.out.println("--->" + result);
+			System.out.println("--->" + request);
 
 			if(result.first()) {
 				utilisateur = Mapper.utilisateurMapper(result);

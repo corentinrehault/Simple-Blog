@@ -15,12 +15,12 @@
 		<div class="row row-eq-height">
 			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
 
-			<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			<tiles:insertAttribute name="zone_login_backoffice"></tiles:insertAttribute>
 		</div>
 	</div>
 	<div class="container">
 
-<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
+		<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
 		<div class="row">
 
@@ -32,10 +32,20 @@
 
 			</div>
 			<!-- /.blog-main -->
+			<s:if test="%{#session.authority=='admin'}">
+			
+			
+			
+				<div class="col-sm-3 blog-sidebar">
+					<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
+				</div>
+			</s:if>
+			<s:else>
+				<div class="col-sm-3 blog-sidebar">
 
-			<div class="col-sm-3 blog-sidebar">
-				<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
-			</div>
+					<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
+				</div>
+			</s:else>
 			<!-- /.blog-sidebar -->
 
 		</div>

@@ -1,15 +1,24 @@
 package fr.simpleblog.controllers;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 import fr.simpleblog.beans.*;
+import fr.simpleblog.model.DAOSql.DAOModelAuthority;
 
 public class AuthorityAction {
 	private Authority authority;
-	private ArrayList<String> authorities;
+	private HashSet<Authority> authorities;
 
-	public String listerAuthority() {
-		throw new UnsupportedOperationException();
+	DAOModelAuthority daoModelAuthority = new DAOModelAuthority();
+
+	public HashSet<Authority> listerAuthority() {
+		authorities = (HashSet<Authority>) daoModelAuthority.listerAuthority();
+		return authorities;
+	}
+
+	public HashSet<Authority> listerAuthorityParUtil(Utilisateur utilisateur) {
+		authorities = (HashSet<Authority>) daoModelAuthority.listerAuthorityParUtil(utilisateur);
+		return authorities;
 	}
 
 	public void creerAuthority() {
@@ -32,11 +41,11 @@ public class AuthorityAction {
 		return this.authority;
 	}
 
-	public void setAuthorities(ArrayList<String> authorities) {
+	public void setAuthorities(HashSet<Authority> authorities) {
 		this.authorities = authorities;
 	}
 
-	public ArrayList<String> getAuthorities() {
+	public HashSet<Authority> getAuthorities() {
 		return this.authorities;
 	}
 }

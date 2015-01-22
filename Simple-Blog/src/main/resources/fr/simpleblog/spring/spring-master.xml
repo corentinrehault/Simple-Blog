@@ -50,11 +50,11 @@
 
 
 
-<!-- 	<import resource="spring-security.xml" /> -->
+	<!-- <import resource="spring-security.xml" /> -->
 
 	<!-- <import resource="dispatcher-servlet.xml" /> -->
 
-<!-- 	<import resource="spring-beans.xml" /> -->
+	<import resource="spring-beans.xml" />
 
 	<import resource="spring-tiles.xml" />
 
@@ -62,7 +62,7 @@
 
 	<!-- <import resource="spring-hibernate.xml" /> -->
 
-<!-- 	<import resource="simpleBeanFactory.xml" /> -->
+	<!-- <import resource="simpleBeanFactory.xml" /> -->
 
 
 

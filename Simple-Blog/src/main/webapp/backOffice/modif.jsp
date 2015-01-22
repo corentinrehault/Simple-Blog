@@ -15,7 +15,7 @@
 		<div class="row row-eq-height">
 			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
 
-			<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			<tiles:insertAttribute name="zone_login_backoffice"></tiles:insertAttribute>
 		</div>
 	</div>
 	<div class="container">

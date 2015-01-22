@@ -3,10 +3,10 @@ package fr.simpleblog.controllers;
 import fr.simpleblog.beans.*;
 import fr.simpleblog.controllers.othercontrollers.UtilisateurAware;
 import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
+
 import java.util.*;
 
 import org.apache.struts2.interceptor.SessionAware;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -29,11 +29,15 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private String password;
 	private Map<String,Object> sessionMap;
 	private String prenom;
-	private String authority;
+	private Set<Authority> authorities;
 	private String nom;
 	private String mail;
 
-	DAOModelUtilisateur daoModelUtilisateur=new DAOModelUtilisateur();
+
+	DAOModelUtilisateur daoModelUtilisateur;
+
+
+	AuthorityAction authorityAction = new AuthorityAction();
 
 
 
@@ -42,7 +46,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public List<Utilisateur> listerUtilisateur() {
 
-		utilisateurs = (ArrayList<Utilisateur>)daoModelUtilisateur.listerUtilisateur();
+		utilisateurs = (ArrayList<Utilisateur>) daoModelUtilisateur.listerUtilisateur();
 		return utilisateurs;
 	}
 
@@ -83,9 +87,17 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		if (utilisateur != null) {
 
 			utilisateur.setPassword(null);
-			this.sessionMap.put("sessionlogin",utilisateur.getUsername());
-			this.sessionMap.put("sessionpassword",utilisateur.getPassword());
-			this.sessionMap.put("sessionprenom",utilisateur.getPrenom());
+			this.sessionMap.put("login",utilisateur.getUsername());
+			this.sessionMap.put("prenom",utilisateur.getPrenom());
+
+			authorities = authorityAction.listerAuthorityParUtil(utilisateur);
+
+			if (authorities != null) {
+				authorities.iterator();
+				//System.out.println(authorities.iterator());
+				this.sessionMap.put("authority",authorities.iterator().next().getAuthority());
+			}
+
 		}
 
 		return SUCCESS;
@@ -204,15 +216,15 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	/**
 	 * @return the authority
 	 */
-	public String getAuthority() {
-		return authority;
+	public Set<Authority> getAuthorities() {
+		return authorities;
 	}
 
 	/**
 	 * @param authority the authority to set
 	 */
-	public void setAuthority(String authority) {
-		this.authority = authority;
+	public void setAuthority(Set<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
 	/**
@@ -276,6 +288,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	@Override
 	public void prepare() throws Exception {
 		UtilTimerStack.setActive(true);
+	}
+
+	/**
+	 * @return the daoModelUtilisateur
+	 */
+	public DAOModelUtilisateur getDaoModelUtilisateur() {
+		return daoModelUtilisateur;
+	}
+
+	/**
+	 * @param daoModelUtilisateur the daoModelUtilisateur to set
+	 */
+	public void setDaoModelUtilisateur(DAOModelUtilisateur daoModelUtilisateur) {
+		this.daoModelUtilisateur = daoModelUtilisateur;
 	}
 
 

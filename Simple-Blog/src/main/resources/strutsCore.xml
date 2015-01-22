@@ -41,7 +41,7 @@
 		</action>
 
 		<action name="connecte">
-			<result name="success" type="tiles">signinTemplate</result>
+			<result name="success" type="tiles">rootTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
@@ -54,19 +54,11 @@
 
 	<package name="admin" namespace="/backOffice" extends="root">
 
-		<action name="accesadmin" class="fr.simpleblog.controllers.UtilisateurAction"
+		<action name="accesbackoffice" class="fr.simpleblog.controllers.UtilisateurAction"
 			method="utilisateurAutorite">
-			<result name="success" type="redirectAction">espaceadmin</result>
-			<result name="input" type="redirectAction">espacecontrib</result>
+			<result name="success" type="tiles">backofficeTemplate</result>
+			<result name="input" type="tiles">backofficeTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
-		</action>
-
-		<action name="espaceadmin">
-			<result name="success" type="tiles">adminTemplate</result>
-		</action>
-
-		<action name="espacecontrib">
-			<result name="success" type="tiles">contribTemplate</result>
 		</action>
 
 		<action name="modifier">

@@ -30,23 +30,23 @@
 			value="/frontOffice/templates/footStrap.jsp" />
 	</definition>
 	
-		<definition name="signinTemplate" template="/frontOffice/signin.jsp">
-		<put-attribute name="head" value="/frontOffice/templates/head.jsp" />
-		<put-attribute name="zone_titre"
-			value="/frontOffice/templates/zone_titre.jsp" />
-		<put-attribute name="zone_login_connecte"
-			value="/frontOffice/templates/zone_login_connecte.jsp" />
-		<put-attribute name="zone_posts"
-			value="/frontOffice/contents/zone_posts.jsp" />
-		<put-attribute name="zone_pages"
-			value="/frontOffice/templates/zone_pages.jsp" />
-		<put-attribute name="zone_nav"
-			value="/frontOffice/templates/zone_nav.jsp" />
-		<put-attribute name="zone_pied"
-			value="/frontOffice/templates/zone_pied.jsp" />
-		<put-attribute name="footStrap"
-			value="/frontOffice/templates/footStrap.jsp" />
-	</definition>
+<!-- 		<definition name="signinTemplate" template="/frontOffice/signin.jsp"> -->
+<!-- 		<put-attribute name="head" value="/frontOffice/templates/head.jsp" /> -->
+<!-- 		<put-attribute name="zone_titre" -->
+<!-- 			value="/frontOffice/templates/zone_titre.jsp" /> -->
+<!-- 		<put-attribute name="zone_login_connecte" -->
+<!-- 			value="/frontOffice/templates/zone_login_connecte.jsp" /> -->
+<!-- 		<put-attribute name="zone_posts" -->
+<!-- 			value="/frontOffice/contents/zone_posts.jsp" /> -->
+<!-- 		<put-attribute name="zone_pages" -->
+<!-- 			value="/frontOffice/templates/zone_pages.jsp" /> -->
+<!-- 		<put-attribute name="zone_nav" -->
+<!-- 			value="/frontOffice/templates/zone_nav.jsp" /> -->
+<!-- 		<put-attribute name="zone_pied" -->
+<!-- 			value="/frontOffice/templates/zone_pied.jsp" /> -->
+<!-- 		<put-attribute name="footStrap" -->
+<!-- 			value="/frontOffice/templates/footStrap.jsp" /> -->
+<!-- 	</definition> -->
 	
 		<definition name="registeredTemplate" template="/frontOffice/registered.jsp">
 		<put-attribute name="head" value="/frontOffice/templates/head.jsp" />
