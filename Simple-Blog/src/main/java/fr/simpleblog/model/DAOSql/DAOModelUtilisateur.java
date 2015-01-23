@@ -189,6 +189,12 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 	 * @return
 	 */
 	public Utilisateur login(Utilisateur utilisateur) {
+
+		//		String sql = "SELECT * FROM Utilisateur WHERE Username=? AND Password=?";
+		//		
+		//		getJdbcTemplate().queryForObject;
+		//		getJdbcTemplate().
+
 		PreparedStatement request=null;
 		String stringRequest=null;
 

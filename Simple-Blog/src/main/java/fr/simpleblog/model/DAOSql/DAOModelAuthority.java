@@ -89,11 +89,9 @@ public class DAOModelAuthority extends DAOModel implements IDAOModelAuthority {
 			System.out.println("request --->" + request);
 			result=request.executeQuery();
 			if(result!=null) {
-				if(result.next()) {
-					System.out.println("resultat Mapper : " + Mapper.authorityParUtilMapper(result));
+				if (result.next()) {
 					authority = read(Mapper.authorityParUtilMapper(result));
 					authorities.add(authority);
-					System.out.println(authorities);
 				}
 			} else {
 				utilisateur = null;

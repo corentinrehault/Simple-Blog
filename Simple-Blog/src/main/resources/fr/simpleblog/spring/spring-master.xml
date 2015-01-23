@@ -58,7 +58,7 @@
 
 	<import resource="spring-tiles.xml" />
 
-	<!-- <import resource="spring-datasource.xml" /> -->
+	<import resource="spring-datasource.xml" />
 
 	<!-- <import resource="spring-hibernate.xml" /> -->
 

@@ -95,6 +95,8 @@ public class Mapper {
 		return authority;
 	}
 
+
+
 	public static Authority authorityMapper(ResultSet result) {
 
 		Authority authority = new Authority();

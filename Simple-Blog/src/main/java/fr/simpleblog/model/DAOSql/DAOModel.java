@@ -1,26 +1,23 @@
 package fr.simpleblog.model.DAOSql;
 
-import javax.servlet.ServletContext;
-import javax.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
-import org.apache.struts2.ServletActionContext;
-
-import java.sql.*;
+import javax.sql.DataSource;
 
 public class DAOModel {
 
-	public DataSource dataSource=null;
+	private DataSource dataSource;
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.model.DAOSql.DAO#getConnection()
+
+	/**
+	 * @return 
+	 * @return
 	 */
 	public Connection getConnection() {
 
 		if(this.dataSource == null) {
 
-			ServletContext servletContext=ServletActionContext.getServletContext();
-
-			dataSource =(DataSource)servletContext.getAttribute("dataSource");
 			try {
 				System.err.println("La connection est " + !dataSource.getConnection().isClosed());
 			} catch (SQLException e) {
@@ -42,8 +39,41 @@ public class DAOModel {
 		return connection;
 	}
 
-	public void setConnection() {
-		throw new UnsupportedOperationException();
+
+
+	/**
+	 * @return the dataSource
+	 */
+	public DataSource getDataSource() {
+		return dataSource;
 	}
+
+	/**
+	 * @param dataSource the dataSource to set
+	 */
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+
+
+	/**
+	 * @param dataSource
+	 */
+	public DAOModel(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+
+
+	/**
+	 * 
+	 */
+	public DAOModel() {
+	}
+	
+	
+	
+	
 
 }

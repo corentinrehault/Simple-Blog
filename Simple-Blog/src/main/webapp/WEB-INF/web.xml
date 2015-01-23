@@ -65,23 +65,23 @@
 	</listener>
 
 	<!-- Chargeur du datasource -->
-	<listener>
-		<listener-class>fr.simpleblog.services.ApplicationListener</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class>fr.simpleblog.services.ApplicationListener</listener-class> -->
+<!-- 	</listener> -->
 
 	<!-- Parametre globaux -->
-	<context-param>
-		<param-name>dataSourceJNDI</param-name>
-		<param-value>java:/comp/env/simpleblog</param-value>
-	</context-param>
+<!-- 	<context-param> -->
+<!-- 		<param-name>dataSourceJNDI</param-name> -->
+<!-- 		<param-value>java:/comp/env/simpleblog</param-value> -->
+<!-- 	</context-param> -->
 
 	<!-- Informations de connexion a la base de donnees -->
-	<resource-ref>
-		<description>Connexion a la base de donnees MySQL</description>
-		<res-ref-name>simpleblog</res-ref-name>
-		<res-type>javax.sql.DataSource</res-type>
-		<res-auth>Container</res-auth>
-	</resource-ref>
+<!-- 	<resource-ref> -->
+<!-- 		<description>Connexion a la base de donnees MySQL</description> -->
+<!-- 		<res-ref-name>simpleblog</res-ref-name> -->
+<!-- 		<res-type>javax.sql.DataSource</res-type> -->
+<!-- 		<res-auth>Container</res-auth> -->
+<!-- 	</resource-ref> -->
 
 
 

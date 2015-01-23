@@ -6,6 +6,7 @@ import fr.simpleblog.beans.*;
 import fr.simpleblog.model.DAOSql.DAOModelAuthority;
 
 public class AuthorityAction {
+	
 	private Authority authority;
 	private HashSet<Authority> authorities;
 

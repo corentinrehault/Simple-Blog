@@ -1,12 +1,12 @@
 package fr.simpleblog.controllers;
 
 import fr.simpleblog.beans.*;
-import fr.simpleblog.controllers.othercontrollers.UtilisateurAware;
+import fr.simpleblog.model.DAOSql.DAOModelAuthority;
 import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
-
 import java.util.*;
 
 import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.Preparable;
 
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
-public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware, UtilisateurAware  {
+public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware  {
 
 	/**
 	 * 
@@ -35,9 +35,9 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 
 	DAOModelUtilisateur daoModelUtilisateur;
+	DAOModelAuthority daoModelAuthority;
 
 
-	AuthorityAction authorityAction = new AuthorityAction();
 
 
 
@@ -90,12 +90,12 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 			this.sessionMap.put("login",utilisateur.getUsername());
 			this.sessionMap.put("prenom",utilisateur.getPrenom());
 
-			authorities = authorityAction.listerAuthorityParUtil(utilisateur);
+			authorities = daoModelAuthority.listerAuthorityParUtil(utilisateur);
 
 			if (authorities != null) {
 				authorities.iterator();
-				//System.out.println(authorities.iterator());
-				this.sessionMap.put("authority",authorities.iterator().next().getAuthority());
+				System.out.println(authorities.iterator());
+				this.sessionMap.put("authority"+authorities.iterator().next().getAuthority(),authorities.iterator().next().getAuthority());
 			}
 
 		}
@@ -302,6 +302,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public void setDaoModelUtilisateur(DAOModelUtilisateur daoModelUtilisateur) {
 		this.daoModelUtilisateur = daoModelUtilisateur;
+	}
+
+	/**
+	 * @return the daoModelAuthority
+	 */
+	public DAOModelAuthority getDaoModelAuthority() {
+		return daoModelAuthority;
+	}
+
+	/**
+	 * @param daoModelAuthority the daoModelAuthority to set
+	 */
+	public void setDaoModelAuthority(DAOModelAuthority daoModelAuthority) {
+		this.daoModelAuthority = daoModelAuthority;
 	}
 
 
