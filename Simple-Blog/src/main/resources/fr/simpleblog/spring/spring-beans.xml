@@ -20,21 +20,40 @@
 	<!-- Au démarrage de l'applicartion Spring injecte la datasource dans le 
 		dao -->
 
-	<bean name="DAOModel" class="fr.simpleblog.model.DAOSql.DAOModel" >
+	<bean name="DAOModel" class="fr.simpleblog.model.DAOSql.DAOModel">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean name="daoModelUtilisateur" class="fr.simpleblog.model.DAOSql.DAOModelUtilisateur" parent="DAOModel"/>
-	
-	<bean name="daoModelAuthority" class="fr.simpleblog.model.DAOSql.DAOModelAuthority" parent="DAOModel"/>
+	<bean name="daoModelArticle" class="fr.simpleblog.model.DAOSql.DAOModelArticle"
+		parent="DAOModel" />
+	<bean name="daoModelAuthority" class="fr.simpleblog.model.DAOSql.DAOModelAuthority"
+		parent="DAOModel" />
+	<bean name="daoModelCategorie" class="fr.simpleblog.model.DAOSql.DAOModelCategorie"
+		parent="DAOModel" />
+	<bean name="daoModelCommentaire" class="fr.simpleblog.model.DAOSql.DAOModelCommentaire"
+		parent="DAOModel" />
+	<bean name="daoModelFicheUtilisateur" class="fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur"
+		parent="DAOModel" />
+	<bean name="daoModelInteret" class="fr.simpleblog.model.DAOSql.DAOModelInteret"
+		parent="DAOModel" />
+	<bean name="daoModelPays" class="fr.simpleblog.model.DAOSql.DAOModelPays"
+		parent="DAOModel" />
+	<bean name="daoModelStyle" class="fr.simpleblog.model.DAOSql.DAOModelStyle"
+		parent="DAOModel" />
+	<bean name="daoModelUtilisateur" class="fr.simpleblog.model.DAOSql.DAOModelUtilisateur"
+		parent="DAOModel" />
 
-
-
-	<!-- Au démarrage de l'application Spring injecte la dao dans controler -->
+	<!-- Au démarrage de l'application Spring injecte la dao dans controller -->
 
 	<bean name="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
 		<property name="daoModelUtilisateur" ref="daoModelUtilisateur" />
 		<property name="daoModelAuthority" ref="daoModelAuthority" />
 	</bean>
+	
+	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
+		<property name="daoModelPays" ref="daoModelPays" />
+	</bean>
+
+
 
 </beans>

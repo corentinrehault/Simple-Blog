@@ -9,7 +9,7 @@ import fr.simpleblog.beans.FicheUtilisateur;
  * @author dao303
  *
  */
-public class DAOModelFicheUtilisateur implements IDAOModelFicheUtilisateur {
+public class DAOModelFicheUtilisateur extends DAOModel implements IDAOModelFicheUtilisateur {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#create(java.lang.Object)
