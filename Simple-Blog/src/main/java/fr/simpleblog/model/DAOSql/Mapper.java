@@ -6,9 +6,11 @@ package fr.simpleblog.model.DAOSql;
 import java.sql.ResultSet;
 //import java.sql.SQLException;
 
+
 import org.apache.log4j.Logger;
 
 import fr.simpleblog.beans.Authority;
+import fr.simpleblog.beans.Pays;
 import fr.simpleblog.beans.Utilisateur;
 
 /**
@@ -123,6 +125,45 @@ public class Mapper {
 
 		System.out.println("--MAPPER--" + authority);
 		return authority;
+	}
+
+	/**
+	 * @param result
+	 * @return
+	 */
+	public static Pays paysMapper(ResultSet result) {
+		
+		Pays pays = new Pays();
+		
+		try {
+
+			if (result.getString("id") == "") {
+				pays.setId(0);
+			} else {
+				pays.setId(Integer.valueOf(result.getString("id")));
+			}
+
+			if (result.getString("nom") == "") {
+				pays.setNom("");
+			} else {
+				pays.setNom(result.getString("nom"));
+			}
+			
+			if (result.getString("codepays") == "") {
+				pays.setCodepays("");
+			} else {
+				pays.setCodepays(result.getString("codepays"));
+			}
+
+		} catch (Exception e) {
+			pays=null;
+			System.out.println("Erreur lors du mapping des attributs d'une authority dans la classe Mapper method authorityMapper");
+			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM AUTHORITY" + e);
+		}
+
+		System.out.println("--MAPPER--" + pays);
+		
+		return pays ;
 	}
 
 }

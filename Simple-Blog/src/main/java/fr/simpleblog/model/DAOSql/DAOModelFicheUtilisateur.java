@@ -3,7 +3,10 @@
  */
 package fr.simpleblog.model.DAOSql;
 
+import java.util.List;
+
 import fr.simpleblog.beans.FicheUtilisateur;
+import fr.simpleblog.beans.Pays;
 
 /**
  * @author dao303
@@ -54,6 +57,14 @@ public class DAOModelFicheUtilisateur extends DAOModel implements IDAOModelFiche
 	public void listerFicheUtilisateur() {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * @return
+	 */
+	public List<Pays> getListePays() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

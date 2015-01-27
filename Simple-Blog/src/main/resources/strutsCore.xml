@@ -61,7 +61,12 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="modifier">
+		<action name="modifier" class="fr.simpleblog.controllers.FicheUtilisateurAction"
+			method="modifierUtilisateur">
+			<result name="success" type="tiles">modifTemplate</result>
+		</action>
+		
+		<action name="validermodification" class="fr.simpleblog.controllers.FicheUtilisateurAction">
 			<result name="success" type="tiles">modifTemplate</result>
 		</action>
 

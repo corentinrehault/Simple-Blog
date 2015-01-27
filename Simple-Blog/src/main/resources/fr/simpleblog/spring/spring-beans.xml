@@ -1,21 +1,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-
-
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
 	<!-- <bean name="error" class="fr.simpleblog.beans.ErrorM" scope="singleton"> -->
 	<!-- <property name="id" value="1"></property> -->
 	<!-- <property name="message" value="noError message !"></property> -->
 	<!-- </bean> -->
-
 
 	<!-- Au démarrage de l'applicartion Spring injecte la datasource dans le 
 		dao -->
@@ -23,6 +22,8 @@
 	<bean name="DAOModel" class="fr.simpleblog.model.DAOSql.DAOModel">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
+	<bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" />
 
 	<bean name="daoModelArticle" class="fr.simpleblog.model.DAOSql.DAOModelArticle"
 		parent="DAOModel" />
@@ -49,11 +50,30 @@
 		<property name="daoModelUtilisateur" ref="daoModelUtilisateur" />
 		<property name="daoModelAuthority" ref="daoModelAuthority" />
 	</bean>
-	
+
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
 		<property name="daoModelPays" ref="daoModelPays" />
 	</bean>
 
+	<bean name="paysAction" class="fr.simpleblog.controllers.PaysAction">
+		<property name="daoModelPays" ref="daoModelPays" />
+	</bean>
+
+	<!-- On injecte dans Cache dans ficheutilisateur -->
+
+	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
+		<property name="daoModelFicheUtilisateur" ref="daoModelFicheUtilisateur"></property>
+		<property name="daoModelUtilisateur" ref="daoModelUtilisateur"></property>
+		<property name="daoModelPays" ref="daoModelPays"></property>
+		<property name="cache" ref="cache"></property>
+	</bean>
+
+	<!-- Définition du cache -->
+	<!-- <cache:advice id="cachePays" cache-manager="cache"> -->
+	<!-- <cache:caching cache="cache"> -->
+	<!-- <cache:cacheable method="cachePays" key="#Id"/> -->
+	<!-- </cache:caching> -->
+	<!-- </cache:advice> -->
 
 
 </beans>

@@ -25,22 +25,22 @@
 		<%-- 			name="utilisateur.password" value="" --%>
 		<%-- 			placeholder="%{getText('password')}" size="20" maxlength="20"></s:textfield> --%>
 		<h2>Renseignements complémentaires</h2>
-		<s:select label="%{getText('country')}" list="pays"
-			name="ficheutilisateur.pays"></s:select>
-		<s:textfield label="%{getText('address')}" type="text"
-			name="ficheutilisateur.adresse" value=""
-			placeholder="%{getText('address')}" size="20" maxlength="20"></s:textfield>
+		<s:select label="%{getText('country')}" list="ensemblePays"
+			listKey="nom" listValue="nom" ></s:select>
+		<%-- 		<s:textfield label="%{getText('address')}" type="text" --%>
+		<!-- 			name="ficheutilisateur.adresse" value="" -->
+		<%-- 			placeholder="%{getText('address')}" size="20" maxlength="20"></s:textfield> --%>
 		<s:textfield label="%{getText('city')}" type="text"
 			name="ficheutilisateur.ville" value=""
 			placeholder="%{getText('city')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('zipcode')}" type="text"
 			name="ficheutilisateur.codepostal" value=""
 			placeholder="%{getText('zipcode')}" size="20" maxlength="20"></s:textfield>
-		<s:select label="%{getText('style')}" list="style"
-			name="utilisateur.style"></s:select>
-		<s:file></s:file>
-		<s:checkboxlist label="%{getText('interests')}" list="interets"
-			listKey="id" listValue="nom"></s:checkboxlist>
+		<%-- 		<s:select label="%{getText('style')}" list="style" --%>
+		<%-- 			name="utilisateur.style"></s:select> --%>
+		<%-- 		<s:file></s:file> --%>
+		<%-- 		<s:checkboxlist label="%{getText('interests')}" list="interets" --%>
+		<%-- 			listKey="id" listValue="nom"></s:checkboxlist> --%>
 		<s:submit type="submit" value="%{getText('update')}"></s:submit>
 	</s:form>
 </div>

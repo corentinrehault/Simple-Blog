@@ -2,6 +2,7 @@ package fr.simpleblog.controllers;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class RootAction extends ActionSupport implements Preparable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4448517924375834371L;
-	
+
 	ParsingService parsingPays = new ParsingService();
 	DAOModelPays daoModelPays;
 	private List<Pays> ensemblePays = new LinkedList<Pays>();
@@ -37,13 +38,14 @@ public class RootAction extends ActionSupport implements Preparable {
 			System.out.println("Dans la méthode recupererListePays()");
 			e.printStackTrace();
 		}
-		
-		System.out.println("Rootaction + "+ensemblePays);
-		for(Pays p : ensemblePays) {
-			daoModelPays.create(p);
-		}
 
-		
+		System.out.println("Rootaction + "+ensemblePays);
+		daoModelPays.createList(ensemblePays);
+
+	}
+	
+	public void comparerListePayes() {
+		throw new UnsupportedOperationException();
 	}
 
 	public void recupererArticle() {
@@ -66,9 +68,15 @@ public class RootAction extends ActionSupport implements Preparable {
 	 * @return SUCCESS
 	 * 
 	 * méthode pour accéder à l'index
+	 * @throws SQLException 
 	 * 
 	 */
 	public String initApplication() {
+
+		/*
+		 * Ajout d'un comparateur pour la liste des pays
+		 * et placer la liste en cache
+		 */
 		recupererListePays();
 		return SUCCESS;
 	}

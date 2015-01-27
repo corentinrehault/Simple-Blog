@@ -9,6 +9,8 @@ public class FicheUtilisateur {
 	private int id;
 	public Pays pays;
 	public HashSet<Interet> interets = new HashSet<Interet>();
+	
+	public List<Pays> ensemblePays = new LinkedList<Pays>();
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -40,5 +42,33 @@ public class FicheUtilisateur {
 
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * @return the pays
+	 */
+	public Pays getPays() {
+		return pays;
+	}
+
+	/**
+	 * @param pays the pays to set
+	 */
+	public void setPays(Pays pays) {
+		this.pays = pays;
+	}
+
+	/**
+	 * @return the ensemblePays
+	 */
+	public List<Pays> getEnsemblePays() {
+		return ensemblePays;
+	}
+
+	/**
+	 * @param ensemblePays the ensemblePays to set
+	 */
+	public void setEnsemblePays(List<Pays> ensemblePays) {
+		this.ensemblePays = ensemblePays;
 	}
 }
