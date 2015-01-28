@@ -1,19 +1,24 @@
 package fr.simpleblog.controllers;
 
-import fr.simpleblog.beans.*;
-import fr.simpleblog.model.DAOSql.DAOModelAuthority;
-import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
+import fr.simpleblog.beans.Authority;
+import fr.simpleblog.beans.Utilisateur;
+import fr.simpleblog.domainService.IserviceUtilisateur;
+import fr.simpleblog.model.DAOSql.DAOModelAuthority;
+
+
 /*
  * Pour afficher la pile d'interception dans la console
  */
-
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
 public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware  {
@@ -33,13 +38,8 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private String nom;
 	private String mail;
 
-
-	DAOModelUtilisateur daoModelUtilisateur;
+	IserviceUtilisateur daoModelUtilisateur;
 	DAOModelAuthority daoModelAuthority;
-
-
-
-
 
 	/**
 	 * @return utilisateurs
@@ -55,8 +55,13 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String supprimerUtilisateur() {
 
-		utilisateur = daoModelUtilisateur.delete(utilisateur);
-		return SUCCESS;
+		boolean ok = false;
+		ok = daoModelUtilisateur.delete(utilisateur);
+		if (ok) {
+			return SUCCESS;
+		} else {
+			return ERROR;
+		}
 	}
 
 	/**
@@ -89,6 +94,10 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 			utilisateur.setPassword(null);
 			this.sessionMap.put("login",utilisateur.getUsername());
 			this.sessionMap.put("prenom",utilisateur.getPrenom());
+			this.sessionMap.put("id", utilisateur.getId());
+			this.sessionMap.put("nom", utilisateur.getNom());
+			this.sessionMap.put("mail", utilisateur.getMail());
+			this.sessionMap.put("ficheId", utilisateur.getFicheId());
 
 			authorities = daoModelAuthority.listerAuthorityParUtil(utilisateur);
 
@@ -290,19 +299,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		UtilTimerStack.setActive(true);
 	}
 
-	/**
-	 * @return the daoModelUtilisateur
-	 */
-	public DAOModelUtilisateur getDaoModelUtilisateur() {
-		return daoModelUtilisateur;
-	}
 
-	/**
-	 * @param daoModelUtilisateur the daoModelUtilisateur to set
-	 */
-	public void setDaoModelUtilisateur(DAOModelUtilisateur daoModelUtilisateur) {
-		this.daoModelUtilisateur = daoModelUtilisateur;
-	}
 
 	/**
 	 * @return the daoModelAuthority
@@ -318,6 +315,18 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		this.daoModelAuthority = daoModelAuthority;
 	}
 
+	/**
+	 * @return the daoModelUtilisateur
+	 */
+	public IserviceUtilisateur getDaoModelUtilisateur() {
+		return daoModelUtilisateur;
+	}
 
+	/**
+	 * @param daoModelUtilisateur the daoModelUtilisateur to set
+	 */
+	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
+		this.daoModelUtilisateur = daoModelUtilisateur;
+	}
 
 }

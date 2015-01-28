@@ -1,6 +1,12 @@
 package fr.simpleblog.beans;
 
-public class Pays {
+public class Pays implements Ibeans {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4209610911404888033L;
+
 	private int id;
 	private String nom;
 	private String codepays;

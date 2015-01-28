@@ -5,7 +5,7 @@ import java.util.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class Utilisateur implements UserDetails {
+public class Utilisateur implements UserDetails, Ibeans {
 
 	/**
 	 * 
@@ -20,6 +20,7 @@ public class Utilisateur implements UserDetails {
 	private int id;
 	private String avatar;
 	private String langue;
+	private int ficheId;
 
 	private boolean isEnabled;
 	private boolean isAccountNonExpired;
@@ -94,6 +95,20 @@ public class Utilisateur implements UserDetails {
 	}
 
 	/**
+	 * @return the ficheId
+	 */
+	public int getFicheId() {
+		return ficheId;
+	}
+
+	/**
+	 * @param ficheId the ficheId to set
+	 */
+	public void setFicheId(int ficheId) {
+		this.ficheId = ficheId;
+	}
+
+	/**
 	 * @param isEnabled the isEnabled to set
 	 */
 	public void setEnabled(boolean isEnabled) {
@@ -129,13 +144,14 @@ public class Utilisateur implements UserDetails {
 		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
 				+ username + ", password=" + password + ", mail=" + mail
 				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
-				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
-				+ isAccountNonExpired + ", isAccountNonLocked="
-				+ isAccountNonLocked + ", isCredentialsNonExpired="
-				+ isCredentialsNonExpired + ", commentaireredige="
-				+ commentaireredige + ", articleecrit=" + articleecrit
-				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
-				+ ", authority=" + authorities + "]";
+				+ ", ficheId=" + ficheId + ", isEnabled=" + isEnabled
+				+ ", isAccountNonExpired=" + isAccountNonExpired
+				+ ", isAccountNonLocked=" + isAccountNonLocked
+				+ ", isCredentialsNonExpired=" + isCredentialsNonExpired
+				+ ", commentaireredige=" + commentaireredige
+				+ ", articleecrit=" + articleecrit + ", ficheUtilisateur="
+				+ ficheUtilisateur + ", style=" + style + ", authorities="
+				+ authorities + "]";
 	}
 
 	/* (non-Javadoc)

@@ -2,7 +2,13 @@ package fr.simpleblog.beans;
 
 import java.util.*;
 
-public class Article {
+public class Article implements Ibeans {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6970384124486214449L;
+	
 	private Date dateCreation;
 	private String titre;
 	private int id;
@@ -42,4 +48,16 @@ public class Article {
 	public String getContenu() {
 		return this.contenu;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Article [dateCreation=" + dateCreation + ", titre=" + titre
+				+ ", id=" + id + ", contenu=" + contenu + ", commentaires="
+				+ commentaires + ", auteur=" + auteur + ", categories="
+				+ categories + "]";
+	}
+	
 }

@@ -1,4 +1,4 @@
-package fr.simpleblog.model.DAOSql;
+package fr.simpleblog.model.interfaces;
 
 import java.util.Set;
 

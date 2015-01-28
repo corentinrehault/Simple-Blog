@@ -39,7 +39,7 @@ public class RootAction extends ActionSupport implements Preparable {
 			e.printStackTrace();
 		}
 
-		System.out.println("Rootaction + "+ensemblePays);
+		//System.out.println("Rootaction + "+ensemblePays);
 		daoModelPays.createList(ensemblePays);
 
 	}
@@ -78,6 +78,7 @@ public class RootAction extends ActionSupport implements Preparable {
 		 * et placer la liste en cache
 		 */
 		recupererListePays();
+		//recupererArticle();
 		return SUCCESS;
 	}
 

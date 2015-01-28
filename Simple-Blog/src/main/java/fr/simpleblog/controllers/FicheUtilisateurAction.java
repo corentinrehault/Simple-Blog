@@ -13,7 +13,9 @@ import com.opensymphony.xwork2.Preparable;
 
 import fr.simpleblog.beans.*;
 import fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur;
+import fr.simpleblog.model.DAOSql.DAOModelInteret;
 import fr.simpleblog.model.DAOSql.DAOModelPays;
+import fr.simpleblog.model.DAOSql.DAOModelStyle;
 import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
 import fr.simpleblog.services.Cache;
 
@@ -33,11 +35,15 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public Pays pays;
 	public HashSet<Interet> interets = new HashSet<Interet>();
 	public List<Pays> ensemblePays = new LinkedList<Pays>();
+	private List<Style> styles = new LinkedList<Style>();
+	private Map<String,Object> sessionMap;
 
 	private Cache cache;
 	public DAOModelFicheUtilisateur daoModelFicheUtilisateur;
 	DAOModelUtilisateur daoModelUtilisateur;
 	DAOModelPays daoModelPays;
+	DAOModelInteret daoModelInteret;
+	DAOModelStyle daoModelStyle;
 
 	public String listerFicheUtilisateur() {
 		throw new UnsupportedOperationException();
@@ -55,8 +61,17 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 		throw new UnsupportedOperationException();
 	}
 
+	public String lireFicheUtilisateur() {
+
+		//ficheUtilisateur.setId(sessionMap.get("ficheId"));
+		System.out.println(sessionMap);
+		//daoModelFicheUtilisateur.read(ficheUtilisateur);
+		return SUCCESS;
+	}
+
 	public String modifierUtilisateur() {
-		getEnsemblePays();
+		//utilisateur = daoModelUtilisateur.read(utilisateur);
+		ficheUtilisateur = daoModelFicheUtilisateur.read(ficheUtilisateur);
 		daoModelFicheUtilisateur.update(ficheUtilisateur);
 		daoModelUtilisateur.update(utilisateur);
 		return SUCCESS;
@@ -131,6 +146,34 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 */
 	public void setDaoModelPays(DAOModelPays daoModelPays) {
 		this.daoModelPays = daoModelPays;
+	}
+
+	/**
+	 * @return the daoModelInteret
+	 */
+	public DAOModelInteret getDaoModelInteret() {
+		return daoModelInteret;
+	}
+
+	/**
+	 * @param daoModelInteret the daoModelInteret to set
+	 */
+	public void setDaoModelInteret(DAOModelInteret daoModelInteret) {
+		this.daoModelInteret = daoModelInteret;
+	}
+
+	/**
+	 * @return the daoModelStyle
+	 */
+	public DAOModelStyle getDaoModelStyle() {
+		return daoModelStyle;
+	}
+
+	/**
+	 * @param daoModelStyle the daoModelStyle to set
+	 */
+	public void setDaoModelStyle(DAOModelStyle daoModelStyle) {
+		this.daoModelStyle = daoModelStyle;
 	}
 
 	/**
@@ -221,6 +264,15 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 * @return the interets
 	 */
 	public HashSet<Interet> getInterets() {
+
+		if (cache.getInterets() == null) {
+			interets = daoModelInteret.listerInteret();
+			cache.setInterets(interets);
+		} else {
+			interets = cache.getInterets();
+		};
+
+		System.out.println(interets.toString());
 		return interets;
 	}
 
@@ -237,14 +289,15 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public List<Pays> getEnsemblePays() {
 
 		if (cache.getEnsemblePays() == null ) {
+			//TODO insérer test durée de vie du cache
 			ensemblePays = daoModelPays.listerPays();
 			cache.setEnsemblePays(ensemblePays);
 		} else {
 			ensemblePays = cache.getEnsemblePays();
 		}
 
-		System.out.println(cache);
-		System.out.println(ensemblePays.toString());
+		//System.out.println(cache);
+		//System.out.println(ensemblePays.toString());
 		return ensemblePays;
 	}
 
@@ -256,14 +309,37 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	}
 
 	/**
-	 * @return the cachePays
+	 * @return the styles
+	 */
+	public List<Style> getStyles() {
+
+		if(cache.getStyles() == null) {
+			styles = daoModelStyle.listerStyle();
+			cache.setStyles(styles);
+		} else {
+			styles = cache.getStyles();
+		}
+
+		System.out.println(styles.toString());
+		return styles;
+	}
+
+	/**
+	 * @param styles the styles to set
+	 */
+	public void setStyles(List<Style> styles) {
+		this.styles = styles;
+	}
+
+	/**
+	 * @return the cache
 	 */
 	public Cache getCache() {
 		return cache;
 	}
 
 	/**
-	 * @param cachePays the cachePays to set
+	 * @param cache the cache to set
 	 */
 	public void setCache(Cache cache) {
 		this.cache = cache;
@@ -273,9 +349,8 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
 	 */
 	@Override
-	public void setSession(Map<String, Object> session) {
-		// TODO Auto-generated method stub
-
+	public void setSession(Map<String, Object> map) {
+		this.sessionMap = map;
 	}
 
 	/* (non-Javadoc)

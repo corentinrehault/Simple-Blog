@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.simpleblog.model.DAOSql;
+package fr.simpleblog.model.interfaces;
 
 import fr.simpleblog.beans.FicheUtilisateur;
 

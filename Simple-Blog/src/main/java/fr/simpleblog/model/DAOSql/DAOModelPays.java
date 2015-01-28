@@ -8,6 +8,7 @@ import java.util.List;
 
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.controllers.othercontrollers.DBAdministration;
+import fr.simpleblog.model.interfaces.IDAOModelPays;
 
 public class DAOModelPays extends DAOModel implements IDAOModelPays {
 
@@ -62,12 +63,12 @@ public class DAOModelPays extends DAOModel implements IDAOModelPays {
 		throw new UnsupportedOperationException();
 	}
 
-	public Pays delete(Pays pays) {
+	public boolean delete(Pays pays) {
 		throw new UnsupportedOperationException();
 	}
 
 	public List<Pays> listerPays() {
-		
+
 		PreparedStatement request=null;
 		String stringRequest=null;
 		List<Pays> ensemblePays = new LinkedList<Pays>();
@@ -135,17 +136,17 @@ public class DAOModelPays extends DAOModel implements IDAOModelPays {
 			}
 
 			request=connection.prepareStatement(stringRequest.toString());
-			System.out.println(stringRequest.toString());
+			//System.out.println(stringRequest.toString());
 
 			for(Pays p : ensemblePays) {
-				System.out.println(ensemblePays.indexOf(p) +" "+ (ensemblePays.indexOf(p)*2+1) +
-						" "+ (ensemblePays.indexOf(p)*2+2) +" "+ p.getNom() +" "+ p.getCodepays());
+				//System.out.println(ensemblePays.indexOf(p) +" "+ (ensemblePays.indexOf(p)*2+1) +
+				//		" "+ (ensemblePays.indexOf(p)*2+2) +" "+ p.getNom() +" "+ p.getCodepays());
 				request.setString((ensemblePays.indexOf(p)*2+1), p.getNom());
 				request.setString((ensemblePays.indexOf(p)*2+2), p.getCodepays());
 			}
 
 			ensemblePays = null;
-			System.out.println(request);
+			//System.out.println(request);
 			errorCode = request.executeUpdate();
 
 			//Fin du bloc de transaction

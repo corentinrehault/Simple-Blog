@@ -1,6 +1,7 @@
 package fr.simpleblog.model.DAOSql;
 
 import fr.simpleblog.beans.Commentaire;
+import fr.simpleblog.model.interfaces.IDAOModelCommentaire;
 
 public class DAOModelCommentaire extends DAOModel implements IDAOModelCommentaire {
 
@@ -16,7 +17,7 @@ public class DAOModelCommentaire extends DAOModel implements IDAOModelCommentair
 		throw new UnsupportedOperationException();
 	}
 
-	public Commentaire delete(Commentaire commentaire) {
+	public boolean delete(Commentaire commentaire) {
 		throw new UnsupportedOperationException();
 	}
 

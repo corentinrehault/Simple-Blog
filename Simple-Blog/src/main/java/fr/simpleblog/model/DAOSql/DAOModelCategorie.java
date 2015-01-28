@@ -1,6 +1,7 @@
 package fr.simpleblog.model.DAOSql;
 
 import fr.simpleblog.beans.Categorie;
+import fr.simpleblog.model.interfaces.IDAOModelCategorie;
 
 public class DAOModelCategorie extends DAOModel implements IDAOModelCategorie {
 
@@ -16,7 +17,7 @@ public class DAOModelCategorie extends DAOModel implements IDAOModelCategorie {
 		throw new UnsupportedOperationException();
 	}
 
-	public Categorie delete(Categorie categorie) {
+	public boolean delete(Categorie categorie) {
 		throw new UnsupportedOperationException();
 	}
 

@@ -62,7 +62,7 @@
 		</action>
 
 		<action name="modifier" class="fr.simpleblog.controllers.FicheUtilisateurAction"
-			method="modifierUtilisateur">
+			method="lireFicheUtilisateur">
 			<result name="success" type="tiles">modifTemplate</result>
 		</action>
 		

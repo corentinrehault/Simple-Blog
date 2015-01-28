@@ -4,6 +4,7 @@ import fr.simpleblog.beans.*;
 import java.util.*;
 
 public class ArticleAction {
+	
 	private Article article;
 	private ArrayList<String> articles;
 

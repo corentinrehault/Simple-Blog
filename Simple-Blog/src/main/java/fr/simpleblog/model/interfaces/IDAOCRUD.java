@@ -1,4 +1,4 @@
-package fr.simpleblog.model.DAOSql;
+package fr.simpleblog.model.interfaces;
 
 public interface IDAOCRUD<X> {
 
@@ -8,5 +8,5 @@ public interface IDAOCRUD<X> {
 
 	public X update(X x);
 
-	public X delete(X x);
+	public boolean delete(X x);
 }

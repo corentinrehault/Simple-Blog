@@ -41,13 +41,13 @@
 		parent="DAOModel" />
 	<bean name="daoModelStyle" class="fr.simpleblog.model.DAOSql.DAOModelStyle"
 		parent="DAOModel" />
-	<bean name="daoModelUtilisateur" class="fr.simpleblog.model.DAOSql.DAOModelUtilisateur"
-		parent="DAOModel" />
+	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
+		class="fr.simpleblog.model.DAOSql.DAOModelUtilisateur" parent="DAOModel" />
 
 	<!-- Au démarrage de l'application Spring injecte la dao dans controller -->
 
 	<bean name="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
-		<property name="daoModelUtilisateur" ref="daoModelUtilisateur" />
+		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
 		<property name="daoModelAuthority" ref="daoModelAuthority" />
 	</bean>
 
@@ -59,12 +59,22 @@
 		<property name="daoModelPays" ref="daoModelPays" />
 	</bean>
 
+
+	<!-- au démarrage de l'appli on injecte l'implementation des dao dans le 
+		domaine service -->
+
+	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
+		<property name="idaoModelUtilisateur" ref="daoModelUtilisateur" />
+	</bean>
+
 	<!-- On injecte dans Cache dans ficheutilisateur -->
 
 	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
 		<property name="daoModelFicheUtilisateur" ref="daoModelFicheUtilisateur"></property>
 		<property name="daoModelUtilisateur" ref="daoModelUtilisateur"></property>
 		<property name="daoModelPays" ref="daoModelPays"></property>
+		<property name="daoModelInteret" ref="daoModelInteret"></property>
+		<property name="daoModelStyle" ref="daoModelStyle" />
 		<property name="cache" ref="cache"></property>
 	</bean>
 

@@ -9,6 +9,7 @@ import java.util.Set;
 import fr.simpleblog.beans.Authority;
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.othercontrollers.DBAdministration;
+import fr.simpleblog.model.interfaces.IDAOModelAuthority;
 
 public class DAOModelAuthority extends DAOModel implements IDAOModelAuthority {
 
@@ -64,7 +65,7 @@ public class DAOModelAuthority extends DAOModel implements IDAOModelAuthority {
 		throw new UnsupportedOperationException();
 	}
 
-	public Authority delete(Authority authority) {
+	public boolean delete(Authority authority) {
 		throw new UnsupportedOperationException();
 	}
 

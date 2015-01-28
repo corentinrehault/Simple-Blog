@@ -2,7 +2,13 @@ package fr.simpleblog.beans;
 
 import java.util.*;
 
-public class Commentaire {
+public class Commentaire implements Ibeans {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6778619360479178214L;
+
 	private Date date;
 	private String titre;
 	private String contenu;
@@ -50,4 +56,16 @@ public class Commentaire {
 	public boolean isValide() {
 		return this.valide;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Commentaire [date=" + date + ", titre=" + titre + ", contenu="
+				+ contenu + ", id=" + id + ", valide=" + valide
+				+ ", articleCommente=" + articleCommente + ", auteur=" + auteur
+				+ "]";
+	}
+
 }

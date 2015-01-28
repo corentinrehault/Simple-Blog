@@ -1,4 +1,4 @@
-package fr.simpleblog.model.DAOSql;
+package fr.simpleblog.model.DAOHql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +7,11 @@ import java.util.List;
 
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.othercontrollers.DBAdministration;
-import fr.simpleblog.domainService.IserviceUtilisateur;
+import fr.simpleblog.model.DAOSql.DAOModel;
+import fr.simpleblog.model.DAOSql.Mapper;
 import fr.simpleblog.model.interfaces.IDAOModelUtilisateur;
 
-public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateur, IserviceUtilisateur {
+public class DAOModelUtilisateurHql extends DAOModel implements IDAOModelUtilisateur {
 
 	Connection connection=null;
 	ResultSet result=null;
@@ -19,7 +20,6 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#create(int)
 	 */
 	public Utilisateur create(Utilisateur utilisateur) {
-
 		PreparedStatement request=null;
 		String stringRequest=null;
 		@SuppressWarnings("unused")
@@ -29,7 +29,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			connection=super.getConnection();
 			System.out.println("Connecté");
 			System.out.println(utilisateur);
-			stringRequest="INSERT INTO Utilisateur (Nom,Prenom,Login,Password,Mail) VALUES(?,?,?,?,?)";
+			stringRequest="INSEsfcwxcvwxcvwxcvwxcwxc?,?,?)";
 			request=connection.prepareStatement(stringRequest);
 			request.setString(1, utilisateur.getNom());
 			request.setString(2, utilisateur.getPrenom());
@@ -66,7 +66,6 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#read(int)
 	 */
 	public Utilisateur read(Utilisateur utilisateur) {
-
 		PreparedStatement request=null;
 		String stringRequest=null;
 
@@ -75,7 +74,6 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			stringRequest="SELECT * FROM utilisateur WHERE Id=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setInt(1, utilisateur.getId());
-			System.out.println(utilisateur.getId());
 			result=request.executeQuery();
 			if(result!=null) {
 				if(result.next()) {
@@ -108,7 +106,6 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#update(int)
 	 */
 	public Utilisateur update(Utilisateur utilisateur) {
-
 		PreparedStatement request=null;
 		String stringRequest=null;
 
@@ -128,7 +125,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			request.executeUpdate(stringRequest);
 		} catch(Exception e) {
 			utilisateur=null;
-			System.out.println("Erreur dans la requête dans la classe DAOModelUtilisateur method updateUtilisateur");
+			System.out.println("Erreur dans la requête dans la classe DAOModelClient method editClient");
 		} finally {
 			try {
 				if(result!=null) {
@@ -152,10 +149,9 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#delete(int)
 	 */
 	public boolean delete(Utilisateur utilisateur) {
-
 		PreparedStatement request=null;
 		String stringRequest=null;
-		boolean reussi=false;
+		Boolean reussite=false;
 
 		try {
 			connection=super.getConnection();
@@ -163,9 +159,10 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			request=connection.prepareStatement(stringRequest);
 			request.setInt(1, utilisateur.getId());
 			request.executeUpdate(stringRequest);
-			reussi=true;
+			reussite=true;
+
 		} catch(Exception e) {
-			reussi=false;
+			reussite=false;
 			utilisateur=null;
 			System.out.println("Erreur dans la requête dans la classe DAOModelUtilisateur method delete");
 		} finally {
@@ -184,7 +181,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			}
 		}
 
-		return reussi;
+		return reussite;
 	}
 
 	/* (non-Javadoc)

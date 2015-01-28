@@ -2,15 +2,14 @@ package fr.simpleblog.beans;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public class Authority  implements GrantedAuthority{
-	
+public class Authority  implements GrantedAuthority, Ibeans {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7662907453041660508L;
-	
+
 	private String authority;
-	
 	private int id;
 
 

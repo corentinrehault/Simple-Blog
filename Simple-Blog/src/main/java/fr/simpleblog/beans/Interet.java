@@ -1,6 +1,12 @@
 package fr.simpleblog.beans;
 
-public class Interet {
+public class Interet implements Ibeans {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4251357504117241715L;
+
 	private String nom;
 	private int id;
 
@@ -19,4 +25,13 @@ public class Interet {
 	public int getId() {
 		return this.id;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Interet [nom=" + nom + ", id=" + id + "]";
+	}
+
 }

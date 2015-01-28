@@ -55,7 +55,7 @@ public class ParsingService {
 			new URL("http://www.altenide.com/pays.xml").openStream().close();
 		}
 		
-		System.out.println(ensemblePays);
+		//System.out.println(ensemblePays);
 		return ensemblePays;
 	}
 
