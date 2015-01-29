@@ -49,6 +49,7 @@
 	<bean name="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
 		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
 		<property name="daoModelAuthority" ref="daoModelAuthority" />
+		<property name="daoModelFicheUtilisateur" ref="daoModelFicheUtilisateur" />
 	</bean>
 
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">

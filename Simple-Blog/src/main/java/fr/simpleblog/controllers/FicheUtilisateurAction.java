@@ -32,7 +32,9 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	private String ville;
 	private int codePostal;
 	private int id;
+	public Style style;
 	public Pays pays;
+	public Interet interet;
 	public HashSet<Interet> interets = new HashSet<Interet>();
 	public List<Pays> ensemblePays = new LinkedList<Pays>();
 	private List<Style> styles = new LinkedList<Style>();
@@ -63,17 +65,37 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 
 	public String lireFicheUtilisateur() {
 
-		//ficheUtilisateur.setId(sessionMap.get("ficheId"));
-		System.out.println(sessionMap);
-		//daoModelFicheUtilisateur.read(ficheUtilisateur);
-		return SUCCESS;
-	}
+		ficheUtilisateur = daoModelFicheUtilisateur.readById((int) sessionMap.get("ficheId"));
 
-	public String modifierUtilisateur() {
-		//utilisateur = daoModelUtilisateur.read(utilisateur);
-		ficheUtilisateur = daoModelFicheUtilisateur.read(ficheUtilisateur);
-		daoModelFicheUtilisateur.update(ficheUtilisateur);
-		daoModelUtilisateur.update(utilisateur);
+		//System.out.println(ficheUtilisateur.toString());
+
+		if (ficheUtilisateur != null) {
+
+			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
+			this.sessionMap.put("ville", ficheUtilisateur.getVille());
+			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
+			this.sessionMap.put("paysId", ficheUtilisateur.getPaysId());
+
+		}
+
+		interets = daoModelInteret.listerInteretParFicheUtil((int) sessionMap.get("ficheId"));
+
+		if (interets != null) {
+			interets.iterator();
+			System.out.println(interets.iterator());
+			for (Interet interet : interets) {
+				this.sessionMap.put("interet", interet.getNom());
+			}
+		}
+		
+//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
+//		
+//		if (style != null) {
+//			
+//			this.sessionMap.put("style", style.getNom());
+//			
+//		}
+
 		return SUCCESS;
 	}
 

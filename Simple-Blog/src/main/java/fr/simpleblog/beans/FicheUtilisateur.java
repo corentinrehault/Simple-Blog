@@ -13,6 +13,8 @@ public class FicheUtilisateur implements Ibeans {
 	private String ville;
 	private int codePostal;
 	private int id;
+	private int paysId;
+	
 	public Pays pays;
 	public HashSet<Interet> interets = new HashSet<Interet>();
 	public List<Pays> ensemblePays = new LinkedList<Pays>();
@@ -74,6 +76,20 @@ public class FicheUtilisateur implements Ibeans {
 	}
 
 	/**
+	 * @return the paysId
+	 */
+	public int getPaysId() {
+		return paysId;
+	}
+
+	/**
+	 * @param paysId the paysId to set
+	 */
+	public void setPaysId(int paysId) {
+		this.paysId = paysId;
+	}
+
+	/**
 	 * @return the pays
 	 */
 	public Pays getPays() {
@@ -107,9 +123,9 @@ public class FicheUtilisateur implements Ibeans {
 	@Override
 	public String toString() {
 		return "FicheUtilisateur [adresse=" + adresse + ", ville=" + ville
-				+ ", codePostal=" + codePostal + ", id=" + id + ", pays="
-				+ pays + ", interets=" + interets + ", ensemblePays="
-				+ ensemblePays + "]";
+				+ ", codePostal=" + codePostal + ", id=" + id + ", paysId="
+				+ paysId + ", pays=" + pays + ", interets=" + interets
+				+ ", ensemblePays=" + ensemblePays + "]";
 	}
 
 }

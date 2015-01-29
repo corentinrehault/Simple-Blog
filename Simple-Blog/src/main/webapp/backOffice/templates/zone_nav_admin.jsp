@@ -27,7 +27,7 @@
 		<li><a href="#">Ajouter un utilisateur</a></li>
 		<li><a href="#">Envoyer un mail</a></li>
 		<li></li>
-		<li><s:a namespace="/backOffice" action="modifier">Modifier mon profil</s:a></li>
+		<li><s:a namespace="/backOffice" action="profil">Modifier mon profil</s:a></li>
 	</ol>
 </div>
 <div class="sidebar-module">

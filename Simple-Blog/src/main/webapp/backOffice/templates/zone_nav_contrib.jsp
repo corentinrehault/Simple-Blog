@@ -33,6 +33,6 @@
 <div class="sidebar-module">
 	<h4>Espace utilisateur</h4>
 	<ol class="list-unstyled">
-		<li><s:a namespace="/backOffice" action="modifier">Modifier mon profil</s:a></li>
+		<li><s:a namespace="/backOffice" action="profil">Modifier mon profil</s:a></li>
 	</ol>
 </div>

@@ -18,6 +18,5 @@
 	</nav>
 	<h1>
 		<s:property value="#session" />
-		<s:property value="#session.sessionlogin" />
 	</h1>
 </div>

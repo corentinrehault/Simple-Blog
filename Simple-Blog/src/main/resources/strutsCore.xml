@@ -61,13 +61,16 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-		<action name="modifier" class="fr.simpleblog.controllers.FicheUtilisateurAction"
+		<action name="profil" class="fr.simpleblog.controllers.FicheUtilisateurAction"
 			method="lireFicheUtilisateur">
-			<result name="success" type="tiles">modifTemplate</result>
+			<result name="success" type="tiles">profilTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
-		
-		<action name="validermodification" class="fr.simpleblog.controllers.FicheUtilisateurAction">
-			<result name="success" type="tiles">modifTemplate</result>
+
+		<action name="modifier" class="fr.simpleblog.controllers.UtilisateurAction"
+			method="modifierUtilisateur">
+			<result name="success" type="tiles">backofficeTemplate</result>
+			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
 	</package>

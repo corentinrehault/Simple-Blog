@@ -43,25 +43,26 @@ public class RootAction extends ActionSupport implements Preparable {
 		daoModelPays.createList(ensemblePays);
 
 	}
+
 	
 	public void comparerListePayes() {
-		throw new UnsupportedOperationException();
+		 
 	}
 
 	public void recupererArticle() {
-		throw new UnsupportedOperationException();
+		 
 	}
 
 	public void recupererStylepardefaut() {
-		throw new UnsupportedOperationException();
+		 
 	}
 
 	public void changerStylepardefaut() {
-		throw new UnsupportedOperationException();
+		 
 	}
 
 	public void changerLangue() {
-		throw new UnsupportedOperationException();
+		 
 	}
 
 	/**

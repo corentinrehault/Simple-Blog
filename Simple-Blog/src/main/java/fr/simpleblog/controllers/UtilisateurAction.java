@@ -1,6 +1,7 @@
 package fr.simpleblog.controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,9 +12,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import fr.simpleblog.beans.Authority;
+import fr.simpleblog.beans.FicheUtilisateur;
+import fr.simpleblog.beans.Interet;
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.model.DAOSql.DAOModelAuthority;
+
+
+import fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur;
+
+
 
 
 /*
@@ -37,9 +45,19 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private Set<Authority> authorities;
 	private String nom;
 	private String mail;
+	private String styleId;
+
+	private String adresse;
+	private String ville;
+	private int codePostal;
+	private HashSet<Interet> interets = new HashSet<Interet>();
+
+
+	FicheUtilisateur ficheUtilisateur;
 
 	IserviceUtilisateur daoModelUtilisateur;
 	DAOModelAuthority daoModelAuthority;
+	DAOModelFicheUtilisateur daoModelFicheUtilisateur;
 
 	/**
 	 * @return utilisateurs
@@ -79,6 +97,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public String modifierUtilisateur() {
 
 		utilisateur = daoModelUtilisateur.update(utilisateur);
+		ficheUtilisateur = daoModelFicheUtilisateur.update(ficheUtilisateur);
 		return SUCCESS;
 	}
 
@@ -89,15 +108,17 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 		utilisateur = daoModelUtilisateur.login(utilisateur);
 
+		System.out.println(utilisateur.toString());
+
 		if (utilisateur != null) {
 
 			utilisateur.setPassword(null);
 			this.sessionMap.put("login",utilisateur.getUsername());
 			this.sessionMap.put("prenom",utilisateur.getPrenom());
-			this.sessionMap.put("id", utilisateur.getId());
 			this.sessionMap.put("nom", utilisateur.getNom());
 			this.sessionMap.put("mail", utilisateur.getMail());
 			this.sessionMap.put("ficheId", utilisateur.getFicheId());
+			this.sessionMap.put("style", utilisateur.getStyleId());
 
 			authorities = daoModelAuthority.listerAuthorityParUtil(utilisateur);
 
@@ -264,6 +285,111 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		this.mail = mail;
 	}
 
+	/**
+	 * @return the sessionMap
+	 */
+	public Map<String, Object> getSessionMap() {
+		return sessionMap;
+	}
+
+	/**
+	 * @param sessionMap the sessionMap to set
+	 */
+	public void setSessionMap(Map<String, Object> sessionMap) {
+		this.sessionMap = sessionMap;
+	}
+
+	/**
+	 * @return the styleId
+	 */
+	public String getStyleId() {
+		return styleId;
+	}
+
+	/**
+	 * @param styleId the styleId to set
+	 */
+	public void setStyleId(String styleId) {
+		this.styleId = styleId;
+	}
+
+	/**
+	 * @return the adresse
+	 */
+	public String getAdresse() {
+		return adresse;
+	}
+
+	/**
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	/**
+	 * @return the ville
+	 */
+	public String getVille() {
+		return ville;
+	}
+
+	/**
+	 * @param ville the ville to set
+	 */
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	/**
+	 * @return the codePostal
+	 */
+	public int getCodePostal() {
+		return codePostal;
+	}
+
+	/**
+	 * @param codePostal the codePostal to set
+	 */
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	/**
+	 * @return the interets
+	 */
+	public HashSet<Interet> getInterets() {
+		return interets;
+	}
+
+	/**
+	 * @param interets the interets to set
+	 */
+	public void setInterets(HashSet<Interet> interets) {
+		this.interets = interets;
+	}
+
+	/**
+	 * @param authorities the authorities to set
+	 */
+	public void setAuthorities(Set<Authority> authorities) {
+		this.authorities = authorities;
+	}
+
+	/**
+	 * @return the ficheUtilisateur
+	 */
+	public FicheUtilisateur getFicheUtilisateur() {
+		return ficheUtilisateur;
+	}
+
+	/**
+	 * @param ficheUtilisateur the ficheUtilisateur to set
+	 */
+	public void setFicheUtilisateur(FicheUtilisateur ficheUtilisateur) {
+		this.ficheUtilisateur = ficheUtilisateur;
+	}
+
 	/* (non-Javadoc)
 	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
 	 */
@@ -327,6 +453,21 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
 		this.daoModelUtilisateur = daoModelUtilisateur;
+	}
+
+	/**
+	 * @return the daoModelFicheUtilisateur
+	 */
+	public DAOModelFicheUtilisateur getDaoModelFicheUtilisateur() {
+		return daoModelFicheUtilisateur;
+	}
+
+	/**
+	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
+	 */
+	public void setDaoModelFicheUtilisateur(
+			DAOModelFicheUtilisateur daoModelFicheUtilisateur) {
+		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
 	}
 
 }

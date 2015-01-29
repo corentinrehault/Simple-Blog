@@ -76,4 +76,53 @@ public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 
 		return styles;
 	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	public Style readParUtil(int i) {
+
+		PreparedStatement request=null;
+		String stringRequest=null;
+		Style style = null;
+
+		try {
+
+			connection=super.getConnection();
+			System.out.println("Dans la méthode readParUtil");
+			stringRequest="SELECT * FROM style WHERE Id=?";
+			request=connection.prepareStatement(stringRequest);
+			request.setInt(1, i);
+			//System.out.println("request --->" + stringRequest);
+			result=request.executeQuery();
+			if(result!=null) {
+					style = Mapper.styleMapper(result);
+					//System.out.println(interets.toString());
+				} else {
+				style = null;
+			}
+		} catch(Exception e) {
+			style=null;
+			System.out.println("Erreur dans la requête dans la classe DAOModelStyle"
+					+ " method readParUtil");
+		} finally {
+			try {
+				if(result!=null) {
+					DBAdministration.closeResultSet(result);
+				}
+				if(request!=null) {
+					DBAdministration.closeRequest(request);
+				}
+				if(connection!=null) {
+					DBAdministration.closeConnection(connection);
+				}
+			} catch(Exception e) {
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelStyle method readParUtil");
+			}
+		}
+
+		return style;
+	}
 }

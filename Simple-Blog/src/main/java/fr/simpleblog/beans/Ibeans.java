@@ -14,5 +14,5 @@ public interface Ibeans extends Serializable {
 	public void setId(int id);
 	
 	public int getId();
-
+	
 }

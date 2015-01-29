@@ -30,6 +30,7 @@ public class DAOModelInteret extends DAOModel implements IDAOModelInteret {
 	}
 
 	public HashSet<Interet> listerInteret() {
+
 		PreparedStatement request=null;
 		String stringRequest=null;
 		HashSet<Interet> interets = new HashSet<Interet>();
@@ -54,7 +55,8 @@ public class DAOModelInteret extends DAOModel implements IDAOModelInteret {
 			}
 		} catch(Exception e) {
 			interets=null;
-			System.out.println("Erreur dans la requête dans la classe DAOModelInteret method listerInteret");
+			System.out.println("Erreur dans la requête dans la classe DAOModelInteret"
+					+ " method listerInteret");
 		} finally {
 			try {
 				if(result!=null) {
@@ -67,7 +69,61 @@ public class DAOModelInteret extends DAOModel implements IDAOModelInteret {
 					DBAdministration.closeConnection(connection);
 				}
 			} catch(Exception e) {
-				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données dans la classe DAOModelInteret method listerInteret");
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelInteret method listerInteret");
+			}
+		}
+
+		return interets;
+	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	public HashSet<Interet> listerInteretParFicheUtil(int i) {
+
+		PreparedStatement request=null;
+		String stringRequest=null;
+		HashSet<Interet> interets = new HashSet<Interet>();
+		Interet interet = null;
+
+		try {
+
+			connection=super.getConnection();
+			System.out.println("Dans la méthode listerInteretParFicheUtil");
+			stringRequest="SELECT * FROM interet_ficheutilisateur WHERE InteretId_i__f=?";
+			request=connection.prepareStatement(stringRequest);
+			request.setInt(1, i);
+			//System.out.println("request --->" + stringRequest);
+			result=request.executeQuery();
+			if(result!=null) {
+				while(result.next()) {
+					interet = read(Mapper.interetParFicheUtilMapper(result));
+					interets.add(interet);
+				}
+				//System.out.println(interets.toString());
+			} else {
+				interets = null;
+			}
+		} catch(Exception e) {
+			interets=null;
+			System.out.println("Erreur dans la requête dans la classe DAOModelInteret"
+					+ " method listerInteretParFicheUtil");
+		} finally {
+			try {
+				if(result!=null) {
+					DBAdministration.closeResultSet(result);
+				}
+				if(request!=null) {
+					DBAdministration.closeRequest(request);
+				}
+				if(connection!=null) {
+					DBAdministration.closeConnection(connection);
+				}
+			} catch(Exception e) {
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelInteret method listerInteretParFicheUtil");
 			}
 		}
 

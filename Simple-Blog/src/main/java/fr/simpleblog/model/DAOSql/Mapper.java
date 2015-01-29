@@ -62,25 +62,32 @@ public class Mapper {
 			} else {
 				utilisateur.setId(Integer.valueOf(result.getString("Id")));
 			}
-			
+
 			if (result.getString("nom") == "") {
 				utilisateur.setNom("");
 			} else {
 				utilisateur.setNom(result.getString("nom"));
 			}
-			
+
 			if (result.getString("mail") == "") {
 				utilisateur.setMail("");
 			} else {
 				utilisateur.setMail(result.getString("mail"));
 			}
-			
+
 			if (result.getString("FicheUtilisateurId_uti") == "") {
 				utilisateur.setFicheId(0);
 			} else {
 				utilisateur.setFicheId(Integer.valueOf(result.getString("FicheUtilisateurId_uti")));
 			}
 
+			if (result.getString("styleid_uti") == "") {
+				utilisateur.setStyleId(0);
+			} else {
+				utilisateur.setStyleId(Integer.valueOf(result.getString("styleid_uti")));
+			}
+
+			
 		} catch (Exception e) {
 			utilisateur=null;
 			System.out.println("Erreur lors du mapping des attributs d'un utilisateur dans la classe Mapper method utilisateurMapper");
@@ -103,10 +110,8 @@ public class Mapper {
 		try {
 
 			if (result.getString("AuthorityId_a_u") == "") {
-
 				authority.setId(0);
 			} else {
-
 				authority.setId(Integer.valueOf(result.getString("AuthorityId_a_u")));
 			}
 
@@ -180,8 +185,8 @@ public class Mapper {
 
 		} catch (Exception e) {
 			pays=null;
-			System.out.println("Erreur lors du mapping des attributs d'une authority dans la classe Mapper method authorityMapper");
-			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM AUTHORITY" + e);
+			System.out.println("Erreur lors du mapping des attributs d'un pays dans la classe Mapper method paysMapper");
+			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM PAYS" + e);
 		}
 
 		//System.out.println("--MAPPER--" + pays);
@@ -194,7 +199,7 @@ public class Mapper {
 	 * @return
 	 */
 	public static Interet interetMapper(ResultSet result) {
-		
+
 		Interet interet = new Interet();
 
 		try {
@@ -260,8 +265,78 @@ public class Mapper {
 	 * @return
 	 */
 	public static FicheUtilisateur ficheUtilisateurMapper(ResultSet result) {
+
 		FicheUtilisateur ficheUtilisateur = new FicheUtilisateur();
+
+		try {
+
+			if (result.getString("id") == "") {
+				ficheUtilisateur.setId(0);
+			} else {
+				ficheUtilisateur.setId(Integer.valueOf(result.getString("id")));
+			}
+
+			if (result.getString("codepostal") == "") {
+				ficheUtilisateur.setCodePostal(0);
+			} else {
+				ficheUtilisateur.setCodePostal(Integer.valueOf(result.getString("codepostal")));
+			}
+
+			if (result.getString("adresse") == "") {
+				ficheUtilisateur.setAdresse("");
+			} else {
+				ficheUtilisateur.setAdresse(result.getString("adresse"));
+			}
+
+			if (result.getString("ville") == "") {
+				ficheUtilisateur.setVille("");
+			} else {
+				ficheUtilisateur.setVille(result.getString("ville"));
+			}
+
+			if (result.getString("paysid") == null) {
+				ficheUtilisateur.setPaysId(0);
+			} else {
+				ficheUtilisateur.setPaysId(Integer.valueOf(result.getString("paysid")));
+			}
+			
+		} catch (Exception e) {
+			ficheUtilisateur=null;
+			System.out.println("Erreur lors du mapping des attributs d'une FicheUtilisateur dans la classe Mapper method ficheUtilisateurMapper");
+			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM FICHEUTILISATEUR" + e);
+		}
+
+		System.out.println("--MAPPER--" + ficheUtilisateur);
+
 		return ficheUtilisateur;
+	}
+
+	/**
+	 * @param result
+	 * @return
+	 */
+	public static Interet interetParFicheUtilMapper(ResultSet result) {
+
+		Interet interet = new Interet();
+
+		try {
+
+			if (result.getString("InteretId_i__f") == "") {
+				interet.setId(0);
+			} else {
+				interet.setId(Integer.valueOf(result.getString("InteretId_i__f")));
+			}
+
+		} catch (Exception e) {
+			interet=null;
+			System.out.println("Erreur lors du mapping des attributs d'un interet dans la classe Mapper method interetParFicheUtilMapper");
+			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM INTERETPARFICHEUTIL" + e);
+		}
+
+		//System.out.println("--MAPPER--" + interet);
+
+		return interet;
+
 	}
 
 }

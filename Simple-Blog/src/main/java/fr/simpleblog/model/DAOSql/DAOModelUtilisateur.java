@@ -114,7 +114,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 
 		try {
 			connection=super.getConnection();
-			stringRequest="UPDATE Utilisateur set Langue=?,Avatar=?,Mail=?,Password=?,Login=?,Prenom=?,Nom=? WHERE Id=?";
+			stringRequest="UPDATE Utilisateur set Langue=?,Avatar=?,Mail=?,Password=?,Username=?,Prenom=?,Nom=?,StyleId_uti=? WHERE Login=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setString(1, utilisateur.getLangue());
 			request.setString(2, utilisateur.getAvatar());
@@ -123,7 +123,8 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 			request.setString(5, utilisateur.getUsername());
 			request.setString(6, utilisateur.getPrenom());
 			request.setString(7, utilisateur.getNom());
-			request.setInt(8, utilisateur.getId());
+			request.setInt(8, utilisateur.getStyleId());
+			request.setString(9, utilisateur.getUsername());
 			utilisateur=null;
 			request.executeUpdate(stringRequest);
 		} catch(Exception e) {

@@ -13,4 +13,6 @@ public interface IDAOModelFicheUtilisateur extends IDAOCRUD<FicheUtilisateur>{
 
 	public void listerFicheUtilisateur ();
 
+	public FicheUtilisateur readById (int i);
+
 }

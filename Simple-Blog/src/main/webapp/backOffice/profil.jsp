@@ -6,7 +6,7 @@
 <html>
 <head>
 
-<title>Blog Template - Espace administrateur</title>
+<title>Blog Template - Index</title>
 <tiles:insertAttribute name="head"></tiles:insertAttribute>
 
 </head>
@@ -14,8 +14,7 @@
 	<div class="container">
 		<div class="row row-eq-height">
 			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
-
-			<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			<tiles:insertAttribute name="zone_login_backoffice"></tiles:insertAttribute>
 		</div>
 	</div>
 	<div class="container">
@@ -23,19 +22,24 @@
 		<%-- 		<tiles:insertAttribute name="blogheader"></tiles:insertAttribute> --%>
 
 		<div class="row">
-
 			<div class="col-sm-9 blog-main">
-
-				<tiles:insertAttribute name="zone_posts"></tiles:insertAttribute>
-
-				<tiles:insertAttribute name="zone_pages"></tiles:insertAttribute>
-
+				<tiles:insertAttribute name="edit_profile"></tiles:insertAttribute>
 			</div>
+			
 			<!-- /.blog-main -->
+			
+			
+			<s:if test="%{#session.authority=='admin'}">
+				<div class="col-sm-3 blog-sidebar">
+					<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
+				</div>
+			</s:if>
+			<s:else>
+				<div class="col-sm-3 blog-sidebar">
+					<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
+				</div>
+			</s:else>
 
-			<div class="col-sm-3 blog-sidebar">
-				<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
-			</div>
 			<!-- /.blog-sidebar -->
 
 		</div>

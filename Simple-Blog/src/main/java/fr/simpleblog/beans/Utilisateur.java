@@ -18,6 +18,7 @@ public class Utilisateur implements UserDetails, Ibeans {
 	private String password;
 	private String mail;
 	private int id;
+	private int styleId;
 	private String avatar;
 	private String langue;
 	private int ficheId;
@@ -109,6 +110,20 @@ public class Utilisateur implements UserDetails, Ibeans {
 	}
 
 	/**
+	 * @return the styleId
+	 */
+	public int getStyleId() {
+		return styleId;
+	}
+
+	/**
+	 * @param styleId the styleId to set
+	 */
+	public void setStyleId(int styleId) {
+		this.styleId = styleId;
+	}
+
+	/**
 	 * @param isEnabled the isEnabled to set
 	 */
 	public void setEnabled(boolean isEnabled) {
@@ -143,15 +158,15 @@ public class Utilisateur implements UserDetails, Ibeans {
 	public String toString() {
 		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
 				+ username + ", password=" + password + ", mail=" + mail
-				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
-				+ ", ficheId=" + ficheId + ", isEnabled=" + isEnabled
-				+ ", isAccountNonExpired=" + isAccountNonExpired
-				+ ", isAccountNonLocked=" + isAccountNonLocked
-				+ ", isCredentialsNonExpired=" + isCredentialsNonExpired
-				+ ", commentaireredige=" + commentaireredige
-				+ ", articleecrit=" + articleecrit + ", ficheUtilisateur="
-				+ ficheUtilisateur + ", style=" + style + ", authorities="
-				+ authorities + "]";
+				+ ", id=" + id + ", styleId=" + styleId + ", avatar=" + avatar
+				+ ", langue=" + langue + ", ficheId=" + ficheId
+				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
+				+ isAccountNonExpired + ", isAccountNonLocked="
+				+ isAccountNonLocked + ", isCredentialsNonExpired="
+				+ isCredentialsNonExpired + ", commentaireredige="
+				+ commentaireredige + ", articleecrit=" + articleecrit
+				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
+				+ ", authorities=" + authorities + "]";
 	}
 
 	/* (non-Javadoc)
