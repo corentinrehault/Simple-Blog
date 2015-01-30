@@ -18,10 +18,13 @@ public class Utilisateur implements UserDetails, Ibeans {
 	private String password;
 	private String mail;
 	private int id;
-	private int styleId;
 	private String avatar;
 	private String langue;
-	private int ficheId;
+	
+	// Les Foreign Keys ne doivent pas être présentes
+	// dans les objets.
+	//private int ficheId;
+	//private int styleId;
 
 	private boolean isEnabled;
 	private boolean isAccountNonExpired;
@@ -96,34 +99,6 @@ public class Utilisateur implements UserDetails, Ibeans {
 	}
 
 	/**
-	 * @return the ficheId
-	 */
-	public int getFicheId() {
-		return ficheId;
-	}
-
-	/**
-	 * @param ficheId the ficheId to set
-	 */
-	public void setFicheId(int ficheId) {
-		this.ficheId = ficheId;
-	}
-
-	/**
-	 * @return the styleId
-	 */
-	public int getStyleId() {
-		return styleId;
-	}
-
-	/**
-	 * @param styleId the styleId to set
-	 */
-	public void setStyleId(int styleId) {
-		this.styleId = styleId;
-	}
-
-	/**
 	 * @param isEnabled the isEnabled to set
 	 */
 	public void setEnabled(boolean isEnabled) {
@@ -158,8 +133,7 @@ public class Utilisateur implements UserDetails, Ibeans {
 	public String toString() {
 		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
 				+ username + ", password=" + password + ", mail=" + mail
-				+ ", id=" + id + ", styleId=" + styleId + ", avatar=" + avatar
-				+ ", langue=" + langue + ", ficheId=" + ficheId
+				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
 				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
 				+ isAccountNonExpired + ", isAccountNonLocked="
 				+ isAccountNonLocked + ", isCredentialsNonExpired="
@@ -225,5 +199,33 @@ public class Utilisateur implements UserDetails, Ibeans {
 		return isEnabled;
 	}
 
+	/**
+	 * @return the ficheUtilisateur
+	 */
+	public FicheUtilisateur getFicheUtilisateur() {
+		return ficheUtilisateur;
+	}
 
+	/**
+	 * @param ficheUtilisateur the ficheUtilisateur to set
+	 */
+	public void setFicheUtilisateur(FicheUtilisateur ficheUtilisateur) {
+		this.ficheUtilisateur = ficheUtilisateur;
+	}
+
+	/**
+	 * @return the style
+	 */
+	public Style getStyle() {
+		return style;
+	}
+
+	/**
+	 * @param style the style to set
+	 */
+	public void setStyle(Style style) {
+		this.style = style;
+	}
+
+	
 }

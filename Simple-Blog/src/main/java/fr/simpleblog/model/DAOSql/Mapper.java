@@ -34,6 +34,8 @@ public class Mapper {
 	public static Utilisateur utilisateurMapper(ResultSet result) {
 		// orm
 		Utilisateur utilisateur = new Utilisateur();
+		Style style = new Style();
+		FicheUtilisateur ficheUtilisateur = new FicheUtilisateur();
 
 		// utilisation d'un metadataResultset qui permet d'étudier en détail le résultset
 
@@ -76,15 +78,17 @@ public class Mapper {
 			}
 
 			if (result.getString("FicheUtilisateurId_uti") == "") {
-				utilisateur.setFicheId(0);
+				ficheUtilisateur.setId(0);
 			} else {
-				utilisateur.setFicheId(Integer.valueOf(result.getString("FicheUtilisateurId_uti")));
+				ficheUtilisateur.setId(Integer.valueOf(result.getString("FicheUtilisateurId_uti")));
+				utilisateur.setFicheUtilisateur(ficheUtilisateur);
 			}
 
 			if (result.getString("styleid_uti") == "") {
-				utilisateur.setStyleId(0);
+				style.setId(0);
 			} else {
-				utilisateur.setStyleId(Integer.valueOf(result.getString("styleid_uti")));
+				style.setId(Integer.valueOf(result.getString("styleid_uti")));
+				utilisateur.setStyle(style);
 			}
 
 			
@@ -94,7 +98,7 @@ public class Mapper {
 			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM UTILISATEUR" + e);
 		}
 
-		System.out.println("--MAPPER--" + utilisateur);
+		System.out.println("--MAPPER--" + utilisateur + ficheUtilisateur + style);
 		return utilisateur;
 
 	}
@@ -189,7 +193,7 @@ public class Mapper {
 			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM PAYS" + e);
 		}
 
-		//System.out.println("--MAPPER--" + pays);
+		System.out.println("--MAPPER--" + pays);
 
 		return pays ;
 	}
@@ -267,6 +271,7 @@ public class Mapper {
 	public static FicheUtilisateur ficheUtilisateurMapper(ResultSet result) {
 
 		FicheUtilisateur ficheUtilisateur = new FicheUtilisateur();
+		Pays pays = new Pays();
 
 		try {
 
@@ -295,9 +300,10 @@ public class Mapper {
 			}
 
 			if (result.getString("paysid") == null) {
-				ficheUtilisateur.setPaysId(0);
+				pays.setId(0);
 			} else {
-				ficheUtilisateur.setPaysId(Integer.valueOf(result.getString("paysid")));
+				pays.setId(Integer.valueOf(result.getString("paysid")));
+				ficheUtilisateur.setPays(pays);
 			}
 			
 		} catch (Exception e) {
@@ -306,7 +312,7 @@ public class Mapper {
 			LOG.fatal("GRAVE ERROR IN MAPPER FOR ORM FICHEUTILISATEUR" + e);
 		}
 
-		System.out.println("--MAPPER--" + ficheUtilisateur);
+		System.out.println("--MAPPER--" + ficheUtilisateur + pays);
 
 		return ficheUtilisateur;
 	}

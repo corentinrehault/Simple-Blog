@@ -35,9 +35,7 @@
 		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 
 
-
 		<default-action-ref name="index" />
-
 
 
 		<global-results>
@@ -45,12 +43,11 @@
 			<result name="login" type="tiles">rootTemplate</result>
 		</global-results>
 
+
 		<global-exception-mappings>
 			<exception-mapping exception="java.lang.Exception"
 				result="error" />
 		</global-exception-mappings>
-
-
 
 	</package>
 

@@ -58,19 +58,20 @@
 			method="utilisateurAutorite">
 			<result name="success" type="tiles">backofficeTemplate</result>
 			<result name="input" type="tiles">backofficeTemplate</result>
-			<result name="error" type="dispatcher">error.jsp</result>
+			<result name="error" type="dispatcher">/error.jsp</result>
 		</action>
 
 		<action name="profil" class="fr.simpleblog.controllers.FicheUtilisateurAction"
 			method="lireFicheUtilisateur">
 			<result name="success" type="tiles">profilTemplate</result>
-			<result name="error" type="dispatcher">error.jsp</result>
+			<result name="error" type="dispatcher">/error.jsp</result>
 		</action>
 
 		<action name="modifier" class="fr.simpleblog.controllers.UtilisateurAction"
 			method="modifierUtilisateur">
 			<result name="success" type="tiles">backofficeTemplate</result>
-			<result name="error" type="dispatcher">error.jsp</result>
+			<result name="error" type="dispatcher">/error.jsp</result>
+			<result name="input" type="dispatcher">/error.jsp</result>
 		</action>
 
 	</package>

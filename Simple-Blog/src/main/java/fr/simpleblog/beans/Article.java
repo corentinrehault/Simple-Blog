@@ -13,6 +13,7 @@ public class Article implements Ibeans {
 	private String titre;
 	private int id;
 	private String contenu;
+	
 	public HashSet<Commentaire> commentaires = new HashSet<Commentaire>();
 	public Utilisateur auteur;
 	public HashSet<Categorie> categories = new HashSet<Categorie>();

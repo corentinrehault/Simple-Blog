@@ -81,7 +81,7 @@ public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 	 * @param i
 	 * @return
 	 */
-	public Style readParUtil(int i) {
+	public Style readById(int i) {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
@@ -90,7 +90,7 @@ public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 		try {
 
 			connection=super.getConnection();
-			System.out.println("Dans la méthode readParUtil");
+			System.out.println("Dans la méthode readById");
 			stringRequest="SELECT * FROM style WHERE Id=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setInt(1, i);
@@ -105,7 +105,7 @@ public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 		} catch(Exception e) {
 			style=null;
 			System.out.println("Erreur dans la requête dans la classe DAOModelStyle"
-					+ " method readParUtil");
+					+ " method readById");
 		} finally {
 			try {
 				if(result!=null) {
@@ -119,10 +119,21 @@ public class DAOModelStyle extends DAOModel implements IDAOModelStyle {
 				}
 			} catch(Exception e) {
 				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
-						+ " dans la classe DAOModelStyle method readParUtil");
+						+ " dans la classe DAOModelStyle method readById");
 			}
 		}
 
+		return style;
+	}
+
+	/**
+	 * @param i
+	 * @return 
+	 */
+	public Style updateById(int styleId) {
+		
+		Style style = null;
+		// TODO Auto-generated method stub
 		return style;
 	}
 }

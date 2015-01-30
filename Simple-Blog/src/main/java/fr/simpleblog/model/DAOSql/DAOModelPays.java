@@ -156,7 +156,8 @@ public class DAOModelPays extends DAOModel implements IDAOModelPays {
 		} catch(Exception e) {
 			ensemblePays=null;
 			errorCode=0;
-			System.out.println("Erreur dans la requête dans la classe DAOModelPays method createList");
+			System.out.println("Erreur dans la requête dans la classe"
+					+ " DAOModelPays method createList");
 		} finally {
 			try {
 				if(result!=null) {
@@ -169,10 +170,59 @@ public class DAOModelPays extends DAOModel implements IDAOModelPays {
 					DBAdministration.closeConnection(connection);
 				}
 			} catch(Exception e) {
-				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données dans la classe DAOModelPays method createList");
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelPays method createList");
 			}
 		}
 
 		return ensemblePays;
+	}
+
+	/**
+	 * @param pays
+	 * @return
+	 */
+	public Pays readByName(String name) {
+		PreparedStatement request=null;
+		String stringRequest=null;
+		Pays pays = null;
+
+		try {
+
+			connection=super.getConnection();
+			System.out.println("Dans la méthode listerPays");
+			System.out.println(name);
+			stringRequest="SELECT * FROM pays WHERE nom=?";
+			request=connection.prepareStatement(stringRequest);
+			request.setString(1, name);
+			System.out.println("request --->" + stringRequest);
+			result=request.executeQuery();
+			if(result.first()) {
+				pays = Mapper.paysMapper(result);
+			} else {
+				pays = null;
+			}
+		} catch(Exception e) {
+			pays=null;
+			System.out.println("Erreur dans la requête dans la classe"
+					+ " DAOModelPays method readByName");
+		} finally {
+			try {
+				if(result!=null) {
+					DBAdministration.closeResultSet(result);
+				}
+				if(request!=null) {
+					DBAdministration.closeRequest(request);
+				}
+				if(connection!=null) {
+					DBAdministration.closeConnection(connection);
+				}
+			} catch(Exception e) {
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelPays method readByName");
+			}
+		}
+
+		return pays;
 	}
 }

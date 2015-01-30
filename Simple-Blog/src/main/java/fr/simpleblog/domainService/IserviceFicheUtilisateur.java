@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.simpleblog.model.interfaces;
+package fr.simpleblog.domainService;
 
 import fr.simpleblog.beans.FicheUtilisateur;
 
@@ -9,7 +9,7 @@ import fr.simpleblog.beans.FicheUtilisateur;
  * @author dao303
  *
  */
-public interface IDAOModelFicheUtilisateur extends IDAOCRUD<FicheUtilisateur>{
+public interface IserviceFicheUtilisateur extends Iservice<FicheUtilisateur>{
 
 	public void listerFicheUtilisateur ();
 

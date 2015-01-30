@@ -22,6 +22,7 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 
 		PreparedStatement request=null;
 		String stringRequest=null;
+
 		@SuppressWarnings("unused")
 		int errorCode;
 
@@ -112,23 +113,41 @@ public class DAOModelUtilisateur extends DAOModel implements IDAOModelUtilisateu
 		PreparedStatement request=null;
 		String stringRequest=null;
 
+		@SuppressWarnings("unused")
+		int errorCode;
+
 		try {
 			connection=super.getConnection();
-			stringRequest="UPDATE Utilisateur set Langue=?,Avatar=?,Mail=?,Password=?,Username=?,Prenom=?,Nom=?,StyleId_uti=? WHERE Login=?";
+			System.out.println("Connecté");
+			System.out.println(utilisateur);
+
+			//Début du bloc de transaction
+			connection.setAutoCommit(false);
+
+			stringRequest="UPDATE Utilisateur SET Mail=?,Password=?,Username=?,Prenom=?,Nom=? WHERE Username=?";
+
 			request=connection.prepareStatement(stringRequest);
-			request.setString(1, utilisateur.getLangue());
-			request.setString(2, utilisateur.getAvatar());
-			request.setString(3, utilisateur.getMail());
-			request.setString(4, utilisateur.getPassword());
-			request.setString(5, utilisateur.getUsername());
-			request.setString(6, utilisateur.getPrenom());
-			request.setString(7, utilisateur.getNom());
-			request.setInt(8, utilisateur.getStyleId());
-			request.setString(9, utilisateur.getUsername());
-			utilisateur=null;
-			request.executeUpdate(stringRequest);
+
+			request.setString(1, utilisateur.getMail());
+			request.setString(2, utilisateur.getPassword());
+			request.setString(3, utilisateur.getUsername());
+			request.setString(4, utilisateur.getPrenom());
+			request.setString(5, utilisateur.getNom());
+			//request.setString(6, utilisateur.getLangue());
+			//request.setString(7, utilisateur.getAvatar());
+			request.setString(6, utilisateur.getUsername());
+
+			//utilisateur=null;
+			errorCode = request.executeUpdate();
+			System.out.println(request.executeUpdate());
+
+			//Fin du bloc de transaction
+			System.out.println("connection.commit()");
+			connection.commit();
+
 		} catch(Exception e) {
-			utilisateur=null;
+			errorCode = 0;
+			utilisateur = null;
 			System.out.println("Erreur dans la requête dans la classe DAOModelUtilisateur method updateUtilisateur");
 		} finally {
 			try {

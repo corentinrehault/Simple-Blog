@@ -1,10 +1,10 @@
-package fr.simpleblog.model.interfaces;
+package fr.simpleblog.domainService;
 
 import java.util.List;
 
 import fr.simpleblog.beans.Style;
 
-public interface IDAOModelStyle extends IDAOCRUD<Style> {
+public interface IserviceStyle extends Iservice<Style> {
 
 	public List<Style> listerStyle();
 

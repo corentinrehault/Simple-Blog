@@ -81,18 +81,21 @@ public class DAOModelFicheUtilisateur extends DAOModel implements IDAOModelFiche
 	 */
 	@Override
 	public FicheUtilisateur update(FicheUtilisateur ficheUtilisateur) {
-		
+
 		PreparedStatement request=null;
 		String stringRequest=null;
 
 		try {
 			connection=super.getConnection();
+			System.out.println("Connecté");
+			System.out.println(ficheUtilisateur);
+			
 			stringRequest="UPDATE FicheUtilisateur set adresse=?,ville=?,codepostal=?,paysId=? WHERE Id=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setString(1, ficheUtilisateur.getAdresse());
 			request.setString(2, ficheUtilisateur.getVille());
 			request.setInt(3, ficheUtilisateur.getCodePostal());
-			request.setInt(4, ficheUtilisateur.getPaysId());
+			request.setInt(4, ficheUtilisateur.pays.getId());
 			request.setInt(5, ficheUtilisateur.getId());
 			ficheUtilisateur=null;
 			request.executeUpdate(stringRequest);
@@ -188,6 +191,55 @@ public class DAOModelFicheUtilisateur extends DAOModel implements IDAOModelFiche
 
 		return ficheUtilisateur;
 
+	}
+
+	/**
+	 * @param ficheId
+	 * @return
+	 */
+	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int ficheId) {
+
+		PreparedStatement request=null;
+		String stringRequest=null;
+		@SuppressWarnings("unused")
+		int errorCode = 0;
+
+		try {
+			connection=super.getConnection();
+			System.out.println("Connecté");
+			stringRequest="UPDATE FicheUtilisateur SET adresse=?,ville=?,codepostal=? WHERE Id=?";
+			request=connection.prepareStatement(stringRequest);
+			request.setString(1, ficheUtilisateur.getAdresse());
+			request.setString(2, ficheUtilisateur.getVille());
+			request.setInt(3, ficheUtilisateur.getCodePostal());
+			//request.setInt(4, ficheUtilisateur.pays.getId());
+			request.setInt(4, ficheId);
+			System.out.println(ficheUtilisateur);
+			//ficheUtilisateur=null;
+			errorCode = request.executeUpdate();
+		} catch(Exception e) {
+			ficheUtilisateur=null;
+			errorCode = 0;
+			System.out.println("Erreur dans la requête dans la classe"
+					+ " DAOModelFicheUtilisateur method updateFicheUtilisateur");
+		} finally {
+			try {
+				if(result!=null) {
+					DBAdministration.closeResultSet(result);
+				}
+				if(request!=null) {
+					DBAdministration.closeRequest(request);
+				}
+				if(connection!=null) {
+					DBAdministration.closeConnection(connection);
+				}
+			} catch(Exception e) {
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données"
+						+ " dans la classe DAOModelFicheUtilisateur method updateFicheUtilisateur");
+			}
+		}
+
+		return ficheUtilisateur;
 	}
 
 }

@@ -14,12 +14,20 @@ import com.opensymphony.xwork2.Preparable;
 import fr.simpleblog.beans.Authority;
 import fr.simpleblog.beans.FicheUtilisateur;
 import fr.simpleblog.beans.Interet;
+import fr.simpleblog.beans.Pays;
+import fr.simpleblog.beans.Style;
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.model.DAOSql.DAOModelAuthority;
 
 
 import fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur;
+
+
+
+
+import fr.simpleblog.model.DAOSql.DAOModelPays;
+import fr.simpleblog.model.DAOSql.DAOModelStyle;
 
 
 
@@ -38,26 +46,26 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 	private Utilisateur utilisateur;
 	private ArrayList<Utilisateur> utilisateurs;
+	private HashSet<Interet> interets = new HashSet<Interet>();
+	private Set<Authority> authorities;
+
 	private String login;
 	private String password;
-	private Map<String,Object> sessionMap;
 	private String prenom;
-	private Set<Authority> authorities;
 	private String nom;
 	private String mail;
-	private String styleId;
 
-	private String adresse;
-	private String ville;
-	private int codePostal;
-	private HashSet<Interet> interets = new HashSet<Interet>();
+	private Map<String,Object> sessionMap;
 
+	public FicheUtilisateur ficheUtilisateur;
+	public Style style;
+	public Pays pays;
 
-	FicheUtilisateur ficheUtilisateur;
-
-	IserviceUtilisateur daoModelUtilisateur;
-	DAOModelAuthority daoModelAuthority;
-	DAOModelFicheUtilisateur daoModelFicheUtilisateur;
+	public IserviceUtilisateur daoModelUtilisateur;
+	public DAOModelAuthority daoModelAuthority;
+	public DAOModelFicheUtilisateur daoModelFicheUtilisateur;
+	public DAOModelStyle daoModelStyle;
+	public DAOModelPays daoModelPays;
 
 	/**
 	 * @return utilisateurs
@@ -97,7 +105,9 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public String modifierUtilisateur() {
 
 		utilisateur = daoModelUtilisateur.update(utilisateur);
-		ficheUtilisateur = daoModelFicheUtilisateur.update(ficheUtilisateur);
+		pays = daoModelPays.readByName(ficheUtilisateur.pays.getNom());
+		ficheUtilisateur = daoModelFicheUtilisateur.updateById(ficheUtilisateur, (int) sessionMap.get("ficheId"));
+
 		return SUCCESS;
 	}
 
@@ -106,19 +116,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String connecterUtilisateur() {
 
+		
 		utilisateur = daoModelUtilisateur.login(utilisateur);
 
-		System.out.println(utilisateur.toString());
+		//System.out.println(utilisateur.toString());
 
 		if (utilisateur != null) {
 
 			utilisateur.setPassword(null);
-			this.sessionMap.put("login",utilisateur.getUsername());
-			this.sessionMap.put("prenom",utilisateur.getPrenom());
+			this.sessionMap.put("login", utilisateur.getUsername());
+			this.sessionMap.put("prenom", utilisateur.getPrenom());
 			this.sessionMap.put("nom", utilisateur.getNom());
-			this.sessionMap.put("mail", utilisateur.getMail());
-			this.sessionMap.put("ficheId", utilisateur.getFicheId());
-			this.sessionMap.put("style", utilisateur.getStyleId());
+			this.sessionMap.put("mail", utilisateur.getMail());		
+			this.sessionMap.put("ficheId", utilisateur.ficheUtilisateur.getId());
+			this.sessionMap.put("styleId", utilisateur.style.getId());
 
 			authorities = daoModelAuthority.listerAuthorityParUtil(utilisateur);
 
@@ -300,62 +311,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	}
 
 	/**
-	 * @return the styleId
-	 */
-	public String getStyleId() {
-		return styleId;
-	}
-
-	/**
-	 * @param styleId the styleId to set
-	 */
-	public void setStyleId(String styleId) {
-		this.styleId = styleId;
-	}
-
-	/**
-	 * @return the adresse
-	 */
-	public String getAdresse() {
-		return adresse;
-	}
-
-	/**
-	 * @param adresse the adresse to set
-	 */
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	/**
-	 * @return the ville
-	 */
-	public String getVille() {
-		return ville;
-	}
-
-	/**
-	 * @param ville the ville to set
-	 */
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	/**
-	 * @return the codePostal
-	 */
-	public int getCodePostal() {
-		return codePostal;
-	}
-
-	/**
-	 * @param codePostal the codePostal to set
-	 */
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
-	}
-
-	/**
 	 * @return the interets
 	 */
 	public HashSet<Interet> getInterets() {
@@ -413,6 +368,20 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	//		}
 	//	}
 
+	/**
+	 * @return the style
+	 */
+	public Style getStyle() {
+		return style;
+	}
+
+	/**
+	 * @param style the style to set
+	 */
+	public void setStyle(Style style) {
+		this.style = style;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.opensymphony.xwork2.Preparable#prepare()
 	 * 
@@ -468,6 +437,48 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public void setDaoModelFicheUtilisateur(
 			DAOModelFicheUtilisateur daoModelFicheUtilisateur) {
 		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
+	}
+
+	/**
+	 * @return the pays
+	 */
+	public Pays getPays() {
+		return pays;
+	}
+
+	/**
+	 * @param pays the pays to set
+	 */
+	public void setPays(Pays pays) {
+		this.pays = pays;
+	}
+
+	/**
+	 * @return the daoModelStyle
+	 */
+	public DAOModelStyle getDaoModelStyle() {
+		return daoModelStyle;
+	}
+
+	/**
+	 * @param daoModelStyle the daoModelStyle to set
+	 */
+	public void setDaoModelStyle(DAOModelStyle daoModelStyle) {
+		this.daoModelStyle = daoModelStyle;
+	}
+
+	/**
+	 * @return the daoModelPays
+	 */
+	public DAOModelPays getDaoModelPays() {
+		return daoModelPays;
+	}
+
+	/**
+	 * @param daoModelPays the daoModelPays to set
+	 */
+	public void setDaoModelPays(DAOModelPays daoModelPays) {
+		this.daoModelPays = daoModelPays;
 	}
 
 }

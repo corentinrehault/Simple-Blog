@@ -32,22 +32,22 @@
 
 
 		<s:textfield label="%{getText('address')}" type="text"
-			name="ficheutilisateur.adresse" value="%{#session.adresse}"
+			name="ficheUtilisateur.adresse" value="%{#session.adresse}"
 			placeholder="%{getText('address')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('city')} " type="text"
-			name="ficheutilisateur.ville" value="%{#session.ville}"
+			name="ficheUtilisateur.ville" value="%{#session.ville}"
 			placeholder="%{getText('city')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('zipcode')} " type="text"
-			name="ficheutilisateur.codepostal" value="%{#session.codepostal}"
+			name="ficheUtilisateur.codePostal" value="%{#session.codepostal}"
 			placeholder="%{getText('zipcode')}" size="20" maxlength="20"></s:textfield>
 		<s:select label="%{getText('country')} " list="ensemblePays"
 			value="%{#session.pays}" listKey="nom" listValue="nom"
-			name="ficheutilisateur.pays"></s:select>
+			name="ficheUtilisateur.pays.nom"></s:select>
 		<s:checkboxlist label="%{getText('interests')} " list="interets"
 			value="%{#session.interets}" listKey="id" listValue="nom"
-			name="ficheutilisateur.interets"></s:checkboxlist>
+			name="ficheUtilisateur.interet.nom"></s:checkboxlist>
 		<s:radio label="%{getText('style')} " list="styles" listKey="id"
-			value="%{#session.style}" listValue="nom" name="utilisateur.styleid"></s:radio>
+			value="%{#session.styleId}" listValue="nom" name="utilisateur.style.id" ></s:radio>
 		<s:submit type="submit" value="%{getText('update')}" align="center"></s:submit>
 		<%-- 		<s:file ></s:file> --%>
 

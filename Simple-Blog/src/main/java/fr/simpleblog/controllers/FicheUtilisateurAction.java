@@ -26,26 +26,30 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	private static final long serialVersionUID = 799861132415727534L;
 
 	private FicheUtilisateur ficheUtilisateur;
+
 	private ArrayList<String> fichesUtilisateur;
 	private Utilisateur utilisateur;
 	private String adresse;
 	private String ville;
 	private int codePostal;
 	private int id;
+
 	public Style style;
 	public Pays pays;
 	public Interet interet;
+
 	public HashSet<Interet> interets = new HashSet<Interet>();
 	public List<Pays> ensemblePays = new LinkedList<Pays>();
 	private List<Style> styles = new LinkedList<Style>();
-	private Map<String,Object> sessionMap;
 
+	private Map<String,Object> sessionMap;
 	private Cache cache;
+
 	public DAOModelFicheUtilisateur daoModelFicheUtilisateur;
-	DAOModelUtilisateur daoModelUtilisateur;
-	DAOModelPays daoModelPays;
-	DAOModelInteret daoModelInteret;
-	DAOModelStyle daoModelStyle;
+	public DAOModelUtilisateur daoModelUtilisateur;
+	public DAOModelPays daoModelPays;
+	public DAOModelInteret daoModelInteret;
+	public DAOModelStyle daoModelStyle;
 
 	public String listerFicheUtilisateur() {
 		throw new UnsupportedOperationException();
@@ -74,7 +78,9 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
 			this.sessionMap.put("ville", ficheUtilisateur.getVille());
 			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-			this.sessionMap.put("paysId", ficheUtilisateur.getPaysId());
+			if (pays != null) {
+				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
+			}
 
 		}
 
@@ -87,14 +93,14 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 				this.sessionMap.put("interet", interet.getNom());
 			}
 		}
-		
-//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
-//		
-//		if (style != null) {
-//			
-//			this.sessionMap.put("style", style.getNom());
-//			
-//		}
+
+		//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
+		//		
+		//		if (style != null) {
+		//			
+		//			this.sessionMap.put("style", style.getNom());
+		//			
+		//		}
 
 		return SUCCESS;
 	}

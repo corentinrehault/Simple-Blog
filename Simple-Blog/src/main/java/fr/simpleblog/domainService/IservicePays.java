@@ -1,10 +1,10 @@
-package fr.simpleblog.model.interfaces;
+package fr.simpleblog.domainService;
 
 import java.util.List;
 
 import fr.simpleblog.beans.Pays;
 
-public interface IDAOModelPays extends IDAOCRUD<Pays> {
+public interface IservicePays extends Iservice<Pays> {
 
 	public List<Pays> listerPays();
 	

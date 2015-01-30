@@ -67,6 +67,10 @@
 	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
 		<property name="idaoModelUtilisateur" ref="daoModelUtilisateur" />
 	</bean>
+	
+	<bean name="impServiceFicheUtilisateur" class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
+		<property name="idaoModelFicheUtilisateur" ref="daoModelFicheUtilisateur"/>
+	</bean>
 
 	<!-- On injecte dans Cache dans ficheutilisateur -->
 
