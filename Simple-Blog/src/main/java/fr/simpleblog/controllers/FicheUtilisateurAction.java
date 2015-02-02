@@ -12,11 +12,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import fr.simpleblog.beans.*;
-import fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur;
-import fr.simpleblog.model.DAOSql.DAOModelInteret;
-import fr.simpleblog.model.DAOSql.DAOModelPays;
-import fr.simpleblog.model.DAOSql.DAOModelStyle;
-import fr.simpleblog.model.DAOSql.DAOModelUtilisateur;
+import fr.simpleblog.domainService.IserviceFicheUtilisateur;
+import fr.simpleblog.domainService.IserviceInteret;
+import fr.simpleblog.domainService.IservicePays;
+import fr.simpleblog.domainService.IserviceStyle;
+import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.services.Cache;
 
 public class FicheUtilisateurAction extends ActionSupport implements Preparable,SessionAware {
@@ -45,11 +45,11 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	private Map<String,Object> sessionMap;
 	private Cache cache;
 
-	public DAOModelFicheUtilisateur daoModelFicheUtilisateur;
-	public DAOModelUtilisateur daoModelUtilisateur;
-	public DAOModelPays daoModelPays;
-	public DAOModelInteret daoModelInteret;
-	public DAOModelStyle daoModelStyle;
+	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
+	public IserviceUtilisateur daoModelUtilisateur;
+	public IservicePays daoModelPays;
+	public IserviceInteret daoModelInteret;
+	public IserviceStyle daoModelStyle;
 
 	public String listerFicheUtilisateur() {
 		throw new UnsupportedOperationException();
@@ -78,13 +78,13 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
 			this.sessionMap.put("ville", ficheUtilisateur.getVille());
 			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-			if (pays != null) {
+			if (ficheUtilisateur.pays != null) {
 				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
 			}
 
 		}
 
-		interets = daoModelInteret.listerInteretParFicheUtil((int) sessionMap.get("ficheId"));
+		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
 
 		if (interets != null) {
 			interets.iterator();
@@ -136,7 +136,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	/**
 	 * @return the daoModelFicheUtilisateur
 	 */
-	public DAOModelFicheUtilisateur getDaoModelFicheUtilisateur() {
+	public IserviceFicheUtilisateur getDaoModelFicheUtilisateur() {
 		return daoModelFicheUtilisateur;
 	}
 
@@ -144,63 +144,63 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
 	 */
 	public void setDaoModelFicheUtilisateur(
-			DAOModelFicheUtilisateur daoModelFicheUtilisateur) {
+			IserviceFicheUtilisateur daoModelFicheUtilisateur) {
 		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
 	}
 
 	/**
 	 * @return the daoModelUtilisateur
 	 */
-	public DAOModelUtilisateur getDaoModelUtilisateur() {
+	public IserviceUtilisateur getDaoModelUtilisateur() {
 		return daoModelUtilisateur;
 	}
 
 	/**
 	 * @param daoModelUtilisateur the daoModelUtilisateur to set
 	 */
-	public void setDaoModelUtilisateur(DAOModelUtilisateur daoModelUtilisateur) {
+	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
 		this.daoModelUtilisateur = daoModelUtilisateur;
 	}
 
 	/**
 	 * @return the daoModelPays
 	 */
-	public DAOModelPays getDaoModelPays() {
+	public IservicePays getDaoModelPays() {
 		return daoModelPays;
 	}
 
 	/**
 	 * @param daoModelPays the daoModelPays to set
 	 */
-	public void setDaoModelPays(DAOModelPays daoModelPays) {
+	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
 
 	/**
 	 * @return the daoModelInteret
 	 */
-	public DAOModelInteret getDaoModelInteret() {
+	public IserviceInteret getDaoModelInteret() {
 		return daoModelInteret;
 	}
 
 	/**
 	 * @param daoModelInteret the daoModelInteret to set
 	 */
-	public void setDaoModelInteret(DAOModelInteret daoModelInteret) {
+	public void setDaoModelInteret(IserviceInteret daoModelInteret) {
 		this.daoModelInteret = daoModelInteret;
 	}
 
 	/**
 	 * @return the daoModelStyle
 	 */
-	public DAOModelStyle getDaoModelStyle() {
+	public IserviceStyle getDaoModelStyle() {
 		return daoModelStyle;
 	}
 
 	/**
 	 * @param daoModelStyle the daoModelStyle to set
 	 */
-	public void setDaoModelStyle(DAOModelStyle daoModelStyle) {
+	public void setDaoModelStyle(IserviceStyle daoModelStyle) {
 		this.daoModelStyle = daoModelStyle;
 	}
 
@@ -294,7 +294,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public HashSet<Interet> getInterets() {
 
 		if (cache.getInterets() == null) {
-			interets = daoModelInteret.listerInteret();
+			interets = daoModelInteret.listInteret();
 			cache.setInterets(interets);
 		} else {
 			interets = cache.getInterets();

@@ -1,63 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:cache="http://www.springframework.org/schema/cache"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.0.xsd
-    http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- <bean name="error" class="fr.simpleblog.beans.ErrorM" scope="singleton"> -->
 	<!-- <property name="id" value="1"></property> -->
 	<!-- <property name="message" value="noError message !"></property> -->
 	<!-- </bean> -->
+	
+	
+	<!-- Bean d'acces au Contexte -->
+	<bean id="applicationContextHolder"	class="fr.simpleblog.services.ApplicationContextHolder" />
 
-	<!-- Au démarrage de l'applicartion Spring injecte la datasource dans le 
+	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
 
-	<bean name="DAOModel" class="fr.simpleblog.model.DAOSql.DAOModel">
+	<bean name="DaoModel" class="fr.simpleblog.model.DaoSql.DaoModel">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" />
 
-	<bean name="daoModelArticle" class="fr.simpleblog.model.DAOSql.DAOModelArticle"
-		parent="DAOModel" />
-	<bean name="daoModelAuthority" class="fr.simpleblog.model.DAOSql.DAOModelAuthority"
-		parent="DAOModel" />
-	<bean name="daoModelCategorie" class="fr.simpleblog.model.DAOSql.DAOModelCategorie"
-		parent="DAOModel" />
-	<bean name="daoModelCommentaire" class="fr.simpleblog.model.DAOSql.DAOModelCommentaire"
-		parent="DAOModel" />
-	<bean name="daoModelFicheUtilisateur" class="fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur"
-		parent="DAOModel" />
-	<bean name="daoModelInteret" class="fr.simpleblog.model.DAOSql.DAOModelInteret"
-		parent="DAOModel" />
-	<bean name="daoModelPays" class="fr.simpleblog.model.DAOSql.DAOModelPays"
-		parent="DAOModel" />
-	<bean name="daoModelStyle" class="fr.simpleblog.model.DAOSql.DAOModelStyle"
-		parent="DAOModel" />
+	<bean id="daoModelArticle" name="daoModelArticle"
+		class="fr.simpleblog.model.DaoSql.DaoModelArticle" parent="DaoModel" />
+	<bean id="daoModelAuthority" name="daoModelAuthority"
+		class="fr.simpleblog.model.DaoSql.DaoModelAuthority" parent="DaoModel" />
+	<bean id="daoModelCategorie" name="daoModelCategorie"
+		class="fr.simpleblog.model.DaoSql.DaoModelCategorie" parent="DaoModel" />
+	<bean id="daoModelCommentaire" name="daoModelCommentaire"
+		class="fr.simpleblog.model.DaoSql.DaoModelCommentaire" parent="DaoModel" />
+	<bean id="daoModelFicheUtilisateur" name="daoModelFicheUtilisateur"
+		class="fr.simpleblog.model.DaoSql.DaoModelFicheUtilisateur" parent="DaoModel" />
+	<bean id="daoModelInteret" name="daoModelInteret"
+		class="fr.simpleblog.model.DaoSql.DaoModelInteret" parent="DaoModel" />
+	<bean id="daoModelPays" name="daoModelPays"
+		class="fr.simpleblog.model.DaoSql.DaoModelPays" parent="DaoModel" />
+	<bean id="daoModelStyle" name="daoModelStyle"
+		class="fr.simpleblog.model.DaoSql.DaoModelStyle" parent="DaoModel" />
 	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
-		class="fr.simpleblog.model.DAOSql.DAOModelUtilisateur" parent="DAOModel" />
+		class="fr.simpleblog.model.DaoSql.DaoModelUtilisateur" parent="DaoModel" />
 
 	<!-- Au démarrage de l'application Spring injecte la dao dans controller -->
 
 	<bean name="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
 		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
-		<property name="daoModelAuthority" ref="daoModelAuthority" />
-		<property name="daoModelFicheUtilisateur" ref="daoModelFicheUtilisateur" />
+		<property name="daoModelAuthority" ref="impServiceAuthority" />
+		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
 	</bean>
 
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
-		<property name="daoModelPays" ref="daoModelPays" />
+		<property name="daoModelPays" ref="impServicePays" />
 	</bean>
 
 	<bean name="paysAction" class="fr.simpleblog.controllers.PaysAction">
-		<property name="daoModelPays" ref="daoModelPays" />
+		<property name="daoModelPays" ref="impServicePays" />
 	</bean>
 
 
@@ -67,19 +69,36 @@
 	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
 		<property name="idaoModelUtilisateur" ref="daoModelUtilisateur" />
 	</bean>
-	
-	<bean name="impServiceFicheUtilisateur" class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
-		<property name="idaoModelFicheUtilisateur" ref="daoModelFicheUtilisateur"/>
+
+	<bean name="impServiceFicheUtilisateur"
+		class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
+		<property name="idaoModelFicheUtilisateur" ref="daoModelFicheUtilisateur" />
+	</bean>
+
+	<bean name="impServicePays" class="fr.simpleblog.domainService.ImpServicePays">
+		<property name="idaoModelPays" ref="daoModelPays" />
+	</bean>
+
+	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
+		<property name="idaoModelStyle" ref="daoModelStyle" />
+	</bean>
+
+	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">
+		<property name="idaoModelAuthority" ref="daoModelAuthority" />
+	</bean>
+
+	<bean name="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret">
+		<property name="idaoModelInteret" ref="daoModelInteret" />
 	</bean>
 
 	<!-- On injecte dans Cache dans ficheutilisateur -->
 
 	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
-		<property name="daoModelFicheUtilisateur" ref="daoModelFicheUtilisateur"></property>
-		<property name="daoModelUtilisateur" ref="daoModelUtilisateur"></property>
-		<property name="daoModelPays" ref="daoModelPays"></property>
-		<property name="daoModelInteret" ref="daoModelInteret"></property>
-		<property name="daoModelStyle" ref="daoModelStyle" />
+		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur"></property>
+		<property name="daoModelUtilisateur" ref="impServiceUtilisateur"></property>
+		<property name="daoModelPays" ref="impServicePays"></property>
+		<property name="daoModelInteret" ref="impServiceInteret"></property>
+		<property name="daoModelStyle" ref="impServiceStyle" />
 		<property name="cache" ref="cache"></property>
 	</bean>
 

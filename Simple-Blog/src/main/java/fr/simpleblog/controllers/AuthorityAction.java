@@ -3,22 +3,22 @@ package fr.simpleblog.controllers;
 import java.util.HashSet;
 
 import fr.simpleblog.beans.*;
-import fr.simpleblog.model.DAOSql.DAOModelAuthority;
+import fr.simpleblog.model.DaoSql.DaoModelAuthority;
 
 public class AuthorityAction {
 	
 	private Authority authority;
 	private HashSet<Authority> authorities;
 
-	DAOModelAuthority daoModelAuthority = new DAOModelAuthority();
+	DaoModelAuthority daoModelAuthority = new DaoModelAuthority();
 
-	public HashSet<Authority> listerAuthority() {
-		authorities = (HashSet<Authority>) daoModelAuthority.listerAuthority();
+	public HashSet<Authority> listAuthority() {
+		authorities = (HashSet<Authority>) daoModelAuthority.listAuthority();
 		return authorities;
 	}
 
-	public HashSet<Authority> listerAuthorityParUtil(Utilisateur utilisateur) {
-		authorities = (HashSet<Authority>) daoModelAuthority.listerAuthorityParUtil(utilisateur);
+	public HashSet<Authority> listAuthorityByUserId(int i) {
+		authorities = (HashSet<Authority>) daoModelAuthority.listAuthorityByUserId(i);
 		return authorities;
 	}
 

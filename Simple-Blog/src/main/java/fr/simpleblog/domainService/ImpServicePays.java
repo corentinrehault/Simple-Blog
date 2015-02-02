@@ -6,7 +6,7 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import fr.simpleblog.beans.Pays;
-import fr.simpleblog.model.interfaces.IDAOModelPays;
+import fr.simpleblog.model.interfaces.IdaoModelPays;
 
 /**
  * @author dao303
@@ -14,7 +14,7 @@ import fr.simpleblog.model.interfaces.IDAOModelPays;
  */
 public class ImpServicePays implements IservicePays {
 	
-	IDAOModelPays idaoModelPays;
+	IdaoModelPays idaoModelPays;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
@@ -82,14 +82,14 @@ public class ImpServicePays implements IservicePays {
 	/**
 	 * @return the idaoModelPays
 	 */
-	public IDAOModelPays getIdaoModelPays() {
+	public IdaoModelPays getIdaoModelPays() {
 		return idaoModelPays;
 	}
 
 	/**
 	 * @param idaoModelPays the idaoModelPays to set
 	 */
-	public void setIdaoModelPays(IDAOModelPays idaoModelPays) {
+	public void setIdaoModelPays(IdaoModelPays idaoModelPays) {
 		this.idaoModelPays = idaoModelPays;
 	}
 

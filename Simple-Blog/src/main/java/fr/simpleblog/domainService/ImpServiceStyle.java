@@ -6,7 +6,7 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import fr.simpleblog.beans.Style;
-import fr.simpleblog.model.interfaces.IDAOModelStyle;
+import fr.simpleblog.model.interfaces.IdaoModelStyle;
 
 /**
  * @author dao303
@@ -14,7 +14,7 @@ import fr.simpleblog.model.interfaces.IDAOModelStyle;
  */
 public class ImpServiceStyle implements IserviceStyle {
 	
-	IDAOModelStyle idaoModelStyle;
+	IdaoModelStyle idaoModelStyle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
@@ -82,14 +82,14 @@ public class ImpServiceStyle implements IserviceStyle {
 	/**
 	 * @return the idaoModelStyle
 	 */
-	public IDAOModelStyle getIdaoModelStyle() {
+	public IdaoModelStyle getIdaoModelStyle() {
 		return idaoModelStyle;
 	}
 
 	/**
 	 * @param idaoModelStyle the idaoModelStyle to set
 	 */
-	public void setIdaoModelStyle(IDAOModelStyle idaoModelStyle) {
+	public void setIdaoModelStyle(IdaoModelStyle idaoModelStyle) {
 		this.idaoModelStyle = idaoModelStyle;
 	}
 

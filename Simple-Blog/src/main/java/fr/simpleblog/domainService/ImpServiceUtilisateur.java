@@ -6,7 +6,7 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import fr.simpleblog.beans.Utilisateur;
-import fr.simpleblog.model.interfaces.IDAOModelUtilisateur;
+import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
 
 /**
  * @author dao303
@@ -14,7 +14,7 @@ import fr.simpleblog.model.interfaces.IDAOModelUtilisateur;
  */
 public class ImpServiceUtilisateur implements IserviceUtilisateur {
 	
-	IDAOModelUtilisateur idaoModelUtilisateur;
+	IdaoModelUtilisateur idaoModelUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
@@ -60,14 +60,14 @@ public class ImpServiceUtilisateur implements IserviceUtilisateur {
 	/**
 	 * @return the iDAOModelUtilisateur
 	 */
-	public IDAOModelUtilisateur getiDAOModelUtilisateur() {
+	public IdaoModelUtilisateur getiDAOModelUtilisateur() {
 		return idaoModelUtilisateur;
 	}
 
 	/**
 	 * @param iDAOModelUtilisateur the iDAOModelUtilisateur to set
 	 */
-	public void setiDAOModelUtilisateur(IDAOModelUtilisateur iDAOModelUtilisateur) {
+	public void setiDAOModelUtilisateur(IdaoModelUtilisateur iDAOModelUtilisateur) {
 		this.idaoModelUtilisateur = iDAOModelUtilisateur;
 	}
 
@@ -83,14 +83,14 @@ public class ImpServiceUtilisateur implements IserviceUtilisateur {
 	/**
 	 * @return the idaoModelUtilisateur
 	 */
-	public IDAOModelUtilisateur getIdaoModelUtilisateur() {
+	public IdaoModelUtilisateur getIdaoModelUtilisateur() {
 		return idaoModelUtilisateur;
 	}
 
 	/**
 	 * @param idaoModelUtilisateur the idaoModelUtilisateur to set
 	 */
-	public void setIdaoModelUtilisateur(IDAOModelUtilisateur idaoModelUtilisateur) {
+	public void setIdaoModelUtilisateur(IdaoModelUtilisateur idaoModelUtilisateur) {
 		this.idaoModelUtilisateur = idaoModelUtilisateur;
 	}
 

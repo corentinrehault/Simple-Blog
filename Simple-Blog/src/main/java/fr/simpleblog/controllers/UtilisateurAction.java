@@ -17,20 +17,12 @@ import fr.simpleblog.beans.Interet;
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.beans.Utilisateur;
+
+import fr.simpleblog.domainService.IserviceAuthority;
+import fr.simpleblog.domainService.IserviceFicheUtilisateur;
+import fr.simpleblog.domainService.IservicePays;
+import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
-import fr.simpleblog.model.DAOSql.DAOModelAuthority;
-
-
-import fr.simpleblog.model.DAOSql.DAOModelFicheUtilisateur;
-
-
-
-
-import fr.simpleblog.model.DAOSql.DAOModelPays;
-import fr.simpleblog.model.DAOSql.DAOModelStyle;
-
-
-
 
 /*
  * Pour afficher la pile d'interception dans la console
@@ -62,10 +54,10 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public Pays pays;
 
 	public IserviceUtilisateur daoModelUtilisateur;
-	public DAOModelAuthority daoModelAuthority;
-	public DAOModelFicheUtilisateur daoModelFicheUtilisateur;
-	public DAOModelStyle daoModelStyle;
-	public DAOModelPays daoModelPays;
+	public IserviceAuthority daoModelAuthority;
+	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
+	public IserviceStyle daoModelStyle;
+	public IservicePays daoModelPays;
 
 	/**
 	 * @return utilisateurs
@@ -131,7 +123,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 			this.sessionMap.put("ficheId", utilisateur.ficheUtilisateur.getId());
 			this.sessionMap.put("styleId", utilisateur.style.getId());
 
-			authorities = daoModelAuthority.listerAuthorityParUtil(utilisateur);
+			authorities = daoModelAuthority.listAuthorityByUserId(utilisateur.getId());
 
 			if (authorities != null) {
 				authorities.iterator();
@@ -399,14 +391,14 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	/**
 	 * @return the daoModelAuthority
 	 */
-	public DAOModelAuthority getDaoModelAuthority() {
+	public IserviceAuthority getDaoModelAuthority() {
 		return daoModelAuthority;
 	}
 
 	/**
 	 * @param daoModelAuthority the daoModelAuthority to set
 	 */
-	public void setDaoModelAuthority(DAOModelAuthority daoModelAuthority) {
+	public void setDaoModelAuthority(IserviceAuthority daoModelAuthority) {
 		this.daoModelAuthority = daoModelAuthority;
 	}
 
@@ -427,7 +419,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	/**
 	 * @return the daoModelFicheUtilisateur
 	 */
-	public DAOModelFicheUtilisateur getDaoModelFicheUtilisateur() {
+	public IserviceFicheUtilisateur getDaoModelFicheUtilisateur() {
 		return daoModelFicheUtilisateur;
 	}
 
@@ -435,7 +427,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
 	 */
 	public void setDaoModelFicheUtilisateur(
-			DAOModelFicheUtilisateur daoModelFicheUtilisateur) {
+			IserviceFicheUtilisateur daoModelFicheUtilisateur) {
 		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
 	}
 
@@ -456,28 +448,28 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	/**
 	 * @return the daoModelStyle
 	 */
-	public DAOModelStyle getDaoModelStyle() {
+	public IserviceStyle getDaoModelStyle() {
 		return daoModelStyle;
 	}
 
 	/**
 	 * @param daoModelStyle the daoModelStyle to set
 	 */
-	public void setDaoModelStyle(DAOModelStyle daoModelStyle) {
+	public void setDaoModelStyle(IserviceStyle daoModelStyle) {
 		this.daoModelStyle = daoModelStyle;
 	}
 
 	/**
 	 * @return the daoModelPays
 	 */
-	public DAOModelPays getDaoModelPays() {
+	public IservicePays getDaoModelPays() {
 		return daoModelPays;
 	}
 
 	/**
 	 * @param daoModelPays the daoModelPays to set
 	 */
-	public void setDaoModelPays(DAOModelPays daoModelPays) {
+	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
 

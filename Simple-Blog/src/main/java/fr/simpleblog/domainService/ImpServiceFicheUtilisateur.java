@@ -4,7 +4,7 @@
 package fr.simpleblog.domainService;
 
 import fr.simpleblog.beans.FicheUtilisateur;
-import fr.simpleblog.model.interfaces.IDAOModelFicheUtilisateur;
+import fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur;
 
 /**
  * @author dao303
@@ -12,7 +12,7 @@ import fr.simpleblog.model.interfaces.IDAOModelFicheUtilisateur;
  */
 public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
 	
-	IDAOModelFicheUtilisateur idaoModelFicheUtilisateur;
+	IdaoModelFicheUtilisateur idaoModelFicheUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
@@ -80,7 +80,7 @@ public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
 	/**
 	 * @return the idaoModelFicheUtilisateur
 	 */
-	public IDAOModelFicheUtilisateur getIdaoModelFicheUtilisateur() {
+	public IdaoModelFicheUtilisateur getIdaoModelFicheUtilisateur() {
 		return idaoModelFicheUtilisateur;
 	}
 
@@ -88,7 +88,7 @@ public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
 	 * @param idaoModelFicheUtilisateur the idaoModelFicheUtilisateur to set
 	 */
 	public void setIdaoModelFicheUtilisateur(
-			IDAOModelFicheUtilisateur idaoModelFicheUtilisateur) {
+			IdaoModelFicheUtilisateur idaoModelFicheUtilisateur) {
 		this.idaoModelFicheUtilisateur = idaoModelFicheUtilisateur;
 	}
 

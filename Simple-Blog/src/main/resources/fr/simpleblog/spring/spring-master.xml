@@ -38,8 +38,8 @@
 		/> -->
 
 
-	<!-- Activation de la validation (hibernate validator et validation-api) -->
-	<mvc:annotation-driven />
+	<!-- Activation de la validation (hibernate validator et validation-api) 
+	<mvc:annotation-driven /> -->
 
 
 	<!-- Handles HTTP GET requests for /staticResources/** by efficiently serving 
@@ -56,7 +56,7 @@
 
 	<import resource="spring-beans.xml" />
 
-	<import resource="spring-tiles.xml" />
+<!-- 	<import resource="spring-tiles.xml" /> -->
 
 	<import resource="spring-datasource.xml" />
 

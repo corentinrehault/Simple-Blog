@@ -10,7 +10,7 @@
 
 
 
-	<!-- constantes du pom -->
+		<!-- constantes du pom -->
 
 	<properties>
 		<struts2.version>2.3.16.3</struts2.version>
@@ -166,6 +166,9 @@
 			<version>4.3.6.Final</version>
 		</dependency>
 
+
+
+
 		<!-- JDBC drivers for mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -216,7 +219,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>Simple-Blog</finalName>
+		<finalName>blogEngine</finalName>
 
 
 		<plugins>
@@ -231,5 +234,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

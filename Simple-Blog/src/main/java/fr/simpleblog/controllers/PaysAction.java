@@ -1,8 +1,7 @@
 package fr.simpleblog.controllers;
 
 import fr.simpleblog.beans.*;
-import fr.simpleblog.model.DAOSql.DAOModelPays;
-
+import fr.simpleblog.domainService.IservicePays;
 import java.util.*;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,7 +18,7 @@ public class PaysAction extends ActionSupport implements Preparable {
 	private Pays pays;
 	private List<Pays> ensemblePays;
 
-	DAOModelPays daoModelPays;
+	IservicePays daoModelPays;
 
 	/**
 	 * @return the pays
@@ -67,14 +66,14 @@ public class PaysAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the daoModelPays
 	 */
-	public DAOModelPays getDaoModelPays() {
+	public IservicePays getDaoModelPays() {
 		return daoModelPays;
 	}
 
 	/**
 	 * @param daoModelPays the daoModelPays to set
 	 */
-	public void setDaoModelPays(DAOModelPays daoModelPays) {
+	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
 }

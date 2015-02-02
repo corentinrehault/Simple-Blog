@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
 import fr.simpleblog.beans.Pays;
-import fr.simpleblog.model.DAOSql.DAOModelPays;
+import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.services.ParsingService;
 
 public class RootAction extends ActionSupport implements Preparable {
@@ -22,8 +22,11 @@ public class RootAction extends ActionSupport implements Preparable {
 	private static final long serialVersionUID = 4448517924375834371L;
 
 	ParsingService parsingPays = new ParsingService();
-	DAOModelPays daoModelPays;
+
+	public IservicePays daoModelPays;
+
 	private List<Pays> ensemblePays = new LinkedList<Pays>();
+
 
 	public void recupererListePays() {
 
@@ -44,25 +47,25 @@ public class RootAction extends ActionSupport implements Preparable {
 
 	}
 
-	
+
 	public void comparerListePayes() {
-		 
+
 	}
 
 	public void recupererArticle() {
-		 
+
 	}
 
 	public void recupererStylepardefaut() {
-		 
+
 	}
 
 	public void changerStylepardefaut() {
-		 
+
 	}
 
 	public void changerLangue() {
-		 
+
 	}
 
 	/**
@@ -98,14 +101,14 @@ public class RootAction extends ActionSupport implements Preparable {
 	/**
 	 * @return the daoModelPays
 	 */
-	public DAOModelPays getDaoModelPays() {
+	public IservicePays getDaoModelPays() {
 		return daoModelPays;
 	}
 
 	/**
 	 * @param daoModelPays the daoModelPays to set
 	 */
-	public void setDaoModelPays(DAOModelPays daoModelPays) {
+	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
 
