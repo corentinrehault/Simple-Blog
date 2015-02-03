@@ -13,10 +13,10 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- <property name="id" value="1"></property> -->
 	<!-- <property name="message" value="noError message !"></property> -->
 	<!-- </bean> -->
-	
-	
+
+
 	<!-- Bean d'acces au Contexte -->
-	<bean id="applicationContextHolder"	class="fr.simpleblog.services.ApplicationContextHolder" />
+	<bean id="applicationContextHolder" class="fr.simpleblog.services.ApplicationContextHolder" />
 
 	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
@@ -108,6 +108,10 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- <cache:cacheable method="cachePays" key="#Id"/> -->
 	<!-- </cache:caching> -->
 	<!-- </cache:advice> -->
+
+
+	<!-- Pour fonctionner avec Autowired dans les tests -->
+	<bean class="org.springframework.mock.web.MockHttpServletRequest" />
 
 
 </beans>

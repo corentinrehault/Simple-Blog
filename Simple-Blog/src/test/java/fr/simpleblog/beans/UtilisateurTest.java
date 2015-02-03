@@ -1,12 +1,12 @@
 /**
  * 
  */
-package beans;
+package fr.simpleblog.beans;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
-
 import baseTest.BaseTest;
 import fr.simpleblog.beans.Utilisateur;
 
@@ -15,9 +15,6 @@ import fr.simpleblog.beans.Utilisateur;
  *
  */
 public class UtilisateurTest extends BaseTest {
-
-
-
 
 
 	/**
@@ -79,7 +76,7 @@ public class UtilisateurTest extends BaseTest {
 		utilisateur.setUsername("test");
 		assertEquals("Username", "test", utilisateur.getUsername());
 	}
-	
+
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setPassword(java.lang.String)}.
 	 */
@@ -163,120 +160,173 @@ public class UtilisateurTest extends BaseTest {
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setLangue(java.lang.String)}.
 	 */
+	@Test
 	public void testSetLangue() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setLangue("test");
+		assertEquals("Langue", "test", utilisateur.getLangue());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getLangue()}.
 	 */
+	@Test
 	public void testGetLangue() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setLangue("test");
+		assertEquals("Langue", "test", utilisateur.getLangue());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setEnabled(boolean)}.
 	 */
+	@Test
 	public void testSetEnabled() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setEnabled(true);
+		Assert.assertTrue("Enabled", utilisateur.isEnabled());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setAccountNonExpired(boolean)}.
 	 */
+	@Test
 	public void testSetAccountNonExpired() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setAccountNonExpired(true);
+		Assert.assertTrue("NonExpired", utilisateur.isAccountNonExpired());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setAccountNonLocked(boolean)}.
 	 */
+	@Test
 	public void testSetAccountNonLocked() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setAccountNonLocked(true);
+		Assert.assertTrue("NonLocked", utilisateur.isAccountNonLocked());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setCredentialsNonExpired(boolean)}.
 	 */
+	@Test
 	public void testSetCredentialsNonExpired() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setCredentialsNonExpired(true);
+		Assert.assertTrue("Credentials NonExpired", utilisateur.isCredentialsNonExpired());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#toString()}.
 	 */
+	@Test
 	public void testToString() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setNom("test");
+		Assert.assertNotNull("ToString", utilisateur.toString());
 	}
 
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getAuthorities()}.
-	 */
-	public void testGetAuthorities() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setAuthorities(java.util.HashSet)}.
-	 */
-	public void testSetAuthorities() {
-		//fail("Not yet implemented");
-	}
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getAuthorities()}.
+	//	 */
+	//  @Test
+	//	public void testGetAuthorities() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		utilisateur.setAvatar("test");
+	//		assertEquals("Avatar", "test", utilisateur.getAvatar());
+	//	}
+	//
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setAuthorities(java.util.HashSet)}.
+	//	 */
+	//  @Test
+	//	public void testSetAuthorities() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		utilisateur.setAvatar("test");
+	//		assertEquals("Avatar", "test", utilisateur.getAvatar());
+	//	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#isAccountNonExpired()}.
 	 */
+	@Test
 	public void testIsAccountNonExpired() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setAccountNonExpired(true);
+		Assert.assertNotNull("Account Nonexpired", utilisateur.isAccountNonExpired());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#isAccountNonLocked()}.
 	 */
+	@Test
 	public void testIsAccountNonLocked() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setAccountNonLocked(true);
+		Assert.assertNotNull("Account NonLocked", utilisateur.isAccountNonLocked());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#isCredentialsNonExpired()}.
 	 */
+	@Test
 	public void testIsCredentialsNonExpired() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setCredentialsNonExpired(true);
+		Assert.assertNotNull("Credentials NonExpired", utilisateur.isCredentialsNonExpired());
 	}
 
 	/**
 	 * Test method for {@link fr.simpleblog.beans.Utilisateur#isEnabled()}.
 	 */
+	@Test
 	public void testIsEnabled() {
-		//fail("Not yet implemented");
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setEnabled(true);
+		Assert.assertNotNull("Enabled", utilisateur.isEnabled());
 	}
 
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getFicheUtilisateur()}.
-	 */
-	public void testGetFicheUtilisateur() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setFicheUtilisateur(fr.simpleblog.beans.FicheUtilisateur)}.
-	 */
-	public void testSetFicheUtilisateur() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getStyle()}.
-	 */
-	public void testGetStyle() {
-		//fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setStyle(fr.simpleblog.beans.Style)}.
-	 */
-	public void testSetStyle() {
-		//fail("Not yet implemented");
-	}
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getFicheUtilisateur()}.
+	//	 */
+	//  @Test
+	//	public void testGetFicheUtilisateur() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		utilisateur.setAvatar("test");
+	//		assertEquals("Avatar", "test", utilisateur.getAvatar());
+	//	}
+	//
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setFicheUtilisateur(fr.simpleblog.beans.FicheUtilisateur)}.
+	//	 */
+	//  @Test
+	//	public void testSetFicheUtilisateur() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		utilisateur.setAvatar("test");
+	//		assertEquals("Avatar", "test", utilisateur.getAvatar());
+	//	}
+	//
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#getStyle()}.
+	//	 */
+	//	@Test
+	//	public void testGetStyle() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		Style style = new Style();
+	//		utilisateur.style.setNom("test");
+	//		System.out.println(utilisateur.style);
+	//		Assert.assertNotNull("Style", utilisateur.getStyle());
+	//	}
+	//
+	//	/**
+	//	 * Test method for {@link fr.simpleblog.beans.Utilisateur#setStyle(fr.simpleblog.beans.Style)}.
+	//	 */
+	//	@Test
+	//	public void testSetStyle() {
+	//		Utilisateur utilisateur = new Utilisateur();
+	//		utilisateur.style.setNom("test");
+	//		assertEquals("Style", "test", utilisateur.style.getNom());
+	//	}
 
 }

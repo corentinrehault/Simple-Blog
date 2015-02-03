@@ -5,4 +5,4 @@
  * @author dao303
  *
  */
-package beans;
+package fr.simpleblog.model;

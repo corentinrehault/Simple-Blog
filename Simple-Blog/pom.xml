@@ -235,11 +235,28 @@
 			<artifactId>spring-test</artifactId>
 			<version>4.1.4.RELEASE</version>
 		</dependency>
+		
+		<!-- dbUnit -->
+		
+		 <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>LATEST</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.github.springtestdbunit</groupId>
+            <artifactId>spring-test-dbunit</artifactId>
+            <version>LATEST</version>
+            <scope>test</scope>
+        </dependency>
 
 	</dependencies>
 
 	<build>
-		<finalName>blogEngine</finalName>
+		<finalName>Simple-Blog</finalName>
 
 
 		<plugins>

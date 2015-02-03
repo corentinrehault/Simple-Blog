@@ -5,4 +5,4 @@
  * @author dao303
  *
  */
-package fr.simpleblog.controller;
+package fr.simpleblog.model.DaoSql;
