@@ -140,8 +140,6 @@ public class DaoModelPays extends DaoModel implements IdaoModelPays, IservicePay
 			//System.out.println(stringRequest.toString());
 
 			for(Pays p : ensemblePays) {
-				//System.out.println(ensemblePays.indexOf(p) +" "+ (ensemblePays.indexOf(p)*2+1) +
-				//		" "+ (ensemblePays.indexOf(p)*2+2) +" "+ p.getNom() +" "+ p.getCodepays());
 				request.setString((ensemblePays.indexOf(p)*2+1), p.getNom());
 				request.setString((ensemblePays.indexOf(p)*2+2), p.getCodepays());
 			}

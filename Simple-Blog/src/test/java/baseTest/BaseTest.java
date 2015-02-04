@@ -17,6 +17,12 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockServletContext;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,8 +31,9 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+import fr.simpleblog.beans.Authority;
+import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.UtilisateurAction;
 import fr.simpleblog.services.ApplicationContextHolder;
 
@@ -82,13 +89,29 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 		super.setApplicationContext(context);
 
 		// seulement dans le cas d'utilisation de spring security //
-		//AuthenticationManager authenticationManager = (AuthenticationManager) context.getBean("authenticationManager");
-		//final ProviderManager providerManager = (ProviderManager) authenticationManager;
-		//final Authentication auth = providerManager.authenticate(new UsernamePasswordAuthenticationToken("d@d.com", "d@d.com"));
-		//SecurityContextHolder.getContext().setAuthentication(auth);
+		AuthenticationManager authenticationManager = (AuthenticationManager) context.getBean("authenticationManager");
+		final ProviderManager providerManager = (ProviderManager) authenticationManager;
+		
+		
+//USERMOCK		
+		
+//		Utilisateur userMock = new Utilisateur();
+//		
+//		userMock.setUsername("ooo");
+//		userMock.setPassword("1233456");
+//		Authority aut = new Authority();
+//		aut.setAuthority("ROLE_USER");
+//		 userMock.authorities.add(aut);
+		
+//		final Authentication authToken = new UsernamePasswordAuthenticationToken (userMock.getUsername(), userMock.getPassword(), userMock.getAuthorities());
+
+		final Authentication authToken = new UsernamePasswordAuthenticationToken ("", "");
+		SecurityContextHolder.getContext().setAuthentication(authToken);
+		
+		System.out.println(" ===> " +  authenticationManager.authenticate(authToken));
 
 		//envoi du context spring dans la session
-		//sessionMap.put("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+		sessionMap.put("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 	}
 
 
@@ -100,7 +123,7 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 
 		//	SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
 		//	SessionFactoryUtils.closeSession(sessionHolder.getSession());
-		//	SecurityContextHolder.getContext().setAuthentication(null);
+			SecurityContextHolder.getContext().setAuthentication(null);
 	}
 
 
@@ -108,7 +131,7 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 	@Test
 	public void executeTest() throws Exception {
 
-		System.err.println("no test");
+		System.err.println("Base test ok");
 
 	}
 

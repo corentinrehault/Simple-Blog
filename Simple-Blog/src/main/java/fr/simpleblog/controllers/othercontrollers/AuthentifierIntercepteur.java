@@ -45,6 +45,7 @@ public class AuthentifierIntercepteur extends AbstractInterceptor{
 	 * @see com.opensymphony.xwork2.interceptor.AbstractInterceptor#destroy()
 	 */
 	public void destroy() {
+		
 		System.out.println("Après la méthode d'action");
 	}
 }

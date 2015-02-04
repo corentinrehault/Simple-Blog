@@ -120,8 +120,8 @@ ALTER TABLE FicheUtilisateur ADD INDEX FKFicheUtili623214 (PaysId), ADD CONSTRAI
 
 #INSERT INTO `Pays` VALUES (1,'France','FR');
 INSERT INTO `Style` VALUES (1,'defaut'), (2,'gris'), (3,'vert'), (4,'bleu');
-INSERT INTO `Authority` VALUES (1,'user');
-INSERT INTO `Authority` VALUES (2,'admin');
+INSERT INTO `Authority` VALUES (1,'ROLE_USER');
+INSERT INTO `Authority` VALUES (2,'ROLE_ADMIN');
 INSERT INTO `Ficheutilisateur` VALUES (1,NULL,'1, rue de la mairie','rennes','35000');
 INSERT INTO `Ficheutilisateur` VALUES (2,NULL,'2, rue de la mairie','rennes','35000');
 INSERT INTO `Ficheutilisateur` VALUES (3,NULL,'3, rue de la mairie','rennes','35000');

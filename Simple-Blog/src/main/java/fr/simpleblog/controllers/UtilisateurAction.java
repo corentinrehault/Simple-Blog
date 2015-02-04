@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -17,19 +20,20 @@ import fr.simpleblog.beans.Interet;
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.beans.Utilisateur;
-
 import fr.simpleblog.domainService.IserviceAuthority;
 import fr.simpleblog.domainService.IserviceFicheUtilisateur;
 import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 
+
+
 /*
  * Pour afficher la pile d'interception dans la console
  */
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
-public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware  {
+public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware, UserDetailsService  {
 
 	/**
 	 * 
@@ -108,7 +112,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String connecterUtilisateur() {
 
-		
+
 		utilisateur = daoModelUtilisateur.login(utilisateur);
 
 		//System.out.println(utilisateur.toString());
@@ -127,8 +131,10 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 			if (authorities != null) {
 				authorities.iterator();
-				System.out.println(authorities.iterator());
-				this.sessionMap.put("authority"+authorities.iterator().next().getAuthority(),authorities.iterator().next().getAuthority());
+				System.out.println(authorities);
+				for(Authority a : authorities) {
+					this.sessionMap.put("authority"+a.getAuthority(),a.getAuthority());
+				}
 			}
 
 		}
@@ -471,6 +477,15 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
+	 */
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {		
+		return null;
 	}
 
 }

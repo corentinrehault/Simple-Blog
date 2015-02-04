@@ -39,7 +39,7 @@
 
 
 	<!-- Activation de la validation (hibernate validator et validation-api) 
-	<mvc:annotation-driven /> -->
+		<mvc:annotation-driven /> -->
 
 
 	<!-- Handles HTTP GET requests for /staticResources/** by efficiently serving 
@@ -50,13 +50,15 @@
 
 
 
-	<!-- <import resource="spring-security.xml" /> -->
+	<import resource="spring-security.xml" />
 
 	<!-- <import resource="dispatcher-servlet.xml" /> -->
 
 	<import resource="spring-beans.xml" />
 
-<!-- 	<import resource="spring-tiles.xml" /> -->
+	<!-- incompatibilité avec jUnit4 -->
+	<!-- ATTENTION LAISSER DESACTIVE FAIT BUGGER SPRING SECURITY -->
+	<!-- <import resource="spring-tiles.xml" /> -->
 
 	<import resource="spring-datasource.xml" />
 

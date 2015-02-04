@@ -30,7 +30,7 @@
 
 			<!-- /.blog-main -->
 
-			<s:if test="%{#session.authority=='admin'}">
+			<s:if test="%{#session.authorityadmin=='admin'}">
 
 				<div class="col-sm-3 blog-sidebar">
 					<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>

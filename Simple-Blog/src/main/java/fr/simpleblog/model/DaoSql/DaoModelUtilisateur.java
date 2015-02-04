@@ -3,14 +3,22 @@ package fr.simpleblog.model.DaoSql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import fr.simpleblog.beans.Authority;
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.othercontrollers.DBAdministration;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
 
-public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateur, IserviceUtilisateur {
+public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateur, IserviceUtilisateur, UserDetailsService{
 
 	Connection connection=null;
 	ResultSet result=null;
@@ -20,8 +28,10 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 	 */
 	public Utilisateur create(Utilisateur utilisateur) {
 
-		PreparedStatement request=null;
-		String stringRequest=null;
+		PreparedStatement requestUtil=null;
+		PreparedStatement requestAuth=null;
+		String insertUtilisateur=null;
+		String insertAuthority=null;
 
 		@SuppressWarnings("unused")
 		int errorCode;
@@ -30,16 +40,30 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 			connection=super.getConnection();
 			System.out.println("Connecté");
 			System.out.println(utilisateur);
-			stringRequest="INSERT INTO Utilisateur (Nom,Prenom,Login,Password,Mail) VALUES(?,?,?,?,?)";
-			request=connection.prepareStatement(stringRequest);
-			request.setString(1, utilisateur.getNom());
-			request.setString(2, utilisateur.getPrenom());
-			request.setString(3, utilisateur.getUsername());
-			request.setString(4, utilisateur.getPassword());
-			request.setString(5, utilisateur.getMail());
+
+			//Début du bloc de transaction
+			//connection.setAutoCommit(false);
+
+			insertUtilisateur="INSERT INTO Utilisateur (Nom,Prenom,Username,Password,Mail) VALUES(?,?,?,?,?)";
+			requestUtil=connection.prepareStatement(insertUtilisateur);
+			requestUtil.setString(1, utilisateur.getNom());
+			requestUtil.setString(2, utilisateur.getPrenom());
+			requestUtil.setString(3, utilisateur.getUsername());
+			requestUtil.setString(4, utilisateur.getPassword());
+			requestUtil.setString(5, utilisateur.getMail());
 			utilisateur=null;
-			System.out.println("request --->" + request.executeUpdate());
-			errorCode=request.executeUpdate();
+			System.out.println("request --->" + requestUtil.executeUpdate());
+			errorCode=requestUtil.executeUpdate();
+
+			insertAuthority="INSERT INTO Authority_Utilisateur (AuthorityId_a_u,UtilisateurId_a_u) VALUES('1',LAST_INSERT_ID())";
+			requestAuth=connection.prepareStatement(insertAuthority);
+			System.out.println("request --->" + requestAuth.executeUpdate());
+			errorCode=requestAuth.executeUpdate();
+
+			//Fin du bloc de transaction
+			//System.out.println("connection.commit()");
+			//connection.commit();
+
 		} catch(Exception e) {
 			utilisateur=null;
 			errorCode=0;
@@ -49,8 +73,11 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 				if(result!=null) {
 					DBAdministration.closeResultSet(result);
 				}
-				if(request!=null) {
-					DBAdministration.closeRequest(request);
+				if(requestUtil!=null) {
+					DBAdministration.closeRequest(requestUtil);
+				}
+				if(requestAuth!=null) {
+					DBAdministration.closeRequest(requestAuth);
 				}
 				if(connection!=null) {
 					DBAdministration.closeConnection(connection);
@@ -264,6 +291,84 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 
 		return utilisateur;
 
+	}
+
+	/* (non-Javadoc)
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
+	 */
+	@Override
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
+
+		PreparedStatement request=null;
+		PreparedStatement requestAuth=null;
+		String stringRequest=null;
+		String stringAuth=null;
+
+		System.out.println("---------Dans login spring sec----------- " + username);
+
+		Utilisateur utilisateur;
+		UserDetails proxyUser;
+
+		try {
+			connection=super.getConnection();
+			System.out.println("Connecté");
+			stringRequest="SELECT * FROM Utilisateur WHERE Username = ?";
+			request=connection.prepareStatement(stringRequest);
+			request.setString(1, username);
+
+			result=request.executeQuery();
+
+			System.out.println("--->" + request);
+
+			if(result.first()) {
+				utilisateur = Mapper.utilisateurMapper(result);
+				
+				
+				
+			} else {
+				utilisateur = null;
+			}
+		} catch(Exception e) {
+			utilisateur=null;
+			System.out.println("Erreur dans la requête dans la classe DAOModelUtilisateur method login");
+		} finally {
+			try {
+				
+				if(result!=null) {
+					DBAdministration.closeResultSet(result);
+				}
+				
+				if(request!=null) {
+					DBAdministration.closeRequest(request);
+				}
+				
+				if(connection!=null) {
+					DBAdministration.closeConnection(connection);
+				}
+				
+			} catch(Exception e) {
+				System.out.println("Erreur lors de la fermeture de la connexion avec la base de données dans la classe DAOModelUtilisateur method login");
+			}
+		}
+
+
+
+
+
+		Authority mockaut = new Authority();
+		mockaut.setAuthority("ROLE_USER");
+
+		HashSet<Authority> auths = new HashSet<Authority>();
+		auths.add(mockaut);
+
+		utilisateur.setAuthorities(auths);
+
+		proxyUser = utilisateur;
+
+		System.err.println(" credential ? " + utilisateur);
+
+		return proxyUser;
 	}
 
 }

@@ -84,16 +84,17 @@ public class DaoModelAuthority extends DaoModel implements IdaoModelAuthority, I
 
 			connection=super.getConnection();
 			System.out.println("Dans la méthode listerAuthorityParUtil");
-			stringRequest="SELECT * FROM authority_utilisateur WHERE UtilisateurId_a_u=?";
+			stringRequest="SELECT * FROM authority INNER JOIN authority_utilisateur ON authority.id=authority_utilisateur.authorityId_a_u WHERE UtilisateurId_a_u=?";
 			request=connection.prepareStatement(stringRequest);
 			request.setInt(1, i);
 			System.out.println("request --->" + request);
 			result=request.executeQuery();
 			if(result!=null) {
-				if (result.next()) {
-					authority = read(Mapper.authorityParUtilMapper(result));
-					authorities.add(authority);
+				while (result.next()) {
+					authority = Mapper.authorityMapper(result);
+					authorities.add(authority);	
 				}
+				System.out.println(authorities);
 			} else {
 				i = 0;
 			}

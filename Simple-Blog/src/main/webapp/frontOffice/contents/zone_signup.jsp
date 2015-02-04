@@ -13,7 +13,7 @@
 			name="utilisateur.prenom" value="" placeholder="%{getText('prenom')}"
 			size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('login')}" type="text"
-			name="utilisateur.login" value="" placeholder="%{getText('login')}"
+			name="utilisateur.username" value="" placeholder="%{getText('login')}"
 			size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('mailaddress')}" type="email"
 			name="utilisateur.mail" value=""

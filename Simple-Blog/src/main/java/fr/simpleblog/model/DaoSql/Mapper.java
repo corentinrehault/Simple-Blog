@@ -91,7 +91,30 @@ public class Mapper {
 				utilisateur.setStyle(style);
 			}
 
-			
+			if (result.getString("isenabled") == "") {
+				utilisateur.setEnabled(false);
+			} else {
+				utilisateur.setEnabled(true);
+			}
+
+			if (result.getString("isaccountnonexpired") == "") {
+				utilisateur.setAccountNonExpired(false);
+			} else {
+				utilisateur.setAccountNonExpired(true);
+			}
+
+			if (result.getString("isaccountnonlocked") == "") {
+				utilisateur.setAccountNonLocked(false);
+			} else {
+				utilisateur.setAccountNonLocked(true);
+			}
+
+			if (result.getString("iscredentialsnonexpired") == "") {
+				utilisateur.setCredentialsNonExpired(false);
+			} else {
+				utilisateur.setCredentialsNonExpired(true);
+			}
+
 		} catch (Exception e) {
 			utilisateur=null;
 			System.out.println("Erreur lors du mapping des attributs d'un utilisateur dans la classe Mapper method utilisateurMapper");
@@ -305,7 +328,7 @@ public class Mapper {
 				pays.setId(Integer.valueOf(result.getString("paysid")));
 				ficheUtilisateur.setPays(pays);
 			}
-			
+
 		} catch (Exception e) {
 			ficheUtilisateur=null;
 			System.out.println("Erreur lors du mapping des attributs d'une FicheUtilisateur dans la classe Mapper method ficheUtilisateurMapper");
