@@ -57,8 +57,8 @@ public class Article implements Ibeans {
 	public String toString() {
 		return "Article [dateCreation=" + dateCreation + ", titre=" + titre
 				+ ", id=" + id + ", contenu=" + contenu + ", commentaires="
-				+ commentaires + ", auteur=" + auteur + ", categories="
-				+ categories + "]";
+				+ commentaires.size() + ", auteur=" + auteur + ", categories="
+				+ categories.size() + "]";
 	}
 	
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 f?vr. 2015 15:21:31 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+	<class name="fr.simpleblog.beans.FicheUtilisateur" table="FICHEUTILISATEUR">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+
+		<property name="adresse" type="java.lang.String">
+			<column name="ADRESSE" />
+		</property>
+
+		<property name="ville" type="java.lang.String">
+			<column name="VILLE" />
+		</property>
+
+		<property name="codePostal" type="int">
+			<column name="CODEPOSTAL" />
+		</property>
+
+		<many-to-one name="pays" class="fr.simpleblog.beans.Pays"
+			fetch="join">
+			<column name="PAYS" />
+		</many-to-one>
+
+		<many-to-one name="interet" class="fr.simpleblog.beans.Interet"
+			fetch="join">
+			<column name="INTERET" />
+		</many-to-one>
+
+		<set name="interets" table="INTERET_FICHEUTILISATEUR" inverse="false" lazy="true">
+			<key>
+				<column name="FICHEUTILISATEUR_ID" />
+			</key>
+			<many-to-many class="fr.simpleblog.beans.Interet">
+				<column name="INTERET_ID"></column>
+			</many-to-many>
+		</set>
+
+	</class>
+</hibernate-mapping>

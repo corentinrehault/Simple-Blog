@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -298,6 +295,7 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username)
+	
 			throws UsernameNotFoundException {
 
 		PreparedStatement request=null;
@@ -308,6 +306,8 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 		System.out.println("---------Dans login spring sec----------- " + username);
 
 		Utilisateur utilisateur;
+		HashSet<Authority> authorities = new HashSet<Authority>();
+		Authority authority;
 		UserDetails proxyUser;
 
 		try {
@@ -324,7 +324,22 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 			if(result.first()) {
 				utilisateur = Mapper.utilisateurMapper(result);
 				
+				stringAuth="SELECT * FROM authority INNER JOIN authority_utilisateur ON authority.id=authority_utilisateur.authorityId_a_u WHERE UtilisateurId_a_u=?";
+				requestAuth=connection.prepareStatement(stringAuth);
+				requestAuth.setInt(1, utilisateur.getId());
 				
+				result=requestAuth.executeQuery();
+				
+				if(result!=null) {
+					while (result.next()) {
+						authority = Mapper.authorityMapper(result);
+						authorities.add(authority);	
+					}
+					System.out.println(authorities);
+					utilisateur.setAuthorities(authorities);
+				} else {
+					utilisateur = null;
+				}
 				
 			} else {
 				utilisateur = null;
@@ -356,13 +371,13 @@ public class DaoModelUtilisateur extends DaoModel implements IdaoModelUtilisateu
 
 
 
-		Authority mockaut = new Authority();
-		mockaut.setAuthority("ROLE_USER");
-
-		HashSet<Authority> auths = new HashSet<Authority>();
-		auths.add(mockaut);
-
-		utilisateur.setAuthorities(auths);
+//		Authority mockaut = new Authority();
+//		mockaut.setAuthority("ROLE_USER");
+//
+//		HashSet<Authority> auths = new HashSet<Authority>();
+//		auths.add(mockaut);
+//
+//		utilisateur.setAuthorities(auths);
 
 		proxyUser = utilisateur;
 

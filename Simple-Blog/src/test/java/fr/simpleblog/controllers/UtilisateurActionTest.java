@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.UtilisateurAction;
 import baseTest.BaseTest;
 

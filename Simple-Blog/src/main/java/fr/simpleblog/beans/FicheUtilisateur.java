@@ -123,7 +123,7 @@ public class FicheUtilisateur implements Ibeans {
 	public String toString() {
 		return "FicheUtilisateur [adresse=" + adresse + ", ville=" + ville
 				+ ", codePostal=" + codePostal + ", id=" + id + ", pays="
-				+ pays + ", interet=" + interet + ", interets=" + interets
+				+ pays + ", interet=" + interet + ", interets=" + interets.size()
 				+ "]";
 	}
 

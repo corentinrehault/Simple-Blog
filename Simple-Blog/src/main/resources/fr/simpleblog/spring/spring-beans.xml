@@ -18,6 +18,12 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- Bean d'acces au Contexte -->
 	<bean id="applicationContextHolder" class="fr.simpleblog.services.ApplicationContextHolder" />
 
+	<!-- implémentation sql de test, également dans rootAction -->
+
+	<bean name="daoModelUtilisateurHqlTest" class="fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
 
@@ -56,6 +62,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
 		<property name="daoModelPays" ref="impServicePays" />
+		<property name="daoModelUtilisateurHqlTest" ref="daoModelUtilisateurHqlTest" />
 	</bean>
 
 	<bean name="paysAction" class="fr.simpleblog.controllers.PaysAction">
@@ -112,6 +119,19 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- Pour fonctionner avec Autowired dans les tests -->
 	<bean class="org.springframework.mock.web.MockHttpServletRequest" />
+
+	<!-- implémentation sql de test -->
+
+	<!-- <bean name="daoModelUtilisateurHqlTest" class="fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest"> -->
+	<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean name="rootAction" class="fr.simpleblog.controllers.RootAction"> -->
+	<!-- <property name="daoModelUtilisateurHqlTest" ref="daoModelUtilisateurHqlTest" 
+		/> -->
+	<!-- </bean> -->
+
+
 
 
 </beans>

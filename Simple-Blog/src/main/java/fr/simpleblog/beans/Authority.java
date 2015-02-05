@@ -1,5 +1,7 @@
 package fr.simpleblog.beans;
 
+import java.util.HashSet;
+
 import org.springframework.security.core.GrantedAuthority;
 
 public class Authority  implements GrantedAuthority, Ibeans {
@@ -11,6 +13,8 @@ public class Authority  implements GrantedAuthority, Ibeans {
 
 	private String authority;
 	private int id;
+
+	public HashSet<Utilisateur> utilisateurs = new HashSet<Utilisateur>();
 
 
 
@@ -36,6 +40,20 @@ public class Authority  implements GrantedAuthority, Ibeans {
 		return this.id;
 	}
 
+	/**
+	 * @return the utilisateurs
+	 */
+	public HashSet<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	/**
+	 * @param utilisateurs the utilisateurs to set
+	 */
+	public void setUtilisateurs(HashSet<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -43,6 +61,5 @@ public class Authority  implements GrantedAuthority, Ibeans {
 	public String toString() {
 		return "Authority [authority=" + authority + ", id=" + id + "]";
 	}
-
 
 }

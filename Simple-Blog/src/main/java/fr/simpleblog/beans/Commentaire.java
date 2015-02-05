@@ -14,6 +14,7 @@ public class Commentaire implements Ibeans {
 	private String contenu;
 	private int id;
 	private boolean valide;
+	
 	public Article articleCommente;
 	public Utilisateur auteur;
 

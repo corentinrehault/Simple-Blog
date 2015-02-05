@@ -22,7 +22,6 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,8 +31,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
-import fr.simpleblog.beans.Authority;
-import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.controllers.UtilisateurAction;
 import fr.simpleblog.services.ApplicationContextHolder;
 
@@ -105,7 +102,7 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 		
 //		final Authentication authToken = new UsernamePasswordAuthenticationToken (userMock.getUsername(), userMock.getPassword(), userMock.getAuthorities());
 
-		final Authentication authToken = new UsernamePasswordAuthenticationToken ("", "");
+		final Authentication authToken = new UsernamePasswordAuthenticationToken ("jlafosse", "jerome");
 		SecurityContextHolder.getContext().setAuthentication(authToken);
 		
 		System.out.println(" ===> " +  authenticationManager.authenticate(authToken));

@@ -1,5 +1,7 @@
 package fr.simpleblog.beans;
 
+import java.util.HashSet;
+
 public class Interet implements Ibeans {
 
 	/**
@@ -9,6 +11,8 @@ public class Interet implements Ibeans {
 
 	private String nom;
 	private int id;
+
+	public HashSet<FicheUtilisateur> ficheUtilisateurs = new HashSet<FicheUtilisateur>();
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -24,6 +28,20 @@ public class Interet implements Ibeans {
 
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * @return the ficheUtilisateurs
+	 */
+	public HashSet<FicheUtilisateur> getFicheUtilisateurs() {
+		return ficheUtilisateurs;
+	}
+
+	/**
+	 * @param ficheUtilisateurs the ficheUtilisateurs to set
+	 */
+	public void setFicheUtilisateurs(HashSet<FicheUtilisateur> ficheUtilisateurs) {
+		this.ficheUtilisateurs = ficheUtilisateurs;
 	}
 
 	/* (non-Javadoc)

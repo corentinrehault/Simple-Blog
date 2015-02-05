@@ -29,6 +29,7 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!-- JUNIT -->
 
 		<dependency>
@@ -129,8 +130,8 @@
 		</dependency>
 
 
-
 		<!-- Spring MVC -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -138,6 +139,7 @@
 		</dependency>
 
 		<!-- ORM integration, e.g Hibernate -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -145,6 +147,7 @@
 		</dependency>
 
 		<!-- Spring transaction -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -153,6 +156,7 @@
 
 
 		<!-- C3p0 pool of connection used by datasource -->
+
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -160,6 +164,7 @@
 		</dependency>
 
 		<!-- Hibernate ORM -->
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -168,8 +173,8 @@
 
 
 
-
 		<!-- JDBC drivers for mysql -->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -177,6 +182,7 @@
 		</dependency>
 
 		<!-- Spring Security -->
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -196,6 +202,7 @@
 		</dependency>
 
 		<!-- Spring Security JSP Taglib -->
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
@@ -203,6 +210,7 @@
 		</dependency>
 
 		<!-- Connector struts 2 => Spring -->
+
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
@@ -235,27 +243,28 @@
 			<artifactId>spring-test</artifactId>
 			<version>4.1.4.RELEASE</version>
 		</dependency>
-		
+
 		<!-- dbUnit -->
-		
-		 <dependency>
-            <groupId>org.dbunit</groupId>
-            <artifactId>dbunit</artifactId>
-            <version>LATEST</version>
-            <type>jar</type>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.github.springtestdbunit</groupId>
-            <artifactId>spring-test-dbunit</artifactId>
-            <version>LATEST</version>
-            <scope>test</scope>
-        </dependency>
+
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>LATEST</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.springtestdbunit</groupId>
+			<artifactId>spring-test-dbunit</artifactId>
+			<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
 	<build>
+
 		<finalName>Simple-Blog</finalName>
 
 
@@ -270,6 +279,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
 
 

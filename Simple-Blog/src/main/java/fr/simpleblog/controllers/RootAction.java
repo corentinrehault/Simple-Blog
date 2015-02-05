@@ -8,10 +8,10 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
-import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
-
+import fr.simpleblog.beans.HibernateTestBean;
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
+import fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest;
 import fr.simpleblog.services.ParsingService;
 
 public class RootAction extends ActionSupport implements Preparable {
@@ -26,6 +26,8 @@ public class RootAction extends ActionSupport implements Preparable {
 	public IservicePays daoModelPays;
 
 	private List<Pays> ensemblePays = new LinkedList<Pays>();
+
+	DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest;
 
 
 	public void recupererListePays() {
@@ -68,6 +70,17 @@ public class RootAction extends ActionSupport implements Preparable {
 
 	}
 
+	public String toto() {
+		HibernateTestBean h = new HibernateTestBean();
+		h.setName("Hello hibernate !");
+
+		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
+
+		System.err.println(dfsdf.getName());
+
+		return SUCCESS;
+	}
+
 	/**
 	 * @return SUCCESS
 	 * 
@@ -76,6 +89,14 @@ public class RootAction extends ActionSupport implements Preparable {
 	 * 
 	 */
 	public String initApplication() {
+
+
+		HibernateTestBean h = new HibernateTestBean();
+		h.setName("Hello hibernate !");
+
+		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
+
+		System.err.println(dfsdf.getName());
 
 		/*
 		 * Ajout d'un comparateur pour la liste des pays
@@ -95,7 +116,7 @@ public class RootAction extends ActionSupport implements Preparable {
 	 */
 	@Override
 	public void prepare() throws Exception {
-		UtilTimerStack.setActive(true);
+		//UtilTimerStack.setActive(true);
 	}
 
 	/**
@@ -111,5 +132,23 @@ public class RootAction extends ActionSupport implements Preparable {
 	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
+
+
+	/**
+	 * @return the daoModelUtilisateurHqlTest
+	 */
+	public DaoModelUtilisateurHqlTest getDaoModelUtilisateurHqlTest() {
+		return daoModelUtilisateurHqlTest;
+	}
+
+
+	/**
+	 * @param daoModelUtilisateurHqlTest the daoModelUtilisateurHqlTest to set
+	 */
+	public void setDaoModelUtilisateurHqlTest(
+			DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest) {
+		this.daoModelUtilisateurHqlTest = daoModelUtilisateurHqlTest;
+	}
+
 
 }

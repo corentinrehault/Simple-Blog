@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 f?vr. 2015 15:32:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+    <class name="fr.simpleblog.beans.Commentaire" table="COMMENTAIRE">
+    
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        
+        <property name="titre" type="java.lang.String">
+            <column name="TITRE" />
+        </property>
+        
+        <property name="contenu" type="java.lang.String">
+            <column name="CONTENU" />
+        </property>
+        
+        <property name="valide" type="boolean">
+            <column name="VALIDE" />
+        </property>
+        
+        <many-to-one name="articleCommente" class="fr.simpleblog.beans.Article" access="field" fetch="join">
+            <column name="ARTICLECOMMENTE" />
+        </many-to-one>
+        
+        <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur" access="field" fetch="join">
+            <column name="AUTEUR" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

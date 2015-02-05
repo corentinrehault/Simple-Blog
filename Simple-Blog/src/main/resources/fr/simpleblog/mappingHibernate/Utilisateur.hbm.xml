@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 f?vr. 2015 15:34:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+
+	<class name="fr.simpleblog.beans.Utilisateur" table="UTILISATEUR">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+
+		<property name="nom" type="java.lang.String">
+			<column name="NOM" />
+		</property>
+
+		<property name="prenom" type="java.lang.String">
+			<column name="PRENOM" />
+		</property>
+
+		<property name="username" type="java.lang.String">
+			<column name="USERNAME" />
+		</property>
+
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" />
+		</property>
+
+		<property name="mail" type="java.lang.String">
+			<column name="MAIL" />
+		</property>
+
+		<property name="avatar" type="java.lang.String">
+			<column name="AVATAR" />
+		</property>
+
+		<property name="langue" type="java.lang.String">
+			<column name="LANGUE" />
+		</property>
+
+		<property name="isEnabled" type="boolean" access="field">
+			<column name="ISENABLED" />
+		</property>
+
+		<property name="isAccountNonExpired" type="boolean" access="field">
+			<column name="ISACCOUNTNONEXPIRED" />
+		</property>
+
+		<property name="isAccountNonLocked" type="boolean" access="field">
+			<column name="ISACCOUNTNONLOCKED" />
+		</property>
+
+		<property name="isCredentialsNonExpired" type="boolean"
+			access="field">
+			<column name="ISCREDENTIALSNONEXPIRED" />
+		</property>
+
+		<set name="commentaireredige" table="COMMENTAIRE" inverse="false"
+			lazy="true" access="field">
+			<key>
+				<column name="ID" />
+			</key>
+			<one-to-many class="fr.simpleblog.beans.Commentaire" />
+		</set>
+
+		<set name="articleecrit" table="ARTICLE" inverse="false" lazy="true"
+			access="field">
+			<key>
+				<column name="ID" />
+			</key>
+			<one-to-many class="fr.simpleblog.beans.Article" />
+		</set>
+
+		<many-to-one name="ficheUtilisateur" class="fr.simpleblog.beans.FicheUtilisateur"
+			fetch="join">
+			<column name="FICHEUTILISATEUR" />
+		</many-to-one>
+
+		<many-to-one name="style" class="fr.simpleblog.beans.Style"
+			fetch="join">
+			<column name="STYLE" />
+		</many-to-one>
+
+		<set name="authorities" table="AUTHORITY_UTILISATEUR" inverse="false" lazy="true">
+			<key>
+				<column name="UTILISATEUR_ID" />
+			</key>
+			<many-to-many class="fr.simpleblog.beans.Authority">
+				<column name="AUTHORITY_ID" />
+			</many-to-many>
+		</set>
+
+	</class>
+</hibernate-mapping>

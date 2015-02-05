@@ -1,3 +1,7 @@
+#CONNECTION EN LIGNE DE COMMANDE
+
+#mysql --user=user_name --password=password
+
 #UTILISATEUR
 
 SELECT * FROM Utilisateur;

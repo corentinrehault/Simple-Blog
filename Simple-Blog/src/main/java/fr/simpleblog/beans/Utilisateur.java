@@ -22,7 +22,7 @@ public class Utilisateur implements UserDetails, Ibeans {
 	private String langue;
 	
 	// Les Foreign Keys ne doivent pas être présentes
-	// dans les objets.
+	// dans les objets. Exemple :
 	//private int ficheId;
 	//private int styleId;
 
@@ -35,7 +35,6 @@ public class Utilisateur implements UserDetails, Ibeans {
 	public HashSet<Article> articleecrit = new HashSet<Article>();
 	public FicheUtilisateur ficheUtilisateur;
 	public Style style;
-
 	public HashSet<Authority> authorities = new HashSet<Authority>();
 
 	public void setNom(String nom) {
@@ -138,7 +137,7 @@ public class Utilisateur implements UserDetails, Ibeans {
 				+ isAccountNonExpired + ", isAccountNonLocked="
 				+ isAccountNonLocked + ", isCredentialsNonExpired="
 				+ isCredentialsNonExpired + ", commentaireredige="
-				+ commentaireredige + ", articleecrit=" + articleecrit
+				+ commentaireredige.size() + ", articleecrit=" + articleecrit.size()
 				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
 				+ ", authorities=" + authorities + "]";
 	}

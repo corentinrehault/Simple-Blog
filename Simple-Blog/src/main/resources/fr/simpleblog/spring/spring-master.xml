@@ -58,11 +58,11 @@
 
 	<!-- incompatibilité avec jUnit4 -->
 	<!-- ATTENTION LAISSER DESACTIVE FAIT BUGGER SPRING SECURITY -->
-	<!-- <import resource="spring-tiles.xml" /> -->
+	<import resource="spring-tiles.xml" />
 
 	<import resource="spring-datasource.xml" />
 
-	<!-- <import resource="spring-hibernate.xml" /> -->
+	<import resource="spring-hibernate.xml" />
 
 	<!-- <import resource="simpleBeanFactory.xml" /> -->
 

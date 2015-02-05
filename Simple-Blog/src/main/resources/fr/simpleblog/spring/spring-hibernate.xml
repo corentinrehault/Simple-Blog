@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="dataSource" />
+
+
+
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+
+
+				<prop key="hibernate.session_factory_name">AMSDBC</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="log4j.logger.net.sf.hibernate">debug</prop>
+
+
+				<prop key="org.hibernate.FlushMode">FlushMode.AUTO</prop>
+				
+				<!-- Mode de démarrage d'hibernate -->
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<!-- permet de lire un fichier sql sur plusieurs lignes -->
+<!-- 				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor -->
+<!-- 				</prop> -->
+				<!-- indique l'emplacement du fichier sql à importer -->
+<!-- 				<prop key="hibernate.hbm2ddl.import_files">/fr/initialData/initial_data.sql</prop> -->
+			</props>
+		</property>
+
+
+		<property name="mappingResources">
+			<list>
+			
+				<value>/fr/simpleblog/mappingHibernate/HibernatetestBean.hbm.xml</value>
+				
+				<value>/fr/simpleblog/mappingHibernate/Article.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Authority.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Categorie.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Commentaire.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/FicheUtilisateur.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Interet.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Pays.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Style.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/Utilisateur.hbm.xml</value>
+				
+			</list>
+		</property>
+
+
+	</bean>
+
+	<!-- déclaration de gestion des transactions par annotation http://www.jtips.info/?title=Spring/Annotations -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<!-- Permet de préciser le type de proxy utilisé (true : proxy reposant 
+		sur les interfaces, false : proxy reposant sur les classes). Ne doit être 
+		utilisé que si le mode est proxy -->
+	<!-- <tx:annotation-driven proxy-target-class="true" /> -->
+
+
+	<!-- A transaction manager for working with Hibernate SessionFactories -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+
+</beans>
