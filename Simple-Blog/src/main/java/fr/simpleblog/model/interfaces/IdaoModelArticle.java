@@ -1,8 +1,10 @@
 package fr.simpleblog.model.interfaces;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Article;
 
 public interface IdaoModelArticle extends IdaoCrud<Article> {
 
-	public void listerArticle();
+	public Set<Article> listArticle();
 }

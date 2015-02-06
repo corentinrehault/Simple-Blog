@@ -68,7 +68,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public List<Utilisateur> listerUtilisateur() {
 
-		utilisateurs = (ArrayList<Utilisateur>) daoModelUtilisateur.listerUtilisateur();
+		utilisateurs = (ArrayList<Utilisateur>) daoModelUtilisateur.listUtilisateur();
 		return utilisateurs;
 	}
 

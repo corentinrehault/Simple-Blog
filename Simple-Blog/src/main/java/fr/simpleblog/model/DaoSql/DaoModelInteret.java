@@ -131,4 +131,13 @@ public class DaoModelInteret extends DaoModel implements IdaoModelInteret, Iserv
 
 		return interets;
 	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 */
+	@Override
+	public Interet read(Class<?> clazz, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

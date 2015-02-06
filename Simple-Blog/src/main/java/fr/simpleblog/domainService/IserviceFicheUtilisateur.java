@@ -3,6 +3,8 @@
  */
 package fr.simpleblog.domainService;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.FicheUtilisateur;
 
 /**
@@ -11,10 +13,10 @@ import fr.simpleblog.beans.FicheUtilisateur;
  */
 public interface IserviceFicheUtilisateur extends Iservice<FicheUtilisateur>{
 
-	public void listerFicheUtilisateur ();
+	public Set<FicheUtilisateur> listFicheUtilisateur ();
 
 	public FicheUtilisateur readById (int i);
-	
+
 	public FicheUtilisateur updateById (FicheUtilisateur ficheUtilisateur, int i);
 
 }

@@ -3,74 +3,40 @@
  */
 package fr.simpleblog.domainService;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Article;
-import fr.simpleblog.model.interfaces.IdaoModelArticle;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlArticle;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceArticle implements IserviceArticle {
-	
-	IdaoModelArticle idaoModelArticle;
+public class ImpServiceArticle extends ImpService<Article> implements IserviceArticle {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Article create(Article x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Article read(Article x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Article update(Article x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Article x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlArticle impDaoHqlArticle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceArticle#listerArticle()
 	 */
 	@Override
-	public void listerArticle() {
-		// TODO Auto-generated method stub
-		
+	public Set<Article> listArticle() {
+		return impDaoHqlArticle.listArticle();
+
 	}
 
 	/**
-	 * @return the idaoModelArticle
+	 * @return the impDaoHqlArticle
 	 */
-	public IdaoModelArticle getIdaoModelArticle() {
-		return idaoModelArticle;
+	public ImpDaoHqlArticle getImpDaoHqlArticle() {
+		return impDaoHqlArticle;
 	}
 
 	/**
-	 * @param idaoModelArticle the idaoModelArticle to set
+	 * @param impDaoHqlArticle the impDaoHqlArticle to set
 	 */
-	public void setIdaoModelArticle(IdaoModelArticle idaoModelArticle) {
-		this.idaoModelArticle = idaoModelArticle;
+	public void setImpDaoHqlArticle(ImpDaoHqlArticle impDaoHqlArticle) {
+		this.impDaoHqlArticle = impDaoHqlArticle;
 	}
 
 }

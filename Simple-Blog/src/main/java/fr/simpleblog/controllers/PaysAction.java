@@ -50,7 +50,7 @@ public class PaysAction extends ActionSupport implements Preparable {
 
 	public List<Pays> listerPays() {
 
-		ensemblePays = (List<Pays>) daoModelPays.listerPays();
+		ensemblePays = (List<Pays>) daoModelPays.listPays();
 		return ensemblePays;
 	}
 
@@ -76,4 +76,5 @@ public class PaysAction extends ActionSupport implements Preparable {
 	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
 	}
+
 }

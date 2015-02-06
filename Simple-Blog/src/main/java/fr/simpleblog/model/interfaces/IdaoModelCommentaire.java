@@ -1,10 +1,12 @@
 package fr.simpleblog.model.interfaces;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Commentaire;
 
 public interface IdaoModelCommentaire extends IdaoCrud<Commentaire> {
 
-	public void validerCommentaire();
+	public boolean validerCommentaire();
 
-	public void listerCommentaire();
+	public Set<Commentaire> listCommentaire();
 }

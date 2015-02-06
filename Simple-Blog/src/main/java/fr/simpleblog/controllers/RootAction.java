@@ -8,11 +8,12 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+
 import fr.simpleblog.beans.HibernateTestBean;
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest;
-import fr.simpleblog.services.ParsingService;
+import fr.simpleblog.services.parser.ParsingService;
 
 public class RootAction extends ActionSupport implements Preparable {
 
@@ -29,11 +30,10 @@ public class RootAction extends ActionSupport implements Preparable {
 
 	DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest;
 
-
 	public void recupererListePays() {
 
 		try {
-			ensemblePays = parsingPays.listerPays();
+			ensemblePays = parsingPays.listPays();
 		} catch (MalformedURLException e) {
 			System.out.println("Erreur d'URL");
 			System.out.println("Dans la méthode recupererListePays()");
@@ -91,12 +91,12 @@ public class RootAction extends ActionSupport implements Preparable {
 	public String initApplication() {
 
 
-		HibernateTestBean h = new HibernateTestBean();
-		h.setName("Hello hibernate !");
-
-		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
-
-		System.err.println(dfsdf.getName());
+//		HibernateTestBean h = new HibernateTestBean();
+//		h.setName("Hello hibernate !");
+//
+//		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
+//
+//		System.err.println(dfsdf.getName());
 
 		/*
 		 * Ajout d'un comparateur pour la liste des pays

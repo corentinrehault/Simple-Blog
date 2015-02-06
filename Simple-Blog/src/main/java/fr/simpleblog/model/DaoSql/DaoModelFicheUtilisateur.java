@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Set;
 
 import fr.simpleblog.beans.FicheUtilisateur;
 import fr.simpleblog.beans.Pays;
@@ -33,13 +34,14 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.simpleblog.model.DAOSql.IDAOCRUD#read(java.lang.Object)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
 	 */
 	@Override
-	public FicheUtilisateur read(FicheUtilisateur ficheUtilisateur) {
+	public FicheUtilisateur read(Class<?> clazz, int id) {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
+		FicheUtilisateur ficheUtilisateur = null;
 
 		try {
 			connection=super.getConnection();
@@ -137,9 +139,8 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 	 * @see fr.simpleblog.model.DAOSql.IDAOModelFicheUtilisateur#listerFicheUtilisateur()
 	 */
 	@Override
-	public void listerFicheUtilisateur() {
-		// TODO Auto-generated method stub
-
+	public Set<FicheUtilisateur> listFicheUtilisateur() {
+		return null;
 	}
 
 	/**

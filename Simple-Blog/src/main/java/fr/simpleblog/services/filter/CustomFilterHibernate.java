@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.simpleblog.model.DaoHql;
+package fr.simpleblog.services.filter;
 
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
@@ -24,7 +24,7 @@ public class CustomFilterHibernate  extends OpenSessionInViewFilter {
 	 */
 	public CustomFilterHibernate() {
 		super();
-		System.out.println("<<<========= OPENING SESSION HIBERNATE =========>>>");
+		LOG.info("<<<========= OPENING SESSION HIBERNATE =========>>>");
 	}
 
 }

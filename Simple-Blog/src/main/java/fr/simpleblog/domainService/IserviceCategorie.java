@@ -1,8 +1,10 @@
 package fr.simpleblog.domainService;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Categorie;
 
 public interface IserviceCategorie extends Iservice<Categorie> {
 
-	public void listerCategorie();
+	public Set<Categorie> listCategorie();
 }

@@ -6,59 +6,22 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import fr.simpleblog.beans.Style;
-import fr.simpleblog.model.interfaces.IdaoModelStyle;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlStyle;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceStyle implements IserviceStyle {
-	
-	IdaoModelStyle idaoModelStyle;
+public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Style create(Style x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Style read(Style x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Style update(Style x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Style x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlStyle impDaoHqlStyle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
 	 */
 	@Override
-	public List<Style> listerStyle() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Style> listStyle() {
+		return impDaoHqlStyle.listStyle();
 	}
 
 	/* (non-Javadoc)
@@ -66,8 +29,7 @@ public class ImpServiceStyle implements IserviceStyle {
 	 */
 	@Override
 	public Style readById(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlStyle.readById(i);
 	}
 
 	/* (non-Javadoc)
@@ -75,22 +37,21 @@ public class ImpServiceStyle implements IserviceStyle {
 	 */
 	@Override
 	public Style updateById(int styleId) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlStyle.updateById(styleId);
 	}
 
 	/**
-	 * @return the idaoModelStyle
+	 * @return the impDaoHqlStyle
 	 */
-	public IdaoModelStyle getIdaoModelStyle() {
-		return idaoModelStyle;
+	public ImpDaoHqlStyle getImpDaoHqlStyle() {
+		return impDaoHqlStyle;
 	}
 
 	/**
-	 * @param idaoModelStyle the idaoModelStyle to set
+	 * @param impDaoHqlStyle the impDaoHqlStyle to set
 	 */
-	public void setIdaoModelStyle(IdaoModelStyle idaoModelStyle) {
-		this.idaoModelStyle = idaoModelStyle;
+	public void setImpDaoHqlStyle(ImpDaoHqlStyle impDaoHqlStyle) {
+		this.impDaoHqlStyle = impDaoHqlStyle;
 	}
 
 }

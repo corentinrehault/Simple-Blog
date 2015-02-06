@@ -6,59 +6,22 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import fr.simpleblog.beans.Pays;
-import fr.simpleblog.model.interfaces.IdaoModelPays;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlPays;
 
 /**
  * @author dao303
  *
  */
-public class ImpServicePays implements IservicePays {
+public class ImpServicePays extends ImpService<Pays> implements IservicePays {
 	
-	IdaoModelPays idaoModelPays;
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Pays create(Pays x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Pays read(Pays x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Pays update(Pays x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Pays x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlPays impDaoHqlPays;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IservicePays#listerPays()
 	 */
 	@Override
-	public List<Pays> listerPays() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Pays> listPays() {
+		return impDaoHqlPays.listPays();
 	}
 
 	/* (non-Javadoc)
@@ -66,8 +29,7 @@ public class ImpServicePays implements IservicePays {
 	 */
 	@Override
 	public List<Pays> createList(List<Pays> ensemblePays) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlPays.createList(ensemblePays);
 	}
 
 	/* (non-Javadoc)
@@ -75,22 +37,21 @@ public class ImpServicePays implements IservicePays {
 	 */
 	@Override
 	public Pays readByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlPays.readByName(name);
 	}
 
 	/**
-	 * @return the idaoModelPays
+	 * @return the impDaoHqlPays
 	 */
-	public IdaoModelPays getIdaoModelPays() {
-		return idaoModelPays;
+	public ImpDaoHqlPays getImpDaoHqlPays() {
+		return impDaoHqlPays;
 	}
 
 	/**
-	 * @param idaoModelPays the idaoModelPays to set
+	 * @param impDaoHqlPays the impDaoHqlPays to set
 	 */
-	public void setIdaoModelPays(IdaoModelPays idaoModelPays) {
-		this.idaoModelPays = idaoModelPays;
+	public void setImpDaoHqlPays(ImpDaoHqlPays impDaoHqlPays) {
+		this.impDaoHqlPays = impDaoHqlPays;
 	}
 
 }

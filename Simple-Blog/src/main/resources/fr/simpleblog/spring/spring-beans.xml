@@ -18,39 +18,64 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- Bean d'acces au Contexte -->
 	<bean id="applicationContextHolder" class="fr.simpleblog.services.ApplicationContextHolder" />
 
-	<!-- implémentation sql de test, également dans rootAction -->
-
-	<bean name="daoModelUtilisateurHqlTest" class="fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
 	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
 
-	<bean name="DaoModel" class="fr.simpleblog.model.DaoSql.DaoModel">
-		<property name="dataSource" ref="dataSource" />
+	<!-- <bean name="DaoModel" class="fr.simpleblog.model.DaoSql.DaoModel"> -->
+	<!-- <property name="dataSource" ref="dataSource" /> -->
+	<!-- </bean> -->
+
+	<bean name="ImpDaoHql" class="fr.simpleblog.model.DaoHql.ImpDaoHql">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" />
 
+	<!-- <bean id="daoModelArticle" name="daoModelArticle" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelArticle" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelAuthority" name="daoModelAuthority" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelAuthority" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelCategorie" name="daoModelCategorie" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelCategorie" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelCommentaire" name="daoModelCommentaire" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelCommentaire" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelFicheUtilisateur" name="daoModelFicheUtilisateur" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelFicheUtilisateur" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelInteret" name="daoModelInteret" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelInteret" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelPays" name="daoModelPays" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelPays" parent="DaoModel" /> -->
+	<!-- <bean id="daoModelStyle" name="daoModelStyle" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelStyle" parent="DaoModel" 
+		/> -->
+	<!-- <bean id="daoModelUtilisateur" name="daoModelUtilisateur" -->
+	<!-- class="fr.simpleblog.model.DaoSql.DaoModelUtilisateur" parent="DaoModel" 
+		/> -->
+
 	<bean id="daoModelArticle" name="daoModelArticle"
-		class="fr.simpleblog.model.DaoSql.DaoModelArticle" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlArticle" parent="ImpDaoHql" />
 	<bean id="daoModelAuthority" name="daoModelAuthority"
-		class="fr.simpleblog.model.DaoSql.DaoModelAuthority" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority" parent="ImpDaoHql" />
 	<bean id="daoModelCategorie" name="daoModelCategorie"
-		class="fr.simpleblog.model.DaoSql.DaoModelCategorie" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie" parent="ImpDaoHql" />
 	<bean id="daoModelCommentaire" name="daoModelCommentaire"
-		class="fr.simpleblog.model.DaoSql.DaoModelCommentaire" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire" parent="ImpDaoHql" />
 	<bean id="daoModelFicheUtilisateur" name="daoModelFicheUtilisateur"
-		class="fr.simpleblog.model.DaoSql.DaoModelFicheUtilisateur" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur" parent="ImpDaoHql" />
 	<bean id="daoModelInteret" name="daoModelInteret"
-		class="fr.simpleblog.model.DaoSql.DaoModelInteret" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlInteret" parent="ImpDaoHql" />
 	<bean id="daoModelPays" name="daoModelPays"
-		class="fr.simpleblog.model.DaoSql.DaoModelPays" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlPays" parent="ImpDaoHql" />
 	<bean id="daoModelStyle" name="daoModelStyle"
-		class="fr.simpleblog.model.DaoSql.DaoModelStyle" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlStyle" parent="ImpDaoHql" />
 	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
-		class="fr.simpleblog.model.DaoSql.DaoModelUtilisateur" parent="DaoModel" />
+		class="fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur" parent="ImpDaoHql" />
 
 	<!-- Au démarrage de l'application Spring injecte la dao dans controller -->
 
@@ -62,7 +87,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
 		<property name="daoModelPays" ref="impServicePays" />
-		<property name="daoModelUtilisateurHqlTest" ref="daoModelUtilisateurHqlTest" />
 	</bean>
 
 	<bean name="paysAction" class="fr.simpleblog.controllers.PaysAction">
@@ -74,28 +98,28 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		domaine service -->
 
 	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
-		<property name="idaoModelUtilisateur" ref="daoModelUtilisateur" />
+		<property name="ImpDaoHqlUtilisateur" ref="daoModelUtilisateur" />
 	</bean>
 
 	<bean name="impServiceFicheUtilisateur"
 		class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
-		<property name="idaoModelFicheUtilisateur" ref="daoModelFicheUtilisateur" />
+		<property name="ImpDaoHqlFicheUtilisateur" ref="daoModelFicheUtilisateur" />
 	</bean>
 
 	<bean name="impServicePays" class="fr.simpleblog.domainService.ImpServicePays">
-		<property name="idaoModelPays" ref="daoModelPays" />
+		<property name="ImpDaoHqlPays" ref="daoModelPays" />
 	</bean>
 
 	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
-		<property name="idaoModelStyle" ref="daoModelStyle" />
+		<property name="ImpDaoHqlStyle" ref="daoModelStyle" />
 	</bean>
 
 	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">
-		<property name="idaoModelAuthority" ref="daoModelAuthority" />
+		<property name="ImpDaoHqlAuthority" ref="daoModelAuthority" />
 	</bean>
 
 	<bean name="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret">
-		<property name="idaoModelInteret" ref="daoModelInteret" />
+		<property name="ImpDaoHqlInteret" ref="daoModelInteret" />
 	</bean>
 
 	<!-- On injecte dans Cache dans ficheutilisateur -->

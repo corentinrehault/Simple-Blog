@@ -119,4 +119,13 @@ public class DaoModelAuthority extends DaoModel implements IdaoModelAuthority, I
 
 		return authorities;
 	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 */
+	@Override
+	public Authority read(Class<?> clazz, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

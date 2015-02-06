@@ -6,59 +6,22 @@ package fr.simpleblog.domainService;
 import java.util.Set;
 
 import fr.simpleblog.beans.Authority;
-import fr.simpleblog.model.interfaces.IdaoModelAuthority;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceAuthority implements IserviceAuthority {
-	
-	IdaoModelAuthority idaoModelAuthority;
+public class ImpServiceAuthority extends ImpService<Authority> implements IserviceAuthority {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Authority create(Authority x) {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.create(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Authority read(Authority x) {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.read(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Authority update(Authority x) {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.update(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Authority x) {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.delete(x);
-	}
+	ImpDaoHqlAuthority impDaoHqlAuthority;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IServiceAuthority#listAuthority()
 	 */
 	@Override
 	public Set<Authority> listAuthority() {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.listAuthority();
+		return impDaoHqlAuthority.listAuthority();
 	}
 
 	/* (non-Javadoc)
@@ -66,22 +29,21 @@ public class ImpServiceAuthority implements IserviceAuthority {
 	 */
 	@Override
 	public Set<Authority> listAuthorityByUserId(int i) {
-		// TODO Auto-generated method stub
-		return idaoModelAuthority.listAuthorityByUserId(i);
+		return impDaoHqlAuthority.listAuthorityByUserId(i);
 	}
 
 	/**
-	 * @return the idaoModelAuthority
+	 * @return the impDaoHqlAuthority
 	 */
-	public IdaoModelAuthority getIdaoModelAuthority() {
-		return idaoModelAuthority;
+	public ImpDaoHqlAuthority getImpDaoHqlAuthority() {
+		return impDaoHqlAuthority;
 	}
 
 	/**
-	 * @param idaoModelAuthority the idaoModelAuthority to set
+	 * @param impDaoHqlAuthority the impDaoHqlAuthority to set
 	 */
-	public void setIdaoModelAuthority(IdaoModelAuthority idaoModelAuthority) {
-		this.idaoModelAuthority = idaoModelAuthority;
+	public void setImpDaoHqlAuthority(ImpDaoHqlAuthority impDaoHqlAuthority) {
+		this.impDaoHqlAuthority = impDaoHqlAuthority;
 	}
 
 }

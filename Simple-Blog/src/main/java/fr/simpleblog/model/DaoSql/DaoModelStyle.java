@@ -32,7 +32,7 @@ public class DaoModelStyle extends DaoModel implements IdaoModelStyle, IserviceS
 		throw new UnsupportedOperationException();
 	}
 
-	public List<Style> listerStyle() {
+	public List<Style> listStyle() {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
@@ -98,9 +98,9 @@ public class DaoModelStyle extends DaoModel implements IdaoModelStyle, IserviceS
 			//System.out.println("request --->" + stringRequest);
 			result=request.executeQuery();
 			if(result!=null) {
-					style = Mapper.styleMapper(result);
-					//System.out.println(interets.toString());
-				} else {
+				style = Mapper.styleMapper(result);
+				//System.out.println(interets.toString());
+			} else {
 				style = null;
 			}
 		} catch(Exception e) {
@@ -132,9 +132,18 @@ public class DaoModelStyle extends DaoModel implements IdaoModelStyle, IserviceS
 	 * @return 
 	 */
 	public Style updateById(int styleId) {
-		
+
 		Style style = null;
 		// TODO Auto-generated method stub
 		return style;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 */
+	@Override
+	public Style read(Class<?> clazz, int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

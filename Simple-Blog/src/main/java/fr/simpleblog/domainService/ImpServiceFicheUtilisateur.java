@@ -3,60 +3,25 @@
  */
 package fr.simpleblog.domainService;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.FicheUtilisateur;
-import fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
-	
-	IdaoModelFicheUtilisateur idaoModelFicheUtilisateur;
+public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> implements IserviceFicheUtilisateur {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public FicheUtilisateur create(FicheUtilisateur x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public FicheUtilisateur read(FicheUtilisateur x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public FicheUtilisateur update(FicheUtilisateur x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(FicheUtilisateur x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#listerFicheUtilisateur()
 	 */
 	@Override
-	public void listerFicheUtilisateur() {
-		// TODO Auto-generated method stub
-		
+	public Set<FicheUtilisateur> listFicheUtilisateur() {
+		return impDaoHqlFicheUtilisateur.listFicheUtilisateur();
 	}
 
 	/* (non-Javadoc)
@@ -64,8 +29,7 @@ public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
 	 */
 	@Override
 	public FicheUtilisateur readById(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlFicheUtilisateur.readById(i);
 	}
 
 	/* (non-Javadoc)
@@ -73,23 +37,22 @@ public class ImpServiceFicheUtilisateur implements IserviceFicheUtilisateur {
 	 */
 	@Override
 	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlFicheUtilisateur.updateById(ficheUtilisateur, i);
 	}
 
 	/**
-	 * @return the idaoModelFicheUtilisateur
+	 * @return the impDaoHqlFicheUtilisateur
 	 */
-	public IdaoModelFicheUtilisateur getIdaoModelFicheUtilisateur() {
-		return idaoModelFicheUtilisateur;
+	public ImpDaoHqlFicheUtilisateur getImpDaoHqlFicheUtilisateur() {
+		return impDaoHqlFicheUtilisateur;
 	}
 
 	/**
-	 * @param idaoModelFicheUtilisateur the idaoModelFicheUtilisateur to set
+	 * @param impDaoHqlFicheUtilisateur the impDaoHqlFicheUtilisateur to set
 	 */
-	public void setIdaoModelFicheUtilisateur(
-			IdaoModelFicheUtilisateur idaoModelFicheUtilisateur) {
-		this.idaoModelFicheUtilisateur = idaoModelFicheUtilisateur;
+	public void setImpDaoHqlFicheUtilisateur(
+			ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur) {
+		this.impDaoHqlFicheUtilisateur = impDaoHqlFicheUtilisateur;
 	}
 
 }

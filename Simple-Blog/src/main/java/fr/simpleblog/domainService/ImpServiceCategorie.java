@@ -3,74 +3,39 @@
  */
 package fr.simpleblog.domainService;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Categorie;
-import fr.simpleblog.model.interfaces.IdaoModelCategorie;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceCategorie implements IserviceCategorie {
-	
-	IdaoModelCategorie idaoModelCategorie;
+public class ImpServiceCategorie extends ImpService<Categorie> implements IserviceCategorie {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Categorie create(Categorie x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Categorie read(Categorie x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Categorie update(Categorie x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Categorie x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlCategorie impDaoHqlCategorie;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceCategorie#listerCategorie()
 	 */
 	@Override
-	public void listerCategorie() {
-		// TODO Auto-generated method stub
-		
+	public Set<Categorie> listCategorie() {
+		return impDaoHqlCategorie.listCategorie();
 	}
 
 	/**
-	 * @return the idaoModelCategorie
+	 * @return the impDaoHqlCategorie
 	 */
-	public IdaoModelCategorie getIdaoModelCategorie() {
-		return idaoModelCategorie;
+	public ImpDaoHqlCategorie getImpDaoHqlCategorie() {
+		return impDaoHqlCategorie;
 	}
 
 	/**
-	 * @param idaoModelCategorie the idaoModelCategorie to set
+	 * @param impDaoHqlCategorie the impDaoHqlCategorie to set
 	 */
-	public void setIdaoModelCategorie(IdaoModelCategorie idaoModelCategorie) {
-		this.idaoModelCategorie = idaoModelCategorie;
+	public void setImpDaoHqlCategorie(ImpDaoHqlCategorie impDaoHqlCategorie) {
+		this.impDaoHqlCategorie = impDaoHqlCategorie;
 	}
 
 }

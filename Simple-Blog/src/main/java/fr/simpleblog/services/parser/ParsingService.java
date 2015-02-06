@@ -1,4 +1,4 @@
-package fr.simpleblog.services;
+package fr.simpleblog.services.parser;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 import fr.simpleblog.beans.Pays;
 
 /*
+ * Differents parsers :
  * SAX, DOM, JAXB, XSTREAM, JDOM
  */
 public class ParsingService {
@@ -22,7 +23,7 @@ public class ParsingService {
 	private Pays pays;
 	private List<Pays> ensemblePays = new LinkedList<Pays>();
 
-	public List<Pays> listerPays() throws MalformedURLException, IOException {
+	public List<Pays> listPays() throws MalformedURLException, IOException {
 
 		try {
 

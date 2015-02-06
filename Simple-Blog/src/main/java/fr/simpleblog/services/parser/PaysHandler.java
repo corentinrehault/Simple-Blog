@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.simpleblog.services;
+package fr.simpleblog.services.parser;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class PaysHandler extends DefaultHandler {
 	//résultats de notre parsing
 	private List<Pays> ensemblePays;
 	private Pays pays;
-	//flags nous indiquant la position du parseur
+	//flags nous indiquant la position du parser
 	@SuppressWarnings("unused")
 	private boolean inPays, inCodepays, inListepays, inNom;
 	//buffer nous permettant de récupérer les données

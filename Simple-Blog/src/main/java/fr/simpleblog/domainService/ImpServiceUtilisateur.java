@@ -5,70 +5,25 @@ package fr.simpleblog.domainService;
 
 import java.util.List;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import fr.simpleblog.beans.Utilisateur;
-import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur;
 
 /**
  * @author dao303
  * Implémentaton des services.
  */
-public class ImpServiceUtilisateur implements IserviceUtilisateur {
-	
-	IdaoModelUtilisateur idaoModelUtilisateur;
+public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements IserviceUtilisateur {
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Utilisateur create(Utilisateur x) {
-		return idaoModelUtilisateur.create(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Utilisateur read(Utilisateur x) {
-		return idaoModelUtilisateur.read(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Utilisateur update(Utilisateur x) {
-		return idaoModelUtilisateur.update(x);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Utilisateur x) {
-
-		return idaoModelUtilisateur.delete(x);
-	}
+	ImpDaoHqlUtilisateur impDaoHqlUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceUtilisateur#listerUtilisateur()
 	 */
 	@Override
-	public List<Utilisateur> listerUtilisateur() {
-		return idaoModelUtilisateur.listerUtilisateur();
-	}
-
-	/**
-	 * @return the iDAOModelUtilisateur
-	 */
-	public IdaoModelUtilisateur getiDAOModelUtilisateur() {
-		return idaoModelUtilisateur;
-	}
-
-	/**
-	 * @param iDAOModelUtilisateur the iDAOModelUtilisateur to set
-	 */
-	public void setiDAOModelUtilisateur(IdaoModelUtilisateur iDAOModelUtilisateur) {
-		this.idaoModelUtilisateur = iDAOModelUtilisateur;
+	public List<Utilisateur> listUtilisateur() {
+		return impDaoHqlUtilisateur.listUtilisateur();
 	}
 
 	/* (non-Javadoc)
@@ -76,26 +31,29 @@ public class ImpServiceUtilisateur implements IserviceUtilisateur {
 	 */
 	@Override
 	public Utilisateur login(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		return idaoModelUtilisateur.login(utilisateur);
+		return impDaoHqlUtilisateur.login(utilisateur);
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.domainService.IserviceUtilisateur#loadUserByUsername(java.lang.String)
+	 */
+	@Override
+	public UserDetails loadUserByUsername(String username) {
+		return impDaoHqlUtilisateur.loadUserByUsername(username);
 	}
 
 	/**
-	 * @return the idaoModelUtilisateur
+	 * @return the impDaoHqlUtilisateur
 	 */
-	public IdaoModelUtilisateur getIdaoModelUtilisateur() {
-		return idaoModelUtilisateur;
+	public ImpDaoHqlUtilisateur getImpDaoHqlUtilisateur() {
+		return impDaoHqlUtilisateur;
 	}
 
 	/**
-	 * @param idaoModelUtilisateur the idaoModelUtilisateur to set
+	 * @param impDaoHqlUtilisateur the impDaoHqlUtilisateur to set
 	 */
-	public void setIdaoModelUtilisateur(IdaoModelUtilisateur idaoModelUtilisateur) {
-		this.idaoModelUtilisateur = idaoModelUtilisateur;
+	public void setImpDaoHqlUtilisateur(ImpDaoHqlUtilisateur impDaoHqlUtilisateur) {
+		this.impDaoHqlUtilisateur = impDaoHqlUtilisateur;
 	}
 
-
-
-	
-	
 }

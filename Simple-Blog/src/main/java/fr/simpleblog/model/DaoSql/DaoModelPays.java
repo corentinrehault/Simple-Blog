@@ -68,7 +68,7 @@ public class DaoModelPays extends DaoModel implements IdaoModelPays, IservicePay
 		throw new UnsupportedOperationException();
 	}
 
-	public List<Pays> listerPays() {
+	public List<Pays> listPays() {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
@@ -223,5 +223,14 @@ public class DaoModelPays extends DaoModel implements IdaoModelPays, IservicePay
 		}
 
 		return pays;
+	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 */
+	@Override
+	public Pays read(Class<?> clazz, int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

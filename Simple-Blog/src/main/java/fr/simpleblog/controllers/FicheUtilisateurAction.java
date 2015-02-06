@@ -318,7 +318,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 
 		if (cache.getEnsemblePays() == null ) {
 			//TODO insérer test durée de vie du cache
-			ensemblePays = daoModelPays.listerPays();
+			ensemblePays = daoModelPays.listPays();
 			cache.setEnsemblePays(ensemblePays);
 		} else {
 			ensemblePays = cache.getEnsemblePays();
@@ -342,7 +342,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public List<Style> getStyles() {
 
 		if(cache.getStyles() == null) {
-			styles = daoModelStyle.listerStyle();
+			styles = daoModelStyle.listStyle();
 			cache.setStyles(styles);
 		} else {
 			styles = cache.getStyles();

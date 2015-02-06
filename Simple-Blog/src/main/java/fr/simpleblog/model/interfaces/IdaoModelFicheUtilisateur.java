@@ -3,6 +3,8 @@
  */
 package fr.simpleblog.model.interfaces;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.FicheUtilisateur;
 
 /**
@@ -11,7 +13,7 @@ import fr.simpleblog.beans.FicheUtilisateur;
  */
 public interface IdaoModelFicheUtilisateur extends IdaoCrud<FicheUtilisateur>{
 
-	public void listerFicheUtilisateur ();
+	public Set<FicheUtilisateur> listFicheUtilisateur ();
 
 	public FicheUtilisateur readById (int i);
 

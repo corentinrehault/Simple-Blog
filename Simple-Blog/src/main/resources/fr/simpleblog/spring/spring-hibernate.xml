@@ -33,12 +33,12 @@
 				<prop key="org.hibernate.FlushMode">FlushMode.AUTO</prop>
 				
 				<!-- Mode de démarrage d'hibernate -->
-				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<!-- permet de lire un fichier sql sur plusieurs lignes -->
-<!-- 				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor -->
-<!-- 				</prop> -->
+				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+				</prop>
 				<!-- indique l'emplacement du fichier sql à importer -->
-<!-- 				<prop key="hibernate.hbm2ddl.import_files">/fr/initialData/initial_data.sql</prop> -->
+				<prop key="hibernate.hbm2ddl.import_files">/fr/simpleblog/initialData/initial_data.sql</prop>
 			</props>
 		</property>
 

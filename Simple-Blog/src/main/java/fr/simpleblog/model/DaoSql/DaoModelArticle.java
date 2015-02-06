@@ -1,5 +1,7 @@
 package fr.simpleblog.model.DaoSql;
 
+import java.util.Set;
+
 import fr.simpleblog.beans.Article;
 import fr.simpleblog.model.interfaces.IdaoModelArticle;
 
@@ -9,8 +11,13 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 		throw new UnsupportedOperationException();
 	}
 
-	public Article read(Article article) {
-		throw new UnsupportedOperationException();
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 */
+	@Override
+	public Article read(Class<?> clazz, int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public Article update(Article article) {
@@ -21,7 +28,9 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 		throw new UnsupportedOperationException();
 	}
 
-	public void listerArticle() {
+	public Set<Article> listArticle() {
 		throw new UnsupportedOperationException();
 	}
+
+
 }

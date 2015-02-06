@@ -6,7 +6,7 @@ import fr.simpleblog.beans.Style;
 
 public interface IserviceStyle extends Iservice<Style> {
 
-	public List<Style> listerStyle();
+	public List<Style> listStyle();
 
 	public Style readById(int i);
 

@@ -6,59 +6,22 @@ package fr.simpleblog.domainService;
 import java.util.HashSet;
 
 import fr.simpleblog.beans.Interet;
-import fr.simpleblog.model.interfaces.IdaoModelInteret;
+import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
 
 /**
  * @author dao303
  *
  */
-public class ImpServiceInteret implements IserviceInteret{
+public class ImpServiceInteret extends ImpService<Interet> implements IserviceInteret{
 
-	IdaoModelInteret idaoModelInteret;
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
-	 */
-	@Override
-	public Interet create(Interet x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#read(java.lang.Object)
-	 */
-	@Override
-	public Interet read(Interet x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#update(java.lang.Object)
-	 */
-	@Override
-	public Interet update(Interet x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.Iservice#delete(java.lang.Object)
-	 */
-	@Override
-	public boolean delete(Interet x) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	ImpDaoHqlInteret impDaoHqlInteret;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteret()
 	 */
 	@Override
 	public HashSet<Interet> listInteret() {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlInteret.listInteret();
 	}
 
 	/* (non-Javadoc)
@@ -66,22 +29,21 @@ public class ImpServiceInteret implements IserviceInteret{
 	 */
 	@Override
 	public HashSet<Interet> listInteretById(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		return impDaoHqlInteret.listInteretById(i);
 	}
 
 	/**
-	 * @return the idaoModelInteret
+	 * @return the impDaoHqlInteret
 	 */
-	public IdaoModelInteret getIdaoModelInteret() {
-		return idaoModelInteret;
+	public ImpDaoHqlInteret getImpDaoHqlInteret() {
+		return impDaoHqlInteret;
 	}
 
 	/**
-	 * @param idaoModelInteret the idaoModelInteret to set
+	 * @param impDaoHqlInteret the impDaoHqlInteret to set
 	 */
-	public void setIdaoModelInteret(IdaoModelInteret idaoModelInteret) {
-		this.idaoModelInteret = idaoModelInteret;
+	public void setImpDaoHqlInteret(ImpDaoHqlInteret impDaoHqlInteret) {
+		this.impDaoHqlInteret = impDaoHqlInteret;
 	}
 
 }
