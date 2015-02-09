@@ -3,7 +3,8 @@
  */
 package fr.simpleblog.services.parser;
 
-import java.util.LinkedList;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.xml.sax.Attributes;
@@ -42,7 +43,7 @@ public class PaysHandler extends DefaultHandler {
 
 		if(qName.equals("listepays")) {
 
-			ensemblePays = new LinkedList<Pays>();
+			ensemblePays = new ArrayList<Pays>();
 			inListepays = true;
 
 		} else if(qName.equals("pays")) {

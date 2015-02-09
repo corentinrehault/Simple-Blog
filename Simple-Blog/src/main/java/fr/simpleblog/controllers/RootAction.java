@@ -3,13 +3,11 @@ package fr.simpleblog.controllers;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
-import fr.simpleblog.beans.HibernateTestBean;
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest;
@@ -26,7 +24,7 @@ public class RootAction extends ActionSupport implements Preparable {
 
 	public IservicePays daoModelPays;
 
-	private List<Pays> ensemblePays = new LinkedList<Pays>();
+	private List<Pays> ensemblePays;
 
 	DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest;
 
@@ -34,6 +32,8 @@ public class RootAction extends ActionSupport implements Preparable {
 
 		try {
 			ensemblePays = parsingPays.listPays();
+
+
 		} catch (MalformedURLException e) {
 			System.out.println("Erreur d'URL");
 			System.out.println("Dans la méthode recupererListePays()");
@@ -50,7 +50,7 @@ public class RootAction extends ActionSupport implements Preparable {
 	}
 
 
-	public void comparerListePayes() {
+	public void comparerListePays() {
 
 	}
 
@@ -70,17 +70,6 @@ public class RootAction extends ActionSupport implements Preparable {
 
 	}
 
-	public String toto() {
-		HibernateTestBean h = new HibernateTestBean();
-		h.setName("Hello hibernate !");
-
-		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
-
-		System.err.println(dfsdf.getName());
-
-		return SUCCESS;
-	}
-
 	/**
 	 * @return SUCCESS
 	 * 
@@ -91,19 +80,21 @@ public class RootAction extends ActionSupport implements Preparable {
 	public String initApplication() {
 
 
-//		HibernateTestBean h = new HibernateTestBean();
-//		h.setName("Hello hibernate !");
-//
-//		HibernateTestBean dfsdf = daoModelUtilisateurHqlTest.create(h);
-//
-//		System.err.println(dfsdf.getName());
+		//        Pays p = new Pays();
+		//        
+		//        p.setNom("France");
+		//
+		//        daoModelPays.create(p);
+		//        System.out.println("end creating p");
 
 		/*
 		 * Ajout d'un comparateur pour la liste des pays
 		 * et placer la liste en cache
 		 */
-		recupererListePays();
+		//recupererListePays();
+
 		//recupererArticle();
+
 		return SUCCESS;
 	}
 
@@ -149,6 +140,5 @@ public class RootAction extends ActionSupport implements Preparable {
 			DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest) {
 		this.daoModelUtilisateurHqlTest = daoModelUtilisateurHqlTest;
 	}
-
 
 }

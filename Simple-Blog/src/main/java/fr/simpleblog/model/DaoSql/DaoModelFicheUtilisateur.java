@@ -47,8 +47,8 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 			connection=super.getConnection();
 			stringRequest="SELECT * FROM FicheUtilisateur WHERE Id=?";
 			request=connection.prepareStatement(stringRequest);
-			request.setInt(1, ficheUtilisateur.getId());
-			System.out.println(ficheUtilisateur.getId());
+			request.setInt(1, id);
+			System.out.println(id);
 			result=request.executeQuery();
 			System.out.println(result.toString());
 			if(result.first()) {

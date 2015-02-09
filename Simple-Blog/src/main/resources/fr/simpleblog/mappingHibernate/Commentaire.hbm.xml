@@ -8,7 +8,7 @@
     
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         
         <property name="date" type="java.util.Date">
@@ -27,13 +27,13 @@
             <column name="VALIDE" />
         </property>
         
-        <many-to-one name="articleCommente" class="fr.simpleblog.beans.Article" access="field" fetch="join">
-            <column name="ARTICLECOMMENTE" />
-        </many-to-one>
+<!--         <many-to-one name="articleCommente" class="fr.simpleblog.beans.Article"> -->
+<!--             <column name="ARTICLECOMMENTE" /> -->
+<!--         </many-to-one> -->
         
-        <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur" access="field" fetch="join">
-            <column name="AUTEUR" />
-        </many-to-one>
+<!--         <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur" > -->
+<!--             <column name="AUTEUR" /> -->
+<!--         </many-to-one> -->
         
     </class>
 </hibernate-mapping>

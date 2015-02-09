@@ -4,16 +4,16 @@
 <!-- Generated 5 f?vr. 2015 15:20:09 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 
-    <class name="fr.simpleblog.beans.Categorie" table="CATEGORIE">
-    
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        
-        <property name="nom" type="java.lang.String">
-            <column name="NOM" />
-        </property>
-        
-    </class>
+	<class name="fr.simpleblog.beans.Categorie" table="CATEGORIE">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+
+		<property name="nom" type="java.lang.String">
+			<column name="NOM" />
+		</property>
+
+	</class>
 </hibernate-mapping>

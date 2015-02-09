@@ -58,6 +58,34 @@ public class Commentaire implements Ibeans {
 		return this.valide;
 	}
 
+	/**
+	 * @return the articleCommente
+	 */
+	public Article getArticleCommente() {
+		return articleCommente;
+	}
+
+	/**
+	 * @param articleCommente the articleCommente to set
+	 */
+	public void setArticleCommente(Article articleCommente) {
+		this.articleCommente = articleCommente;
+	}
+
+	/**
+	 * @return the auteur
+	 */
+	public Utilisateur getAuteur() {
+		return auteur;
+	}
+
+	/**
+	 * @param auteur the auteur to set
+	 */
+	public void setAuteur(Utilisateur auteur) {
+		this.auteur = auteur;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

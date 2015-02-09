@@ -8,7 +8,7 @@
 
 		<id name="id" type="int">
 			<column name="ID" />
-			<generator class="assigned" />
+			<generator class="native" />
 		</id>
 
 		<property name="adresse" type="java.lang.String">
@@ -23,17 +23,15 @@
 			<column name="CODEPOSTAL" />
 		</property>
 
-		<many-to-one name="pays" class="fr.simpleblog.beans.Pays"
-			fetch="join">
-			<column name="PAYS" />
+		<many-to-one name="pays" not-found="ignore" class="fr.simpleblog.beans.Pays">
+			<column name="FK_FICHE_PAYS" />
 		</many-to-one>
 
-		<many-to-one name="interet" class="fr.simpleblog.beans.Interet"
-			fetch="join">
-			<column name="INTERET" />
+		<many-to-one name="interet" not-found="ignore" class="fr.simpleblog.beans.Interet">
+			<column name="FK_FICHE_INTERET" />
 		</many-to-one>
 
-		<set name="interets" table="INTERET_FICHEUTILISATEUR" inverse="false" lazy="true">
+		<set name="interets" table="INTERET_FICHEUTILISATEUR" inverse="false">
 			<key>
 				<column name="FICHEUTILISATEUR_ID" />
 			</key>

@@ -13,10 +13,10 @@ public class FicheUtilisateur implements Ibeans {
 	private String ville;
 	private int codePostal;
 	private int id;
-	
+
 	public Pays pays;
 	public Interet interet;
-	public HashSet<Interet> interets = new HashSet<Interet>();
+	public Set<Interet> interets;
 
 	/**
 	 * @param adresse the adresse to set
@@ -105,14 +105,14 @@ public class FicheUtilisateur implements Ibeans {
 	/**
 	 * @return the interets
 	 */
-	public HashSet<Interet> getInterets() {
+	public Set<Interet> getInterets() {
 		return interets;
 	}
 
 	/**
 	 * @param interets the interets to set
 	 */
-	public void setInterets(HashSet<Interet> interets) {
+	public void setInterets(Set<Interet> interets) {
 		this.interets = interets;
 	}
 

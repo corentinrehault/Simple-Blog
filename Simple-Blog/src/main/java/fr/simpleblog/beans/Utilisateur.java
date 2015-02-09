@@ -2,7 +2,6 @@ package fr.simpleblog.beans;
 
 import java.util.*;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class Utilisateur implements UserDetails, Ibeans {
@@ -20,7 +19,7 @@ public class Utilisateur implements UserDetails, Ibeans {
 	private int id;
 	private String avatar;
 	private String langue;
-	
+
 	// Les Foreign Keys ne doivent pas être présentes
 	// dans les objets. Exemple :
 	//private int ficheId;
@@ -31,70 +30,129 @@ public class Utilisateur implements UserDetails, Ibeans {
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;
 
-	public Set<Commentaire> commentaireredige = new HashSet<Commentaire>();
-	public HashSet<Article> articleecrit = new HashSet<Article>();
+	public Set<Commentaire> commentaireredige ;
+	public Set<Article> articleecrit;
 	public FicheUtilisateur ficheUtilisateur;
 	public Style style;
-	public HashSet<Authority> authorities = new HashSet<Authority>();
+	public Set<Authority> authorities;
 
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @param nom the nom to set
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	public String getNom() {
-		return this.nom;
+	/**
+	 * @return the prenom
+	 */
+	public String getPrenom() {
+		return prenom;
 	}
 
+	/**
+	 * @param prenom the prenom to set
+	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-	public String getPrenom() {
-		return this.prenom;
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
 	}
 
+	/**
+	 * @param username the username to set
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getPassword() {
-		return this.password;
+	/**
+	 * @return the mail
+	 */
+	public String getMail() {
+		return mail;
 	}
 
+	/**
+	 * @param mail the mail to set
+	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
-	public String getMail() {
-		return this.mail;
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getId() {
-		return this.id;
+	/**
+	 * @return the avatar
+	 */
+	public String getAvatar() {
+		return avatar;
 	}
 
+	/**
+	 * @param avatar the avatar to set
+	 */
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 
-	public String getAvatar() {
-		return this.avatar;
+	/**
+	 * @return the langue
+	 */
+	public String getLangue() {
+		return langue;
 	}
 
+	/**
+	 * @param langue the langue to set
+	 */
 	public void setLangue(String langue) {
 		this.langue = langue;
 	}
 
-	public String getLangue() {
-		return this.langue;
+	/**
+	 * @return the isEnabled
+	 */
+	public boolean isEnabled() {
+		return isEnabled;
 	}
 
 	/**
@@ -105,10 +163,24 @@ public class Utilisateur implements UserDetails, Ibeans {
 	}
 
 	/**
+	 * @return the isAccountNonExpired
+	 */
+	public boolean isAccountNonExpired() {
+		return isAccountNonExpired;
+	}
+
+	/**
 	 * @param isAccountNonExpired the isAccountNonExpired to set
 	 */
 	public void setAccountNonExpired(boolean isAccountNonExpired) {
 		this.isAccountNonExpired = isAccountNonExpired;
+	}
+
+	/**
+	 * @return the isAccountNonLocked
+	 */
+	public boolean isAccountNonLocked() {
+		return isAccountNonLocked;
 	}
 
 	/**
@@ -119,83 +191,45 @@ public class Utilisateur implements UserDetails, Ibeans {
 	}
 
 	/**
+	 * @return the isCredentialsNonExpired
+	 */
+	public boolean isCredentialsNonExpired() {
+		return isCredentialsNonExpired;
+	}
+
+	/**
 	 * @param isCredentialsNonExpired the isCredentialsNonExpired to set
 	 */
 	public void setCredentialsNonExpired(boolean isCredentialsNonExpired) {
 		this.isCredentialsNonExpired = isCredentialsNonExpired;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return the commentaireredige
 	 */
-	@Override
-	public String toString() {
-		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
-				+ username + ", password=" + password + ", mail=" + mail
-				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
-				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
-				+ isAccountNonExpired + ", isAccountNonLocked="
-				+ isAccountNonLocked + ", isCredentialsNonExpired="
-				+ isCredentialsNonExpired + ", commentaireredige="
-				+ commentaireredige.size() + ", articleecrit=" + articleecrit.size()
-				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
-				+ ", authorities=" + authorities + "]";
+	public Set<Commentaire> getCommentaireredige() {
+		return commentaireredige;
 	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#getAuthorities()
-	 */
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
-
 
 	/**
-	 * @param authorities the authorities to set
+	 * @param commentaireredige the commentaireredige to set
 	 */
-	public void setAuthorities(HashSet<Authority> authorities) {
-		this.authorities = authorities;
+	public void setCommentaireredige(Set<Commentaire> commentaireredige) {
+		this.commentaireredige = commentaireredige;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#getUsername()
+	/**
+	 * @return the articleecrit
 	 */
-	@Override
-	public String getUsername() {
-		return this.username;
+	public Set<Article> getArticleecrit() {
+		return articleecrit;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#isAccountNonExpired()
+	/**
+	 * @param articleecrit the articleecrit to set
 	 */
-	@Override
-	public boolean isAccountNonExpired() {
-		return isAccountNonExpired;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#isAccountNonLocked()
-	 */
-	@Override
-	public boolean isAccountNonLocked() {
-		return isAccountNonLocked;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#isCredentialsNonExpired()
-	 */
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return isCredentialsNonExpired;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetails#isEnabled()
-	 */
-	@Override
-	public boolean isEnabled() {
-		return isEnabled;
+	public void setArticleecrit(Set<Article> articleecrit) {
+		this.articleecrit = articleecrit;
 	}
 
 	/**
@@ -226,5 +260,35 @@ public class Utilisateur implements UserDetails, Ibeans {
 		this.style = style;
 	}
 
-	
+	/**
+	 * @return the authorities
+	 */
+	public Set<Authority> getAuthorities() {
+		return authorities;
+	}
+
+	/**
+	 * @param authorities the authorities to set
+	 */
+	public void setAuthorities(Set<Authority> authorities) {
+		this.authorities = authorities;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
+				+ username + ", password=" + password + ", mail=" + mail
+				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
+				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
+				+ isAccountNonExpired + ", isAccountNonLocked="
+				+ isAccountNonLocked + ", isCredentialsNonExpired="
+				+ isCredentialsNonExpired + ", commentaireredige="
+				+ commentaireredige + ", articleecrit=" + articleecrit
+				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
+				+ ", authorities=" + authorities + "]";
+	}
+
 }

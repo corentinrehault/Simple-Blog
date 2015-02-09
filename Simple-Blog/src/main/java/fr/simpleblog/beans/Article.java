@@ -3,20 +3,20 @@ package fr.simpleblog.beans;
 import java.util.*;
 
 public class Article implements Ibeans {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6970384124486214449L;
-	
+
 	private Date dateCreation;
 	private String titre;
 	private int id;
 	private String contenu;
-	
-	public HashSet<Commentaire> commentaires = new HashSet<Commentaire>();
+
+	public Set<Commentaire> commentaires;
 	public Utilisateur auteur;
-	public HashSet<Categorie> categories = new HashSet<Categorie>();
+	public Set<Categorie> categories;
 
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
@@ -50,6 +50,48 @@ public class Article implements Ibeans {
 		return this.contenu;
 	}
 
+	/**
+	 * @return the commentaires
+	 */
+	public Set<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	/**
+	 * @param commentaires the commentaires to set
+	 */
+	public void setCommentaires(Set<Commentaire> commentaires) {
+		this.commentaires = commentaires;
+	}
+
+	/**
+	 * @return the auteur
+	 */
+	public Utilisateur getAuteur() {
+		return auteur;
+	}
+
+	/**
+	 * @param auteur the auteur to set
+	 */
+	public void setAuteur(Utilisateur auteur) {
+		this.auteur = auteur;
+	}
+
+	/**
+	 * @return the categories
+	 */
+	public Set<Categorie> getCategories() {
+		return categories;
+	}
+
+	/**
+	 * @param categories the categories to set
+	 */
+	public void setCategories(Set<Categorie> categories) {
+		this.categories = categories;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -60,5 +102,5 @@ public class Article implements Ibeans {
 				+ commentaires.size() + ", auteur=" + auteur + ", categories="
 				+ categories.size() + "]";
 	}
-	
+
 }

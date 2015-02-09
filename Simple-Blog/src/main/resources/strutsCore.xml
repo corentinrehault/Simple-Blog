@@ -32,7 +32,7 @@
 		</action>
 
 		<action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction"
-			method="connecterUtilisateur">
+			method="loadUserByUsername">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<!-- redirection pour ne pas tester la connexion plusieurs fois -->
 			<result name="success" type="redirectAction">connecte</result>

@@ -4,18 +4,18 @@
 <!-- Generated 5 f?vr. 2015 15:19:14 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 
-    <class name="fr.simpleblog.beans.Authority" table="AUTHORITY">
-    
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        
-        <property name="authority" type="java.lang.String">
-            <column name="AUTHORITY" />
-        </property>
-        
-        <set name="utilisateurs" table="AUTHORITY_UTILISATEUR" inverse="false" lazy="true">
+	<class name="fr.simpleblog.beans.Authority" table="AUTHORITY">
+
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+
+		<property name="authority" type="java.lang.String">
+			<column name="AUTHORITY" />
+		</property>
+
+		<set name="utilisateurs" table="AUTHORITY_UTILISATEUR" inverse="false">
 			<key>
 				<column name="AUTHORITY_ID" />
 			</key>
@@ -23,6 +23,6 @@
 				<column name="UTILISATEUR_ID" />
 			</many-to-many>
 		</set>
-        
-    </class>
+
+	</class>
 </hibernate-mapping>

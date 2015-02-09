@@ -5,44 +5,41 @@
 <hibernate-mapping>
 
 	<class name="fr.simpleblog.beans.Article" table="ARTICLE">
-	
+
 		<id name="id" type="int">
 			<column name="ID" />
-			<generator class="assigned" />
+			<generator class="native" />
 		</id>
-		
+
 		<property name="dateCreation" type="java.util.Date">
 			<column name="DATECREATION" />
 		</property>
-		
+
 		<property name="titre" type="java.lang.String">
 			<column name="TITRE" />
 		</property>
-		
+
 		<property name="contenu" type="java.lang.String">
 			<column name="CONTENU" />
 		</property>
-		
-		<set name="commentaires" table="COMMENTAIRE" inverse="false" lazy="true"
-			access="field">
+
+		<set name="commentaires" table="COMMENTAIRE" inverse="true">
 			<key>
-				<column name="ID" />
+				<column name="FK_ARTICLE_COMMENTAIRE" />
 			</key>
 			<one-to-many class="fr.simpleblog.beans.Commentaire" />
 		</set>
-		
-		<many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur"
-			access="field" fetch="join">
-			<column name="AUTEUR" />
-		</many-to-one>
-		
-		<set name="categories" table="CATEGORIE" inverse="false" lazy="true"
-			access="field">
+
+		<!-- <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur"> -->
+		<!-- <column name="AUTEUR" /> -->
+		<!-- </many-to-one> -->
+
+		<set name="categories" table="CATEGORIE" inverse="true">
 			<key>
-				<column name="ID" />
+				<column name="FK_ARTICLE_CATEGORIE" />
 			</key>
 			<one-to-many class="fr.simpleblog.beans.Categorie" />
 		</set>
-		
+
 	</class>
 </hibernate-mapping>

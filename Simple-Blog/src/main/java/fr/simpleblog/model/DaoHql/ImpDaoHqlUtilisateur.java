@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.domainService.IserviceUtilisateur;
@@ -39,22 +40,26 @@ public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements Idao
 	 * @see fr.simpleblog.model.interfaces.IdaoModelUtilisateur#loadUserByUsername(java.lang.String)
 	 */
 	@Override
-	public UserDetails loadUserByUsername(String username) {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		UserDetails proxyUser = null;
+		System.out.println("Dans loadUserByUsername + " + username);
+
+		UserDetails userDetails = null;
+		Utilisateur utilisateur = null;
 
 		getSession();
 
 		try {
-			proxyUser = (UserDetails) session.createQuery("from utilisateur where username=?").setString(0, username).list();
+			utilisateur = (Utilisateur) session.createQuery("from utilisateur where username=?").setString(0, username).list();
 			session.flush();
-			return proxyUser;
+			System.out.println(utilisateur);
+			return userDetails;
 		} catch (HibernateException e) {
-			x=null;
+			userDetails=null;
 			e.printStackTrace();
 		}
 
-		return proxyUser;
+		return userDetails;
 	}
 
 }

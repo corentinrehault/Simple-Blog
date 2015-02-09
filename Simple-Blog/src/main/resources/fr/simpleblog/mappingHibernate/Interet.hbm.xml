@@ -8,7 +8,7 @@
 
 		<id name="id" type="int">
 			<column name="ID" />
-			<generator class="assigned" />
+			<generator class="native" />
 		</id>
 
 		<property name="nom" type="java.lang.String">
@@ -16,7 +16,7 @@
 		</property>
 
 		<set name="ficheUtilisateurs" table="INTERET_FICHEUTILISATEUR"
-			inverse="false" lazy="true">
+			inverse="false">
 			<key>
 				<column name="INTERET_ID" />
 			</key>

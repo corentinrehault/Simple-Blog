@@ -1,7 +1,10 @@
-<div class="blog-post">
+<%@ taglib prefix="sj"  uri="/struts-jquery-tags" %>
+
+<sj:div class="blog-post" draggable="true">
 
 <!-- 	<s:action name"getArticle" executeResult="false" value="AnArticleActionInstance" /> -->
 
+	<sj:dialog autoOpen="true" >test !</sj:dialog>
 	<h2 class="blog-post-title">Sample blog post</h2>
 	<h3>Catégorie : Sport</h3>
 
@@ -35,7 +38,7 @@
 		<a href=#>Commenter cet article</a>
 	</p>
 
-</div>
+</sj:div>
 <!-- /.blog-post -->
 
 <div class="blog-post">

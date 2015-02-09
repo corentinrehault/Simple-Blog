@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.StrutsSpringJUnit4TestCase;
+import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.mock.web.MockServletContext;
+import org.springframework.orm.hibernate4.SessionFactoryUtils;
+import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +31,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 
@@ -51,13 +55,14 @@ import fr.simpleblog.services.ApplicationContextHolder;
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
 	DbUnitTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 	TransactionalTestExecutionListener.class })
+@SuppressWarnings("unused")
 
 public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 
 
 	// fabrique de session pour hibernate
-	// public SessionFactory sessionFactory;
 	@Autowired(required=true)
+	public SessionFactory sessionFactory;
 	public MockHttpServletRequest request;
 	public MockHttpServletResponse response;	
 	public Map<String, Object> sessionMap ;	
@@ -70,7 +75,7 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 
 
 		// seulement dans le cas d'utilisation d'hibernate //
-		//TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(sessionFactory.openSession()));
+		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(sessionFactory.openSession()));
 
 		request = new MockHttpServletRequest();
 		super.request =  new MockHttpServletRequest();
@@ -88,23 +93,23 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 		// seulement dans le cas d'utilisation de spring security //
 		AuthenticationManager authenticationManager = (AuthenticationManager) context.getBean("authenticationManager");
 		final ProviderManager providerManager = (ProviderManager) authenticationManager;
-		
-		
-//USERMOCK		
-		
-//		Utilisateur userMock = new Utilisateur();
-//		
-//		userMock.setUsername("ooo");
-//		userMock.setPassword("1233456");
-//		Authority aut = new Authority();
-//		aut.setAuthority("ROLE_USER");
-//		 userMock.authorities.add(aut);
-		
-//		final Authentication authToken = new UsernamePasswordAuthenticationToken (userMock.getUsername(), userMock.getPassword(), userMock.getAuthorities());
+
+
+		//		USERMOCK		
+
+		//		Utilisateur userMock = new Utilisateur();
+		//		
+		//		userMock.setUsername("ooo");
+		//		userMock.setPassword("1233456");
+		//		Authority aut = new Authority();
+		//		aut.setAuthority("ROLE_USER");
+		//		userMock.authorities.add(aut);
+
+		//		final Authentication authToken = new UsernamePasswordAuthenticationToken (userMock.getUsername(), userMock.getPassword(), userMock.getAuthorities());
 
 		final Authentication authToken = new UsernamePasswordAuthenticationToken ("jlafosse", "jerome");
 		SecurityContextHolder.getContext().setAuthentication(authToken);
-		
+
 		System.out.println(" ===> " +  authenticationManager.authenticate(authToken));
 
 		//envoi du context spring dans la session
@@ -115,12 +120,13 @@ public class BaseTest extends StrutsSpringJUnit4TestCase<UtilisateurAction> {
 
 	@After
 	public void tearDown() throws Exception {
-		// seulement dans le cas d'utilisation d'hibernate //
-		// seulement dans le cas d'utilisation de spring security //
 
-		//	SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
-		//	SessionFactoryUtils.closeSession(sessionHolder.getSession());
-			SecurityContextHolder.getContext().setAuthentication(null);
+		// seulement dans le cas d'utilisation d'hibernate //
+		SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
+		SessionFactoryUtils.closeSession(sessionHolder.getSession());
+
+		// seulement dans le cas d'utilisation de spring security //
+		SecurityContextHolder.getContext().setAuthentication(null);
 	}
 
 

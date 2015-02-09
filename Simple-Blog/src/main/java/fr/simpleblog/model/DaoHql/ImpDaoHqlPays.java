@@ -48,8 +48,16 @@ public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays, Ise
 		getSession();
 
 		try {
-			session.save(ensemblePays);
+			
+			for (int i = 0; i < ensemblePays.size(); i++) {
+				Pays c = (Pays)ensemblePays.get(i);
+				System.out.println("==>" + c);
+				session.save(c);
+			}
+			//session.save(ensemblePays);
+			
 			session.flush();
+			
 		} catch (HibernateException e) {
 			ensemblePays=null;
 			e.printStackTrace();

@@ -31,9 +31,11 @@
 
 
 				<prop key="org.hibernate.FlushMode">FlushMode.AUTO</prop>
-				
+
 				<!-- Mode de démarrage d'hibernate -->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<!-- permet de lire un fichier sql sur plusieurs lignes -->
 				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
 				</prop>
@@ -45,19 +47,21 @@
 
 		<property name="mappingResources">
 			<list>
-			
-				<value>/fr/simpleblog/mappingHibernate/HibernatetestBean.hbm.xml</value>
-				
+
+				<value>/fr/simpleblog/mappingHibernate/HibernatetestBean.hbm.xml
+				</value>
+
 				<value>/fr/simpleblog/mappingHibernate/Article.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Authority.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Categorie.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Commentaire.hbm.xml</value>
-				<value>/fr/simpleblog/mappingHibernate/FicheUtilisateur.hbm.xml</value>
+				<value>/fr/simpleblog/mappingHibernate/FicheUtilisateur.hbm.xml
+				</value>
 				<value>/fr/simpleblog/mappingHibernate/Interet.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Pays.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Style.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Utilisateur.hbm.xml</value>
-				
+
 			</list>
 		</property>
 

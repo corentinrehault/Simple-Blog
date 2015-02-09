@@ -2,9 +2,9 @@ package fr.simpleblog.controllers;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -38,9 +38,9 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public Pays pays;
 	public Interet interet;
 
-	public HashSet<Interet> interets = new HashSet<Interet>();
-	public List<Pays> ensemblePays = new LinkedList<Pays>();
-	private List<Style> styles = new LinkedList<Style>();
+	public Set<Interet> interets;
+	public List<Pays> ensemblePays;
+	private List<Style> styles;
 
 	private Map<String,Object> sessionMap;
 	private Cache cache;
@@ -288,26 +288,42 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 		this.pays = pays;
 	}
 
+//	/**
+//	 * @return the interets
+//	 */
+//	public HashSet<Interet> getInterets() {
+//
+//		if (cache.getInterets() == null) {
+//			interets = daoModelInteret.listInteret();
+//			cache.setInterets(interets);
+//		} else {
+//			interets = cache.getInterets();
+//		};
+//
+//		System.out.println(interets.toString());
+//		return interets;
+//	}
+	
+	
+
+	/**
+	 * @param interets the interets to set
+	 */
+	public void setInterets(HashSet<Interet> interets) {
+		this.interets = interets;
+	}
+
 	/**
 	 * @return the interets
 	 */
-	public HashSet<Interet> getInterets() {
-
-		if (cache.getInterets() == null) {
-			interets = daoModelInteret.listInteret();
-			cache.setInterets(interets);
-		} else {
-			interets = cache.getInterets();
-		};
-
-		System.out.println(interets.toString());
+	public Set<Interet> getInterets() {
 		return interets;
 	}
 
 	/**
 	 * @param interets the interets to set
 	 */
-	public void setInterets(HashSet<Interet> interets) {
+	public void setInterets(Set<Interet> interets) {
 		this.interets = interets;
 	}
 
