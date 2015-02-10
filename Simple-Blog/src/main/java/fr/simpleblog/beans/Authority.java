@@ -54,12 +54,4 @@ public class Authority  implements GrantedAuthority, Ibeans {
 		this.utilisateurs = utilisateurs;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Authority [authority=" + authority + ", id=" + id + "]";
-	}
-
 }

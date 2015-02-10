@@ -116,15 +116,4 @@ public class FicheUtilisateur implements Ibeans {
 		this.interets = interets;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "FicheUtilisateur [adresse=" + adresse + ", ville=" + ville
-				+ ", codePostal=" + codePostal + ", id=" + id + ", pays="
-				+ pays + ", interet=" + interet + ", interets=" + interets.size()
-				+ "]";
-	}
-
 }

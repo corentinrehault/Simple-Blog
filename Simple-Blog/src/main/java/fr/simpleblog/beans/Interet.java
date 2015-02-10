@@ -44,12 +44,4 @@ public class Interet implements Ibeans {
 		this.ficheUtilisateurs = ficheUtilisateurs;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Interet [nom=" + nom + ", id=" + id + "]";
-	}
-
 }

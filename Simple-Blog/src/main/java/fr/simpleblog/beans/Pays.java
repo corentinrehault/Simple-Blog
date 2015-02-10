@@ -53,12 +53,4 @@ public class Pays implements Ibeans {
 		this.codepays = codepays;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Pays [id=" + id + ", nom=" + nom + ", codepays=" + codepays
-				+ "]";
-	}
 }

@@ -30,13 +30,14 @@ public class AuthentifierIntercepteur extends AbstractInterceptor{
 		System.out.println("Dans la méthode intercept");
 		Map<String, Object> session=invocation.getInvocationContext().getSession();
 
-		if(session.isEmpty()) {
+		if(session.containsKey("SessionId")) {
 
-			return Action.LOGIN;
+			return invocation.invoke();
 
 		} else {
 
-			return invocation.invoke();
+			return Action.LOGIN;
+
 		}
 
 	}
@@ -45,7 +46,7 @@ public class AuthentifierIntercepteur extends AbstractInterceptor{
 	 * @see com.opensymphony.xwork2.interceptor.AbstractInterceptor#destroy()
 	 */
 	public void destroy() {
-		
+
 		System.out.println("Après la méthode d'action");
 	}
 }

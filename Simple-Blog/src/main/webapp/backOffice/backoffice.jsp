@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,19 +32,27 @@
 
 			<!-- /.blog-main -->
 
-			<s:if test="%{#session.authorityadmin=='admin'}">
+			<%-- 			<s:if test="%{#session.SPRING_SECURITY_CONTEXT != null}"> --%>
+			<!-- 					<div class="col-sm-3 blog-sidebar"> -->
+			<%-- 						<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute> --%>
+			<!-- 					</div> -->
+			<%-- 			</s:if> --%>
+			<%-- 			<s:else> --%>
+			<!-- 				<div class="col-sm-3 blog-sidebar"> -->
+			<%-- 					<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute> --%>
+			<!-- 				</div> -->
+			<%-- 			</s:else> --%>
 
+			<security:authorize access="hasRole('ROLE_ADMIN')">
 				<div class="col-sm-3 blog-sidebar">
 					<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
 				</div>
-
-			</s:if>
-			<s:else>
-
+			</security:authorize>
+			<security:authorize access="!hasRole('ROLE_ADMIN')">
 				<div class="col-sm-3 blog-sidebar">
 					<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
 				</div>
-			</s:else>
+			</security:authorize>
 
 			<!-- /.blog-sidebar -->
 

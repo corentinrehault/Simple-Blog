@@ -9,31 +9,27 @@
 
 
 		<intercept-url pattern="/staticContent/*" access="permitAll" />
-		<intercept-url pattern="/**" access="permitAll" />
-		
-		<intercept-url pattern="/backOffice/*" access="hasRole('ROLE_USER')" />
-		
-		<!-- <intercept-url pattern="/**" access="hasRole('ROLE_ANONYMOUS')" /> -->
+		<intercept-url pattern="/BackOffice/*" access="hasRole('ROLE_USER')" />
 
+		<!-- <intercept-url pattern="/**" access="permitAll" /> -->
+		<!-- <intercept-url pattern="/**" access="hasRole('ROLE_ANONYMOUS')" /> -->
 		<!-- <anonymous enabled="true" granted-authority="ROLE_ANONYMOUS"/> -->
 
-		<logout logout-url="/taface" delete-cookies="true"
-			logout-success-url="/index" />
-
-
+		<logout logout-success-url="/index" />
 
 		<form-login default-target-url="/index" login-page="/index"
-			authentication-failure-url="/index" login-processing-url="/j_spring_security_check.action" 
-			/>
-
-		<logout logout-success-url="/index.jsp" />
+			authentication-failure-url="/index" login-processing-url="/j_spring_security_check.action" />
 
 
 	</http>
 
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="impServiceUtilisateur" />
+	</authentication-manager>
+
+	<!-- AUTHENTICATION-MANAGER DE TEST -->
 
 	<!-- <authentication-manager alias="authenticationManager"> -->
-
 	<!-- <authentication-provider> -->
 
 	<!-- <user-service> -->
@@ -43,13 +39,7 @@
 	<!-- </user-service> -->
 
 	<!-- </authentication-provider> -->
-
 	<!-- </authentication-manager> -->
-
-	<authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="daoModelUtilisateur" />
-	</authentication-manager>
-
 
 </beans:beans>
 

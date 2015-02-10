@@ -14,7 +14,7 @@ public class Commentaire implements Ibeans {
 	private String contenu;
 	private int id;
 	private boolean valide;
-	
+
 	public Article articleCommente;
 	public Utilisateur auteur;
 
@@ -84,17 +84,6 @@ public class Commentaire implements Ibeans {
 	 */
 	public void setAuteur(Utilisateur auteur) {
 		this.auteur = auteur;
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Commentaire [date=" + date + ", titre=" + titre + ", contenu="
-				+ contenu + ", id=" + id + ", valide=" + valide
-				+ ", articleCommente=" + articleCommente + ", auteur=" + auteur
-				+ "]";
 	}
 
 }

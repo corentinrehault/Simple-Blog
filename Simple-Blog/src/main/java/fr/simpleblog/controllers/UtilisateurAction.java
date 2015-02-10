@@ -7,10 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -33,7 +29,7 @@ import fr.simpleblog.domainService.IserviceUtilisateur;
  */
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
-public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware, UserDetailsService  {
+public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware {
 
 	/**
 	 * 
@@ -477,15 +473,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {		
-		return null;
 	}
 
 }

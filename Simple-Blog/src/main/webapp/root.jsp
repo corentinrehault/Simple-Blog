@@ -16,14 +16,12 @@
 	<div class="container">
 		<div class="row row-eq-height">
 			<tiles:insertAttribute name="zone_titre"></tiles:insertAttribute>
-			<s:if test="%{#session.SPRING_SECURITY_CONTEXT != null}">
-				<security:authorize access="hasRole('ROLE_USER')">
-					<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
-				</security:authorize>
-			</s:if>
-			<s:else>
+			<security:authorize access="hasRole('ROLE_USER')">
+				<tiles:insertAttribute name="zone_login_connecte"></tiles:insertAttribute>
+			</security:authorize>
+			<security:authorize access="!hasRole('ROLE_USER')">
 				<tiles:insertAttribute name="zone_login"></tiles:insertAttribute>
-			</s:else>
+			</security:authorize>
 		</div>
 	</div>
 	<div class="container">
