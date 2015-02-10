@@ -39,20 +39,26 @@ public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements Idao
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelUtilisateur#loadUserByUsername(java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		System.out.println("Dans loadUserByUsername + " + username);
 
 		UserDetails userDetails = null;
-		Utilisateur utilisateur = null;
+		List<Utilisateur> utilisateurs;
 
 		getSession();
 
 		try {
-			utilisateur = (Utilisateur) session.createQuery("from utilisateur where username=?").setString(0, username).list();
+			utilisateurs = session.createQuery("from utilisateur where username=?").setString(0, username).list();
 			session.flush();
-			System.out.println(utilisateur);
+			System.out.println(utilisateurs.get(0));
+			if (utilisateurs.size()!=0) {
+				userDetails = utilisateurs.get(0);
+			} else {
+				userDetails = null;
+			}
 			return userDetails;
 		} catch (HibernateException e) {
 			userDetails=null;

@@ -274,21 +274,4 @@ public class Utilisateur implements UserDetails, Ibeans {
 		this.authorities = authorities;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", username="
-				+ username + ", password=" + password + ", mail=" + mail
-				+ ", id=" + id + ", avatar=" + avatar + ", langue=" + langue
-				+ ", isEnabled=" + isEnabled + ", isAccountNonExpired="
-				+ isAccountNonExpired + ", isAccountNonLocked="
-				+ isAccountNonLocked + ", isCredentialsNonExpired="
-				+ isCredentialsNonExpired + ", commentaireredige="
-				+ commentaireredige + ", articleecrit=" + articleecrit
-				+ ", ficheUtilisateur=" + ficheUtilisateur + ", style=" + style
-				+ ", authorities=" + authorities + "]";
-	}
-
 }
