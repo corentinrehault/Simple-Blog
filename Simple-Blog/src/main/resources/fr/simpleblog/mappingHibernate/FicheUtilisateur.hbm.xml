@@ -7,7 +7,7 @@
 	<class name="fr.simpleblog.beans.FicheUtilisateur" table="FICHEUTILISATEUR">
 
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
 
@@ -23,11 +23,13 @@
 			<column name="CODEPOSTAL" />
 		</property>
 
-		<many-to-one name="pays" not-found="ignore" class="fr.simpleblog.beans.Pays">
+		<many-to-one name="pays" not-found="ignore"
+			class="fr.simpleblog.beans.Pays">
 			<column name="FK_FICHE_PAYS" />
 		</many-to-one>
 
-		<many-to-one name="interet" not-found="ignore" class="fr.simpleblog.beans.Interet">
+		<many-to-one name="interet" not-found="ignore"
+			class="fr.simpleblog.beans.Interet">
 			<column name="FK_FICHE_INTERET" />
 		</many-to-one>
 

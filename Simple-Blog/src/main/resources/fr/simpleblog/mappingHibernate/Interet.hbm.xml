@@ -7,12 +7,12 @@
 	<class name="fr.simpleblog.beans.Interet" table="INTERET">
 
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
 
 		<property name="nom" type="java.lang.String">
-			<column name="NOM" />
+			<column name="NOM" unique="true" not-null="true" />
 		</property>
 
 		<set name="ficheUtilisateurs" table="INTERET_FICHEUTILISATEUR"

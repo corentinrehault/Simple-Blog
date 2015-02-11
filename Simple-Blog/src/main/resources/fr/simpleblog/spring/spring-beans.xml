@@ -25,7 +25,8 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" />
+	<!-- <bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" 
+		/> -->
 
 	<bean id="daoModelArticle" name="daoModelArticle"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlArticle" parent="ImpDaoHql" />
@@ -96,12 +97,11 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- On injecte dans Cache dans ficheutilisateur -->
 
 	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
-		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur"></property>
-		<property name="daoModelUtilisateur" ref="impServiceUtilisateur"></property>
-		<property name="daoModelPays" ref="impServicePays"></property>
-		<property name="daoModelInteret" ref="impServiceInteret"></property>
+		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
+		<property name="daoModelPays" ref="impServicePays" />
+		<property name="daoModelInteret" ref="impServiceInteret" />
 		<property name="daoModelStyle" ref="impServiceStyle" />
-		<property name="cache" ref="cache"></property>
 	</bean>
 
 	<!-- Définition du cache -->

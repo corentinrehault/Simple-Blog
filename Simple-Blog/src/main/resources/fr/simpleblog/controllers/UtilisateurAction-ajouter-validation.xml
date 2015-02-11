@@ -19,6 +19,11 @@
 			<message>You must enter a name</message>
 		</field-validator>
 	</field>
+	<field name="utilisateur.mail">
+		<field-validator type="requiredstring">
+			<message>You must enter a mail address</message>
+		</field-validator>
+	</field>
 	<field name="utilisateur.password">
 		<field-validator type="requiredstring">
 			<message>You must enter a password</message>

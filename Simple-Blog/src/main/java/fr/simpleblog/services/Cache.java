@@ -3,8 +3,8 @@
  */
 package fr.simpleblog.services;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import fr.simpleblog.beans.Interet;
 import fr.simpleblog.beans.Pays;
@@ -17,7 +17,7 @@ import fr.simpleblog.beans.Style;
 public class Cache {
 
 	private List<Pays> ensemblePays ;
-	private HashSet<Interet> interets;
+	private Set<Interet> interets;
 	private List<Style> styles;
 
 	/**
@@ -37,14 +37,14 @@ public class Cache {
 	/**
 	 * @return the interets
 	 */
-	public HashSet<Interet> getInterets() {
+	public Set<Interet> getInterets() {
 		return interets;
 	}
 
 	/**
 	 * @param interets the interets to set
 	 */
-	public void setInterets(HashSet<Interet> interets) {
+	public void setInterets(Set<Interet> interets) {
 		this.interets = interets;
 	}
 

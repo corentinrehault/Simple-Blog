@@ -7,20 +7,20 @@
 	<class name="fr.simpleblog.beans.Article" table="ARTICLE">
 
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
 
 		<property name="dateCreation" type="java.util.Date">
-			<column name="DATECREATION" />
+			<column name="DATECREATION" not-null="true" />
 		</property>
 
 		<property name="titre" type="java.lang.String">
-			<column name="TITRE" />
+			<column name="TITRE" not-null="true" />
 		</property>
 
 		<property name="contenu" type="java.lang.String">
-			<column name="CONTENU" />
+			<column name="CONTENU" not-null="true" />
 		</property>
 
 		<set name="commentaires" table="COMMENTAIRE" inverse="true">
@@ -29,10 +29,6 @@
 			</key>
 			<one-to-many class="fr.simpleblog.beans.Commentaire" />
 		</set>
-
-		<!-- <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur"> -->
-		<!-- <column name="AUTEUR" /> -->
-		<!-- </many-to-one> -->
 
 		<set name="categories" table="CATEGORIE" inverse="true">
 			<key>

@@ -7,12 +7,12 @@
 	<class name="fr.simpleblog.beans.Authority" table="AUTHORITY">
 
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
 
 		<property name="authority" type="java.lang.String">
-			<column name="AUTHORITY" />
+			<column name="AUTHORITY" unique="true" not-null="true" />
 		</property>
 
 		<set name="utilisateurs" table="AUTHORITY_UTILISATEUR" inverse="false">

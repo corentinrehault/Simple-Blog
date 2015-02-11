@@ -15,7 +15,7 @@
 		<!-- <intercept-url pattern="/**" access="hasRole('ROLE_ANONYMOUS')" /> -->
 		<!-- <anonymous enabled="true" granted-authority="ROLE_ANONYMOUS"/> -->
 
-		<logout logout-success-url="/index" />
+		<logout logout-success-url="/index" logout-url="/logout" />
 
 		<form-login default-target-url="/index" login-page="/index"
 			authentication-failure-url="/index" login-processing-url="/j_spring_security_check.action" />

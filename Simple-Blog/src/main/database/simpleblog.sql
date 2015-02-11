@@ -51,7 +51,7 @@ CREATE TABLE FicheUtilisateur (
   PaysId     int(11), 
   Adresse    varchar(255), 
   Ville      varchar(255), 
-  CodePostal int(11) NOT NULL, 
+  CodePostal int(11), 
   PRIMARY KEY (Id)) CHARACTER SET UTF8;
 CREATE TABLE Pays (
   Id       int(11) NOT NULL AUTO_INCREMENT, 

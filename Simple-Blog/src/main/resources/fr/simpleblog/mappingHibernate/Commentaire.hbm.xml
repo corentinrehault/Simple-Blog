@@ -4,36 +4,37 @@
 <!-- Generated 5 f?vr. 2015 15:32:48 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 
-    <class name="fr.simpleblog.beans.Commentaire" table="COMMENTAIRE">
-    
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="native" />
-        </id>
-        
-        <property name="date" type="java.util.Date">
-            <column name="DATE" />
-        </property>
-        
-        <property name="titre" type="java.lang.String">
-            <column name="TITRE" />
-        </property>
-        
-        <property name="contenu" type="java.lang.String">
-            <column name="CONTENU" />
-        </property>
-        
-        <property name="valide" type="boolean">
-            <column name="VALIDE" />
-        </property>
-        
-<!--         <many-to-one name="articleCommente" class="fr.simpleblog.beans.Article"> -->
-<!--             <column name="ARTICLECOMMENTE" /> -->
-<!--         </many-to-one> -->
-        
-<!--         <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur" > -->
-<!--             <column name="AUTEUR" /> -->
-<!--         </many-to-one> -->
-        
-    </class>
+	<class name="fr.simpleblog.beans.Commentaire" table="COMMENTAIRE">
+
+		<id name="id" type="int">
+			<column name="ID" not-null="true" />
+			<generator class="native" />
+		</id>
+
+		<property name="date" type="java.util.Date">
+			<column name="DATE" not-null="true" />
+		</property>
+
+		<property name="titre" type="java.lang.String">
+			<column name="TITRE" not-null="true" />
+		</property>
+
+		<property name="contenu" type="java.lang.String">
+			<column name="CONTENU" not-null="true" />
+		</property>
+
+		<property name="valide" type="boolean">
+			<column name="VALIDE" not-null="true" />
+		</property>
+
+		<!-- <many-to-one name="articleCommente" class="fr.simpleblog.beans.Article"> -->
+		<!-- <column name="ARTICLECOMMENTE" /> -->
+		<!-- </many-to-one> -->
+
+		<!-- <many-to-one name="auteur" class="fr.simpleblog.beans.Utilisateur" 
+			> -->
+		<!-- <column name="AUTEUR" /> -->
+		<!-- </many-to-one> -->
+
+	</class>
 </hibernate-mapping>

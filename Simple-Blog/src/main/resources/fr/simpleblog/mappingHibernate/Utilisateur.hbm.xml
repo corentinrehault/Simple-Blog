@@ -7,28 +7,28 @@
 	<class name="fr.simpleblog.beans.Utilisateur" table="UTILISATEUR">
 
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
 
 		<property name="nom" type="java.lang.String">
-			<column name="NOM" />
+			<column name="NOM" not-null="true" />
 		</property>
 
 		<property name="prenom" type="java.lang.String">
-			<column name="PRENOM" />
+			<column name="PRENOM" not-null="true" />
 		</property>
 
 		<property name="username" type="java.lang.String">
-			<column name="USERNAME" />
+			<column name="USERNAME" unique="true" not-null="true" />
 		</property>
 
 		<property name="password" type="java.lang.String">
-			<column name="PASSWORD" />
+			<column name="PASSWORD" not-null="true" />
 		</property>
 
 		<property name="mail" type="java.lang.String">
-			<column name="MAIL" />
+			<column name="MAIL" unique="true" not-null="true" />
 		</property>
 
 		<property name="avatar" type="java.lang.String">
@@ -36,31 +36,32 @@
 		</property>
 
 		<property name="langue" type="java.lang.String">
-			<column name="LANGUE" />
+			<column name="LANGUE" default="'fr'" not-null="true" />
 		</property>
 
 		<property name="isEnabled" type="boolean" access="field">
-			<column name="ISENABLED" />
+			<column name="ISENABLED" default="true" not-null="true" />
 		</property>
 
 		<property name="isAccountNonExpired" type="boolean" access="field">
-			<column name="ISACCOUNTNONEXPIRED" />
+			<column name="ISACCOUNTNONEXPIRED" default="true" not-null="true" />
 		</property>
 
 		<property name="isAccountNonLocked" type="boolean" access="field">
-			<column name="ISACCOUNTNONLOCKED" />
+			<column name="ISACCOUNTNONLOCKED" default="true" not-null="true" />
 		</property>
 
 		<property name="isCredentialsNonExpired" type="boolean"
 			access="field">
-			<column name="ISCREDENTIALSNONEXPIRED" />
+			<column name="ISCREDENTIALSNONEXPIRED" default="true"
+				not-null="true" />
 		</property>
 
 		<set name="commentaireredige" table="COMMENTAIRE" inverse="true">
 			<key>
 				<column name="FK_UTILISATEUR_COMMENTAIRE" />
 			</key>
-			<one-to-many class="fr.simpleblog.beans.Commentaire"/>
+			<one-to-many class="fr.simpleblog.beans.Commentaire" />
 		</set>
 
 		<set name="articleecrit" table="ARTICLE" inverse="true">
@@ -71,11 +72,13 @@
 		</set>
 
 		<!-- not-found="ignore" pour la cardinalité 0..1 > 1 -->
-		<many-to-one name="ficheUtilisateur" not-found="ignore" class="fr.simpleblog.beans.FicheUtilisateur">
+		<many-to-one name="ficheUtilisateur" not-found="ignore"
+			class="fr.simpleblog.beans.FicheUtilisateur">
 			<column name="FK_UTILISATEUR_FICHE" />
 		</many-to-one>
 
-		<many-to-one name="style" not-found="ignore" class="fr.simpleblog.beans.Style">
+		<many-to-one name="style" not-found="ignore"
+			class="fr.simpleblog.beans.Style">
 			<column name="FK_UTILISATEUR_STYLE" />
 		</many-to-one>
 

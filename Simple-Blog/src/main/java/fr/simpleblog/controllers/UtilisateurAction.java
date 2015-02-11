@@ -41,7 +41,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private HashSet<Interet> interets = new HashSet<Interet>();
 	private Set<Authority> authorities;
 
-	private String login;
+	private String username;
 	private String password;
 	private String prenom;
 	private String nom;
@@ -103,40 +103,42 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		return SUCCESS;
 	}
 
-	/**
-	 * @return SUCCESS
-	 */
-	public String connecterUtilisateur() {
+	// OBSOLETE SUITE A L'UTILISATION DE SPRING SECURITY
 
-
-		utilisateur = daoModelUtilisateur.login(utilisateur);
-
-		//System.out.println(utilisateur.toString());
-
-		if (utilisateur != null) {
-
-			utilisateur.setPassword(null);
-			this.sessionMap.put("login", utilisateur.getUsername());
-			this.sessionMap.put("prenom", utilisateur.getPrenom());
-			this.sessionMap.put("nom", utilisateur.getNom());
-			this.sessionMap.put("mail", utilisateur.getMail());		
-			this.sessionMap.put("ficheId", utilisateur.ficheUtilisateur.getId());
-			this.sessionMap.put("styleId", utilisateur.style.getId());
-
-			authorities = daoModelAuthority.listAuthorityByUserId(utilisateur.getId());
-
-			if (authorities != null) {
-				authorities.iterator();
-				System.out.println(authorities);
-				for(Authority a : authorities) {
-					this.sessionMap.put("authority"+a.getAuthority(),a.getAuthority());
-				}
-			}
-
-		}
-
-		return SUCCESS;
-	}
+	//	/**
+	//	 * @return SUCCESS
+	//	 */
+	//	public String connecterUtilisateur() {
+	//
+	//
+	//		utilisateur = daoModelUtilisateur.login(utilisateur);
+	//
+	//		//System.out.println(utilisateur.toString());
+	//
+	//		if (utilisateur != null) {
+	//
+	//			utilisateur.setPassword(null);
+	//			this.sessionMap.put("login", utilisateur.getUsername());
+	//			this.sessionMap.put("prenom", utilisateur.getPrenom());
+	//			this.sessionMap.put("nom", utilisateur.getNom());
+	//			this.sessionMap.put("mail", utilisateur.getMail());		
+	//			this.sessionMap.put("ficheId", utilisateur.ficheUtilisateur.getId());
+	//			this.sessionMap.put("styleId", utilisateur.style.getId());
+	//
+	//			authorities = daoModelAuthority.listAuthorityByUserId(utilisateur.getId());
+	//
+	//			if (authorities != null) {
+	//				authorities.iterator();
+	//				System.out.println(authorities);
+	//				for(Authority a : authorities) {
+	//					this.sessionMap.put("authority"+a.getAuthority(),a.getAuthority());
+	//				}
+	//			}
+	//
+	//		}
+	//
+	//		return SUCCESS;
+	//	}
 
 	/**
 	 * @return
@@ -145,19 +147,21 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		return SUCCESS;
 	}
 
-	/**
-	 * @return SUCCESS
-	 * 
-	 * déconnecte l'utilisateur en nettoyant la Map
-	 */
-	public String deconnecterUtilisateur() {
+	// OBSOLETE SUITE A L'UTILISATION DE SPRING SECURITY
 
-		this.sessionMap.clear();
-
-		System.err.println("========> "+ sessionMap.isEmpty());
-
-		return SUCCESS;
-	}
+	//	/**
+	//	 * @return SUCCESS
+	//	 * 
+	//	 * déconnecte l'utilisateur en nettoyant la Map
+	//	 */
+	//	public String deconnecterUtilisateur() {
+	//
+	//		this.sessionMap.clear();
+	//
+	//		System.err.println("========> "+ sessionMap.isEmpty());
+	//
+	//		return SUCCESS;
+	//	}
 
 	public void envoyerMailUtilisateur() {
 		throw new UnsupportedOperationException();
@@ -165,17 +169,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 	public void listerAvatar() {
 		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * @return autorité de l'utilisateur
-	 */
-	public String utilisateurAutorite() {
-		String reponse = INPUT;
-		if (sessionMap.containsValue("admin")){
-			reponse = SUCCESS;
-		}
-		return reponse;
 	}
 
 	/**
@@ -210,14 +203,14 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 * @return the login
 	 */
 	public String getLogin() {
-		return login;
+		return username;
 	}
 
 	/**
 	 * @param login the login to set
 	 */
-	public void setLogin(String login) {
-		this.login = login;
+	public void setLogin(String username) {
+		this.username = username;
 	}
 
 	/**

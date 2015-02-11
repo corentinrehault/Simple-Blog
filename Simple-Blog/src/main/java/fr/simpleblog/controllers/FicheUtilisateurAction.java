@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.ehcache.Cache;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,7 +18,6 @@ import fr.simpleblog.domainService.IserviceInteret;
 import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
-import fr.simpleblog.services.Cache;
 
 public class FicheUtilisateurAction extends ActionSupport implements Preparable,SessionAware {
 	/**
@@ -69,30 +69,30 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 
 	public String lireFicheUtilisateur() {
 
-		ficheUtilisateur = daoModelFicheUtilisateur.readById((int) sessionMap.get("ficheId"));
+		//ficheUtilisateur = daoModelFicheUtilisateur.readById((int) sessionMap.get("ficheId"));
 
 		//System.out.println(ficheUtilisateur.toString());
 
-		if (ficheUtilisateur != null) {
-
-			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
-			this.sessionMap.put("ville", ficheUtilisateur.getVille());
-			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-			if (ficheUtilisateur.pays != null) {
-				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
-			}
-
-		}
-
-		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
-
-		if (interets != null) {
-			interets.iterator();
-			System.out.println(interets.iterator());
-			for (Interet interet : interets) {
-				this.sessionMap.put("interet", interet.getNom());
-			}
-		}
+//		if (ficheUtilisateur != null) {
+//
+//			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
+//			this.sessionMap.put("ville", ficheUtilisateur.getVille());
+//			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
+//			if (ficheUtilisateur.pays != null) {
+//				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
+//			}
+//
+//		}
+//
+//		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
+//
+//		if (interets != null) {
+//			interets.iterator();
+//			System.out.println(interets.iterator());
+//			for (Interet interet : interets) {
+//				this.sessionMap.put("interet", interet.getNom());
+//			}
+//		}
 
 		//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
 		//		
@@ -332,13 +332,11 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 */
 	public List<Pays> getEnsemblePays() {
 
-		if (cache.getEnsemblePays() == null ) {
-			//TODO insérer test durée de vie du cache
+		//if (cache == null) {
 			ensemblePays = daoModelPays.listPays();
-			cache.setEnsemblePays(ensemblePays);
-		} else {
-			ensemblePays = cache.getEnsemblePays();
-		}
+//		} else {
+//			ensemblePays = (List<Pays>) cache.get("Pays");
+//		}
 
 		//System.out.println(cache);
 		//System.out.println(ensemblePays.toString());
@@ -355,18 +353,18 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	/**
 	 * @return the styles
 	 */
-	public List<Style> getStyles() {
-
-		if(cache.getStyles() == null) {
-			styles = daoModelStyle.listStyle();
-			cache.setStyles(styles);
-		} else {
-			styles = cache.getStyles();
-		}
-
-		System.out.println(styles.toString());
-		return styles;
-	}
+//	public List<Style> getStyles() {
+//
+//		if(cache.getStyles() == null) {
+//			styles = daoModelStyle.listStyle();
+//			cache.setStyles(styles);
+//		} else {
+//			styles = cache.getStyles();
+//		}
+//
+//		System.out.println(styles.size());
+//		return styles;
+//	}
 
 	/**
 	 * @param styles the styles to set

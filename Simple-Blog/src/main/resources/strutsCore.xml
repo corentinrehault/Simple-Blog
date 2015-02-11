@@ -45,17 +45,16 @@
 <!-- 			<result name="error" type="dispatcher">error.jsp</result> -->
 <!-- 		</action> -->
 
-		<action name="deconnexion" class="fr.simpleblog.controllers.UtilisateurAction"
-			method="deconnecterUtilisateur">
-			<result name="success" type="tiles">rootTemplate</result>
-		</action>
+<!-- 		<action name="deconnexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
+<!-- 			method="deconnecterUtilisateur"> -->
+<!-- 			<result name="success" type="tiles">rootTemplate</result> -->
+<!-- 		</action> -->
 
 	</package>
 
 	<package name="admin" namespace="/backOffice" extends="root">
 
-		<action name="accesbackoffice" class="fr.simpleblog.controllers.UtilisateurAction"
-			method="utilisateurAutorite">
+		<action name="accesbackoffice">
 			<result name="success" type="tiles">backofficeTemplate</result>
 			<result name="input" type="tiles">backofficeTemplate</result>
 			<result name="error" type="dispatcher">/error.jsp</result>

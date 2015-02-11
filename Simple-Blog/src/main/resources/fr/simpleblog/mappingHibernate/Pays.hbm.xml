@@ -4,19 +4,23 @@
 <!-- Generated 5 f?vr. 2015 15:23:08 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 	<class name="fr.simpleblog.beans.Pays" table="PAYS">
-	
+
+		<cache usage="read-only" />
+
 		<id name="id" type="int">
-			<column name="ID" />
+			<column name="ID" not-null="true" />
 			<generator class="native" />
 		</id>
-		
+
 		<property name="nom" type="java.lang.String">
-			<column name="NOM" />
+			<column name="NOM" unique="true" not-null="true" />
 		</property>
-		
+
 		<property name="codepays" type="java.lang.String">
-			<column name="CODEPAYS" />
+			<column name="CODEPAYS" unique="true" not-null="true" />
 		</property>
-		
+
+
+
 	</class>
 </hibernate-mapping>

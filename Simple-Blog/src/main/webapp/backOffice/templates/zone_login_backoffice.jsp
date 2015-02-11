@@ -1,4 +1,5 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="col-sm-6 identification">
 	Bonjour
@@ -10,7 +11,6 @@
 	<nav class="blog-nav">
 		<s:a namespace="/frontOffice" action="connecte"
 			cssClass="blog-nav-item">Retour au blog</s:a>
-		<s:a namespace="/frontOffice" action="deconnexion"
-			cssClass="blog-nav-item">Déconnexion</s:a>
+		<a href=<spring:url value="/logout" /> class="blog-nav-item">Déconnexion</a>
 	</nav>
 </div>

@@ -5,6 +5,8 @@ package fr.simpleblog.model.DaoHql;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.model.interfaces.IdaoModelStyle;
@@ -18,9 +20,22 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelStyle#listerStyle()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Style> listStyle() {
-		return null;
+
+		getSession();
+		List<Style> styles;
+
+		try {
+			styles = session.createQuery("from Style").list();
+			session.flush();
+		} catch(HibernateException e) {
+			styles=null;
+			e.printStackTrace();
+		}
+
+		return styles;
 	}
 
 	/* (non-Javadoc)
