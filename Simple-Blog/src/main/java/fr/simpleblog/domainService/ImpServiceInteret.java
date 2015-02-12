@@ -3,7 +3,9 @@
  */
 package fr.simpleblog.domainService;
 
-import java.util.HashSet;
+import java.util.List;
+
+import org.springframework.cache.annotation.Cacheable;
 
 import fr.simpleblog.beans.Interet;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
@@ -20,7 +22,8 @@ public class ImpServiceInteret extends ImpService<Interet> implements IserviceIn
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteret()
 	 */
 	@Override
-	public HashSet<Interet> listInteret() {
+	@Cacheable(value="dataCache")
+	public List<Interet> listInteret() {
 		return impDaoHqlInteret.listInteret();
 	}
 
@@ -28,7 +31,7 @@ public class ImpServiceInteret extends ImpService<Interet> implements IserviceIn
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteretById(int)
 	 */
 	@Override
-	public HashSet<Interet> listInteretById(int i) {
+	public List<Interet> listInteretById(int i) {
 		return impDaoHqlInteret.listInteretById(i);
 	}
 

@@ -39,7 +39,6 @@ public class ImpDaoHql<X> implements IdaoCrud<X>, Iservice<X> {
 
 		try {
 			session.save(x);
-			session.flush();
 		} catch (HibernateException e) {
 			x=null;
 			e.printStackTrace();
@@ -55,12 +54,11 @@ public class ImpDaoHql<X> implements IdaoCrud<X>, Iservice<X> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public X read(Class<?> clazz, int id) {
-		
+
 		getSession();
 
 		try {
 			x = (X) session.get(clazz, id);
-			session.flush();
 		} catch (HibernateException e) {
 			x=null;
 			e.printStackTrace();
@@ -79,7 +77,6 @@ public class ImpDaoHql<X> implements IdaoCrud<X>, Iservice<X> {
 
 		try {
 			session.update(x);
-			session.flush();
 		} catch (HibernateException e) {
 			x=null;
 			e.printStackTrace();
@@ -94,12 +91,11 @@ public class ImpDaoHql<X> implements IdaoCrud<X>, Iservice<X> {
 	 */
 	@Override
 	public boolean delete(X x) {
-		
+
 		getSession();
 
 		try {
 			session.delete(x);
-			session.flush();
 		} catch (HibernateException e) {
 			x=null;
 			e.printStackTrace();

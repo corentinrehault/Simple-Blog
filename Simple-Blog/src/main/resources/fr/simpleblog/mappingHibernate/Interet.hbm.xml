@@ -6,6 +6,8 @@
 
 	<class name="fr.simpleblog.beans.Interet" table="INTERET">
 
+<!-- 		<cache usage="read-only" /> -->
+
 		<id name="id" type="int">
 			<column name="ID" not-null="true" />
 			<generator class="native" />

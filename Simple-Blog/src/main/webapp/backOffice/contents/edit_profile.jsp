@@ -7,16 +7,16 @@
 	<s:form action="modifier" method="post">
 
 		<s:textfield label="%{getText('nom')}" type="text"
-			name="utilisateur.nom" value="%{#session.nom}"
+			name="utilisateur.nom" value="%{#utilisateur.nom}"
 			placeholder="%{getText('nom')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('prenom')}" type="text"
-			name="utilisateur.prenom" value="%{#session.prenom}"
+			name="utilisateur.prenom" value="%{#utilisateur.prenom}"
 			placeholder="%{getText('prenom')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('login')}" type="text"
-			name="utilisateur.username" value="%{#session.login}"
+			name="utilisateur.username" value="%{#utilisateur.username}"
 			placeholder="%{getText('login')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('mailaddress')}" type="email"
-			name="utilisateur.mail" value="%{#session.mail}"
+			name="utilisateur.mail" value="%{#utilisateur.mail}"
 			placeholder="%{getText('mailaddress')}"></s:textfield>
 		<s:textfield label="%{getText('password')}" type="password"
 			name="utilisateur.password" value=""
@@ -45,9 +45,9 @@
 			name="ficheUtilisateur.pays.id"></s:select>
 		<s:checkboxlist label="%{getText('interests')} " list="interets"
 			value="%{#session.interets}" listKey="id" listValue="nom"
-			name="ficheUtilisateur.interet.nom"></s:checkboxlist>
+			name="interet.nom"></s:checkboxlist>
 		<s:radio label="%{getText('style')} " list="styles" listKey="id"
-			value="%{#session.styleId}" listValue="nom" name="utilisateur.style.id" ></s:radio>
+			value="%{#session.styleId}" listValue="nom" name="style.id"></s:radio>
 		<s:submit type="submit" value="%{getText('update')}" align="center"></s:submit>
 		<%-- 		<s:file ></s:file> --%>
 

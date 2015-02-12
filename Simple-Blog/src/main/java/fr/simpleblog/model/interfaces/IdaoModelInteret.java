@@ -1,12 +1,11 @@
 package fr.simpleblog.model.interfaces;
 
-import java.util.HashSet;
-
+import java.util.List;
 import fr.simpleblog.beans.Interet;
 
 public interface IdaoModelInteret extends IdaoCrud<Interet> {
 
-	public HashSet<Interet> listInteret();
+	public List<Interet> listInteret();
 	
-	public HashSet<Interet> listInteretById(int i);
+	public List<Interet> listInteretById(int i);
 }

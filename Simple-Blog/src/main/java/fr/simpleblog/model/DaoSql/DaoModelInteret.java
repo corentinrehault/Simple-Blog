@@ -3,7 +3,7 @@ package fr.simpleblog.model.DaoSql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashSet;
+import java.util.List;
 
 import fr.simpleblog.beans.Interet;
 import fr.simpleblog.controllers.othercontrollers.DBAdministration;
@@ -31,11 +31,12 @@ public class DaoModelInteret extends DaoModel implements IdaoModelInteret, Iserv
 		throw new UnsupportedOperationException();
 	}
 
-	public HashSet<Interet> listInteret() {
+	@SuppressWarnings("null")
+	public List<Interet> listInteret() {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
-		HashSet<Interet> interets = new HashSet<Interet>();
+		List<Interet> interets = null;
 		Interet interet = null;
 
 		try {
@@ -83,11 +84,12 @@ public class DaoModelInteret extends DaoModel implements IdaoModelInteret, Iserv
 	 * @param i
 	 * @return
 	 */
-	public HashSet<Interet> listInteretById(int i) {
+	@SuppressWarnings("null")
+	public List<Interet> listInteretById(int i) {
 
 		PreparedStatement request=null;
 		String stringRequest=null;
-		HashSet<Interet> interets = new HashSet<Interet>();
+		List<Interet> interets = null;
 		Interet interet = null;
 
 		try {

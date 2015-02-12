@@ -6,8 +6,6 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
-
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.model.interfaces.IdaoModelPays;
@@ -27,19 +25,18 @@ public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays, Ise
 
 		getSession();
 		List<Pays> ensemblePays;
-		Query query = null;
 
 		try {
-			query = session.createQuery("from Pays");
-			session.flush();
-			query.setCacheable(true);
-			query.setCacheRegion("query.ensemblePays");
+			
+			ensemblePays = session.createQuery("from Pays").list();
 		} catch (HibernateException e) {
 			ensemblePays=null;
 			e.printStackTrace();
+
 		}
 
-		ensemblePays = query.list();
+//		System.out.println("SecondLevelCacheHitCount = " 
+//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
 		return ensemblePays;
 
 	}

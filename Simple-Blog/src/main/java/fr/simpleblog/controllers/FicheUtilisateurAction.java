@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.ehcache.Cache;
+
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -38,7 +39,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	public Pays pays;
 	public Interet interet;
 
-	public Set<Interet> interets;
+	public List<Interet> interets;
 	public List<Pays> ensemblePays;
 	private List<Style> styles;
 
@@ -73,26 +74,26 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 
 		//System.out.println(ficheUtilisateur.toString());
 
-//		if (ficheUtilisateur != null) {
-//
-//			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
-//			this.sessionMap.put("ville", ficheUtilisateur.getVille());
-//			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-//			if (ficheUtilisateur.pays != null) {
-//				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
-//			}
-//
-//		}
-//
-//		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
-//
-//		if (interets != null) {
-//			interets.iterator();
-//			System.out.println(interets.iterator());
-//			for (Interet interet : interets) {
-//				this.sessionMap.put("interet", interet.getNom());
-//			}
-//		}
+		//		if (ficheUtilisateur != null) {
+		//
+		//			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
+		//			this.sessionMap.put("ville", ficheUtilisateur.getVille());
+		//			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
+		//			if (ficheUtilisateur.pays != null) {
+		//				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
+		//			}
+		//
+		//		}
+		//
+		//		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
+		//
+		//		if (interets != null) {
+		//			interets.iterator();
+		//			System.out.println(interets.iterator());
+		//			for (Interet interet : interets) {
+		//				this.sessionMap.put("interet", interet.getNom());
+		//			}
+		//		}
 
 		//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
 		//		
@@ -288,42 +289,18 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 		this.pays = pays;
 	}
 
-//	/**
-//	 * @return the interets
-//	 */
-//	public HashSet<Interet> getInterets() {
-//
-//		if (cache.getInterets() == null) {
-//			interets = daoModelInteret.listInteret();
-//			cache.setInterets(interets);
-//		} else {
-//			interets = cache.getInterets();
-//		};
-//
-//		System.out.println(interets.toString());
-//		return interets;
-//	}
-	
-	
-
-	/**
-	 * @param interets the interets to set
-	 */
-	public void setInterets(HashSet<Interet> interets) {
-		this.interets = interets;
-	}
-
 	/**
 	 * @return the interets
 	 */
-	public Set<Interet> getInterets() {
+	public List<Interet> getInterets() {
+		interets = daoModelInteret.listInteret();
 		return interets;
 	}
 
 	/**
 	 * @param interets the interets to set
 	 */
-	public void setInterets(Set<Interet> interets) {
+	public void setInterets(List<Interet> interets) {
 		this.interets = interets;
 	}
 
@@ -331,15 +308,7 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	 * @return the ensemblePays
 	 */
 	public List<Pays> getEnsemblePays() {
-
-		//if (cache == null) {
-			ensemblePays = daoModelPays.listPays();
-//		} else {
-//			ensemblePays = (List<Pays>) cache.get("Pays");
-//		}
-
-		//System.out.println(cache);
-		//System.out.println(ensemblePays.toString());
+		ensemblePays = daoModelPays.listPays();
 		return ensemblePays;
 	}
 
@@ -353,18 +322,11 @@ public class FicheUtilisateurAction extends ActionSupport implements Preparable,
 	/**
 	 * @return the styles
 	 */
-//	public List<Style> getStyles() {
-//
-//		if(cache.getStyles() == null) {
-//			styles = daoModelStyle.listStyle();
-//			cache.setStyles(styles);
-//		} else {
-//			styles = cache.getStyles();
-//		}
-//
-//		System.out.println(styles.size());
-//		return styles;
-//	}
+	public List<Style> getStyles() {
+
+		styles = daoModelStyle.listStyle();
+		return styles;
+	}
 
 	/**
 	 * @param styles the styles to set

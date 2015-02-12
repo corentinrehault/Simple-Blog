@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html>
@@ -29,16 +30,16 @@
 			<!-- /.blog-main -->
 			
 			
-			<s:if test="%{#session.authority=='admin'}">
+			<security:authorize access="hasRole('ROLE_ADMIN')">
 				<div class="col-sm-3 blog-sidebar">
 					<tiles:insertAttribute name="zone_nav_admin"></tiles:insertAttribute>
 				</div>
-			</s:if>
-			<s:else>
+			</security:authorize>
+			<security:authorize access="!hasRole('ROLE_ADMIN')">
 				<div class="col-sm-3 blog-sidebar">
 					<tiles:insertAttribute name="zone_nav_contrib"></tiles:insertAttribute>
 				</div>
-			</s:else>
+			</security:authorize>
 
 			<!-- /.blog-sidebar -->
 

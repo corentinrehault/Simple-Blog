@@ -5,7 +5,7 @@
 <hibernate-mapping>
 	<class name="fr.simpleblog.beans.Pays" table="PAYS">
 
-		<cache usage="read-only" />
+<!-- 		<cache usage="read-only" /> -->
 
 		<id name="id" type="int">
 			<column name="ID" not-null="true" />

@@ -1,6 +1,6 @@
 package fr.simpleblog.beans;
 
-import java.util.*;
+import java.util.Set;
 
 public class FicheUtilisateur implements Ibeans {
 
@@ -17,6 +17,7 @@ public class FicheUtilisateur implements Ibeans {
 	public Pays pays;
 	public Interet interet;
 	public Set<Interet> interets;
+	
 
 	/**
 	 * @param adresse the adresse to set

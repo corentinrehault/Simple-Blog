@@ -5,6 +5,8 @@ package fr.simpleblog.domainService;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
+
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlStyle;
 
@@ -20,6 +22,7 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
 	 */
 	@Override
+	@Cacheable(value="dataCache")
 	public List<Style> listStyle() {
 		return impDaoHqlStyle.listStyle();
 	}

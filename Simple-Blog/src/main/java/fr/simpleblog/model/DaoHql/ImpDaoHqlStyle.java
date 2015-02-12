@@ -29,12 +29,13 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, 
 
 		try {
 			styles = session.createQuery("from Style").list();
-			session.flush();
 		} catch(HibernateException e) {
 			styles=null;
 			e.printStackTrace();
 		}
 
+//		System.out.println("SecondLevelCacheHitCount = " 
+//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
 		return styles;
 	}
 

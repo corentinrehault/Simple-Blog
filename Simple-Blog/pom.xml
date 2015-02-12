@@ -180,10 +180,26 @@
 
 		<!-- Hibernate Cache -->
 
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-ehcache</artifactId> -->
+		<!-- <version>4.3.8.Final</version> -->
+		<!-- </dependency> -->
+
+		<!-- Ehcache -->
+
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
-			<version>4.3.8.Final</version>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+
+<!-- ctx -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.1.4.RELEASE</version>
 		</dependency>
 
 		<!-- JDBC drivers for mysql -->

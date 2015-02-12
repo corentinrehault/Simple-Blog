@@ -51,7 +51,6 @@ public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements Idao
 
 		try {
 			utilisateurs = session.createQuery("from Utilisateur where username=?").setString(0, username).list();
-			session.flush();
 			System.out.println(utilisateurs.get(0));
 			if (utilisateurs.size()!=0) {
 				userDetails = utilisateurs.get(0);

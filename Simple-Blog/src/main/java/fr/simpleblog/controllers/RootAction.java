@@ -79,19 +79,11 @@ public class RootAction extends ActionSupport implements Preparable {
 	 */
 	public String initApplication() {
 
-
-		//        Pays p = new Pays();
-		//        
-		//        p.setNom("France");
-		//
-		//        daoModelPays.create(p);
-		//        System.out.println("end creating p");
-
 		/*
 		 * Ajout d'un comparateur pour la liste des pays
-		 * et placer la liste en cache
 		 */
-		recupererListePays();
+
+		//recupererListePays();
 
 		//recupererArticle();
 

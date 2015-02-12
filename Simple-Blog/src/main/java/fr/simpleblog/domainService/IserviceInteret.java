@@ -1,12 +1,12 @@
 package fr.simpleblog.domainService;
 
-import java.util.HashSet;
+import java.util.List;
 
 import fr.simpleblog.beans.Interet;
 
 public interface IserviceInteret extends Iservice<Interet> {
 
-	public HashSet<Interet> listInteret();
+	public List<Interet> listInteret();
 	
-	public HashSet<Interet> listInteretById(int i);
+	public List<Interet> listInteretById(int i);
 }
