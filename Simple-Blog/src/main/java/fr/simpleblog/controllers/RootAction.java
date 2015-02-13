@@ -10,7 +10,6 @@ import com.opensymphony.xwork2.Preparable;
 
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
-import fr.simpleblog.model.DaoHql.DaoModelUtilisateurHqlTest;
 import fr.simpleblog.services.parser.ParsingService;
 
 public class RootAction extends ActionSupport implements Preparable {
@@ -25,8 +24,6 @@ public class RootAction extends ActionSupport implements Preparable {
 	public IservicePays daoModelPays;
 
 	private List<Pays> ensemblePays;
-
-	DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest;
 
 	public void recupererListePays() {
 
@@ -114,23 +111,6 @@ public class RootAction extends ActionSupport implements Preparable {
 	 */
 	public void setDaoModelPays(IservicePays daoModelPays) {
 		this.daoModelPays = daoModelPays;
-	}
-
-
-	/**
-	 * @return the daoModelUtilisateurHqlTest
-	 */
-	public DaoModelUtilisateurHqlTest getDaoModelUtilisateurHqlTest() {
-		return daoModelUtilisateurHqlTest;
-	}
-
-
-	/**
-	 * @param daoModelUtilisateurHqlTest the daoModelUtilisateurHqlTest to set
-	 */
-	public void setDaoModelUtilisateurHqlTest(
-			DaoModelUtilisateurHqlTest daoModelUtilisateurHqlTest) {
-		this.daoModelUtilisateurHqlTest = daoModelUtilisateurHqlTest;
 	}
 
 }

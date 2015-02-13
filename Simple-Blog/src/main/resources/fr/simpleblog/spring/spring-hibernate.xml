@@ -23,14 +23,14 @@
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.use_sql_comments">true</prop>
 
-				<prop key="hibernate.use_second_level_cache">false</prop>
-<!-- 				<prop key="hibernate.cache.use_query_cache">true</prop> -->
-<!-- 				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory -->
-<!-- 				</prop> -->
+				<!-- <prop key="hibernate.use_second_level_cache">false</prop> -->
+				<!-- <prop key="hibernate.cache.use_query_cache">true</prop> -->
+				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory -->
+				<!-- </prop> -->
 
 				<prop key="hibernate.session_factory_name">AMSDBC</prop>
-				<prop key="hibernate.generate_statistics">true</prop>
-				<prop key="log4j.logger.net.sf.hibernate">debug</prop>
+				<!-- <prop key="hibernate.generate_statistics">true</prop> -->
+				<prop key="log4j.logger.net.sf.hibernate">all</prop>
 
 
 
@@ -53,9 +53,6 @@
 
 		<property name="mappingResources">
 			<list>
-
-				<value>/fr/simpleblog/mappingHibernate/HibernatetestBean.hbm.xml
-				</value>
 
 				<value>/fr/simpleblog/mappingHibernate/Article.hbm.xml</value>
 				<value>/fr/simpleblog/mappingHibernate/Authority.hbm.xml</value>

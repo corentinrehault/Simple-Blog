@@ -15,7 +15,7 @@ import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 
-public class FicheUtilisateurAction extends ActionSupport implements SessionAware {
+public class ProfilAction extends ActionSupport implements SessionAware {
 	/**
 	 * 
 	 */

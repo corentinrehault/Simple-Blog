@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur;
@@ -17,12 +18,13 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur;
  */
 public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements IserviceUtilisateur, UserDetailsService {
 
-	ImpDaoHqlUtilisateur impDaoHqlUtilisateur;
+	public ImpDaoHqlUtilisateur impDaoHqlUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceUtilisateur#listerUtilisateur()
 	 */
 	@Override
+	@Transactional
 	public List<Utilisateur> listUtilisateur() {
 		return impDaoHqlUtilisateur.listUtilisateur();
 	}
@@ -31,6 +33,7 @@ public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements Is
 	 * @see fr.simpleblog.domainService.IserviceUtilisateur#login(fr.simpleblog.beans.Utilisateur)
 	 */
 	@Override
+	@Transactional
 	public Utilisateur login(Utilisateur utilisateur) {
 		return impDaoHqlUtilisateur.login(utilisateur);
 	}
@@ -39,6 +42,7 @@ public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements Is
 	 * @see fr.simpleblog.domainService.IserviceUtilisateur#loadUserByUsername(java.lang.String)
 	 */
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String username) {
 		return impDaoHqlUtilisateur.loadUserByUsername(username);
 	}

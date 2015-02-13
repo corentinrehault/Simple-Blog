@@ -7,15 +7,21 @@
 
 	<package name="core" namespace="/" extends="root">
 
+		<action name="testo" method="testo"
+			class="fr.simpleblog.controllers.FicheUtilisateurAction">
+
+			<result type="tiles">rootTemplate</result>
+		</action>
+
 		<action name="index" class="fr.simpleblog.controllers.RootAction"
 			method="initApplication">
-<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">rootTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
 		<action name="enregistrer">
-<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
 			<result name="success" type="tiles">signupTemplate</result>
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
@@ -31,24 +37,24 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
-<!-- 		<action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
-<!-- 			method="loadUserByUsername"> -->
-<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
-			<!-- redirection pour ne pas tester la connexion plusieurs fois -->
-<!-- 			<result name="success" type="redirectAction">connecte</result> -->
-<!-- 			<result name="input" type="tiles">rootTemplate</result> -->
-<!-- 			<result name="error" type="dispatcher">error.jsp</result> -->
-<!-- 		</action> -->
+		<!-- <action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
+		<!-- method="loadUserByUsername"> -->
+		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		<!-- redirection pour ne pas tester la connexion plusieurs fois -->
+		<!-- <result name="success" type="redirectAction">connecte</result> -->
+		<!-- <result name="input" type="tiles">rootTemplate</result> -->
+		<!-- <result name="error" type="dispatcher">error.jsp</result> -->
+		<!-- </action> -->
 
-<!-- 		<action name="connecte"> -->
-<!-- 			<result name="success" type="tiles">rootTemplate</result> -->
-<!-- 			<result name="error" type="dispatcher">error.jsp</result> -->
-<!-- 		</action> -->
+		<!-- <action name="connecte"> -->
+		<!-- <result name="success" type="tiles">rootTemplate</result> -->
+		<!-- <result name="error" type="dispatcher">error.jsp</result> -->
+		<!-- </action> -->
 
-<!-- 		<action name="deconnexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
-<!-- 			method="deconnecterUtilisateur"> -->
-<!-- 			<result name="success" type="tiles">rootTemplate</result> -->
-<!-- 		</action> -->
+		<!-- <action name="deconnexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
+		<!-- method="deconnecterUtilisateur"> -->
+		<!-- <result name="success" type="tiles">rootTemplate</result> -->
+		<!-- </action> -->
 
 	</package>
 
@@ -72,6 +78,8 @@
 			<result name="error" type="dispatcher">/error.jsp</result>
 			<result name="input" type="dispatcher">/error.jsp</result>
 		</action>
+
+
 
 	</package>
 

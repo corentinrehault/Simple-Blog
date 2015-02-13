@@ -5,6 +5,8 @@ package fr.simpleblog.domainService;
 
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.FicheUtilisateur;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur;
 
@@ -14,12 +16,13 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur;
  */
 public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> implements IserviceFicheUtilisateur {
 
-	ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur;
+	public ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#listerFicheUtilisateur()
 	 */
 	@Override
+	@Transactional
 	public Set<FicheUtilisateur> listFicheUtilisateur() {
 		return impDaoHqlFicheUtilisateur.listFicheUtilisateur();
 	}
@@ -28,6 +31,7 @@ public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> imp
 	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#readById(int)
 	 */
 	@Override
+	@Transactional
 	public FicheUtilisateur readById(int i) {
 		return impDaoHqlFicheUtilisateur.readById(i);
 	}
@@ -36,6 +40,7 @@ public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> imp
 	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#updateById(fr.simpleblog.beans.FicheUtilisateur, int)
 	 */
 	@Override
+	@Transactional
 	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int i) {
 		return impDaoHqlFicheUtilisateur.updateById(ficheUtilisateur, i);
 	}

@@ -5,7 +5,7 @@ package fr.simpleblog.domainService;
 
 import java.util.List;
 
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Interet;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
@@ -16,13 +16,14 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
  */
 public class ImpServiceInteret extends ImpService<Interet> implements IserviceInteret{
 
-	ImpDaoHqlInteret impDaoHqlInteret;
+	public ImpDaoHqlInteret impDaoHqlInteret;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteret()
 	 */
 	@Override
-	@Cacheable(value="dataCache")
+	@Transactional
+	//	@Cacheable(value="dataCache")
 	public List<Interet> listInteret() {
 		return impDaoHqlInteret.listInteret();
 	}
@@ -31,6 +32,7 @@ public class ImpServiceInteret extends ImpService<Interet> implements IserviceIn
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteretById(int)
 	 */
 	@Override
+	@Transactional
 	public List<Interet> listInteretById(int i) {
 		return impDaoHqlInteret.listInteretById(i);
 	}

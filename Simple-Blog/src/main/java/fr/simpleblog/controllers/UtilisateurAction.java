@@ -102,6 +102,8 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 
 		return SUCCESS;
 	}
+	
+	
 
 	// OBSOLETE SUITE A L'UTILISATION DE SPRING SECURITY
 

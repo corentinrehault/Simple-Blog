@@ -6,6 +6,7 @@ package fr.simpleblog.domainService;
 import java.util.List;
 
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlStyle;
@@ -16,14 +17,21 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlStyle;
  */
 public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle {
 
-	ImpDaoHqlStyle impDaoHqlStyle;
+	public ImpServiceStyle() {
+		System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");
+	}
+
+	public ImpDaoHqlStyle impDaoHqlStyle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
 	 */
 	@Override
+	@Transactional
 	@Cacheable(value="dataCache")
 	public List<Style> listStyle() {
+
+		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return impDaoHqlStyle.listStyle();
 	}
 
@@ -31,7 +39,11 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	 * @see fr.simpleblog.domainService.IserviceStyle#readById(int)
 	 */
 	@Override
+	@Transactional
+	@Cacheable(value="dataCache")
 	public Style readById(int i) {
+
+		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return impDaoHqlStyle.readById(i);
 	}
 
@@ -39,6 +51,7 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	 * @see fr.simpleblog.domainService.IserviceStyle#updateById(int)
 	 */
 	@Override
+	@Transactional
 	public Style updateById(int styleId) {
 		return impDaoHqlStyle.updateById(styleId);
 	}

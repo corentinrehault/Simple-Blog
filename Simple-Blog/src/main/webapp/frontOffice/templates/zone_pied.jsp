@@ -12,5 +12,3 @@ Ophidiophobia <a href="javascript:makeGetRequest(3)">More about Ophidiophobia</a
 </p>
 
 <div id="description"></div>
-
-<s:debug></s:debug>

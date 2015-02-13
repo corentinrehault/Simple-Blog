@@ -16,6 +16,7 @@ public class FicheUtilisateur implements Ibeans {
 
 	public Pays pays;
 	public Interet interet;
+	
 	public Set<Interet> interets;
 	
 

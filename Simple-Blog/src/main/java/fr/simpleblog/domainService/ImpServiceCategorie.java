@@ -5,6 +5,8 @@ package fr.simpleblog.domainService;
 
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Categorie;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie;
 
@@ -14,12 +16,13 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie;
  */
 public class ImpServiceCategorie extends ImpService<Categorie> implements IserviceCategorie {
 
-	ImpDaoHqlCategorie impDaoHqlCategorie;
+	public ImpDaoHqlCategorie impDaoHqlCategorie;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceCategorie#listerCategorie()
 	 */
 	@Override
+	@Transactional
 	public Set<Categorie> listCategorie() {
 		return impDaoHqlCategorie.listCategorie();
 	}

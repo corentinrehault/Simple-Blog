@@ -40,12 +40,12 @@
 		<s:textfield label="%{getText('zipcode')} " type="text"
 			name="ficheUtilisateur.codePostal" value="%{#session.codepostal}"
 			placeholder="%{getText('zipcode')}" size="20" maxlength="20"></s:textfield>
-		<s:select label="%{getText('country')} " list="ensemblePays"
-			value="%{#session.paysId}" listKey="id" listValue="nom"
-			name="ficheUtilisateur.pays.id"></s:select>
-		<s:checkboxlist label="%{getText('interests')} " list="interets"
-			value="%{#session.interets}" listKey="id" listValue="nom"
-			name="interet.nom"></s:checkboxlist>
+<%-- 		<s:select label="%{getText('country')} " list="ensemblePays" --%>
+<%-- 			value="%{#session.paysId}" listKey="id" listValue="nom" --%>
+<%-- 			name="pays.id"></s:select> --%>
+<%-- 		<s:checkboxlist label="%{getText('interests')} " list="interets" --%>
+<%-- 			value="%{#session.interets}" listKey="id" listValue="nom" --%>
+<%-- 			name="interet.nom"></s:checkboxlist> --%>
 		<s:radio label="%{getText('style')} " list="styles" listKey="id"
 			value="%{#session.styleId}" listValue="nom" name="style.id"></s:radio>
 		<s:submit type="submit" value="%{getText('update')}" align="center"></s:submit>

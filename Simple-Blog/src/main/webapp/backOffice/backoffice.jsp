@@ -72,5 +72,3 @@
 
 </body>
 </html>
-
-<s:debug />

@@ -62,9 +62,9 @@
 
 	<import resource="spring-datasource.xml" />
 
+	<import resource="spring-hibernate.xml" />
+
 	<import resource="spring-cache.xml" />
-	
-		<import resource="spring-hibernate.xml" />
 
 	<!-- <import resource="simpleBeanFactory.xml" /> -->
 

@@ -31,4 +31,6 @@
 <%-- 		<s:property value="#session" /> --%>
 
 	</h5>
+	<a href="testo">!!!</a>
+	<s:property value="style"/>
 </div>

@@ -1,10 +1,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-     <!--  permet de charger la datasource dans le contexte de spring ( ApplicationContext ) -->
+	<!-- permet de charger la datasource dans le contexte de spring ( ApplicationContext 
+		) -->
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -15,11 +16,19 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 		<property name="properties">
 			<props>
-				<prop key="c3p0.acquire_increment">1</prop>
-				<prop key="c3p0.idle_test_period">100</prop>
-				<prop key="c3p0.max_size">500</prop>
-				<prop key="c3p0.max_statements">500</prop>
-				<prop key="c3p0.min_size">10</prop>
+				<!-- <prop key="c3p0.acquire_increment">5</prop> -->
+				<!-- <prop key="c3p0.idle_test_period">100</prop> -->
+				<!-- <prop key="c3p0.max_size">100</prop> -->
+				<!-- <prop key="c3p0.max_statements">500</prop> -->
+				<!-- <prop key="c3p0.min_size">10</prop> -->
+				<!-- <prop key="c3p0.timeout">1000</prop> -->
+				<!-- <prop key="user">root</prop> -->
+				<!-- <prop key="password"></prop> -->
+				<prop key="c3p0.min_size">1</prop>
+				<prop key="c3p0.max_size">100</prop>
+				<prop key="c3p0.timeout">100</prop>
+				<prop key="c3p0.max_statements">0</prop>
+				<prop key="c3p0.idle_test_period">10</prop>
 				<prop key="user">root</prop>
 				<prop key="password"></prop>
 			</props>
@@ -27,6 +36,6 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
 
-</bean>
+	</bean>
 
 </beans>

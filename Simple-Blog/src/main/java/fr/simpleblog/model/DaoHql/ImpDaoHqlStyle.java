@@ -6,7 +6,6 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.model.interfaces.IdaoModelStyle;
@@ -29,13 +28,19 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, 
 
 		try {
 			styles = session.createQuery("from Style").list();
+			session.disconnect();
 		} catch(HibernateException e) {
 			styles=null;
 			e.printStackTrace();
 		}
 
-//		System.out.println("SecondLevelCacheHitCount = " 
-//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+		//		System.out.println("SecondLevelCacheHitCount = " 
+		//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+
+		for(Style s : styles) {
+			System.err.println(s);
+		}
+
 		return styles;
 	}
 
@@ -44,7 +49,15 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, 
 	 */
 	@Override
 	public Style readById(int i) {
-		return null;
+		session = getSession();
+
+
+		Style style = (Style) session.get(Style.class, i);
+
+		System.out.println("the style to cache =>" + style);
+
+		return style;
+
 	}
 
 	/* (non-Javadoc)

@@ -16,7 +16,9 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
 	<!-- Bean d'acces au Contexte -->
+	
 	<bean id="applicationContextHolder" class="fr.simpleblog.services.ApplicationContextHolder" />
+
 
 	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
@@ -30,20 +32,28 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<bean id="daoModelArticle" name="daoModelArticle"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlArticle" parent="ImpDaoHql" />
+
 	<bean id="daoModelAuthority" name="daoModelAuthority"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority" parent="ImpDaoHql" />
+
 	<bean id="daoModelCategorie" name="daoModelCategorie"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie" parent="ImpDaoHql" />
+
 	<bean id="daoModelCommentaire" name="daoModelCommentaire"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire" parent="ImpDaoHql" />
+
 	<bean id="daoModelFicheUtilisateur" name="daoModelFicheUtilisateur"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur" parent="ImpDaoHql" />
+
 	<bean id="daoModelInteret" name="daoModelInteret"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlInteret" parent="ImpDaoHql" />
+
 	<bean id="daoModelPays" name="daoModelPays"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlPays" parent="ImpDaoHql" />
+
 	<bean id="daoModelStyle" name="daoModelStyle"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlStyle" parent="ImpDaoHql" />
+
 	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur" parent="ImpDaoHql" />
 
@@ -64,38 +74,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="daoModelPays" ref="impServicePays" />
 	</bean>
 
-
-	<!-- au démarrage de l'appli on injecte l'implementation des dao dans le 
-		domaine service -->
-
-	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
-		<property name="ImpDaoHqlUtilisateur" ref="daoModelUtilisateur" />
-	</bean>
-
-	<bean name="impServiceFicheUtilisateur"
-		class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
-		<property name="ImpDaoHqlFicheUtilisateur" ref="daoModelFicheUtilisateur" />
-	</bean>
-
-	<bean name="impServicePays" class="fr.simpleblog.domainService.ImpServicePays">
-		<property name="ImpDaoHqlPays" ref="daoModelPays" />
-	</bean>
-
-	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
-		<property name="ImpDaoHqlStyle" ref="daoModelStyle" />
-	</bean>
-
-	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">
-		<property name="ImpDaoHqlAuthority" ref="daoModelAuthority" />
-	</bean>
-
-	<bean name="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret">
-		<property name="ImpDaoHqlInteret" ref="daoModelInteret" />
-	</bean>
-
-
-	<!-- On injecte dans Cache dans ficheutilisateur -->
-
 	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
 		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
 		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
@@ -104,16 +82,39 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="daoModelStyle" ref="impServiceStyle" />
 	</bean>
 
-	<!-- Définition du cache -->
-	<!-- <cache:advice id="cachePays" cache-manager="cache"> -->
-	<!-- <cache:caching cache="cache"> -->
-	<!-- <cache:cacheable method="cachePays" key="#Id"/> -->
-	<!-- </cache:caching> -->
-	<!-- </cache:advice> -->
+
+	<!-- au démarrage de l'appli on injecte l'implementation des dao dans le 
+		domaine service -->
+
+	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
+		<property name="impDaoHqlUtilisateur" ref="daoModelUtilisateur" />
+	</bean>
+
+	<bean name="impServiceFicheUtilisateur"
+		class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
+		<property name="impDaoHqlFicheUtilisateur" ref="daoModelFicheUtilisateur" />
+	</bean>
+
+	<bean name="impServicePays" class="fr.simpleblog.domainService.ImpServicePays">
+		<property name="impDaoHqlPays" ref="daoModelPays" />
+	</bean>
+
+	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
+		<property name="impDaoHqlStyle" ref="daoModelStyle" />
+	</bean>
+
+	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">
+		<property name="impDaoHqlAuthority" ref="daoModelAuthority" />
+	</bean>
+
+	<bean name="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret">
+		<property name="impDaoHqlInteret" ref="daoModelInteret" />
+	</bean>
 
 
 	<!-- Pour fonctionner avec Autowired dans les tests -->
 	<bean class="org.springframework.mock.web.MockHttpServletRequest" />
+
 
 	<!-- implémentation sql de test -->
 

@@ -5,6 +5,8 @@ package fr.simpleblog.domainService;
 
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Authority;
 import fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority;
 
@@ -14,12 +16,13 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority;
  */
 public class ImpServiceAuthority extends ImpService<Authority> implements IserviceAuthority {
 
-	ImpDaoHqlAuthority impDaoHqlAuthority;
+	public ImpDaoHqlAuthority impDaoHqlAuthority;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IServiceAuthority#listAuthority()
 	 */
 	@Override
+	@Transactional
 	public Set<Authority> listAuthority() {
 		return impDaoHqlAuthority.listAuthority();
 	}
@@ -28,6 +31,7 @@ public class ImpServiceAuthority extends ImpService<Authority> implements Iservi
 	 * @see fr.simpleblog.domainService.IServiceAuthority#listAuthorityByUserId(fr.simpleblog.beans.Utilisateur)
 	 */
 	@Override
+	@Transactional
 	public Set<Authority> listAuthorityByUserId(int i) {
 		return impDaoHqlAuthority.listAuthorityByUserId(i);
 	}

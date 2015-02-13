@@ -8,7 +8,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
@@ -51,6 +50,7 @@ public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements Idao
 
 		try {
 			utilisateurs = session.createQuery("from Utilisateur where username=?").setString(0, username).list();
+			session.disconnect();
 			System.out.println(utilisateurs.get(0));
 			if (utilisateurs.size()!=0) {
 				userDetails = utilisateurs.get(0);
