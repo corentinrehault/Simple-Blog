@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -91,19 +92,9 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		return SUCCESS;
 	}
 
-	/**
-	 * @return
-	 */
-	public String modifierUtilisateur() {
-
-		utilisateur = daoModelUtilisateur.update(utilisateur);
-		pays = daoModelPays.readByName(ficheUtilisateur.pays.getNom());
-		ficheUtilisateur = daoModelFicheUtilisateur.updateById(ficheUtilisateur, (int) sessionMap.get("ficheId"));
-
-		return SUCCESS;
-	}
 	
-	
+
+
 
 	// OBSOLETE SUITE A L'UTILISATION DE SPRING SECURITY
 

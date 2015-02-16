@@ -6,7 +6,9 @@ import org.springframework.context.ApplicationContextAware;
 
 public class ApplicationContextHolder implements ApplicationContextAware {
  
-	/** Contexte Spring qui sera injecte par Spring directement */
+	/** 
+	 * Contexte Spring qui sera injecte par Spring directement
+	 */
 	private static ApplicationContext context = null;
  
 

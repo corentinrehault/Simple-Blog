@@ -98,7 +98,7 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 			request.setString(1, ficheUtilisateur.getAdresse());
 			request.setString(2, ficheUtilisateur.getVille());
 			request.setInt(3, ficheUtilisateur.getCodePostal());
-			request.setInt(4, ficheUtilisateur.pays.getId());
+//			request.setInt(4, ficheUtilisateur.pays.getId());
 			request.setInt(5, ficheUtilisateur.getId());
 			ficheUtilisateur=null;
 			request.executeUpdate(stringRequest);
@@ -199,8 +199,9 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 	 * @param ficheId
 	 * @return
 	 */
-	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int ficheId) {
-
+	public FicheUtilisateur updateById(Class<FicheUtilisateur> clazz, int ficheId) {
+		
+		FicheUtilisateur ficheUtilisateur = new FicheUtilisateur();
 		PreparedStatement request=null;
 		String stringRequest=null;
 		@SuppressWarnings("unused")
@@ -216,7 +217,7 @@ public class DaoModelFicheUtilisateur extends DaoModel implements IdaoModelFiche
 			request.setString(1, ficheUtilisateur.getAdresse());
 			request.setString(2, ficheUtilisateur.getVille());
 			request.setInt(3, ficheUtilisateur.getCodePostal());
-			request.setInt(4, ficheUtilisateur.pays.getId());
+//			request.setInt(4, ficheUtilisateur.pays.getId());
 			request.setInt(5, ficheId);
 			System.out.println(ficheUtilisateur);
 			//ficheUtilisateur=null;

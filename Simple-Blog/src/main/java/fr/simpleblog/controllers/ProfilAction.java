@@ -1,10 +1,10 @@
 package fr.simpleblog.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,8 +22,7 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 799861132415727534L;
 
 	private FicheUtilisateur ficheUtilisateur;
-
-	private ArrayList<String> fichesUtilisateur;
+	//private ArrayList<String> fichesUtilisateur;
 	private Utilisateur utilisateur;
 	private String adresse;
 	private String ville;
@@ -40,7 +39,6 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 
 	private Map<String,Object> sessionMap;
 
-
 	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
 	public IserviceUtilisateur daoModelUtilisateur;
 	public IservicePays daoModelPays;
@@ -53,62 +51,36 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 
 		style = daoModelStyle.readById(1);
 		System.out.println("in control" + style);
+
 		return SUCCESS;
 
 
 	}
 
-	public String listerFicheUtilisateur() {
-		return adresse;
+	public String updateProfil() {
 
+		//utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//pays = daoModelPays.readByName(ficheUtilisateur.pays.getNom());
+		System.err.println(utilisateur);
+		System.err.println(ficheUtilisateur);
+		System.err.println(ficheUtilisateur.getId());
+//		if (ficheUtilisateur.getId() != 0) {
+//			ficheUtilisateur = daoModelFicheUtilisateur.update(ficheUtilisateur);
+//		} else {
+//			ficheUtilisateur = daoModelFicheUtilisateur.create(ficheUtilisateur);
+//		}
+		utilisateur = daoModelUtilisateur.update(utilisateur);
+
+		return SUCCESS;
 	}
 
-	public void creerFicheUtilisateur() {
+	public String readProfil() {
 
-	}
-
-	public void supprimerFicheUtilisateur() {
-
-	}
-
-	public void modifierFicheUtilisateur() {
-
-	}
-
-	public String lireFicheUtilisateur() {
-
-		//ficheUtilisateur = daoModelFicheUtilisateur.readById((int) sessionMap.get("ficheId"));
-
-		//System.out.println(ficheUtilisateur.toString());
-
-		//		if (ficheUtilisateur != null) {
-		//
-		//			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
-		//			this.sessionMap.put("ville", ficheUtilisateur.getVille());
-		//			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-		//			if (ficheUtilisateur.pays != null) {
-		//				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
-		//			}
-		//
-		//		}
-		//
-		//		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
-		//
-		//		if (interets != null) {
-		//			interets.iterator();
-		//			System.out.println(interets.iterator());
-		//			for (Interet interet : interets) {
-		//				this.sessionMap.put("interet", interet.getNom());
-		//			}
-		//		}
-
-		//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
-		//		
-		//		if (style != null) {
-		//			
-		//			this.sessionMap.put("style", style.getNom());
-		//			
-		//		}
+		utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (utilisateur.ficheUtilisateur.getId() != 0) {
+			ficheUtilisateur = daoModelFicheUtilisateur.read(FicheUtilisateur.class,
+					utilisateur.ficheUtilisateur.getId());
+		}
 
 		return SUCCESS;
 	}
@@ -133,20 +105,6 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	 */
 	public void setFicheUtilisateur(FicheUtilisateur ficheUtilisateur) {
 		this.ficheUtilisateur = ficheUtilisateur;
-	}
-
-	/**
-	 * @return the fichesUtilisateur
-	 */
-	public ArrayList<String> getFichesUtilisateur() {
-		return fichesUtilisateur;
-	}
-
-	/**
-	 * @param fichesUtilisateur the fichesUtilisateur to set
-	 */
-	public void setFichesUtilisateur(ArrayList<String> fichesUtilisateur) {
-		this.fichesUtilisateur = fichesUtilisateur;
 	}
 
 	/**

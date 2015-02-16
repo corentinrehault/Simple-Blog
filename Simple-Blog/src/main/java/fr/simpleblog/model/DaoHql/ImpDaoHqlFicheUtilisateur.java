@@ -23,21 +23,8 @@ public class ImpDaoHqlFicheUtilisateur extends ImpDaoHql<FicheUtilisateur> imple
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur#readById(int)
-	 */
 	@Override
-	public FicheUtilisateur readById(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur#updateById(fr.simpleblog.beans.FicheUtilisateur, int)
-	 */
-	@Override
-	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int i) {
-		// TODO Auto-generated method stub
+	public FicheUtilisateur updateById(Class<FicheUtilisateur> clazz, int i) {
 		return null;
 	}
 

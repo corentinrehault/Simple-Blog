@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.simpleblog.beans.*;
+import fr.simpleblog.domainService.ImpServiceStyle;
 import fr.simpleblog.domainService.IserviceFicheUtilisateur;
 import fr.simpleblog.domainService.IserviceInteret;
 import fr.simpleblog.domainService.IservicePays;
@@ -30,37 +31,36 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	private int codePostal;
 	private int id;
 
-	public Style style;
-	public Pays pays;
-	public Interet interet;
+	private Style style;
+	private Pays pays;
+	private Interet interet;
 
-	public List<Interet> interets;
-	public List<Pays> ensemblePays;
-	public List<Style> styles;
+	private List<Interet> interets;
+	private List<Pays> ensemblePays;
+	private List<Style> styles;
 
 	private Map<String,Object> sessionMap;
 
 
-	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
-	public IserviceUtilisateur daoModelUtilisateur;
-	public IservicePays daoModelPays;
-	public IserviceInteret daoModelInteret;
-	public IserviceStyle daoModelStyle;
+	private IserviceFicheUtilisateur daoModelFicheUtilisateur;
+	private IserviceUtilisateur daoModelUtilisateur;
+	private IservicePays daoModelPays;
+	private IserviceInteret daoModelInteret;
+	private IserviceStyle impServiceStyle;
 
 
 
 	public String testo() {
-
-		style = daoModelStyle.readById(1);
-		System.out.println("in control" + style);
+System.out.println("in coontroolller");
+		style = impServiceStyle.readById(2);
+		System.out.println("in control");
 		return SUCCESS;
 
 
 	}
 
 	public String listerFicheUtilisateur() {
-		return adresse;
-
+		return null;
 	}
 
 	public void creerFicheUtilisateur() {
@@ -76,39 +76,6 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	}
 
 	public String lireFicheUtilisateur() {
-
-		//ficheUtilisateur = daoModelFicheUtilisateur.readById((int) sessionMap.get("ficheId"));
-
-		//System.out.println(ficheUtilisateur.toString());
-
-		//		if (ficheUtilisateur != null) {
-		//
-		//			this.sessionMap.put("adresse", ficheUtilisateur.getAdresse());
-		//			this.sessionMap.put("ville", ficheUtilisateur.getVille());
-		//			this.sessionMap.put("codepostal", ficheUtilisateur.getCodePostal());
-		//			if (ficheUtilisateur.pays != null) {
-		//				this.sessionMap.put("paysId", ficheUtilisateur.pays.getId());
-		//			}
-		//
-		//		}
-		//
-		//		interets = daoModelInteret.listInteretById((int) sessionMap.get("ficheId"));
-		//
-		//		if (interets != null) {
-		//			interets.iterator();
-		//			System.out.println(interets.iterator());
-		//			for (Interet interet : interets) {
-		//				this.sessionMap.put("interet", interet.getNom());
-		//			}
-		//		}
-
-		//		style = daoModelStyle.readParUtil((int) sessionMap.get("style"));
-		//		
-		//		if (style != null) {
-		//			
-		//			this.sessionMap.put("style", style.getNom());
-		//			
-		//		}
 
 		return SUCCESS;
 	}
@@ -264,7 +231,7 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	/**
 	 * @return the interets
 	 */
-	public List<Interet> getInterets() {
+	public List<Interet> readInterets() {
 		interets = daoModelInteret.listInteret();
 		return interets;
 	}
@@ -279,7 +246,7 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	/**
 	 * @return the ensemblePays
 	 */
-	public List<Pays> getEnsemblePays() {
+	public List<Pays>  readEnsemblePays() {
 		ensemblePays = daoModelPays.listPays();
 		return ensemblePays;
 	}
@@ -294,8 +261,8 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	/**
 	 * @return the styles
 	 */
-	public List<Style> getStyles() {
-		styles = daoModelStyle.listStyle();
+	public List<Style> donneMoiStyles() {
+		styles = impServiceStyle.listStyle();
 		return styles;
 	}
 
@@ -377,19 +344,26 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 		this.daoModelInteret = daoModelInteret;
 	}
 
+	
+
 	/**
-	 * @return the daoModelStyle
+	 * @return the impServiceStyle
 	 */
-	public IserviceStyle getDaoModelStyle() {
-		return daoModelStyle;
+	public IserviceStyle getImpServiceStyle() {
+		return impServiceStyle;
 	}
 
 	/**
-	 * @param daoModelStyle the daoModelStyle to set
+	 * @param impServiceStyle the impServiceStyle to set
 	 */
-	public void setDaoModelStyle(IserviceStyle daoModelStyle) {
-		this.daoModelStyle = daoModelStyle;
+	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
+		System.err.println("ineject in controller !!");
+		this.impServiceStyle = impServiceStyle;
 	}
+
+	
+
+
 
 
 

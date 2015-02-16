@@ -21,7 +21,7 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 		System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");
 	}
 
-	public ImpDaoHqlStyle impDaoHqlStyle;
+	public IserviceStyle impServiceStyle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
@@ -32,7 +32,8 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	public List<Style> listStyle() {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		return impDaoHqlStyle.listStyle();
+		System.err.println("????????????????????????????????????????????");
+		return impServiceStyle.listStyle();
 	}
 
 	/* (non-Javadoc)
@@ -44,7 +45,7 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	public Style readById(int i) {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		return impDaoHqlStyle.readById(i);
+		return impServiceStyle.readById(i);
 	}
 
 	/* (non-Javadoc)
@@ -53,21 +54,25 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	@Override
 	@Transactional
 	public Style updateById(int styleId) {
-		return impDaoHqlStyle.updateById(styleId);
+		return impServiceStyle.updateById(styleId);
 	}
 
 	/**
-	 * @return the impDaoHqlStyle
+	 * @return the impServiceStyle
 	 */
-	public ImpDaoHqlStyle getImpDaoHqlStyle() {
-		return impDaoHqlStyle;
+	public IserviceStyle getImpServiceStyle() {
+		return impServiceStyle;
 	}
 
 	/**
-	 * @param impDaoHqlStyle the impDaoHqlStyle to set
+	 * @param impServiceStyle the impServiceStyle to set
 	 */
-	public void setImpDaoHqlStyle(ImpDaoHqlStyle impDaoHqlStyle) {
-		this.impDaoHqlStyle = impDaoHqlStyle;
+	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
+		this.impServiceStyle = impServiceStyle;
 	}
+
+	
+
+
 
 }

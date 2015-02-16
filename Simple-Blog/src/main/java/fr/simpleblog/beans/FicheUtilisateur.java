@@ -14,10 +14,10 @@ public class FicheUtilisateur implements Ibeans {
 	private int codePostal;
 	private int id;
 
-	public Pays pays;
-	public Interet interet;
+	private Pays pays;
+	private Interet interet;
 	
-	public Set<Interet> interets;
+	private Set<Interet> interets;
 	
 
 	/**

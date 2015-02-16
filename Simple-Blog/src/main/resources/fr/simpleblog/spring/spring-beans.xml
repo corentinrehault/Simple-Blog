@@ -16,7 +16,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
 	<!-- Bean d'acces au Contexte -->
-	
+
 	<bean id="applicationContextHolder" class="fr.simpleblog.services.ApplicationContextHolder" />
 
 
@@ -51,7 +51,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="daoModelPays" name="daoModelPays"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlPays" parent="ImpDaoHql" />
 
-	<bean id="daoModelStyle" name="daoModelStyle"
+	<bean id="daoModelStyle" name="daoModelStyleb"
 		class="fr.simpleblog.model.DaoHql.ImpDaoHqlStyle" parent="ImpDaoHql" />
 
 	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
@@ -64,6 +64,14 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
 		<property name="daoModelAuthority" ref="impServiceAuthority" />
 		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+	</bean>
+
+	<bean name="profilAction" class="fr.simpleblog.controllers.ProfilAction">
+		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
+		<property name="daoModelPays" ref="impServicePays" />
+		<property name="daoModelInteret" ref="impServiceInteret" />
+<!-- 		<property name="daoModelStyle" ref="impServiceStyle" /> -->
 	</bean>
 
 	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
@@ -79,7 +87,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
 		<property name="daoModelPays" ref="impServicePays" />
 		<property name="daoModelInteret" ref="impServiceInteret" />
-		<property name="daoModelStyle" ref="impServiceStyle" />
+		<property name="impServiceStyle" ref="impServiceStyle" />
 	</bean>
 
 
@@ -100,7 +108,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	</bean>
 
 	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
-		<property name="impDaoHqlStyle" ref="daoModelStyle" />
+		<property name="impServiceStyle" ref="daoModelStyleb" />
 	</bean>
 
 	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">

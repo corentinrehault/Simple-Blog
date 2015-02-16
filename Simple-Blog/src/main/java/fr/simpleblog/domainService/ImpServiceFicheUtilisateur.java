@@ -27,22 +27,9 @@ public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> imp
 		return impDaoHqlFicheUtilisateur.listFicheUtilisateur();
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#readById(int)
-	 */
 	@Override
-	@Transactional
-	public FicheUtilisateur readById(int i) {
-		return impDaoHqlFicheUtilisateur.readById(i);
-	}
-
-	/* (non-Javadoc)
-	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#updateById(fr.simpleblog.beans.FicheUtilisateur, int)
-	 */
-	@Override
-	@Transactional
-	public FicheUtilisateur updateById(FicheUtilisateur ficheUtilisateur, int i) {
-		return impDaoHqlFicheUtilisateur.updateById(ficheUtilisateur, i);
+	public FicheUtilisateur updateById(Class<FicheUtilisateur> clazz, int i) {
+		return impDaoHqlFicheUtilisateur.updateById(clazz, i);
 	}
 
 	/**

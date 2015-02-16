@@ -26,7 +26,7 @@ xmlns:cache="http://www.springframework.org/schema/cache"
 <bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
     <property name="configLocation" value="classpath:ehcache.xml"/>
     
-    <property name="shared" value="true"/>
+    <property name="shared" value="false"/>
 </bean>
 
 

@@ -5,6 +5,7 @@ package fr.simpleblog.domainService;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Pays;
@@ -23,8 +24,9 @@ public class ImpServicePays extends ImpService<Pays> implements IservicePays {
 	 */
 	@Override
 	@Transactional
-	//	@Cacheable(value="dataCache")
+//	@Cacheable(value="dataCache")
 	public List<Pays> listPays() {
+		System.err.println("????????????????????????????????????????????");
 		return impDaoHqlPays.listPays();
 	}
 

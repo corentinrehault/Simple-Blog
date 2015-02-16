@@ -3,7 +3,7 @@
 
 <div class="col-sm-6 identification">
 	Bonjour
-	<s:property value="%{#Utilisateur.prenom}" />
+	<s:property value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.prenom}" />
 	<br> Nous sommes le
 	<s:date name="%{new java.util.Date()}"
 		format="%{getText('date.locale')}" />
