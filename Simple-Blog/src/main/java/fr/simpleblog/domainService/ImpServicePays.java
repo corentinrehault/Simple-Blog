@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Pays;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlPays;
+import fr.simpleblog.model.interfaces.IdaoModelPays;
 
 /**
  * @author dao303
@@ -17,17 +17,16 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlPays;
  */
 public class ImpServicePays extends ImpService<Pays> implements IservicePays {
 
-	public ImpDaoHqlPays impDaoHqlPays;
+	public IdaoModelPays impAccessDaoPays;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IservicePays#listerPays()
 	 */
 	@Override
-	@Transactional
-//	@Cacheable(value="dataCache")
+	@Cacheable(value="dataCache")
 	public List<Pays> listPays() {
 		System.err.println("????????????????????????????????????????????");
-		return impDaoHqlPays.listPays();
+		return impAccessDaoPays.listPays();
 	}
 
 	/* (non-Javadoc)
@@ -36,7 +35,7 @@ public class ImpServicePays extends ImpService<Pays> implements IservicePays {
 	@Override
 	@Transactional
 	public List<Pays> createList(List<Pays> ensemblePays) {
-		return impDaoHqlPays.createList(ensemblePays);
+		return impAccessDaoPays.createList(ensemblePays);
 	}
 
 	/* (non-Javadoc)
@@ -45,21 +44,21 @@ public class ImpServicePays extends ImpService<Pays> implements IservicePays {
 	@Override
 	@Transactional
 	public Pays readByName(String name) {
-		return impDaoHqlPays.readByName(name);
+		return impAccessDaoPays.readByName(name);
 	}
 
 	/**
-	 * @return the impDaoHqlPays
+	 * @return the impAccessDaoPays
 	 */
-	public ImpDaoHqlPays getImpDaoHqlPays() {
-		return impDaoHqlPays;
+	public IdaoModelPays getImpAccessDaoPays() {
+		return impAccessDaoPays;
 	}
 
 	/**
-	 * @param impDaoHqlPays the impDaoHqlPays to set
+	 * @param impAccessDaoPays the impAccessDaoPays to set
 	 */
-	public void setImpDaoHqlPays(ImpDaoHqlPays impDaoHqlPays) {
-		this.impDaoHqlPays = impDaoHqlPays;
+	public void setImpAccessDaoPays(IdaoModelPays impAccessDaoPays) {
+		this.impAccessDaoPays = impAccessDaoPays;
 	}
 
 }

@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Interet;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
+import fr.simpleblog.model.interfaces.IdaoModelInteret;
 
 /**
  * @author dao303
@@ -17,16 +17,15 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlInteret;
  */
 public class ImpServiceInteret extends ImpService<Interet> implements IserviceInteret{
 
-	public ImpDaoHqlInteret impDaoHqlInteret;
+	public IdaoModelInteret impAccessDaoInteret;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteret()
 	 */
 	@Override
-	@Transactional
-//	@Cacheable(value="dataCache")
+	@Cacheable(value="dataCache")
 	public List<Interet> listInteret() {
-		return impDaoHqlInteret.listInteret();
+		return impAccessDaoInteret.listInteret();
 	}
 
 	/* (non-Javadoc)
@@ -35,21 +34,21 @@ public class ImpServiceInteret extends ImpService<Interet> implements IserviceIn
 	@Override
 	@Transactional
 	public List<Interet> listInteretById(int i) {
-		return impDaoHqlInteret.listInteretById(i);
+		return impAccessDaoInteret.listInteretById(i);
 	}
 
 	/**
-	 * @return the impDaoHqlInteret
+	 * @return the impAccessDaoInteret
 	 */
-	public ImpDaoHqlInteret getImpDaoHqlInteret() {
-		return impDaoHqlInteret;
+	public IdaoModelInteret getImpAccessDaoInteret() {
+		return impAccessDaoInteret;
 	}
 
 	/**
-	 * @param impDaoHqlInteret the impDaoHqlInteret to set
+	 * @param impAccessDaoInteret the impAccessDaoInteret to set
 	 */
-	public void setImpDaoHqlInteret(ImpDaoHqlInteret impDaoHqlInteret) {
-		this.impDaoHqlInteret = impDaoHqlInteret;
+	public void setImpAccessDaoInteret(IdaoModelInteret impAccessDaoInteret) {
+		this.impAccessDaoInteret = impAccessDaoInteret;
 	}
 
 }

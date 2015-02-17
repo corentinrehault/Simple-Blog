@@ -23,100 +23,113 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- Au démarrage de l'application Spring injecte la datasource dans le 
 		dao -->
 
-	<bean name="ImpDaoHql" class="fr.simpleblog.model.DaoHql.ImpDaoHql">
+	<bean id="impDaoHql" class="fr.simpleblog.model.DaoHql.ImpDaoHql">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<!-- <bean name="cache" class="fr.simpleblog.services.Cache" scope="singleton" 
 		/> -->
 
-	<bean id="daoModelArticle" name="daoModelArticle"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlArticle" parent="ImpDaoHql" />
+	<bean id="daoArticle" class="fr.simpleblog.model.DaoHql.ImpDaoHqlArticle"
+		parent="impDaoHql" />
 
-	<bean id="daoModelAuthority" name="daoModelAuthority"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority" parent="ImpDaoHql" />
+	<bean id="daoAuthority" class="fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority"
+		parent="impDaoHql" />
 
-	<bean id="daoModelCategorie" name="daoModelCategorie"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie" parent="ImpDaoHql" />
+	<bean id="daoCategorie" class="fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie"
+		parent="impDaoHql" />
 
-	<bean id="daoModelCommentaire" name="daoModelCommentaire"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire" parent="ImpDaoHql" />
+	<bean id="daoCommentaire" class="fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire"
+		parent="impDaoHql" />
 
-	<bean id="daoModelFicheUtilisateur" name="daoModelFicheUtilisateur"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur" parent="ImpDaoHql" />
+	<bean id="daoFicheUtilisateur" class="fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur"
+		parent="impDaoHql" />
 
-	<bean id="daoModelInteret" name="daoModelInteret"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlInteret" parent="ImpDaoHql" />
+	<bean id="daoInteret" class="fr.simpleblog.model.DaoHql.ImpDaoHqlInteret"
+		parent="impDaoHql" />
 
-	<bean id="daoModelPays" name="daoModelPays"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlPays" parent="ImpDaoHql" />
+	<bean id="daoPays" class="fr.simpleblog.model.DaoHql.ImpDaoHqlPays"
+		parent="impDaoHql" />
 
-	<bean id="daoModelStyle" name="daoModelStyleb"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlStyle" parent="ImpDaoHql" />
+	<bean id="daoStyle" class="fr.simpleblog.model.DaoHql.ImpDaoHqlStyle"
+		parent="impDaoHql" />
 
-	<bean id="daoModelUtilisateur" name="daoModelUtilisateur"
-		class="fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur" parent="ImpDaoHql" />
+	<bean id="daoUtilisateur" class="fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur"
+		parent="impDaoHql" />
 
 
 	<!-- Au démarrage de l'application Spring injecte la dao dans controller -->
 
-	<bean name="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
-		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
-		<property name="daoModelAuthority" ref="impServiceAuthority" />
-		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+	<bean id="utilisateurAction" class="fr.simpleblog.controllers.UtilisateurAction">
+		<property name="impServiceUtilisateur" ref="impServiceUtilisateur" />
+		<property name="impServiceAuthority" ref="impServiceAuthority" />
+		<property name="impServiceFicheUtilisateur" ref="impServiceFicheUtilisateur" />
 	</bean>
 
-	<bean name="profilAction" class="fr.simpleblog.controllers.ProfilAction">
-		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
-		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
-		<property name="daoModelPays" ref="impServicePays" />
-		<property name="daoModelInteret" ref="impServiceInteret" />
-<!-- 		<property name="daoModelStyle" ref="impServiceStyle" /> -->
+	<bean id="profilAction" class="fr.simpleblog.controllers.ProfilAction">
+		<property name="impServiceFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+		<property name="impServiceUtilisateur" ref="impServiceUtilisateur" />
+		<property name="impServicePays" ref="impServicePays" />
+		<property name="impServiceInteret" ref="impServiceInteret" />
+		<property name="impServiceStyle" ref="impServiceStyle" />
 	</bean>
 
-	<bean name="rootAction" class="fr.simpleblog.controllers.RootAction">
-		<property name="daoModelPays" ref="impServicePays" />
+	<bean id="rootAction" class="fr.simpleblog.controllers.RootAction">
+		<property name="impServicePays" ref="impServicePays" />
 	</bean>
 
-	<bean name="paysAction" class="fr.simpleblog.controllers.PaysAction">
-		<property name="daoModelPays" ref="impServicePays" />
+	<bean id="paysAction" class="fr.simpleblog.controllers.PaysAction">
+		<property name="impServicePays" ref="impServicePays" />
 	</bean>
 
-	<bean name="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
-		<property name="daoModelFicheUtilisateur" ref="impServiceFicheUtilisateur" />
-		<property name="daoModelUtilisateur" ref="impServiceUtilisateur" />
-		<property name="daoModelPays" ref="impServicePays" />
-		<property name="daoModelInteret" ref="impServiceInteret" />
+	<bean id="ficheUtilisateurAction" class="fr.simpleblog.controllers.FicheUtilisateurAction">
+		<property name="impServiceFicheUtilisateur" ref="impServiceFicheUtilisateur" />
+		<property name="impServiceUtilisateur" ref="impServiceUtilisateur" />
+		<property name="impServicePays" ref="impServicePays" />
+		<property name="impServiceInteret" ref="impServiceInteret" />
 		<property name="impServiceStyle" ref="impServiceStyle" />
 	</bean>
 
 
+	<!-- Convention de nommage classe d'ation : IserviceObject actionAccessServiceObject 
+		implementation service : daoObject impAccessDaoObject dao : sessionfactory 
+		récupérée de la super classe daoObject -->
+
 	<!-- au démarrage de l'appli on injecte l'implementation des dao dans le 
-		domaine service -->
+		domain service -->
 
-	<bean name="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur">
-		<property name="impDaoHqlUtilisateur" ref="daoModelUtilisateur" />
+	<bean id="impService" class="fr.simpleblog.domainService.ImpService">
+		<property name="impAccessDao" ref="impDaoHql" />
 	</bean>
 
-	<bean name="impServiceFicheUtilisateur"
-		class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur">
-		<property name="impDaoHqlFicheUtilisateur" ref="daoModelFicheUtilisateur" />
+	<bean id="impServiceUtilisateur" class="fr.simpleblog.domainService.ImpServiceUtilisateur"
+		parent="impService">
+		<property name="impAccessDaoUtilisateur" ref="daoUtilisateur" />
 	</bean>
 
-	<bean name="impServicePays" class="fr.simpleblog.domainService.ImpServicePays">
-		<property name="impDaoHqlPays" ref="daoModelPays" />
+	<bean id="impServiceFicheUtilisateur" class="fr.simpleblog.domainService.ImpServiceFicheUtilisateur"
+		parent="impService">
+		<property name="impAccessDaoFicheUtilisateur" ref="daoFicheUtilisateur" />
 	</bean>
 
-	<bean name="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle">
-		<property name="impServiceStyle" ref="daoModelStyleb" />
+	<bean id="impServicePays" class="fr.simpleblog.domainService.ImpServicePays"
+		parent="impService">
+		<property name="impAccessDaoPays" ref="daoPays" />
 	</bean>
 
-	<bean name="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority">
-		<property name="impDaoHqlAuthority" ref="daoModelAuthority" />
+	<bean id="impServiceStyle" class="fr.simpleblog.domainService.ImpServiceStyle"
+		parent="impService">
+		<property name="impAccessDaoStyle" ref="daoStyle" />
 	</bean>
 
-	<bean name="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret">
-		<property name="impDaoHqlInteret" ref="daoModelInteret" />
+	<bean id="impServiceAuthority" class="fr.simpleblog.domainService.ImpServiceAuthority"
+		parent="impService">
+		<property name="impAccessDaoAuthority" ref="daoAuthority" />
+	</bean>
+
+	<bean id="impServiceInteret" class="fr.simpleblog.domainService.ImpServiceInteret"
+		parent="impService">
+		<property name="impAccessDaoInteret" ref="daoInteret" />
 	</bean>
 
 

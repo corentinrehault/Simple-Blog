@@ -24,10 +24,12 @@
 			value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.prenom}"
 			placeholder="%{getText('prenom')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('login')}" type="text"
-			name="utilisateur.username" value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"
+			name="utilisateur.username"
+			value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"
 			placeholder="%{getText('login')}" size="20" maxlength="20"></s:textfield>
 		<s:textfield label="%{getText('mailaddress')}" type="email"
-			name="utilisateur.mail" value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.mail}"
+			name="utilisateur.mail"
+			value="%{#session.SPRING_SECURITY_CONTEXT.authentication.principal.mail}"
 			placeholder="%{getText('mailaddress')}"></s:textfield>
 		<s:textfield label="%{getText('password')}" type="password"
 			name="utilisateur.password" value=""

@@ -9,14 +9,13 @@ import org.hibernate.HibernateException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import fr.simpleblog.beans.Utilisateur;
-import fr.simpleblog.domainService.IserviceUtilisateur;
 import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements IdaoModelUtilisateur, IserviceUtilisateur {
+public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements IdaoModelUtilisateur {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelUtilisateur#listerUtilisateur()

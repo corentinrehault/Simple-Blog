@@ -4,6 +4,7 @@ import fr.simpleblog.beans.*;
 import java.util.*;
 
 public class StyleAction {
+	
 	private Style style;
 	private ArrayList<String> styles;
 

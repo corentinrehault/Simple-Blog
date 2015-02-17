@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.FicheUtilisateur;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur;
+import fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur;
 
 /**
  * @author dao303
@@ -16,7 +16,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlFicheUtilisateur;
  */
 public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> implements IserviceFicheUtilisateur {
 
-	public ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur;
+	public IdaoModelFicheUtilisateur impAccessDaoFicheUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceFicheUtilisateur#listerFicheUtilisateur()
@@ -24,27 +24,27 @@ public class ImpServiceFicheUtilisateur extends ImpService<FicheUtilisateur> imp
 	@Override
 	@Transactional
 	public Set<FicheUtilisateur> listFicheUtilisateur() {
-		return impDaoHqlFicheUtilisateur.listFicheUtilisateur();
+		return impAccessDaoFicheUtilisateur.listFicheUtilisateur();
 	}
 
 	@Override
 	public FicheUtilisateur updateById(Class<FicheUtilisateur> clazz, int i) {
-		return impDaoHqlFicheUtilisateur.updateById(clazz, i);
+		return impAccessDaoFicheUtilisateur.updateById(clazz, i);
 	}
 
 	/**
-	 * @return the impDaoHqlFicheUtilisateur
+	 * @return the impAccessDaoFicheUtilisateur
 	 */
-	public ImpDaoHqlFicheUtilisateur getImpDaoHqlFicheUtilisateur() {
-		return impDaoHqlFicheUtilisateur;
+	public IdaoModelFicheUtilisateur getImpAccessDaoFicheUtilisateur() {
+		return impAccessDaoFicheUtilisateur;
 	}
 
 	/**
-	 * @param impDaoHqlFicheUtilisateur the impDaoHqlFicheUtilisateur to set
+	 * @param impAccessDaoFicheUtilisateur the impAccessDaoFicheUtilisateur to set
 	 */
-	public void setImpDaoHqlFicheUtilisateur(
-			ImpDaoHqlFicheUtilisateur impDaoHqlFicheUtilisateur) {
-		this.impDaoHqlFicheUtilisateur = impDaoHqlFicheUtilisateur;
+	public void setImpAccessDaoFicheUtilisateur(
+			IdaoModelFicheUtilisateur impAccessDaoFicheUtilisateur) {
+		this.impAccessDaoFicheUtilisateur = impAccessDaoFicheUtilisateur;
 	}
 
 }

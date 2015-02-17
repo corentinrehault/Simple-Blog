@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Authority;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority;
+import fr.simpleblog.model.interfaces.IdaoModelAuthority;
 
 /**
  * @author dao303
@@ -16,7 +16,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlAuthority;
  */
 public class ImpServiceAuthority extends ImpService<Authority> implements IserviceAuthority {
 
-	public ImpDaoHqlAuthority impDaoHqlAuthority;
+	public IdaoModelAuthority impAccessDaoAuthority;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IServiceAuthority#listAuthority()
@@ -24,7 +24,7 @@ public class ImpServiceAuthority extends ImpService<Authority> implements Iservi
 	@Override
 	@Transactional
 	public Set<Authority> listAuthority() {
-		return impDaoHqlAuthority.listAuthority();
+		return impAccessDaoAuthority.listAuthority();
 	}
 
 	/* (non-Javadoc)
@@ -33,21 +33,21 @@ public class ImpServiceAuthority extends ImpService<Authority> implements Iservi
 	@Override
 	@Transactional
 	public Set<Authority> listAuthorityByUserId(int i) {
-		return impDaoHqlAuthority.listAuthorityByUserId(i);
+		return impAccessDaoAuthority.listAuthorityByUserId(i);
 	}
 
 	/**
-	 * @return the impDaoHqlAuthority
+	 * @return the impAccessDaoAuthority
 	 */
-	public ImpDaoHqlAuthority getImpDaoHqlAuthority() {
-		return impDaoHqlAuthority;
+	public IdaoModelAuthority getImpAccessDaoAuthority() {
+		return impAccessDaoAuthority;
 	}
 
 	/**
-	 * @param impDaoHqlAuthority the impDaoHqlAuthority to set
+	 * @param impAccessDaoAuthority the impAccessDaoAuthority to set
 	 */
-	public void setImpDaoHqlAuthority(ImpDaoHqlAuthority impDaoHqlAuthority) {
-		this.impDaoHqlAuthority = impDaoHqlAuthority;
+	public void setImpAccessDaoAuthority(IdaoModelAuthority impAccessDaoAuthority) {
+		this.impAccessDaoAuthority = impAccessDaoAuthority;
 	}
 
 }

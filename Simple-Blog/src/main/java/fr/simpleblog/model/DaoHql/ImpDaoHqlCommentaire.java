@@ -6,14 +6,13 @@ package fr.simpleblog.model.DaoHql;
 import java.util.Set;
 
 import fr.simpleblog.beans.Commentaire;
-import fr.simpleblog.domainService.IserviceCommentaire;
 import fr.simpleblog.model.interfaces.IdaoModelCommentaire;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlCommentaire extends ImpDaoHql<Commentaire> implements IdaoModelCommentaire, IserviceCommentaire {
+public class ImpDaoHqlCommentaire extends ImpDaoHql<Commentaire> implements IdaoModelCommentaire {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelCommentaire#validerCommentaire()

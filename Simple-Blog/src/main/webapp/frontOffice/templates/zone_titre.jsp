@@ -31,6 +31,5 @@
 <%-- 		<s:property value="#session" /> --%>
 
 	</h5>
-	<
 	<s:property value="style.nom"/>
 </div>

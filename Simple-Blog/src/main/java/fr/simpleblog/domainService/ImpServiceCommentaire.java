@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Commentaire;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire;
+import fr.simpleblog.model.interfaces.IdaoModelCommentaire;
 
 /**
  * @author dao303
@@ -16,7 +16,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlCommentaire;
  */
 public class ImpServiceCommentaire extends ImpService<Commentaire> implements IserviceCommentaire {
 
-	public ImpDaoHqlCommentaire impDaoHqlCommentaire;
+	public IdaoModelCommentaire impAccessDaoCommentaire;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceCommentaire#validerCommentaire()
@@ -33,21 +33,22 @@ public class ImpServiceCommentaire extends ImpService<Commentaire> implements Is
 	@Override
 	@Transactional
 	public Set<Commentaire> listCommentaire() {
-		return impDaoHqlCommentaire.listCommentaire();
+		return impAccessDaoCommentaire.listCommentaire();
 	}
 
 	/**
-	 * @return the impDaoHqlCommentaire
+	 * @return the impAccessDaoCommentaire
 	 */
-	public ImpDaoHqlCommentaire getImpDaoHqlCommentaire() {
-		return impDaoHqlCommentaire;
+	public IdaoModelCommentaire getImpAccessDaoCommentaire() {
+		return impAccessDaoCommentaire;
 	}
 
 	/**
-	 * @param impDaoHqlCommentaire the impDaoHqlCommentaire to set
+	 * @param impAccessDaoCommentaire the impAccessDaoCommentaire to set
 	 */
-	public void setImpDaoHqlCommentaire(ImpDaoHqlCommentaire impDaoHqlCommentaire) {
-		this.impDaoHqlCommentaire = impDaoHqlCommentaire;
+	public void setImpAccessDaoCommentaire(
+			IdaoModelCommentaire impAccessDaoCommentaire) {
+		this.impAccessDaoCommentaire = impAccessDaoCommentaire;
 	}
 
 }

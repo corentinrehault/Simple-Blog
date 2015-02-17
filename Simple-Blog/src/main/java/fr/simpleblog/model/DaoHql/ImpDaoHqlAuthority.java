@@ -6,14 +6,13 @@ package fr.simpleblog.model.DaoHql;
 import java.util.Set;
 
 import fr.simpleblog.beans.Authority;
-import fr.simpleblog.domainService.IserviceAuthority;
 import fr.simpleblog.model.interfaces.IdaoModelAuthority;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlAuthority extends ImpDaoHql<Authority> implements IdaoModelAuthority, IserviceAuthority {
+public class ImpDaoHqlAuthority extends ImpDaoHql<Authority> implements IdaoModelAuthority {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelAuthority#listAuthority()

@@ -25,6 +25,7 @@ public class CustomFilterHibernate  extends OpenSessionInViewFilter {
 	public CustomFilterHibernate() {
 		super();
 		LOG.info("<<<========= OPENING SESSION HIBERNATE =========>>>");
+		System.err.println("<<<========= OPENING SESSION HIBERNATE =========>>>");
 	}
 	
 	

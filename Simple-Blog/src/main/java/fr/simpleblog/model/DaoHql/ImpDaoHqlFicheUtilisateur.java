@@ -6,14 +6,13 @@ package fr.simpleblog.model.DaoHql;
 import java.util.Set;
 
 import fr.simpleblog.beans.FicheUtilisateur;
-import fr.simpleblog.domainService.IserviceFicheUtilisateur;
 import fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlFicheUtilisateur extends ImpDaoHql<FicheUtilisateur> implements IdaoModelFicheUtilisateur, IserviceFicheUtilisateur {
+public class ImpDaoHqlFicheUtilisateur extends ImpDaoHql<FicheUtilisateur> implements IdaoModelFicheUtilisateur {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelFicheUtilisateur#listerFicheUtilisateur()

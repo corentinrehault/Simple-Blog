@@ -3,10 +3,7 @@ package fr.simpleblog.controllers;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -19,18 +16,17 @@ import fr.simpleblog.beans.Style;
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.domainService.IserviceAuthority;
 import fr.simpleblog.domainService.IserviceFicheUtilisateur;
-import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
-
-
 
 /*
  * Pour afficher la pile d'interception dans la console
  */
 import com.opensymphony.xwork2.util.profiling.UtilTimerStack;
 
-public class UtilisateurAction extends ActionSupport implements Preparable,SessionAware {
+
+
+public class UtilisateurAction extends ActionSupport implements Preparable {
 
 	/**
 	 * 
@@ -48,24 +44,21 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	private String nom;
 	private String mail;
 
-	private Map<String,Object> sessionMap;
+	private FicheUtilisateur ficheUtilisateur;
+	private Style style;
+	private Pays pays;
 
-	public FicheUtilisateur ficheUtilisateur;
-	public Style style;
-	public Pays pays;
-
-	public IserviceUtilisateur daoModelUtilisateur;
-	public IserviceAuthority daoModelAuthority;
-	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
-	public IserviceStyle daoModelStyle;
-	public IservicePays daoModelPays;
+	private IserviceUtilisateur impServiceUtilisateur;
+	private IserviceAuthority impServiceAuthority;
+	private IserviceFicheUtilisateur impServiceFicheUtilisateur;
+	private IserviceStyle impServiceStyle;
 
 	/**
 	 * @return utilisateurs
 	 */
 	public List<Utilisateur> listerUtilisateur() {
 
-		utilisateurs = (ArrayList<Utilisateur>) daoModelUtilisateur.listUtilisateur();
+		utilisateurs = (ArrayList<Utilisateur>) impServiceUtilisateur.listUtilisateur();
 		return utilisateurs;
 	}
 
@@ -75,7 +68,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public String supprimerUtilisateur() {
 
 		boolean ok = false;
-		ok = daoModelUtilisateur.delete(utilisateur);
+		ok = impServiceUtilisateur.delete(utilisateur);
 		if (ok) {
 			return SUCCESS;
 		} else {
@@ -88,7 +81,7 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	 */
 	public String ajouterUtilisateur() {
 
-		utilisateur = daoModelUtilisateur.create(utilisateur);
+		utilisateur = impServiceUtilisateur.create(utilisateur);
 		return SUCCESS;
 	}
 
@@ -195,14 +188,14 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	/**
 	 * @return the login
 	 */
-	public String getLogin() {
+	public String getUsername() {
 		return username;
 	}
 
 	/**
 	 * @param login the login to set
 	 */
-	public void setLogin(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
@@ -277,20 +270,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	}
 
 	/**
-	 * @return the sessionMap
-	 */
-	public Map<String, Object> getSessionMap() {
-		return sessionMap;
-	}
-
-	/**
-	 * @param sessionMap the sessionMap to set
-	 */
-	public void setSessionMap(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
-	}
-
-	/**
 	 * @return the interets
 	 */
 	public HashSet<Interet> getInterets() {
@@ -324,15 +303,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	public void setFicheUtilisateur(FicheUtilisateur ficheUtilisateur) {
 		this.ficheUtilisateur = ficheUtilisateur;
 	}
-
-	/* (non-Javadoc)
-	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
-	 */
-	@Override
-	public void setSession(Map<String, Object> map) {
-		this.sessionMap = map;
-	}
-
 
 	//	/* (non-Javadoc)
 	//	 * @see com.opensymphony.xwork2.Preparable#prepare()
@@ -374,51 +344,6 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 		UtilTimerStack.setActive(true);
 	}
 
-
-
-	/**
-	 * @return the daoModelAuthority
-	 */
-	public IserviceAuthority getDaoModelAuthority() {
-		return daoModelAuthority;
-	}
-
-	/**
-	 * @param daoModelAuthority the daoModelAuthority to set
-	 */
-	public void setDaoModelAuthority(IserviceAuthority daoModelAuthority) {
-		this.daoModelAuthority = daoModelAuthority;
-	}
-
-	/**
-	 * @return the daoModelUtilisateur
-	 */
-	public IserviceUtilisateur getDaoModelUtilisateur() {
-		return daoModelUtilisateur;
-	}
-
-	/**
-	 * @param daoModelUtilisateur the daoModelUtilisateur to set
-	 */
-	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
-		this.daoModelUtilisateur = daoModelUtilisateur;
-	}
-
-	/**
-	 * @return the daoModelFicheUtilisateur
-	 */
-	public IserviceFicheUtilisateur getDaoModelFicheUtilisateur() {
-		return daoModelFicheUtilisateur;
-	}
-
-	/**
-	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
-	 */
-	public void setDaoModelFicheUtilisateur(
-			IserviceFicheUtilisateur daoModelFicheUtilisateur) {
-		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
-	}
-
 	/**
 	 * @return the pays
 	 */
@@ -434,31 +359,60 @@ public class UtilisateurAction extends ActionSupport implements Preparable,Sessi
 	}
 
 	/**
-	 * @return the daoModelStyle
+	 * @return the impServiceUtilisateur
 	 */
-	public IserviceStyle getDaoModelStyle() {
-		return daoModelStyle;
+	public IserviceUtilisateur getImpServiceUtilisateur() {
+		return impServiceUtilisateur;
 	}
 
 	/**
-	 * @param daoModelStyle the daoModelStyle to set
+	 * @param impServiceUtilisateur the impServiceUtilisateur to set
 	 */
-	public void setDaoModelStyle(IserviceStyle daoModelStyle) {
-		this.daoModelStyle = daoModelStyle;
+	public void setImpServiceUtilisateur(IserviceUtilisateur impServiceUtilisateur) {
+		this.impServiceUtilisateur = impServiceUtilisateur;
 	}
 
 	/**
-	 * @return the daoModelPays
+	 * @return the impServiceAuthority
 	 */
-	public IservicePays getDaoModelPays() {
-		return daoModelPays;
+	public IserviceAuthority getImpServiceAuthority() {
+		return impServiceAuthority;
 	}
 
 	/**
-	 * @param daoModelPays the daoModelPays to set
+	 * @param impServiceAuthority the impServiceAuthority to set
 	 */
-	public void setDaoModelPays(IservicePays daoModelPays) {
-		this.daoModelPays = daoModelPays;
+	public void setImpServiceAuthority(IserviceAuthority impServiceAuthority) {
+		this.impServiceAuthority = impServiceAuthority;
+	}
+
+	/**
+	 * @return the impServiceFicheUtilisateur
+	 */
+	public IserviceFicheUtilisateur getImpServiceFicheUtilisateur() {
+		return impServiceFicheUtilisateur;
+	}
+
+	/**
+	 * @param impServiceFicheUtilisateur the impServiceFicheUtilisateur to set
+	 */
+	public void setImpServiceFicheUtilisateur(
+			IserviceFicheUtilisateur impServiceFicheUtilisateur) {
+		this.impServiceFicheUtilisateur = impServiceFicheUtilisateur;
+	}
+
+	/**
+	 * @return the impServiceStyle
+	 */
+	public IserviceStyle getImpServiceStyle() {
+		return impServiceStyle;
+	}
+
+	/**
+	 * @param impServiceStyle the impServiceStyle to set
+	 */
+	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
+		this.impServiceStyle = impServiceStyle;
 	}
 
 }

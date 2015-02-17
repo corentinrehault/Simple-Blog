@@ -4,6 +4,7 @@ import fr.simpleblog.beans.*;
 import java.util.*;
 
 public class CategorieAction {
+	
 	private Categorie categorie;
 	private ArrayList<String> categories;
 

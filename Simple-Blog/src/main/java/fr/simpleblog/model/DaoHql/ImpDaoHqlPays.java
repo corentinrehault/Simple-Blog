@@ -7,14 +7,13 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import fr.simpleblog.beans.Pays;
-import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.model.interfaces.IdaoModelPays;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays, IservicePays {
+public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelPays#listerPays()

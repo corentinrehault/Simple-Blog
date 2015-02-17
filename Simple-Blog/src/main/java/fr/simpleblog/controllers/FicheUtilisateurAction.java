@@ -9,7 +9,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.simpleblog.beans.*;
-import fr.simpleblog.domainService.ImpServiceStyle;
 import fr.simpleblog.domainService.IserviceFicheUtilisateur;
 import fr.simpleblog.domainService.IserviceInteret;
 import fr.simpleblog.domainService.IservicePays;
@@ -42,16 +41,16 @@ public class FicheUtilisateurAction extends ActionSupport implements SessionAwar
 	private Map<String,Object> sessionMap;
 
 
-	private IserviceFicheUtilisateur daoModelFicheUtilisateur;
-	private IserviceUtilisateur daoModelUtilisateur;
-	private IservicePays daoModelPays;
-	private IserviceInteret daoModelInteret;
+	private IserviceFicheUtilisateur impServiceFicheUtilisateur;
+	private IserviceUtilisateur impServiceUtilisateur;
+	private IservicePays impServicePays;
+	private IserviceInteret impServiceInteret;
 	private IserviceStyle impServiceStyle;
 
 
 
 	public String testo() {
-System.out.println("in coontroolller");
+		System.out.println("in coontroolller");
 		style = impServiceStyle.readById(2);
 		System.out.println("in control");
 		return SUCCESS;
@@ -232,7 +231,7 @@ System.out.println("in coontroolller");
 	 * @return the interets
 	 */
 	public List<Interet> readInterets() {
-		interets = daoModelInteret.listInteret();
+		interets = impServiceInteret.listInteret();
 		return interets;
 	}
 
@@ -247,7 +246,7 @@ System.out.println("in coontroolller");
 	 * @return the ensemblePays
 	 */
 	public List<Pays>  readEnsemblePays() {
-		ensemblePays = daoModelPays.listPays();
+		ensemblePays = impServicePays.listPays();
 		return ensemblePays;
 	}
 
@@ -261,7 +260,7 @@ System.out.println("in coontroolller");
 	/**
 	 * @return the styles
 	 */
-	public List<Style> donneMoiStyles() {
+	public List<Style> readStyles() {
 		styles = impServiceStyle.listStyle();
 		return styles;
 	}
@@ -288,63 +287,61 @@ System.out.println("in coontroolller");
 	}
 
 	/**
-	 * @return the daoModelFicheUtilisateur
+	 * @return the impServiceFicheUtilisateur
 	 */
-	public IserviceFicheUtilisateur getDaoModelFicheUtilisateur() {
-		return daoModelFicheUtilisateur;
+	public IserviceFicheUtilisateur getImpServiceFicheUtilisateur() {
+		return impServiceFicheUtilisateur;
 	}
 
 	/**
-	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
+	 * @param impServiceFicheUtilisateur the impServiceFicheUtilisateur to set
 	 */
-	public void setDaoModelFicheUtilisateur(
-			IserviceFicheUtilisateur daoModelFicheUtilisateur) {
-		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
+	public void setImpServiceFicheUtilisateur(
+			IserviceFicheUtilisateur impServiceFicheUtilisateur) {
+		this.impServiceFicheUtilisateur = impServiceFicheUtilisateur;
 	}
 
 	/**
-	 * @return the daoModelUtilisateur
+	 * @return the impServiceUtilisateur
 	 */
-	public IserviceUtilisateur getDaoModelUtilisateur() {
-		return daoModelUtilisateur;
+	public IserviceUtilisateur getImpServiceUtilisateur() {
+		return impServiceUtilisateur;
 	}
 
 	/**
-	 * @param daoModelUtilisateur the daoModelUtilisateur to set
+	 * @param impServiceUtilisateur the impServiceUtilisateur to set
 	 */
-	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
-		this.daoModelUtilisateur = daoModelUtilisateur;
+	public void setImpServiceUtilisateur(IserviceUtilisateur impServiceUtilisateur) {
+		this.impServiceUtilisateur = impServiceUtilisateur;
 	}
 
 	/**
-	 * @return the daoModelPays
+	 * @return the impServicePays
 	 */
-	public IservicePays getDaoModelPays() {
-		return daoModelPays;
+	public IservicePays getImpServicePays() {
+		return impServicePays;
 	}
 
 	/**
-	 * @param daoModelPays the daoModelPays to set
+	 * @param impServicePays the impServicePays to set
 	 */
-	public void setDaoModelPays(IservicePays daoModelPays) {
-		this.daoModelPays = daoModelPays;
+	public void setImpServicePays(IservicePays impServicePays) {
+		this.impServicePays = impServicePays;
 	}
 
 	/**
-	 * @return the daoModelInteret
+	 * @return the impServiceInteret
 	 */
-	public IserviceInteret getDaoModelInteret() {
-		return daoModelInteret;
+	public IserviceInteret getImpServiceInteret() {
+		return impServiceInteret;
 	}
 
 	/**
-	 * @param daoModelInteret the daoModelInteret to set
+	 * @param impServiceInteret the impServiceInteret to set
 	 */
-	public void setDaoModelInteret(IserviceInteret daoModelInteret) {
-		this.daoModelInteret = daoModelInteret;
+	public void setImpServiceInteret(IserviceInteret impServiceInteret) {
+		this.impServiceInteret = impServiceInteret;
 	}
-
-	
 
 	/**
 	 * @return the impServiceStyle
@@ -357,14 +354,7 @@ System.out.println("in coontroolller");
 	 * @param impServiceStyle the impServiceStyle to set
 	 */
 	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
-		System.err.println("ineject in controller !!");
 		this.impServiceStyle = impServiceStyle;
 	}
-
-	
-
-
-
-
 
 }

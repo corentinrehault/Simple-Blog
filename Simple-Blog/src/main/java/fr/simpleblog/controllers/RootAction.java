@@ -19,12 +19,13 @@ public class RootAction extends ActionSupport implements Preparable {
 	 */
 	private static final long serialVersionUID = 4448517924375834371L;
 
-	ParsingService parsingPays = new ParsingService();
-
-	public IservicePays daoModelPays;
-
+	private IservicePays impServicePays;
 	private List<Pays> ensemblePays;
 
+	ParsingService parsingPays = new ParsingService();
+	
+	
+	
 	public void recupererListePays() {
 
 		try {
@@ -42,29 +43,24 @@ public class RootAction extends ActionSupport implements Preparable {
 		}
 
 		//System.out.println("Rootaction + "+ensemblePays);
-		daoModelPays.createList(ensemblePays);
+		impServicePays.createList(ensemblePays);
 
 	}
 
 
 	public void comparerListePays() {
-
 	}
 
 	public void recupererArticle() {
-
 	}
 
 	public void recupererStylepardefaut() {
-
 	}
 
 	public void changerStylepardefaut() {
-
 	}
 
 	public void changerLangue() {
-
 	}
 
 	/**
@@ -81,7 +77,6 @@ public class RootAction extends ActionSupport implements Preparable {
 		 */
 
 		//recupererListePays();
-
 		//recupererArticle();
 
 		return SUCCESS;
@@ -100,17 +95,18 @@ public class RootAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @return the daoModelPays
+	 * @return the impServicePays
 	 */
-	public IservicePays getDaoModelPays() {
-		return daoModelPays;
+	public IservicePays getImpServicePays() {
+		return impServicePays;
 	}
 
+
 	/**
-	 * @param daoModelPays the daoModelPays to set
+	 * @param impServicePays the impServicePays to set
 	 */
-	public void setDaoModelPays(IservicePays daoModelPays) {
-		this.daoModelPays = daoModelPays;
+	public void setImpServicePays(IservicePays impServicePays) {
+		this.impServicePays = impServicePays;
 	}
 
 }

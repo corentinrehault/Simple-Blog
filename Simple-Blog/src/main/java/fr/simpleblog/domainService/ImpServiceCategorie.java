@@ -8,7 +8,7 @@ import java.util.Set;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Categorie;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie;
+import fr.simpleblog.model.interfaces.IdaoModelCategorie;
 
 /**
  * @author dao303
@@ -16,7 +16,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlCategorie;
  */
 public class ImpServiceCategorie extends ImpService<Categorie> implements IserviceCategorie {
 
-	public ImpDaoHqlCategorie impDaoHqlCategorie;
+	public IdaoModelCategorie impAccessDaoCategorie;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceCategorie#listerCategorie()
@@ -24,21 +24,21 @@ public class ImpServiceCategorie extends ImpService<Categorie> implements Iservi
 	@Override
 	@Transactional
 	public Set<Categorie> listCategorie() {
-		return impDaoHqlCategorie.listCategorie();
+		return impAccessDaoCategorie.listCategorie();
 	}
 
 	/**
-	 * @return the impDaoHqlCategorie
+	 * @return the impAccessDaoCategorie
 	 */
-	public ImpDaoHqlCategorie getImpDaoHqlCategorie() {
-		return impDaoHqlCategorie;
+	public IdaoModelCategorie getImpAccessDaoCategorie() {
+		return impAccessDaoCategorie;
 	}
 
 	/**
-	 * @param impDaoHqlCategorie the impDaoHqlCategorie to set
+	 * @param impAccessDaoCategorie the impAccessDaoCategorie to set
 	 */
-	public void setImpDaoHqlCategorie(ImpDaoHqlCategorie impDaoHqlCategorie) {
-		this.impDaoHqlCategorie = impDaoHqlCategorie;
+	public void setImpAccessDaoCategorie(IdaoModelCategorie impAccessDaoCategorie) {
+		this.impAccessDaoCategorie = impAccessDaoCategorie;
 	}
 
 }

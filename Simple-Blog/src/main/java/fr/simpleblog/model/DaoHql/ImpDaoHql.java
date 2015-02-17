@@ -7,14 +7,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import fr.simpleblog.domainService.Iservice;
 import fr.simpleblog.model.interfaces.IdaoCrud;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHql<X> implements IdaoCrud<X>, Iservice<X> {
+public class ImpDaoHql<X> implements IdaoCrud<X> {
 
 	/**
 	 * The session factory

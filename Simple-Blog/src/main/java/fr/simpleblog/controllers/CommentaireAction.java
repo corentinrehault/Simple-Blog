@@ -4,6 +4,7 @@ import fr.simpleblog.beans.*;
 import java.util.*;
 
 public class CommentaireAction {
+	
 	private Commentaire commentaire;
 	private ArrayList<String> commentaires;
 

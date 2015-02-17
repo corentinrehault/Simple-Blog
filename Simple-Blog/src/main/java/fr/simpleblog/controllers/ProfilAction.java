@@ -1,9 +1,6 @@
 package fr.simpleblog.controllers;
 
 import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,48 +12,38 @@ import fr.simpleblog.domainService.IservicePays;
 import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.domainService.IserviceUtilisateur;
 
-public class ProfilAction extends ActionSupport implements SessionAware {
+public class ProfilAction extends ActionSupport {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 799861132415727534L;
 
 	private FicheUtilisateur ficheUtilisateur;
-	//private ArrayList<String> fichesUtilisateur;
 	private Utilisateur utilisateur;
 	private String adresse;
 	private String ville;
 	private int codePostal;
 	private int id;
 
-	public Style style;
-	public Pays pays;
-	public Interet interet;
+	private Style style;
+	private Pays pays;
+	private Interet interet;
 
-	public List<Interet> interets;
-	public List<Pays> ensemblePays;
-	public List<Style> styles;
+	private List<Interet> interets;
+	private List<Pays> ensemblePays;
+	private List<Style> styles;
 
-	private Map<String,Object> sessionMap;
-
-	public IserviceFicheUtilisateur daoModelFicheUtilisateur;
-	public IserviceUtilisateur daoModelUtilisateur;
-	public IservicePays daoModelPays;
-	public IserviceInteret daoModelInteret;
-	public IserviceStyle daoModelStyle;
+	private IserviceFicheUtilisateur impServiceFicheUtilisateur;
+	private IserviceUtilisateur impServiceUtilisateur;
+	private IservicePays impServicePays;
+	private IserviceInteret impServiceInteret;
+	private IserviceStyle impServiceStyle;
 
 
 
-	public String testo() {
-
-		style = daoModelStyle.readById(1);
-		System.out.println("in control" + style);
-
-		return SUCCESS;
-
-
-	}
-
+	/**
+	 * @return SUCCESS
+	 */
 	public String updateProfil() {
 
 		//utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,28 +56,51 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 //		} else {
 //			ficheUtilisateur = daoModelFicheUtilisateur.create(ficheUtilisateur);
 //		}
-		utilisateur = daoModelUtilisateur.update(utilisateur);
+		utilisateur = impServiceUtilisateur.update(utilisateur);
 
 		return SUCCESS;
 	}
 
+	/**
+	 * @return SUCCESS
+	 */
 	public String readProfil() {
 
 		utilisateur = (Utilisateur) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (utilisateur.ficheUtilisateur.getId() != 0) {
-			ficheUtilisateur = daoModelFicheUtilisateur.read(FicheUtilisateur.class,
+			ficheUtilisateur = impServiceFicheUtilisateur.read(FicheUtilisateur.class,
 					utilisateur.ficheUtilisateur.getId());
 		}
+		
+		styles = readStyles();
+		ensemblePays = readEnsemblePays();
+		interets = readInterets();
 
 		return SUCCESS;
 	}
-
-	/* (non-Javadoc)
-	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+	
+	/**
+	 * @return styles
 	 */
-	@Override
-	public void setSession(Map<String, Object> map) {
-		this.sessionMap = map;
+	public List<Style> readStyles() {
+		styles = impServiceStyle.listStyle();
+		return styles;
+	}
+	
+	/**
+	 * @return interets
+	 */
+	public List<Interet> readInterets() {
+		interets = impServiceInteret.listInteret();
+		return interets;
+	}
+	
+	/**
+	 * @return ensemblePays
+	 */
+	public List<Pays> readEnsemblePays() {
+		ensemblePays = impServicePays.listPays();
+		return ensemblePays;
 	}
 
 	/**
@@ -223,7 +233,6 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	 * @return the interets
 	 */
 	public List<Interet> getInterets() {
-		interets = daoModelInteret.listInteret();
 		return interets;
 	}
 
@@ -238,7 +247,6 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	 * @return the ensemblePays
 	 */
 	public List<Pays> getEnsemblePays() {
-		ensemblePays = daoModelPays.listPays();
 		return ensemblePays;
 	}
 
@@ -253,7 +261,6 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	 * @return the styles
 	 */
 	public List<Style> getStyles() {
-		styles = daoModelStyle.listStyle();
 		return styles;
 	}
 
@@ -265,90 +272,74 @@ public class ProfilAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @return the sessionMap
+	 * @return the impServiceFicheUtilisateur
 	 */
-	public Map<String, Object> getSessionMap() {
-		return sessionMap;
+	public IserviceFicheUtilisateur getImpServiceFicheUtilisateur() {
+		return impServiceFicheUtilisateur;
 	}
 
 	/**
-	 * @param sessionMap the sessionMap to set
+	 * @param impServiceFicheUtilisateur the impServiceFicheUtilisateur to set
 	 */
-	public void setSessionMap(Map<String, Object> sessionMap) {
-		this.sessionMap = sessionMap;
+	public void setImpServiceFicheUtilisateur(
+			IserviceFicheUtilisateur impServiceFicheUtilisateur) {
+		this.impServiceFicheUtilisateur = impServiceFicheUtilisateur;
 	}
 
 	/**
-	 * @return the daoModelFicheUtilisateur
+	 * @return the impServiceUtilisateur
 	 */
-	public IserviceFicheUtilisateur getDaoModelFicheUtilisateur() {
-		return daoModelFicheUtilisateur;
+	public IserviceUtilisateur getImpServiceUtilisateur() {
+		return impServiceUtilisateur;
 	}
 
 	/**
-	 * @param daoModelFicheUtilisateur the daoModelFicheUtilisateur to set
+	 * @param impServiceUtilisateur the impServiceUtilisateur to set
 	 */
-	public void setDaoModelFicheUtilisateur(
-			IserviceFicheUtilisateur daoModelFicheUtilisateur) {
-		this.daoModelFicheUtilisateur = daoModelFicheUtilisateur;
+	public void setImpServiceUtilisateur(IserviceUtilisateur impServiceUtilisateur) {
+		this.impServiceUtilisateur = impServiceUtilisateur;
 	}
 
 	/**
-	 * @return the daoModelUtilisateur
+	 * @return the impServicePays
 	 */
-	public IserviceUtilisateur getDaoModelUtilisateur() {
-		return daoModelUtilisateur;
+	public IservicePays getImpServicePays() {
+		return impServicePays;
 	}
 
 	/**
-	 * @param daoModelUtilisateur the daoModelUtilisateur to set
+	 * @param impServicePays the impServicePays to set
 	 */
-	public void setDaoModelUtilisateur(IserviceUtilisateur daoModelUtilisateur) {
-		this.daoModelUtilisateur = daoModelUtilisateur;
+	public void setImpServicePays(IservicePays impServicePays) {
+		this.impServicePays = impServicePays;
 	}
 
 	/**
-	 * @return the daoModelPays
+	 * @return the impServiceInteret
 	 */
-	public IservicePays getDaoModelPays() {
-		return daoModelPays;
+	public IserviceInteret getImpServiceInteret() {
+		return impServiceInteret;
 	}
 
 	/**
-	 * @param daoModelPays the daoModelPays to set
+	 * @param impServiceInteret the impServiceInteret to set
 	 */
-	public void setDaoModelPays(IservicePays daoModelPays) {
-		this.daoModelPays = daoModelPays;
+	public void setImpServiceInteret(IserviceInteret impServiceInteret) {
+		this.impServiceInteret = impServiceInteret;
 	}
 
 	/**
-	 * @return the daoModelInteret
+	 * @return the impServiceStyle
 	 */
-	public IserviceInteret getDaoModelInteret() {
-		return daoModelInteret;
+	public IserviceStyle getImpServiceStyle() {
+		return impServiceStyle;
 	}
 
 	/**
-	 * @param daoModelInteret the daoModelInteret to set
+	 * @param impServiceStyle the impServiceStyle to set
 	 */
-	public void setDaoModelInteret(IserviceInteret daoModelInteret) {
-		this.daoModelInteret = daoModelInteret;
+	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
+		this.impServiceStyle = impServiceStyle;
 	}
-
-	/**
-	 * @return the daoModelStyle
-	 */
-	public IserviceStyle getDaoModelStyle() {
-		return daoModelStyle;
-	}
-
-	/**
-	 * @param daoModelStyle the daoModelStyle to set
-	 */
-	public void setDaoModelStyle(IserviceStyle daoModelStyle) {
-		this.daoModelStyle = daoModelStyle;
-	}
-
-
 
 }

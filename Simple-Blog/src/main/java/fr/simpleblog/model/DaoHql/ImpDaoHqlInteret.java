@@ -7,14 +7,13 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import fr.simpleblog.beans.Interet;
-import fr.simpleblog.domainService.IserviceInteret;
 import fr.simpleblog.model.interfaces.IdaoModelInteret;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlInteret extends ImpDaoHql<Interet> implements IdaoModelInteret, IserviceInteret {
+public class ImpDaoHqlInteret extends ImpDaoHql<Interet> implements IdaoModelInteret {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelInteret#listInteret()

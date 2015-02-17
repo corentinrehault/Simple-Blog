@@ -21,18 +21,18 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 
-<!-- 		<interceptors> -->
-<!-- 			<interceptor name="authentifierintercepteur" -->
-<!-- 				class="fr.simpleblog.controllers.othercontrollers.AuthentifierIntercepteur"> -->
-<!-- 			</interceptor> -->
-<!-- 			<interceptor-stack name="authStack"> -->
-<!-- 				<interceptor-ref name="authentifierintercepteur"></interceptor-ref> -->
-<!-- 				<interceptor-ref name="defaultStack"></interceptor-ref> -->
-<!-- 			</interceptor-stack> -->
-<!-- 		</interceptors> -->
+		<!-- <interceptors> -->
+		<!-- <interceptor name="authentifierintercepteur" -->
+		<!-- class="fr.simpleblog.controllers.othercontrollers.AuthentifierIntercepteur"> -->
+		<!-- </interceptor> -->
+		<!-- <interceptor-stack name="authStack"> -->
+		<!-- <interceptor-ref name="authentifierintercepteur"></interceptor-ref> -->
+		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		<!-- </interceptor-stack> -->
+		<!-- </interceptors> -->
 
 
-<!-- 		<default-interceptor-ref name="authStack"></default-interceptor-ref> -->
+		<!-- <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
 
 
 		<default-action-ref name="index" />

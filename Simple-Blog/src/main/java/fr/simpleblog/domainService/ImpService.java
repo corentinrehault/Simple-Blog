@@ -5,7 +5,7 @@ package fr.simpleblog.domainService;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.simpleblog.model.DaoHql.ImpDaoHql;
+import fr.simpleblog.model.interfaces.IdaoCrud;
 
 /**
  * @author dao303
@@ -14,7 +14,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHql;
  */
 public class ImpService<X> implements Iservice<X> {
 
-	public ImpDaoHql<X> impDaoHql;
+	public IdaoCrud<X> impAccessDao;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.Iservice#create(java.lang.Object)
@@ -22,7 +22,7 @@ public class ImpService<X> implements Iservice<X> {
 	@Override
 	@Transactional
 	public X create(X x) {
-		return impDaoHql.create(x);
+		return impAccessDao.create(x);
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +31,7 @@ public class ImpService<X> implements Iservice<X> {
 	@Override
 	@Transactional
 	public X read(Class<?> clazz, int id) {
-		return (X) impDaoHql.read(clazz, id);
+		return (X) impAccessDao.read(clazz, id);
 	}
 
 	/* (non-Javadoc)
@@ -40,7 +40,7 @@ public class ImpService<X> implements Iservice<X> {
 	@Override
 	@Transactional
 	public X update(X x) {
-		return impDaoHql.update(x);
+		return impAccessDao.update(x);
 	}
 
 	/* (non-Javadoc)
@@ -49,22 +49,22 @@ public class ImpService<X> implements Iservice<X> {
 	@Override
 	@Transactional
 	public boolean delete(X x) {
-		impDaoHql.delete(x);
+		impAccessDao.delete(x);
 		return true;
 	}
 
 	/**
-	 * @return the impDaoHql
+	 * @return the impAccessDao
 	 */
-	public ImpDaoHql<X> getImpDaoHql() {
-		return impDaoHql;
+	public IdaoCrud<X> getImpAccessDao() {
+		return impAccessDao;
 	}
 
 	/**
-	 * @param impDaoHql the impDaoHql to set
+	 * @param impAccessDao the impAccessDao to set
 	 */
-	public void setImpDaoHql(ImpDaoHql<X> impDaoHql) {
-		this.impDaoHql = impDaoHql;
+	public void setImpAccessDao(IdaoCrud<X> impAccessDao) {
+		this.impAccessDao = impAccessDao;
 	}
 
 }

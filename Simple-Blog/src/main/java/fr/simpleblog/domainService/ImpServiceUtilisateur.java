@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Utilisateur;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur;
+import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
 
 /**
  * @author dao303
@@ -18,7 +18,7 @@ import fr.simpleblog.model.DaoHql.ImpDaoHqlUtilisateur;
  */
 public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements IserviceUtilisateur, UserDetailsService {
 
-	public ImpDaoHqlUtilisateur impDaoHqlUtilisateur;
+	public IdaoModelUtilisateur impAccessDaoUtilisateur;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceUtilisateur#listerUtilisateur()
@@ -26,7 +26,7 @@ public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements Is
 	@Override
 	@Transactional
 	public List<Utilisateur> listUtilisateur() {
-		return impDaoHqlUtilisateur.listUtilisateur();
+		return impAccessDaoUtilisateur.listUtilisateur();
 	}
 
 	/* (non-Javadoc)
@@ -35,7 +35,7 @@ public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements Is
 	@Override
 	@Transactional
 	public Utilisateur login(Utilisateur utilisateur) {
-		return impDaoHqlUtilisateur.login(utilisateur);
+		return impAccessDaoUtilisateur.login(utilisateur);
 	}
 
 	/* (non-Javadoc)
@@ -44,21 +44,22 @@ public class ImpServiceUtilisateur extends ImpService<Utilisateur> implements Is
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) {
-		return impDaoHqlUtilisateur.loadUserByUsername(username);
+		return impAccessDaoUtilisateur.loadUserByUsername(username);
 	}
 
 	/**
-	 * @return the impDaoHqlUtilisateur
+	 * @return the impAccessDaoUtilisateur
 	 */
-	public ImpDaoHqlUtilisateur getImpDaoHqlUtilisateur() {
-		return impDaoHqlUtilisateur;
+	public IdaoModelUtilisateur getImpAccessDaoUtilisateur() {
+		return impAccessDaoUtilisateur;
 	}
 
 	/**
-	 * @param impDaoHqlUtilisateur the impDaoHqlUtilisateur to set
+	 * @param impAccessDaoUtilisateur the impAccessDaoUtilisateur to set
 	 */
-	public void setImpDaoHqlUtilisateur(ImpDaoHqlUtilisateur impDaoHqlUtilisateur) {
-		this.impDaoHqlUtilisateur = impDaoHqlUtilisateur;
+	public void setImpAccessDaoUtilisateur(
+			IdaoModelUtilisateur impAccessDaoUtilisateur) {
+		this.impAccessDaoUtilisateur = impAccessDaoUtilisateur;
 	}
 
 }

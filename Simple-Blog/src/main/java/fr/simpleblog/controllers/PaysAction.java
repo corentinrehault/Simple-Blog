@@ -18,7 +18,7 @@ public class PaysAction extends ActionSupport implements Preparable {
 	private Pays pays;
 	private List<Pays> ensemblePays;
 
-	IservicePays daoModelPays;
+	private IservicePays impServicePays;
 
 	/**
 	 * @return the pays
@@ -50,7 +50,7 @@ public class PaysAction extends ActionSupport implements Preparable {
 
 	public List<Pays> listerPays() {
 
-		ensemblePays = (List<Pays>) daoModelPays.listPays();
+		ensemblePays = (List<Pays>) impServicePays.listPays();
 		return ensemblePays;
 	}
 
@@ -64,17 +64,17 @@ public class PaysAction extends ActionSupport implements Preparable {
 	}
 
 	/**
-	 * @return the daoModelPays
+	 * @return the impServicePays
 	 */
-	public IservicePays getDaoModelPays() {
-		return daoModelPays;
+	public IservicePays getImpServicePays() {
+		return impServicePays;
 	}
 
 	/**
-	 * @param daoModelPays the daoModelPays to set
+	 * @param impServicePays the impServicePays to set
 	 */
-	public void setDaoModelPays(IservicePays daoModelPays) {
-		this.daoModelPays = daoModelPays;
+	public void setImpServicePays(IservicePays impServicePays) {
+		this.impServicePays = impServicePays;
 	}
 
 }

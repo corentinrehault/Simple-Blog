@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Style;
-import fr.simpleblog.model.DaoHql.ImpDaoHqlStyle;
+import fr.simpleblog.model.interfaces.IdaoModelStyle;
 
 /**
  * @author dao303
@@ -21,31 +21,28 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 		System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");System.err.println("!");
 	}
 
-	public IserviceStyle impServiceStyle;
+	public IdaoModelStyle impAccessDaoStyle;
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
 	 */
 	@Override
-	@Transactional
 	@Cacheable(value="dataCache")
 	public List<Style> listStyle() {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.err.println("????????????????????????????????????????????");
-		return impServiceStyle.listStyle();
+		return impAccessDaoStyle.listStyle();
 	}
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceStyle#readById(int)
 	 */
 	@Override
-	@Transactional
 	@Cacheable(value="dataCache")
 	public Style readById(int i) {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		return impServiceStyle.readById(i);
+		return impAccessDaoStyle.readById(i);
 	}
 
 	/* (non-Javadoc)
@@ -54,25 +51,21 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	@Override
 	@Transactional
 	public Style updateById(int styleId) {
-		return impServiceStyle.updateById(styleId);
+		return impAccessDaoStyle.updateById(styleId);
 	}
 
 	/**
-	 * @return the impServiceStyle
+	 * @return the impAccessDaoStyle
 	 */
-	public IserviceStyle getImpServiceStyle() {
-		return impServiceStyle;
+	public IdaoModelStyle getImpAccessDaoStyle() {
+		return impAccessDaoStyle;
 	}
 
 	/**
-	 * @param impServiceStyle the impServiceStyle to set
+	 * @param impAccessDaoStyle the impAccessDaoStyle to set
 	 */
-	public void setImpServiceStyle(IserviceStyle impServiceStyle) {
-		this.impServiceStyle = impServiceStyle;
+	public void setImpAccessDaoStyle(IdaoModelStyle impAccessDaoStyle) {
+		this.impAccessDaoStyle = impAccessDaoStyle;
 	}
-
-	
-
-
 
 }

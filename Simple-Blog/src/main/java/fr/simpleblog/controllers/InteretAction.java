@@ -4,6 +4,7 @@ import fr.simpleblog.beans.*;
 import java.util.*;
 
 public class InteretAction {
+	
 	private Interet interet;
 	private ArrayList<String> interets;
 

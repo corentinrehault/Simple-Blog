@@ -6,17 +6,14 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.springframework.cache.annotation.Cacheable;
-
 import fr.simpleblog.beans.Style;
-import fr.simpleblog.domainService.IserviceStyle;
 import fr.simpleblog.model.interfaces.IdaoModelStyle;
 
 /**
  * @author dao303
  *
  */
-public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, IserviceStyle {
+public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle {
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelStyle#listerStyle()
@@ -53,11 +50,8 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle, 
 	public Style readById(int i) {
 		session = getSession();
 
-
+		System.err.println("in ImpDaoHqlStyle");
 		Style style = (Style) session.get(Style.class, i);
-
-		Style t = new Style();
-
 
 		System.err.println("the style to cache =>" + style);
 
