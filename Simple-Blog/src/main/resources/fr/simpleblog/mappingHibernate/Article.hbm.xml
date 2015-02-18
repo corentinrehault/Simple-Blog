@@ -11,8 +11,9 @@
 			<generator class="native" />
 		</id>
 
-		<property name="dateCreation" type="java.util.Date">
-			<column name="DATECREATION" not-null="true" />
+		<property name="dateCreation" type="java.util.Date" generated="insert">
+			<column name="DATECREATION" sql-type="timeStamp" 
+				default="CURRENT_TIMESTAMP" />
 		</property>
 
 		<property name="titre" type="java.lang.String">
@@ -20,7 +21,7 @@
 		</property>
 
 		<property name="contenu" type="java.lang.String">
-			<column name="CONTENU" not-null="true" />
+			<column name="CONTENU" sql-type="text" not-null="true" />
 		</property>
 
 		<set name="commentaires" table="COMMENTAIRE" inverse="true">
@@ -30,12 +31,20 @@
 			<one-to-many class="fr.simpleblog.beans.Commentaire" />
 		</set>
 
-		<set name="categories" table="CATEGORIE" inverse="true">
-			<key>
-				<column name="FK_ARTICLE_CATEGORIE" />
-			</key>
-			<one-to-many class="fr.simpleblog.beans.Categorie" />
-		</set>
+		<!-- ONE TO MANY : plusieurs catégories possibles pour un article -->
+		<!-- <set name="categories" table="CATEGORIE" inverse="true"> -->
+		<!-- <key> -->
+		<!-- <column name="FK_ARTICLE_CATEGORIE" /> -->
+		<!-- </key> -->
+		<!-- <one-to-many class="fr.simpleblog.beans.Categorie" /> -->
+		<!-- </set> -->
+
+		<!-- MANY-TO-ONE + not-found="ignore" : chaque article a une catégorie -->
+		<many-to-one name="categorie" not-found="ignore"
+			class="fr.simpleblog.beans.Categorie">
+			<column name="FK_ARTICLE_CATEGORIE" />
+		</many-to-one>
+
 
 	</class>
 </hibernate-mapping>

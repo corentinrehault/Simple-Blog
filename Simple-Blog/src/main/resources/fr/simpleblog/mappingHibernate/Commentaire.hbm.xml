@@ -11,8 +11,9 @@
 			<generator class="native" />
 		</id>
 
-		<property name="date" type="java.util.Date">
-			<column name="DATE" not-null="true" />
+		<property name="date" type="java.util.Date" generated="insert">
+			<column name="DATE" sql-type="timeStamp" 
+				default="CURRENT_TIMESTAMP" />
 		</property>
 
 		<property name="titre" type="java.lang.String">
@@ -20,7 +21,7 @@
 		</property>
 
 		<property name="contenu" type="java.lang.String">
-			<column name="CONTENU" not-null="true" />
+			<column name="CONTENU" sql-type="text" not-null="true" />
 		</property>
 
 		<property name="valide" type="boolean">

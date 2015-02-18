@@ -7,7 +7,7 @@
 		<li><a href="#">Créer un article</a></li>
 		<li><a href="#">Supprimer un article</a></li>
 		<li></li>
-		<li><a href="#">Récupérer articles XML</a></li>
+		<li><s:a namespace="/backOffice" action="fetcharticles">Récupérer articles XML</s:a></li>
 	</ol>
 </div>
 <div class="sidebar-module">

@@ -27,7 +27,7 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	 * @see fr.simpleblog.domainService.IserviceStyle#listerStyle()
 	 */
 	@Override
-	@Cacheable(value="dataCache")
+	@Cacheable(value="styleCache")
 	public List<Style> listStyle() {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -38,7 +38,6 @@ public class ImpServiceStyle extends ImpService<Style> implements IserviceStyle 
 	 * @see fr.simpleblog.domainService.IserviceStyle#readById(int)
 	 */
 	@Override
-	@Cacheable(value="dataCache")
 	public Style readById(int i) {
 
 		System.err.println("ERROR in !! @Cacheable(value=dataCache) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

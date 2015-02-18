@@ -1,5 +1,6 @@
 package fr.simpleblog.model.DaoSql;
 
+import java.util.List;
 import java.util.Set;
 
 import fr.simpleblog.beans.Article;
@@ -32,5 +33,10 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public List<Article> createList(List<Article> articles) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

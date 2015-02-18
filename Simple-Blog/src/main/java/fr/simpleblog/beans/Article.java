@@ -14,9 +14,9 @@ public class Article implements Ibeans {
 	private int id;
 	private String contenu;
 
-	public Set<Commentaire> commentaires;
-	public Utilisateur auteur;
-	public Set<Categorie> categories;
+	private Set<Commentaire> commentaires;
+	private Utilisateur auteur;
+	private Categorie categorie;
 
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
@@ -79,17 +79,17 @@ public class Article implements Ibeans {
 	}
 
 	/**
-	 * @return the categories
+	 * @return the categorie
 	 */
-	public Set<Categorie> getCategories() {
-		return categories;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
 	/**
-	 * @param categories the categories to set
+	 * @param categorie the categorie to set
 	 */
-	public void setCategories(Set<Categorie> categories) {
-		this.categories = categories;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 }

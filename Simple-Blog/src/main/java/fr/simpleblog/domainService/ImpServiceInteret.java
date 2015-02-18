@@ -23,8 +23,9 @@ public class ImpServiceInteret extends ImpService<Interet> implements IserviceIn
 	 * @see fr.simpleblog.domainService.IserviceInteret#listInteret()
 	 */
 	@Override
-	@Cacheable(value="dataCache")
+	@Cacheable(value="interetCache")
 	public List<Interet> listInteret() {
+		System.err.println("dans listInteret");
 		return impAccessDaoInteret.listInteret();
 	}
 

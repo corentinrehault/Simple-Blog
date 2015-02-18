@@ -127,10 +127,10 @@ public class PaysHandler extends DefaultHandler {
 	 */
 	public void endDocument() throws SAXException {
 		System.out.println("Fin du parsing");
-		//System.out.println("Résultats du parsing");
-		//for(Pays p : ensemblePays) {
-		//System.out.println(p);
-		//}
+		System.out.println("Résultats du parsing");
+		for(Pays p : ensemblePays) {
+		System.out.println(p);
+		}
 	}
 
 	/**

@@ -51,11 +51,11 @@ public class ProfilAction extends ActionSupport {
 		System.err.println(utilisateur);
 		System.err.println(ficheUtilisateur);
 		System.err.println(ficheUtilisateur.getId());
-//		if (ficheUtilisateur.getId() != 0) {
-//			ficheUtilisateur = daoModelFicheUtilisateur.update(ficheUtilisateur);
-//		} else {
-//			ficheUtilisateur = daoModelFicheUtilisateur.create(ficheUtilisateur);
-//		}
+		//		if (ficheUtilisateur.getId() != 0) {
+		//			ficheUtilisateur = daoModelFicheUtilisateur.update(ficheUtilisateur);
+		//		} else {
+		//			ficheUtilisateur = daoModelFicheUtilisateur.create(ficheUtilisateur);
+		//		}
 		utilisateur = impServiceUtilisateur.update(utilisateur);
 
 		return SUCCESS;
@@ -71,14 +71,14 @@ public class ProfilAction extends ActionSupport {
 			ficheUtilisateur = impServiceFicheUtilisateur.read(FicheUtilisateur.class,
 					utilisateur.ficheUtilisateur.getId());
 		}
-		
+
 		styles = readStyles();
 		ensemblePays = readEnsemblePays();
 		interets = readInterets();
 
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * @return styles
 	 */
@@ -86,7 +86,7 @@ public class ProfilAction extends ActionSupport {
 		styles = impServiceStyle.listStyle();
 		return styles;
 	}
-	
+
 	/**
 	 * @return interets
 	 */
@@ -94,7 +94,7 @@ public class ProfilAction extends ActionSupport {
 		interets = impServiceInteret.listInteret();
 		return interets;
 	}
-	
+
 	/**
 	 * @return ensemblePays
 	 */

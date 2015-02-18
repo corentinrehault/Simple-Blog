@@ -2,7 +2,6 @@ package fr.simpleblog.controllers;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.sql.SQLException;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,15 +21,15 @@ public class RootAction extends ActionSupport implements Preparable {
 	private IservicePays impServicePays;
 	private List<Pays> ensemblePays;
 
-	ParsingService parsingPays = new ParsingService();
-	
-	
-	
+	private ParsingService parsingPays = new ParsingService();
+
+
+
 	public void recupererListePays() {
 
 		try {
-			ensemblePays = parsingPays.listPays();
 
+			ensemblePays = parsingPays.listPays();
 
 		} catch (MalformedURLException e) {
 			System.out.println("Erreur d'URL");
@@ -42,7 +41,7 @@ public class RootAction extends ActionSupport implements Preparable {
 			e.printStackTrace();
 		}
 
-		//System.out.println("Rootaction + "+ensemblePays);
+		System.out.println("Rootaction + "+ensemblePays);
 		impServicePays.createList(ensemblePays);
 
 	}
@@ -75,7 +74,6 @@ public class RootAction extends ActionSupport implements Preparable {
 		/*
 		 * Ajout d'un comparateur pour la liste des pays
 		 */
-
 		//recupererListePays();
 		//recupererArticle();
 

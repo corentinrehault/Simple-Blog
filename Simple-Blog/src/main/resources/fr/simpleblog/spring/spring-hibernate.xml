@@ -43,7 +43,8 @@
 				<prop key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
 				</prop>
 
-				<!-- indique l'emplacement du fichier sql à importer -->
+				<!-- indique l'emplacement du fichier sql à importer Ne fonctionne que 
+					lors des modes de démarrage CREATE ou CREATE-DROP -->
 				<prop key="hibernate.hbm2ddl.import_files">/fr/simpleblog/initialData/initial_data.sql</prop>
 
 			</props>

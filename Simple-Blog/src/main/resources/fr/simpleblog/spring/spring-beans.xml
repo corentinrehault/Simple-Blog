@@ -90,6 +90,9 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="impServiceStyle" ref="impServiceStyle" />
 	</bean>
 
+	<bean id="adminAction" class="fr.simpleblog.controllers.AdminAction">
+		<property name="impServiceArticle" ref="impServiceArticle" />
+	</bean>
 
 	<!-- Convention de nommage classe d'ation : IserviceObject actionAccessServiceObject 
 		implementation service : daoObject impAccessDaoObject dao : sessionfactory 
@@ -132,6 +135,9 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<property name="impAccessDaoInteret" ref="daoInteret" />
 	</bean>
 
+	<bean id="impServiceArticle" class="fr.simpleblog.domainService.ImpServiceArticle" parent="impService">
+	<property name="impAccessDaoArticle" ref="daoArticle" />
+	</bean>
 
 	<!-- Pour fonctionner avec Autowired dans les tests -->
 	<bean class="org.springframework.mock.web.MockHttpServletRequest" />

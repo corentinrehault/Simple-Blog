@@ -3,6 +3,7 @@
  */
 package fr.simpleblog.domainService;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,11 @@ public class ImpServiceArticle extends ImpService<Article> implements IserviceAr
 	public Set<Article> listArticle() {
 		return impAccessDaoArticle.listArticle();
 
+	}
+
+	@Override
+	public List<Article> createList(List<Article> articles) {
+		return impAccessDaoArticle.createList(articles);
 	}
 
 	/**

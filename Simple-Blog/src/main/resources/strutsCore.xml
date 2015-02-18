@@ -9,7 +9,6 @@
 
 		<action name="testo" method="testo"
 			class="fr.simpleblog.controllers.FicheUtilisateurAction">
-
 			<result type="tiles">rootTemplate</result>
 		</action>
 
@@ -72,6 +71,12 @@
 			method="updateProfil">
 			<result name="success" type="tiles">backofficeTemplate</result>
 			<result name="input" type="tiles">profilTemplate</result>
+			<result name="error" type="dispatcher">/error.jsp</result>
+		</action>
+		
+		<action name="fetcharticles" class="fr.simpleblog.controllers.AdminAction"
+			method="fetchArticles">
+			<result name="success" type="tiles">backofficeTemplate</result>
 			<result name="error" type="dispatcher">/error.jsp</result>
 		</action>
 
