@@ -6,8 +6,9 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-
+import org.hibernate.criterion.Order;
 import fr.simpleblog.beans.Article;
 import fr.simpleblog.model.interfaces.IdaoModelArticle;
 
@@ -22,9 +23,21 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 	 */
 	@Override
 	public Set<Article> listArticle() {
-
 		return null;
-
+	}
+	
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#readByDate()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Article> readByDate() {
+		
+		getSession();
+		Criteria criteria = session.createCriteria(Article.class);
+		criteria.addOrder(Order.desc("dateCreation"));
+		return (List<Article>) criteria.list();
+		
 	}
 
 	/* (non-Javadoc)

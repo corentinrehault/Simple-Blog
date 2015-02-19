@@ -14,3 +14,4 @@ VALUES (1,1,1,'Lafosse','Jerome','jlafosse','jerome','jlafosse@simpleblog.fr','\
 (6,1,6,'Administrateur','Admin','admin','admin','admin@simpleblog.fr','\images\aide.jpg','fr',1,1,1,1);
 INSERT INTO authority_Utilisateur (authority_id,utilisateur_id) VALUES (1,1), (1,2), (1,3), (1,4), (1,5), (2,5), (1,6), (2,6);
 INSERT INTO interet (id,nom) VALUES (1,'Sport'), (2,'Politique'), (3,'Livres'), (4,'Informatique'), (5,'Jeux');
+INSERT INTO categorie (id, nom) VALUES (1, 'general'), (2, 'technologies'), (3, 'referencement');

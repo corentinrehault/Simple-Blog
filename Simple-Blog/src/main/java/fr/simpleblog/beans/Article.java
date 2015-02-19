@@ -92,4 +92,14 @@ public class Article implements Ibeans {
 		this.categorie = categorie;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Article [dateCreation=" + dateCreation + ", titre=" + titre
+				+ ", id=" + id + ", auteur=" + auteur + ", categorie="
+				+ categorie + "]";
+	}
+
 }

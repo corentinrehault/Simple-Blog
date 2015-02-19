@@ -27,6 +27,14 @@ public class ImpServiceCategorie extends ImpService<Categorie> implements Iservi
 		return impAccessDaoCategorie.listCategorie();
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.domainService.IserviceCategorie#readCategorieByName()
+	 */
+	@Override
+	public Categorie readCategorieByName(Categorie categorie) {
+		return impAccessDaoCategorie.readCategorieByName(categorie);
+	}
+
 	/**
 	 * @return the impAccessDaoCategorie
 	 */

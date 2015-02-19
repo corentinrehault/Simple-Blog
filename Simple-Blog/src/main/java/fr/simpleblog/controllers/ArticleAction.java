@@ -1,12 +1,44 @@
 package fr.simpleblog.controllers;
 
 import fr.simpleblog.beans.*;
+import fr.simpleblog.domainService.IserviceArticle;
+
 import java.util.*;
 
-public class ArticleAction {
-	
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ArticleAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 15591032911455913L;
+
 	private Article article;
-	private ArrayList<String> articles;
+	private List<Article> articles;
+
+	private IserviceArticle impServiceArticle;
+
+	public String afficherArticle() {
+		articles = impServiceArticle.readByDate();
+		return SUCCESS;
+	}
+
+	public void listerArticle() {
+
+	}
+
+	public void creerArticle() {
+
+	}
+
+	public void supprimerArticle() {
+
+	}
+
+	public void modifierArticle() {
+
+	}
 
 	/**
 	 * @return the article
@@ -25,32 +57,29 @@ public class ArticleAction {
 	/**
 	 * @return the articles
 	 */
-	public ArrayList<String> getArticles() {
+	public List<Article> getArticles() {
 		return articles;
 	}
 
 	/**
 	 * @param articles the articles to set
 	 */
-	public void setArticles(ArrayList<String> articles) {
+	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
 
-	public void listerArticle() {
-		throw new UnsupportedOperationException();
+	/**
+	 * @return the impServiceArticle
+	 */
+	public IserviceArticle getImpServiceArticle() {
+		return impServiceArticle;
 	}
 
-	public void creerArticle() {
-		throw new UnsupportedOperationException();
+	/**
+	 * @param impServiceArticle the impServiceArticle to set
+	 */
+	public void setImpServiceArticle(IserviceArticle impServiceArticle) {
+		this.impServiceArticle = impServiceArticle;
 	}
 
-	public void supprimerArticle() {
-		throw new UnsupportedOperationException();
-	}
-
-	
-
-	public void modifierArticle() {
-		throw new UnsupportedOperationException();
-	}
 }

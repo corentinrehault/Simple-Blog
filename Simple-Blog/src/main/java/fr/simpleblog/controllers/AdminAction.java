@@ -9,7 +9,9 @@ import org.apache.log4j.Logger;
 import com.opensymphony.xwork2.ActionSupport;
 
 import fr.simpleblog.beans.Article;
+import fr.simpleblog.beans.Categorie;
 import fr.simpleblog.domainService.IserviceArticle;
+import fr.simpleblog.domainService.IserviceCategorie;
 import fr.simpleblog.services.parser.ParsingService;
 
 public class AdminAction extends ActionSupport {
@@ -26,7 +28,9 @@ public class AdminAction extends ActionSupport {
 	private static final Logger LOG = Logger.getLogger(AdminAction.class);
 
 	private IserviceArticle impServiceArticle;
+	private IserviceCategorie impServiceCategorie;
 	private List<Article> articles;
+	private Categorie categorie;
 
 	private ParsingService parsingArticles = new ParsingService();
 
@@ -47,7 +51,14 @@ public class AdminAction extends ActionSupport {
 			e.printStackTrace();
 		}
 
-		System.err.println("fetchArticles : " + articles);
+		LOG.error("fetchArticles : " + articles);
+		for (Article a : articles) {
+			LOG.error(a.getCategorie());
+			categorie = impServiceCategorie.readCategorieByName(a.getCategorie());
+			LOG.error(categorie);
+			a.setCategorie(categorie);
+			LOG.error(a.getCategorie());
+		}
 		impServiceArticle.createList(articles);
 
 		return SUCCESS;
@@ -65,6 +76,20 @@ public class AdminAction extends ActionSupport {
 	 */
 	public void setImpServiceArticle(IserviceArticle impServiceArticle) {
 		this.impServiceArticle = impServiceArticle;
+	}
+
+	/**
+	 * @return the impServiceCategorie
+	 */
+	public IserviceCategorie getImpServiceCategorie() {
+		return impServiceCategorie;
+	}
+
+	/**
+	 * @param impServiceCategorie the impServiceCategorie to set
+	 */
+	public void setImpServiceCategorie(IserviceCategorie impServiceCategorie) {
+		this.impServiceCategorie = impServiceCategorie;
 	}
 
 }

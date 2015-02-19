@@ -117,15 +117,16 @@ public class ArticlesHandler extends DefaultHandler {
 			
 		} else if(qName.equals("auteur")) {
 
-			utilisateur.setNom(buffer.toString());
-			article.setAuteur(utilisateur);
-			
+			//utilisateur.setNom(buffer.toString());
+			utilisateur.setNom("Administrateur");
+			article.setAuteur(utilisateur);		
 			buffer = null;
 			inAuteur = false;
 			
 		} else if(qName.equals("categorie")) {
 
 			categorie.setNom(buffer.toString());
+			
 			article.setCategorie(categorie);
 			buffer = null;
 			inCategorie = false;

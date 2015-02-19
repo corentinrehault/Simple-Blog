@@ -9,11 +9,5 @@ public interface IdaoCrud<X> {
 	public X update(X x);
 
 	public boolean delete(X x);
-
-	/**
-	 * @param clazz
-	 * @param id
-	 * @return
-	 */
 	
 }

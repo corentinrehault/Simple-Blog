@@ -8,18 +8,33 @@ import fr.simpleblog.model.interfaces.IdaoModelArticle;
 
 public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 
+
+	@Override
+	public Article read(Class<?> clazz, int id) {
+		return null;
+	}
+
 	public Article create(Article article) {
 		throw new UnsupportedOperationException();
 	}
 
 	/* (non-Javadoc)
-	 * @see fr.simpleblog.model.interfaces.IdaoCrud#read(java.lang.Class, int)
+	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#createList(java.util.List)
 	 */
 	@Override
-	public Article read(Class<?> clazz, int id) {
-		// TODO Auto-generated method stub
+	public List<Article> createList(List<Article> articles) {
+
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#readByDate()
+	 */
+	@Override
+	public List<Article> readByDate() {
+		return null;
+	}
+
 
 	public Article update(Article article) {
 		throw new UnsupportedOperationException();
@@ -31,12 +46,6 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 
 	public Set<Article> listArticle() {
 		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public List<Article> createList(List<Article> articles) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

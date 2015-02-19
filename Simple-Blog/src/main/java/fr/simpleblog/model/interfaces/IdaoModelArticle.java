@@ -11,4 +11,6 @@ public interface IdaoModelArticle extends IdaoCrud<Article> {
 
 	public List<Article> createList(List<Article> articles);
 
+	public List<Article> readByDate();
+
 }

@@ -35,4 +35,11 @@ public class DaoModelCategorie extends DaoModel implements IdaoModelCategorie {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Categorie readCategorieByName(Categorie categorie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

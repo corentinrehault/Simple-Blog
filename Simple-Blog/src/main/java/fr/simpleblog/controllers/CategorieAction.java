@@ -1,12 +1,41 @@
 package fr.simpleblog.controllers;
 
 import fr.simpleblog.beans.*;
+import fr.simpleblog.domainService.IserviceCategorie;
+
 import java.util.*;
 
-public class CategorieAction {
-	
+import com.opensymphony.xwork2.ActionSupport;
+
+public class CategorieAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2121549731167929086L;
+
 	private Categorie categorie;
-	private ArrayList<String> categories;
+	private List<Categorie> categories;
+
+	private IserviceCategorie impServiceCategorie;
+	
+
+
+	public String listerCategorie() {
+
+		categories.addAll(impServiceCategorie.listCategorie());
+		
+		return SUCCESS;
+	}
+
+	public void creerCategorie() {
+	}
+
+	public void supprimerCategorie() {
+	}
+
+	public void modifierCategorie() {
+	}
 
 	/**
 	 * @return the categorie
@@ -25,30 +54,29 @@ public class CategorieAction {
 	/**
 	 * @return the categories
 	 */
-	public ArrayList<String> getCategories() {
+	public List<Categorie> getCategories() {
 		return categories;
 	}
 
 	/**
 	 * @param categories the categories to set
 	 */
-	public void setCategories(ArrayList<String> categories) {
+	public void setCategories(List<Categorie> categories) {
 		this.categories = categories;
 	}
 
-	public String listerCategorie() {
-		throw new UnsupportedOperationException();
+	/**
+	 * @return the impServiceCategorie
+	 */
+	public IserviceCategorie getImpServiceCategorie() {
+		return impServiceCategorie;
 	}
 
-	public void creerCategorie() {
-		throw new UnsupportedOperationException();
+	/**
+	 * @param impServiceCategorie the impServiceCategorie to set
+	 */
+	public void setImpServiceCategorie(IserviceCategorie impServiceCategorie) {
+		this.impServiceCategorie = impServiceCategorie;
 	}
 
-	public void supprimerCategorie() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void modifierCategorie() {
-		throw new UnsupportedOperationException();
-	}
 }

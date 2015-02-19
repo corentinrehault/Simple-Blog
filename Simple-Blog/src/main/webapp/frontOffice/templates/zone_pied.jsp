@@ -6,9 +6,12 @@
 </p>
 <h1>Have you heard these terms before?</h1>
 <p>
-Ceraunophobia <a href="javascript:makeGetRequest(1)">More about Ceraunophobia</a><br>
-Astraphobia <a href="javascript:makeGetRequest(2)">More about Astraphobia</a><br>
-Ophidiophobia <a href="javascript:makeGetRequest(3)">More about Ophidiophobia</a><br>
+	Ceraunophobia <a href="javascript:makeGetRequest(1)">More about
+		Ceraunophobia</a><br> Astraphobia <a
+		href="javascript:makeGetRequest(2)">More about Astraphobia</a><br>
+	Ophidiophobia <a href="javascript:makeGetRequest(3)">More about
+		Ophidiophobia</a><br>
 </p>
 
+<s:debug />
 <div id="description"></div>

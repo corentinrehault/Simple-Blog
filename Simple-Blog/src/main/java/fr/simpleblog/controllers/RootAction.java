@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -17,6 +19,11 @@ public class RootAction extends ActionSupport implements Preparable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4448517924375834371L;
+
+	/**
+	 *  Log4J logger
+	 */
+	private static final Logger LOG = Logger.getLogger(AdminAction.class);
 
 	private IservicePays impServicePays;
 	private List<Pays> ensemblePays;
@@ -32,16 +39,16 @@ public class RootAction extends ActionSupport implements Preparable {
 			ensemblePays = parsingPays.listPays();
 
 		} catch (MalformedURLException e) {
-			System.out.println("Erreur d'URL");
-			System.out.println("Dans la méthode recupererListePays()");
+			LOG.error("Erreur d'URL");
+			LOG.error("Dans la méthode recupererListePays()");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Erreur d'entrée/sortie");
-			System.out.println("Dans la méthode recupererListePays()");
+			LOG.error("Erreur d'entrée/sortie");
+			LOG.error("Dans la méthode recupererListePays()");
 			e.printStackTrace();
 		}
 
-		System.out.println("Rootaction + "+ensemblePays);
+		LOG.error("Rootaction + "+ensemblePays);
 		impServicePays.createList(ensemblePays);
 
 	}

@@ -32,6 +32,10 @@
 			<result name="error" type="dispatcher">error.jsp</result>
 		</action>
 
+
+		<action name="getArticle" class="fr.simpleblog.controllers.ArticleAction"
+			method="afficherArticle"><result name="success">articles.jsp</result></action>
+
 		<!-- <action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
 		<!-- method="loadUserByUsername"> -->
 		<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
@@ -73,7 +77,7 @@
 			<result name="input" type="tiles">profilTemplate</result>
 			<result name="error" type="dispatcher">/error.jsp</result>
 		</action>
-		
+
 		<action name="fetcharticles" class="fr.simpleblog.controllers.AdminAction"
 			method="fetchArticles">
 			<result name="success" type="tiles">backofficeTemplate</result>
