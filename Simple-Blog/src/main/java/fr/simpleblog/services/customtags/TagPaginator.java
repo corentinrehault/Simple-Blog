@@ -72,12 +72,8 @@ public class TagPaginator extends SimpleTagSupport {
 		JspWriter sortie = getJspContext().getOut();
 		sortie.println("Nombre d'articles = " + nbreElements + " Nombre de pages = " + nbreDePages + " Premier élément dans la page = " + premierElementDeLaPage );
 
-
 	}
 	
-	//renvoyer pageCourante
-	//renvoyer premierElementDeLaPage
-
 	/**
 	 * @return the nbreDePages
 	 */
