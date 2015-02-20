@@ -36,6 +36,14 @@ public class ImpServiceArticle extends ImpService<Article> implements IserviceAr
 	public List<Article> readByDate() {
 		return impAccessDaoArticle.readByDate();
 	}
+	
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.domainService.IserviceArticle#countArticle()
+	 */
+	@Override
+	public int countArticle() {
+		return impAccessDaoArticle.countArticle();
+	}
 
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceArticle#createList(java.util.List)

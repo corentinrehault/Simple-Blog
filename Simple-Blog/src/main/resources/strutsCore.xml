@@ -33,8 +33,12 @@
 		</action>
 
 
-		<action name="getArticle" class="fr.simpleblog.controllers.ArticleAction"
-			method="afficherArticle"><result name="success">articles.jsp</result></action>
+		<action name="getarticle" class="fr.simpleblog.controllers.ArticleAction"
+			method="afficherArticle" />
+
+		<action name="compterarticle" class="fr.simpleblog.controllers.ArticleAction"
+			method="compterArticle" />
+
 
 		<!-- <action name="connexion" class="fr.simpleblog.controllers.UtilisateurAction" -->
 		<!-- method="loadUserByUsername"> -->

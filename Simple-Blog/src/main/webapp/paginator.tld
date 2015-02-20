@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<tlib-version>0.1</tlib-version>
+	<short-name>pag</short-name>
+
+	<tag>
+		<name>paginator</name>
+		<tag-class>fr.simpleblog.services.customtags.TagPaginator</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<name>nbreElements</name>
+			<rtexprvalue>true</rtexprvalue>
+<!-- 			<type>java.lang.string</type> -->
+		</attribute>
+		<attribute>
+			<name>nbreParPages</name>
+		</attribute>
+		<attribute>
+			<name>pageCourante</name>
+		</attribute>
+	</tag>
+
+</taglib>

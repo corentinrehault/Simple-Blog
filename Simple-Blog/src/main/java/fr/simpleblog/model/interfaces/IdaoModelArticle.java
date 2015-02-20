@@ -13,4 +13,6 @@ public interface IdaoModelArticle extends IdaoCrud<Article> {
 
 	public List<Article> readByDate();
 
+	public int countArticle();
+
 }

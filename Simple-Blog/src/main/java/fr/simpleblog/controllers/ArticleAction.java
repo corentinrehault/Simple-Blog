@@ -5,6 +5,8 @@ import fr.simpleblog.domainService.IserviceArticle;
 
 import java.util.*;
 
+import org.apache.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ArticleAction extends ActionSupport {
@@ -14,13 +16,25 @@ public class ArticleAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 15591032911455913L;
 
+	/**
+	 *  Log4J logger
+	 */
+	private static final Logger LOG = Logger.getLogger(ArticleAction.class);
+
 	private Article article;
 	private List<Article> articles;
+	private int nbreArticles;
 
 	private IserviceArticle impServiceArticle;
 
 	public String afficherArticle() {
 		articles = impServiceArticle.readByDate();
+		return SUCCESS;
+	}
+
+	public String compterArticle() {
+		nbreArticles = impServiceArticle.countArticle();
+		LOG.error("NOMBRE D'ARTICLES DANS LA BASE = " + nbreArticles);
 		return SUCCESS;
 	}
 
@@ -66,6 +80,20 @@ public class ArticleAction extends ActionSupport {
 	 */
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
+	}
+
+	/**
+	 * @return the nbreArticles
+	 */
+	public int getNbreArticles() {
+		return nbreArticles;
+	}
+
+	/**
+	 * @param nbreArticles the nbreArticles to set
+	 */
+	public void setNbreArticles(int nbreArticles) {
+		this.nbreArticles = nbreArticles;
 	}
 
 	/**

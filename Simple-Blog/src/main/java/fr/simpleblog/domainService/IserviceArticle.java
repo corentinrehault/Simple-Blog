@@ -13,4 +13,6 @@ public interface IserviceArticle extends Iservice<Article> {
 
 	public List<Article> readByDate();
 
+	public int countArticle();
+
 }

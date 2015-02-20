@@ -9,21 +9,11 @@ import fr.simpleblog.model.interfaces.IdaoModelArticle;
 public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 
 
-	@Override
-	public Article read(Class<?> clazz, int id) {
-		return null;
-	}
-
-	public Article create(Article article) {
-		throw new UnsupportedOperationException();
-	}
-
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#createList(java.util.List)
 	 */
 	@Override
 	public List<Article> createList(List<Article> articles) {
-
 		return null;
 	}
 
@@ -35,17 +25,33 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#countArticle()
+	 */
+	@Override
+	public int countArticle() {
+		return 0;
+	}
+	
+	@Override
+	public Article read(Class<?> clazz, int id) {
+		return null;
+	}
+
+	public Article create(Article article) {
+		return null;
+	}
 
 	public Article update(Article article) {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	public boolean delete(Article article) {
-		throw new UnsupportedOperationException();
+		return false;
 	}
 
 	public Set<Article> listArticle() {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 }

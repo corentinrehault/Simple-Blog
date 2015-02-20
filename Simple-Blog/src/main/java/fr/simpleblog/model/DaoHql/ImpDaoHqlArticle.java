@@ -9,6 +9,8 @@ import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Order;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Article;
 import fr.simpleblog.model.interfaces.IdaoModelArticle;
 
@@ -31,6 +33,7 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Article> readByDate() {
 		
 		getSession();
@@ -40,10 +43,21 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 		
 	}
 
+	@Override
+	@Transactional
+	public int countArticle() {
+		
+		getSession();
+		return ((Number) session.createQuery("select count(*) from Article")
+				.iterate().next()).intValue();
+		
+	}
+	
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#createList(java.util.List)
 	 */
 	@Override
+	@Transactional
 	public List<Article> createList(List<Article> articles) {
 
 		getSession();
