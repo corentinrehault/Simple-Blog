@@ -6,6 +6,8 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.model.interfaces.IdaoModelPays;
 
@@ -20,13 +22,14 @@ public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Pays> listPays() {
 
 		getSession();
 		List<Pays> ensemblePays;
 
 		try {
-			
+
 			ensemblePays = session.createQuery("from Pays").list();
 		} catch (HibernateException e) {
 			ensemblePays=null;
@@ -34,8 +37,8 @@ public class ImpDaoHqlPays extends ImpDaoHql<Pays> implements IdaoModelPays {
 
 		}
 
-//		System.out.println("SecondLevelCacheHitCount = " 
-//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
+		//		System.out.println("SecondLevelCacheHitCount = " 
+		//				+ session.getSessionFactory().getStatistics().getSecondLevelCacheHitCount());
 		return ensemblePays;
 
 	}

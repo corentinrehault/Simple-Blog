@@ -15,13 +15,14 @@
 		<attribute>
 			<name>nbreElements</name>
 			<rtexprvalue>true</rtexprvalue>
-<!-- 			<type>java.lang.string</type> -->
 		</attribute>
 		<attribute>
 			<name>nbreParPages</name>
 		</attribute>
 		<attribute>
 			<name>pageCourante</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 	</tag>
 

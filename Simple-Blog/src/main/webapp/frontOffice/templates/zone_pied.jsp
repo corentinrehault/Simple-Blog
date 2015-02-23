@@ -13,5 +13,4 @@
 		Ophidiophobia</a><br>
 </p>
 
-<%-- <s:debug /> --%>
 <div id="description"></div>

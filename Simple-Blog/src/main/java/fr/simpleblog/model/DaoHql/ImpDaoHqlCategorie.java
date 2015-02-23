@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.simpleblog.beans.Categorie;
 import fr.simpleblog.model.interfaces.IdaoModelCategorie;
@@ -29,6 +30,7 @@ public class ImpDaoHqlCategorie extends ImpDaoHql<Categorie> implements IdaoMode
 	 * @see fr.simpleblog.model.interfaces.IdaoModelCategorie#readCategorieByName()
 	 */
 	@Override
+	@Transactional
 	public Categorie readCategorieByName(Categorie categorie) {
 		
 		getSession();

@@ -37,12 +37,10 @@
 
 		<default-action-ref name="index" />
 
-
 		<global-results>
 			<result name="error">/error.jsp</result>
 			<result name="login" type="tiles">rootTemplate</result>
 		</global-results>
-
 
 		<global-exception-mappings>
 			<exception-mapping exception="java.lang.Exception"

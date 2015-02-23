@@ -5,10 +5,10 @@
 
 
 <s:action name="compterarticle" namespace="/" executeResult="false" var="pages"/>
-<pag:paginator nbreElements="${pages.nbreArticles}" nbreParPages="2" pageCourante="1"></pag:paginator>
+<pag:paginator nbreElements="${pages.nbreArticles}" nbreParPages="2" pageCourante="${parameters.page}"></pag:paginator>
 
-<s:action name="getarticle" namespace="/" executeResult="false" var="getarticles" />
-<s:iterator value="#getarticles.articles" var="article">
+<s:action name="getarticle" namespace="/" executeResult="false" var="getarticles"/>
+<s:iterator value="#getarticles.articles" var="article" begin="#parameters.debut" end="#parameters.fin">
 	<div class="blog-post">
 		<h2 class="blog-post-title">
 			<s:property value="titre" />

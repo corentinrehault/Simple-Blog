@@ -6,6 +6,8 @@ package fr.simpleblog.model.DaoHql;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Style;
 import fr.simpleblog.model.interfaces.IdaoModelStyle;
 
@@ -47,6 +49,7 @@ public class ImpDaoHqlStyle extends ImpDaoHql<Style> implements IdaoModelStyle {
 	 * @see fr.simpleblog.model.interfaces.IdaoModelStyle#readById(int)
 	 */
 	@Override
+	@Transactional
 	public Style readById(int i) {
 		session = getSession();
 

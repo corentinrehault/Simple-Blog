@@ -9,6 +9,6 @@
 </head>
 <body>
 	Oops !
-	<s:debug></s:debug>
+	<s:debug />
 </body>
 </html>

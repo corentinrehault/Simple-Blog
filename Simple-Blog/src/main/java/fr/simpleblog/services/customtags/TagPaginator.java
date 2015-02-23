@@ -16,9 +16,14 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	private int nbreParPages;
 	/**
+	 * La page actuelle récupérée
+	 */
+	private String pageCourante;
+
+	/**
 	 * La page actuelle
 	 */
-	private int pageCourante;
+	private int pageCouranteNum;
 	/**
 	 * Le nombre total d'éléments
 	 */
@@ -27,10 +32,15 @@ public class TagPaginator extends SimpleTagSupport {
 	 * Le numéro du premier élément de la page actuelle
 	 */
 	private int premierElementDeLaPage;
+	/**
+	 * Le numéro du dernier élément de la page actuelle
+	 */
+	private int dernierElementDeLaPage;
 
 	private String url = "";
 
 	private StringBuffer buffer;
+
 
 	/**
 	 * @return le nombre total de pages
@@ -48,7 +58,7 @@ public class TagPaginator extends SimpleTagSupport {
 		} else {		
 			nbreDePages = 1;
 		}
-		
+
 		return nbreDePages;
 	}
 
@@ -57,23 +67,48 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	public int calculPremierElementDeLaPage() {
 
-		premierElementDeLaPage = (pageCourante-1) * nbreParPages + 1;
+		premierElementDeLaPage = (pageCouranteNum-1) * nbreParPages;
 		return premierElementDeLaPage;
+	}
+
+	public int calculDernierElementDeLaPage() {
+
+		dernierElementDeLaPage = premierElementDeLaPage + nbreParPages -1;
+		return dernierElementDeLaPage;		
+	}
+
+	public String urlAppend() {
+
+		//Ajout des paramètres debut, fin et page
+
+		return url;
+
 	}
 
 	/* (non-Javadoc)
 	 * @see javax.servlet.jsp.tagext.SimpleTagSupport#doTag()
 	 */
 	public void doTag() throws IOException {
-		
+
+		if (pageCourante=="") {
+			pageCouranteNum=1;
+		} else {
+			pageCouranteNum = Integer.parseInt(pageCourante);
+		}
+
 		calculNbreDePages();
 		calculPremierElementDeLaPage();
+		calculDernierElementDeLaPage();
+		urlAppend();
+
+
 
 		JspWriter sortie = getJspContext().getOut();
 		sortie.println("Nombre d'articles = " + nbreElements + " Nombre de pages = " + nbreDePages + " Premier élément dans la page = " + premierElementDeLaPage );
 
+
 	}
-	
+
 	/**
 	 * @return the nbreDePages
 	 */
@@ -105,15 +140,29 @@ public class TagPaginator extends SimpleTagSupport {
 	/**
 	 * @return the pageCourante
 	 */
-	public int getPageCourante() {
+	public String getPageCourante() {
 		return pageCourante;
 	}
 
 	/**
 	 * @param pageCourante the pageCourante to set
 	 */
-	public void setPageCourante(int pageCourante) {
+	public void setPageCourante(String pageCourante) {
 		this.pageCourante = pageCourante;
+	}
+
+	/**
+	 * @return the pageCouranteNum
+	 */
+	public int getPageCouranteNum() {
+		return pageCouranteNum;
+	}
+
+	/**
+	 * @param pageCouranteNum the pageCouranteNum to set
+	 */
+	public void setPageCouranteNum(int pageCouranteNum) {
+		this.pageCouranteNum = pageCouranteNum;
 	}
 
 	/**

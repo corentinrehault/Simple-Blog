@@ -52,5 +52,3 @@
 
 </body>
 </html>
-
-<s:debug />

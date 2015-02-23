@@ -8,6 +8,8 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.simpleblog.beans.Utilisateur;
 import fr.simpleblog.model.interfaces.IdaoModelUtilisateur;
 
@@ -38,6 +40,7 @@ public class ImpDaoHqlUtilisateur extends ImpDaoHql<Utilisateur> implements Idao
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		System.out.println("Dans loadUserByUsername + " + username);
