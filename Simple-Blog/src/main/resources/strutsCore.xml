@@ -35,6 +35,7 @@
 
 		<action name="getarticle" class="fr.simpleblog.controllers.ArticleAction"
 			method="afficherArticle" />
+			
 
 		<action name="compterarticle" class="fr.simpleblog.controllers.ArticleAction"
 			method="compterArticle" />

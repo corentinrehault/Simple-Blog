@@ -18,12 +18,23 @@
 		</attribute>
 		<attribute>
 			<name>nbreParPages</name>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
 			<name>pageCourante</name>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<name>url</name>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+
+	<tag>
+		<name>head</name>
+		<tag-class>fr.simpleblog.services.customtags.TagHead</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+
 
 </taglib>

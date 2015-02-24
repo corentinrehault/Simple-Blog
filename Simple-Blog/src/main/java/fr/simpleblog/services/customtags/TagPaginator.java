@@ -16,14 +16,9 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	private int nbreParPages;
 	/**
-	 * La page actuelle récupérée
-	 */
-	private String pageCourante;
-
-	/**
 	 * La page actuelle
 	 */
-	private int pageCouranteNum;
+	private int pageCourante;
 	/**
 	 * Le nombre total d'éléments
 	 */
@@ -37,9 +32,7 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	private int dernierElementDeLaPage;
 
-	private String url = "";
-
-	private StringBuffer buffer;
+	private String url;
 
 
 	/**
@@ -65,24 +58,16 @@ public class TagPaginator extends SimpleTagSupport {
 	/**
 	 * @return le premier élément de la page
 	 */
-	public int calculPremierElementDeLaPage() {
+	public int calculPremierElementDeLaPage(int page) {
 
-		premierElementDeLaPage = (pageCouranteNum-1) * nbreParPages;
+		premierElementDeLaPage = (page - 1) * nbreParPages;
 		return premierElementDeLaPage;
 	}
 
-	public int calculDernierElementDeLaPage() {
+	public int calculDernierElementDeLaPage(int page) {
 
-		dernierElementDeLaPage = premierElementDeLaPage + nbreParPages -1;
+		dernierElementDeLaPage = ((page - 1) * nbreParPages) + nbreParPages -1;
 		return dernierElementDeLaPage;		
-	}
-
-	public String urlAppend() {
-
-		//Ajout des paramètres debut, fin et page
-
-		return url;
-
 	}
 
 	/* (non-Javadoc)
@@ -90,22 +75,69 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	public void doTag() throws IOException {
 
-		if (pageCourante=="") {
-			pageCouranteNum=1;
-		} else {
-			pageCouranteNum = Integer.parseInt(pageCourante);
+		if (pageCourante==0) {
+			pageCourante=1;
+		}
+
+		if (nbreParPages==0) {
+			nbreParPages=1;
 		}
 
 		calculNbreDePages();
-		calculPremierElementDeLaPage();
-		calculDernierElementDeLaPage();
-		urlAppend();
-
-
+		calculPremierElementDeLaPage(pageCourante);
+		calculDernierElementDeLaPage(pageCourante);
 
 		JspWriter sortie = getJspContext().getOut();
-		sortie.println("Nombre d'articles = " + nbreElements + " Nombre de pages = " + nbreDePages + " Premier élément dans la page = " + premierElementDeLaPage );
 
+		//		sortie.println("Nombre d'articles = " + nbreElements + "<br />" + 
+		//				"Nombre de pages = " + nbreDePages + "<br />" + 
+		//				"Premier élément dans la page = " + premierElementDeLaPage + "<br />" +
+		//				"Page actuelle = " + pageCourante + "<br />");
+
+		if (nbreDePages!=1) {
+
+			if (pageCourante!=1) {
+				sortie.println("<a href=\"" + url + "?debut=" 
+						+ calculPremierElementDeLaPage(pageCourante-1) 
+						+ "&fin=" + calculDernierElementDeLaPage(pageCourante-1)
+						+ "&nbre=" + nbreParPages 
+						+ "&page=" + (pageCourante-1) +"\">PREC</a>");
+			}
+
+			if (nbreDePages>10 && pageCourante>5) {
+				for (int i=pageCourante-5; i<pageCourante+5; i++) {
+					sortie.println("<a href=\"" + url + "?debut="
+							+ calculPremierElementDeLaPage(i) 
+							+ "&fin=" + calculDernierElementDeLaPage(i)
+							+ "&nbre=" + nbreParPages 
+							+ "&page=" + i +"\">"+ i +"</a>");
+				}
+			} else if (nbreDePages>10) {
+				for (int i=1; i<11; i++) {
+					sortie.println("<a href=\"" + url + "?debut="
+							+ calculPremierElementDeLaPage(i) 
+							+ "&fin=" + calculDernierElementDeLaPage(i)
+							+ "&nbre=" + nbreParPages 
+							+ "&page=" + i +"\">"+ i +"</a>");
+				}
+			} else {
+				for (int i=1; i<nbreDePages+1; i++) {
+					sortie.println("<a href=\"" + url + "?debut="
+							+ calculPremierElementDeLaPage(i) 
+							+ "&fin=" + calculDernierElementDeLaPage(i)
+							+ "&nbre=" + nbreParPages 
+							+ "&page=" + i +"\">"+ i +"</a>");
+				}
+			}
+
+			if (pageCourante!=nbreDePages) {
+				sortie.println("<a href=\"" + url + "?debut="
+						+ calculPremierElementDeLaPage(pageCourante+1) 
+						+ "&fin=" + calculDernierElementDeLaPage(pageCourante+1)
+						+ "&nbre=" + nbreParPages 
+						+ "&page=" + (pageCourante+1) +"\">SUIV</a>");
+			}
+		}
 
 	}
 
@@ -140,29 +172,15 @@ public class TagPaginator extends SimpleTagSupport {
 	/**
 	 * @return the pageCourante
 	 */
-	public String getPageCourante() {
+	public int getPageCourante() {
 		return pageCourante;
 	}
 
 	/**
 	 * @param pageCourante the pageCourante to set
 	 */
-	public void setPageCourante(String pageCourante) {
+	public void setPageCourante(int pageCourante) {
 		this.pageCourante = pageCourante;
-	}
-
-	/**
-	 * @return the pageCouranteNum
-	 */
-	public int getPageCouranteNum() {
-		return pageCouranteNum;
-	}
-
-	/**
-	 * @param pageCouranteNum the pageCouranteNum to set
-	 */
-	public void setPageCouranteNum(int pageCouranteNum) {
-		this.pageCouranteNum = pageCouranteNum;
 	}
 
 	/**
@@ -205,20 +223,6 @@ public class TagPaginator extends SimpleTagSupport {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	/**
-	 * @return the buffer
-	 */
-	public StringBuffer getBuffer() {
-		return buffer;
-	}
-
-	/**
-	 * @param buffer the buffer to set
-	 */
-	public void setBuffer(StringBuffer buffer) {
-		this.buffer = buffer;
 	}
 
 }
