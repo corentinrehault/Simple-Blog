@@ -31,9 +31,22 @@
 	</tag>
 
 	<tag>
-		<name>head</name>
-		<tag-class>fr.simpleblog.services.customtags.TagHead</tag-class>
+		<name>elements</name>
+		<tag-class>fr.simpleblog.services.customtags.TagElements</tag-class>
 		<body-content>scriptless</body-content>
+
+		<attribute>
+			<name>nbreElements</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>nbreParPages</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>pageCourante</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
 	</tag>
 
 

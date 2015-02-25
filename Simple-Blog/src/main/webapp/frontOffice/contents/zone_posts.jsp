@@ -7,17 +7,14 @@
 <s:action name="compterarticle" namespace="/" executeResult="false"
 	var="compte" />
 
-
-
-<%-- <pag:paginator nbreElements="50" nbreParPages="${param['nbre']}" --%>
-<%-- 	pageCourante="${param['page']}" --%>
-<%-- 	url="${request['javax.servlet.forward.request_uri']}"></pag:paginator> --%>
+<pag:elements nbreElements="${compte.nbreArticles}"
+	nbreParPages="${param['nbre']}" pageCourante="${param['page']}" />
 
 <s:action name="getarticle" namespace="/" executeResult="false"
 	var="getarticles" />
 
-<s:iterator value="#getarticles.articles" var="article"
-	begin="#parameters.debut" end="#parameters.fin">
+<s:iterator value="#getarticles.articles" var="article">
+	<%-- 	begin="#parameters.debut" end="#parameters.fin"> --%>
 	<div class="blog-post">
 		<h2 class="blog-post-title">
 			<s:property value="titre" />
@@ -41,10 +38,9 @@
 
 
 
-
 <pag:paginator nbreElements="${compte.nbreArticles}"
 	nbreParPages="${param['nbre']}" pageCourante="${param['page']}"
-	url="${request['javax.servlet.forward.request_uri']}"></pag:paginator>
+	url="${request['javax.servlet.forward.request_uri']}" />
 
 <%-- 	<sj:dialog autoOpen="true">test !</sj:dialog> --%>
 

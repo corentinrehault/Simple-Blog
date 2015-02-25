@@ -39,10 +39,14 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 		getSession();
 		Criteria criteria = session.createCriteria(Article.class);
 		criteria.addOrder(Order.desc("dateCreation"));
+		//Ajout de criterions pour limiter les éléments récupérés à la page
 		return (List<Article>) criteria.list();
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#countArticle()
+	 */
 	@Override
 	@Transactional
 	public int countArticle() {
