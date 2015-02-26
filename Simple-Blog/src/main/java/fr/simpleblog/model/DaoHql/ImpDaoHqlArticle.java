@@ -27,21 +27,23 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 	public Set<Article> listArticle() {
 		return null;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#readByDate()
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Article> readByDate() {
-		
+	public List<Article> readByDate(int premier, int nbreParPage) {
+
 		getSession();
 		Criteria criteria = session.createCriteria(Article.class);
 		criteria.addOrder(Order.desc("dateCreation"));
+		criteria.setFirstResult(premier);
+		criteria.setMaxResults(nbreParPage);
 		//Ajout de criterions pour limiter les éléments récupérés à la page
 		return (List<Article>) criteria.list();
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -50,13 +52,13 @@ public class ImpDaoHqlArticle extends ImpDaoHql<Article> implements IdaoModelArt
 	@Override
 	@Transactional
 	public int countArticle() {
-		
+
 		getSession();
 		return ((Number) session.createQuery("select count(*) from Article")
 				.iterate().next()).intValue();
-		
+
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#createList(java.util.List)
 	 */

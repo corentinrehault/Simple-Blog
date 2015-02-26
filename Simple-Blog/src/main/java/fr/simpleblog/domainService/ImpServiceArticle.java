@@ -33,10 +33,10 @@ public class ImpServiceArticle extends ImpService<Article> implements IserviceAr
 	 * @see fr.simpleblog.domainService.IserviceArticle#readByDate()
 	 */
 	@Override
-	public List<Article> readByDate() {
-		return impAccessDaoArticle.readByDate();
+	public List<Article> readByDate(int premier, int nbreParPage) {
+		return impAccessDaoArticle.readByDate(premier, nbreParPage);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see fr.simpleblog.domainService.IserviceArticle#countArticle()
 	 */

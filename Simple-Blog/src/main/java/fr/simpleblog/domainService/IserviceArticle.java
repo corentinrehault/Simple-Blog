@@ -11,7 +11,7 @@ public interface IserviceArticle extends Iservice<Article> {
 
 	public List<Article> createList(List<Article> articles);
 
-	public List<Article> readByDate();
+	public List<Article> readByDate(int premier, int nbreParPage);
 
 	public int countArticle();
 

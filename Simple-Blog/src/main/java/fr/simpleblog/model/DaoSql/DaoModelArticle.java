@@ -21,7 +21,7 @@ public class DaoModelArticle extends DaoModel implements IdaoModelArticle {
 	 * @see fr.simpleblog.model.interfaces.IdaoModelArticle#readByDate()
 	 */
 	@Override
-	public List<Article> readByDate() {
+	public List<Article> readByDate(int premier, int nbreParPage) {
 		return null;
 	}
 

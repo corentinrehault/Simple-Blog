@@ -7,11 +7,29 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class TagElements extends SimpleTagSupport {
 
-	private int nbreElements;
-	private int nbreParPages;
+	/**
+	 * Le nombre de pages
+	 */
 	private int nbreDePages;
+	/**
+	 * Le nombre d'éléments par page
+	 */
+	private int nbreParPages;
+	/**
+	 * La page actuelle
+	 */
 	private int pageCourante;
+	/**
+	 * Le nombre total d'éléments
+	 */
+	private int nbreElements;
+	/**
+	 * Le numéro du premier élément de la page actuelle
+	 */
 	private int premierElementDeLaPage;
+	/**
+	 * Le numéro du dernier élément de la page actuelle
+	 */
 	private int dernierElementDeLaPage;
 
 	/**

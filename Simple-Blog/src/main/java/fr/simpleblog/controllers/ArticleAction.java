@@ -24,11 +24,13 @@ public class ArticleAction extends ActionSupport {
 	private Article article;
 	private List<Article> articles;
 	private int nbreArticles;
+	private int premier;
+	private int nbreParPage;
 
 	private IserviceArticle impServiceArticle;
 
 	public String afficherArticle() {
-		articles = impServiceArticle.readByDate();
+		articles = impServiceArticle.readByDate(premier, nbreParPage);
 		return SUCCESS;
 	}
 
@@ -94,6 +96,34 @@ public class ArticleAction extends ActionSupport {
 	 */
 	public void setNbreArticles(int nbreArticles) {
 		this.nbreArticles = nbreArticles;
+	}
+
+	/**
+	 * @return the premier
+	 */
+	public int getPremier() {
+		return premier;
+	}
+
+	/**
+	 * @param premier the premier to set
+	 */
+	public void setPremier(int premier) {
+		this.premier = premier;
+	}
+
+	/**
+	 * @return the nbreParPage
+	 */
+	public int getNbreParPage() {
+		return nbreParPage;
+	}
+
+	/**
+	 * @param nbreParPage the nbreParPage to set
+	 */
+	public void setNbreParPage(int nbreParPage) {
+		this.nbreParPage = nbreParPage;
 	}
 
 	/**

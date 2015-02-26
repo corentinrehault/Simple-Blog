@@ -10,8 +10,8 @@
 <pag:elements nbreElements="${compte.nbreArticles}"
 	nbreParPages="${param['nbre']}" pageCourante="${param['page']}" />
 
-<s:action name="getarticle" namespace="/" executeResult="false"
-	var="getarticles" />
+<s:action name="getarticle?premier=0&nbreParPage=2" namespace="/"
+	executeResult="false" var="getarticles" />
 
 <s:iterator value="#getarticles.articles" var="article">
 	<%-- 	begin="#parameters.debut" end="#parameters.fin"> --%>

@@ -194,7 +194,7 @@
 			<version>2.7.1</version>
 		</dependency>
 
-<!-- ctx -->
+		<!-- Spring ctx -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>

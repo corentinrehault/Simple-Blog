@@ -1,7 +1,7 @@
 package fr.simpleblog.controllers;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 
 import fr.simpleblog.beans.Pays;
 import fr.simpleblog.domainService.IservicePays;
-import fr.simpleblog.services.parser.ParsingService;
+import fr.simpleblog.services.webservices.servicepays.PaysServiceProxy;
 
 public class RootAction extends ActionSupport implements Preparable {
 
@@ -28,23 +28,20 @@ public class RootAction extends ActionSupport implements Preparable {
 	private IservicePays impServicePays;
 	private List<Pays> ensemblePays;
 
-	private ParsingService parsingPays = new ParsingService();
 
 
-
+	/**
+	 * Interrogation du webservice
+	 */
 	public void recupererListePays() {
 
 		try {
 
-			ensemblePays = parsingPays.listPays();
+			PaysServiceProxy paysServiceProxy = new PaysServiceProxy();
+			Pays[] arrayEnsemblePays = paysServiceProxy.listEnsemblePays();
+			ensemblePays = Arrays.asList(arrayEnsemblePays);
 
-		} catch (MalformedURLException e) {
-			LOG.error("Erreur d'URL");
-			LOG.error("Dans la méthode recupererListePays()");
-			e.printStackTrace();
-		} catch (IOException e) {
-			LOG.error("Erreur d'entrée/sortie");
-			LOG.error("Dans la méthode recupererListePays()");
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 
@@ -78,9 +75,6 @@ public class RootAction extends ActionSupport implements Preparable {
 	 */
 	public String initApplication() {
 
-		/*
-		 * Ajout d'un comparateur pour la liste des pays
-		 */
 		//recupererListePays();
 		//recupererArticle();
 
